@@ -16,39 +16,33 @@ title: 'Manubot Rootstock: Manuscript Title'
 
 
 
+
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/9de1d316c1403bb31647aa272ac652eac5f8f4e8/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/d00c642175df97410eb634e15a49f81189657239/))
 was automatically generated
-from [jmonlong/manu-vgsv@9de1d31](https://github.com/jmonlong/manu-vgsv/tree/9de1d316c1403bb31647aa272ac652eac5f8f4e8)
+from [jmonlong/manu-vgsv@d00c642](https://github.com/jmonlong/manu-vgsv/tree/d00c642175df97410eb634e15a49f81189657239)
 on January 18, 2019.
 </em></small>
 
 ## Authors
 
 
+[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+John Doe<sup>1,☯</sup>,
+[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+Jane Roe<sup>1,2,†</sup>
 
-+ **John Doe**<br>
-    ![ORCID icon](images/orcid.svg){height="13px" width="13px"}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
-    · ![GitHub icon](images/github.svg){height="13px" width="13px"}
-    [johndoe](https://github.com/johndoe)
-    · ![Twitter icon](images/twitter.svg){height="13px" width="13px"}
-    [johndoe](https://twitter.com/johndoe)<br>
-  <small>
-     Department of Something, University of Whatever
-     · Funded by Grant XXXXXXXX
-  </small>
+<sup>☯</sup> --- These authors contributed equally to this work
 
-+ **Jane Roe**<br>
-    ![ORCID icon](images/orcid.svg){height="13px" width="13px"}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
-    · ![GitHub icon](images/github.svg){height="13px" width="13px"}
-    [janeroe](https://github.com/janeroe)<br>
-  <small>
-     Department of Something, University of Whatever; Department of Whatever, University of Something
-  </small>
+<sup>†</sup> --- To whom correspondence should be addressed: bpaten@ucsc.edu
+<small>
 
+
+1. Department of Something, University of Whatever
+2. Department of Whatever, University of Something
+
+</small>
 
 
 ## Abstract {.page_break_before}
