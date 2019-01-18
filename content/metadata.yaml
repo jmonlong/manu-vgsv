@@ -11,11 +11,11 @@ author_info:
     name: John Doe
     initials: JD
     orcid: XXXX-XXXX-XXXX-XXXX
-    twitter: johndoe
     email: john.doe@something.com
     affiliations:
       - Department of Something, University of Whatever
     funders: Grant XXXXXXXX
+    symbol_str: "☯"
   -
     github: janeroe
     name: Jane Roe
@@ -25,3 +25,4 @@ author_info:
     affiliations:
       - Department of Something, University of Whatever
       - Department of Whatever, University of Something
+    symbol_str: "†"
