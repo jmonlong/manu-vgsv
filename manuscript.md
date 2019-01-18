@@ -18,9 +18,9 @@ title: 'Manubot Rootstock: Manuscript Title'
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/faef561a446418f6187d19167b6a7f06bf4c4523/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/9de1d316c1403bb31647aa272ac652eac5f8f4e8/))
 was automatically generated
-from [jmonlong/manu-vgsv@faef561](https://github.com/jmonlong/manu-vgsv/tree/faef561a446418f6187d19167b6a7f06bf4c4523)
+from [jmonlong/manu-vgsv@9de1d31](https://github.com/jmonlong/manu-vgsv/tree/9de1d316c1403bb31647aa272ac652eac5f8f4e8)
 on January 18, 2019.
 </em></small>
 
