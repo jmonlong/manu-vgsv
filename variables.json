@@ -1,14 +1,13 @@
 {
-  "date": "January 18, 2019",
+  "date": "January 22, 2019",
   "authors": [
     {
-      "github": "johndoe",
-      "name": "John Doe",
-      "initials": "JD",
+      "name": "Glenn Hickey",
+      "initials": "GH",
       "orcid": "XXXX-XXXX-XXXX-XXXX",
-      "email": "john.doe@something.com",
+      "email": "glenn.hickey@gmail.com",
       "affiliations": [
-        "Department of Something, University of Whatever"
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
       "funders": "Grant XXXXXXXX",
       "symbol_str": "\u262f",
@@ -17,42 +16,64 @@
       ]
     },
     {
-      "github": "janeroe",
-      "name": "Jane Roe",
-      "initials": "JR",
+      "name": "David Heller",
+      "initials": "DH",
       "orcid": "XXXX-XXXX-XXXX-XXXX",
-      "email": "jane.roe@whatever.edu",
+      "email": "daheller@ucsc.edu",
       "affiliations": [
-        "Department of Something, University of Whatever",
-        "Department of Whatever, University of Something"
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
+      ],
+      "funders": "Grant XXXXXXXX",
+      "symbol_str": "\u262f",
+      "affiliation_numbers": [
+        1
+      ]
+    },
+    {
+      "name": "Jean Monlong",
+      "initials": "JM",
+      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "email": "jmonlong@ucsc.edu",
+      "affiliations": [
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
+      ],
+      "funders": "Grant XXXXXXXX",
+      "symbol_str": "\u262f",
+      "affiliation_numbers": [
+        1
+      ]
+    },
+    {
+      "name": "Benedict Paten",
+      "initials": "BP",
+      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "email": "bpaten@ucsc.edu",
+      "affiliations": [
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
       "symbol_str": "\u2020",
       "affiliation_numbers": [
-        1,
-        2
+        1
       ]
     }
   ],
   "affiliations": [
     {
-      "affiliation": "Department of Something, University of Whatever",
+      "affiliation": "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA",
       "affiliation_number": 1
-    },
-    {
-      "affiliation": "Department of Whatever, University of Something",
-      "affiliation_number": 2
     }
   ],
   "ci_source": {
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "d00c642175df97410eb634e15a49f81189657239"
+    "commit": "2e0caef1fe69af1cc8232e14eb8a669880bc5fcd"
   },
   "manuscript_stats": {
     "reference_counts": {
-      "total": 0
+      "doi": 15,
+      "total": 15
     },
-    "word_count": 200
+    "word_count": 645
   }
 }

@@ -1,1 +1,1780 @@
-[]
+[
+  {
+    "publisher": "Springer Nature",
+    "issue": "7536",
+    "DOI": "10.1038/nature13907",
+    "type": "article-journal",
+    "page": "608-611",
+    "source": "Crossref",
+    "title": "Resolving the complexity of the human genome using single-molecule sequencing",
+    "volume": "517",
+    "author": [
+      {
+        "given": "Mark J. P.",
+        "family": "Chaisson"
+      },
+      {
+        "given": "John",
+        "family": "Huddleston"
+      },
+      {
+        "given": "Megan Y.",
+        "family": "Dennis"
+      },
+      {
+        "given": "Peter H.",
+        "family": "Sudmant"
+      },
+      {
+        "given": "Maika",
+        "family": "Malig"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "Francesca",
+        "family": "Antonacci"
+      },
+      {
+        "given": "Urvashi",
+        "family": "Surti"
+      },
+      {
+        "given": "Richard",
+        "family": "Sandstrom"
+      },
+      {
+        "given": "Matthew",
+        "family": "Boitano"
+      },
+      {
+        "given": "Jane M.",
+        "family": "Landolin"
+      },
+      {
+        "given": "John A.",
+        "family": "Stamatoyannopoulos"
+      },
+      {
+        "given": "Michael W.",
+        "family": "Hunkapiller"
+      },
+      {
+        "given": "Jonas",
+        "family": "Korlach"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      }
+    ],
+    "container-title": "Nature",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          11,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/w69",
+    "container-title-short": "Nature",
+    "PMCID": "PMC4317254",
+    "PMID": "25383537",
+    "id": "z91V6jjU"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "7571",
+    "DOI": "10.1038/nature15394",
+    "type": "article-journal",
+    "page": "75-81",
+    "source": "Crossref",
+    "title": "An integrated map of structural variation in 2,504 human genomes",
+    "volume": "526",
+    "author": [
+      {
+        "given": "Peter H.",
+        "family": "Sudmant"
+      },
+      {},
+      {
+        "given": "Tobias",
+        "family": "Rausch"
+      },
+      {
+        "given": "Eugene J.",
+        "family": "Gardner"
+      },
+      {
+        "given": "Robert E.",
+        "family": "Handsaker"
+      },
+      {
+        "given": "Alexej",
+        "family": "Abyzov"
+      },
+      {
+        "given": "John",
+        "family": "Huddleston"
+      },
+      {
+        "given": "Yan",
+        "family": "Zhang"
+      },
+      {
+        "given": "Kai",
+        "family": "Ye"
+      },
+      {
+        "given": "Goo",
+        "family": "Jun"
+      },
+      {
+        "given": "Markus",
+        "family": "Hsi-Yang Fritz"
+      },
+      {
+        "given": "Miriam K.",
+        "family": "Konkel"
+      },
+      {
+        "given": "Ankit",
+        "family": "Malhotra"
+      },
+      {
+        "given": "Adrian M.",
+        "family": "Stütz"
+      },
+      {
+        "given": "Xinghua",
+        "family": "Shi"
+      },
+      {
+        "given": "Francesco",
+        "family": "Paolo Casale"
+      },
+      {
+        "given": "Jieming",
+        "family": "Chen"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "Gargi",
+        "family": "Dayama"
+      },
+      {
+        "given": "Ken",
+        "family": "Chen"
+      },
+      {
+        "given": "Maika",
+        "family": "Malig"
+      },
+      {
+        "given": "Mark J. P.",
+        "family": "Chaisson"
+      },
+      {
+        "given": "Klaudia",
+        "family": "Walter"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meiers"
+      },
+      {
+        "given": "Seva",
+        "family": "Kashin"
+      },
+      {
+        "given": "Erik",
+        "family": "Garrison"
+      },
+      {
+        "given": "Adam",
+        "family": "Auton"
+      },
+      {
+        "given": "Hugo Y. K.",
+        "family": "Lam"
+      },
+      {
+        "given": "Xinmeng",
+        "family": "Jasmine Mu"
+      },
+      {
+        "given": "Can",
+        "family": "Alkan"
+      },
+      {
+        "given": "Danny",
+        "family": "Antaki"
+      },
+      {
+        "given": "Taejeong",
+        "family": "Bae"
+      },
+      {
+        "given": "Eliza",
+        "family": "Cerveira"
+      },
+      {
+        "given": "Peter",
+        "family": "Chines"
+      },
+      {
+        "given": "Zechen",
+        "family": "Chong"
+      },
+      {
+        "given": "Laura",
+        "family": "Clarke"
+      },
+      {
+        "given": "Elif",
+        "family": "Dal"
+      },
+      {
+        "given": "Li",
+        "family": "Ding"
+      },
+      {
+        "given": "Sarah",
+        "family": "Emery"
+      },
+      {
+        "given": "Xian",
+        "family": "Fan"
+      },
+      {
+        "given": "Madhusudan",
+        "family": "Gujral"
+      },
+      {
+        "given": "Fatma",
+        "family": "Kahveci"
+      },
+      {
+        "given": "Jeffrey M.",
+        "family": "Kidd"
+      },
+      {
+        "given": "Yu",
+        "family": "Kong"
+      },
+      {
+        "given": "Eric-Wubbo",
+        "family": "Lameijer"
+      },
+      {
+        "given": "Shane",
+        "family": "McCarthy"
+      },
+      {
+        "given": "Paul",
+        "family": "Flicek"
+      },
+      {
+        "given": "Richard A.",
+        "family": "Gibbs"
+      },
+      {
+        "given": "Gabor",
+        "family": "Marth"
+      },
+      {
+        "given": "Christopher E.",
+        "family": "Mason"
+      },
+      {
+        "given": "Androniki",
+        "family": "Menelaou"
+      },
+      {
+        "given": "Donna M.",
+        "family": "Muzny"
+      },
+      {
+        "given": "Bradley J.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Amina",
+        "family": "Noor"
+      },
+      {
+        "given": "Nicholas F.",
+        "family": "Parrish"
+      },
+      {
+        "given": "Matthew",
+        "family": "Pendleton"
+      },
+      {
+        "given": "Andrew",
+        "family": "Quitadamo"
+      },
+      {
+        "given": "Benjamin",
+        "family": "Raeder"
+      },
+      {
+        "given": "Eric E.",
+        "family": "Schadt"
+      },
+      {
+        "given": "Mallory",
+        "family": "Romanovitch"
+      },
+      {
+        "given": "Andreas",
+        "family": "Schlattl"
+      },
+      {
+        "given": "Robert",
+        "family": "Sebra"
+      },
+      {
+        "given": "Andrey A.",
+        "family": "Shabalin"
+      },
+      {
+        "given": "Andreas",
+        "family": "Untergasser"
+      },
+      {
+        "given": "Jerilyn A.",
+        "family": "Walker"
+      },
+      {
+        "given": "Min",
+        "family": "Wang"
+      },
+      {
+        "given": "Fuli",
+        "family": "Yu"
+      },
+      {
+        "given": "Chengsheng",
+        "family": "Zhang"
+      },
+      {
+        "given": "Jing",
+        "family": "Zhang"
+      },
+      {
+        "given": "Xiangqun",
+        "family": "Zheng-Bradley"
+      },
+      {
+        "given": "Wanding",
+        "family": "Zhou"
+      },
+      {
+        "given": "Thomas",
+        "family": "Zichner"
+      },
+      {
+        "given": "Jonathan",
+        "family": "Sebat"
+      },
+      {
+        "given": "Mark A.",
+        "family": "Batzer"
+      },
+      {
+        "given": "Steven A.",
+        "family": "McCarroll"
+      },
+      {
+        "given": "Ryan E.",
+        "family": "Mills"
+      },
+      {
+        "given": "Mark B.",
+        "family": "Gerstein"
+      },
+      {
+        "given": "Ali",
+        "family": "Bashir"
+      },
+      {
+        "given": "Oliver",
+        "family": "Stegle"
+      },
+      {
+        "given": "Scott E.",
+        "family": "Devine"
+      },
+      {
+        "given": "Charles",
+        "family": "Lee"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      },
+      {
+        "given": "Jan O.",
+        "family": "Korbel"
+      }
+    ],
+    "container-title": "Nature",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/73c",
+    "container-title-short": "Nature",
+    "PMCID": "PMC4617611",
+    "PMID": "26432246",
+    "id": "qA6dWFP"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "4",
+    "DOI": "10.1038/nbt.4060",
+    "type": "article-journal",
+    "page": "338-345",
+    "source": "Crossref",
+    "title": "Nanopore sequencing and assembly of a human genome with ultra-long reads",
+    "volume": "36",
+    "author": [
+      {
+        "given": "Miten",
+        "family": "Jain"
+      },
+      {
+        "given": "Sergey",
+        "family": "Koren"
+      },
+      {
+        "given": "Karen H",
+        "family": "Miga"
+      },
+      {
+        "given": "Josh",
+        "family": "Quick"
+      },
+      {
+        "given": "Arthur C",
+        "family": "Rand"
+      },
+      {
+        "given": "Thomas A",
+        "family": "Sasani"
+      },
+      {
+        "given": "John R",
+        "family": "Tyson"
+      },
+      {
+        "given": "Andrew D",
+        "family": "Beggs"
+      },
+      {
+        "given": "Alexander T",
+        "family": "Dilthey"
+      },
+      {
+        "given": "Ian T",
+        "family": "Fiddes"
+      },
+      {
+        "given": "Sunir",
+        "family": "Malla"
+      },
+      {
+        "given": "Hannah",
+        "family": "Marriott"
+      },
+      {
+        "given": "Tom",
+        "family": "Nieto"
+      },
+      {
+        "given": "Justin",
+        "family": "O'Grady"
+      },
+      {
+        "given": "Hugh E",
+        "family": "Olsen"
+      },
+      {
+        "given": "Brent S",
+        "family": "Pedersen"
+      },
+      {
+        "given": "Arang",
+        "family": "Rhie"
+      },
+      {
+        "given": "Hollian",
+        "family": "Richardson"
+      },
+      {
+        "given": "Aaron R",
+        "family": "Quinlan"
+      },
+      {
+        "given": "Terrance P",
+        "family": "Snutch"
+      },
+      {
+        "given": "Louise",
+        "family": "Tee"
+      },
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      },
+      {
+        "given": "Adam M",
+        "family": "Phillippy"
+      },
+      {
+        "given": "Jared T",
+        "family": "Simpson"
+      },
+      {
+        "given": "Nicholas J",
+        "family": "Loman"
+      },
+      {
+        "given": "Matthew",
+        "family": "Loose"
+      }
+    ],
+    "container-title": "Nature Biotechnology",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          1,
+          29
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gczffw",
+    "container-title-short": "Nat Biotechnol",
+    "PMCID": "PMC5889714",
+    "PMID": "29431738",
+    "id": "6KbgcueR"
+  },
+  {
+    "publisher": "Springer Nature America, Inc",
+    "issue": "9",
+    "DOI": "10.1038/nbt.4227",
+    "type": "article-journal",
+    "page": "875-879",
+    "source": "Crossref",
+    "title": "Variation graph toolkit improves read mapping by representing genetic variation in the reference",
+    "volume": "36",
+    "author": [
+      {
+        "given": "Erik",
+        "family": "Garrison"
+      },
+      {
+        "given": "Jouni",
+        "family": "Sirén"
+      },
+      {
+        "given": "Adam M",
+        "family": "Novak"
+      },
+      {
+        "given": "Glenn",
+        "family": "Hickey"
+      },
+      {
+        "given": "Jordan M",
+        "family": "Eizenga"
+      },
+      {
+        "given": "Eric T",
+        "family": "Dawson"
+      },
+      {
+        "given": "William",
+        "family": "Jones"
+      },
+      {
+        "given": "Shilpa",
+        "family": "Garg"
+      },
+      {
+        "given": "Charles",
+        "family": "Markello"
+      },
+      {
+        "given": "Michael F",
+        "family": "Lin"
+      },
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      },
+      {
+        "given": "Richard",
+        "family": "Durbin"
+      }
+    ],
+    "container-title": "Nature Biotechnology",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          8,
+          20
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gd2zqs",
+    "container-title-short": "Nat Biotechnol",
+    "PMCID": "PMC6126949",
+    "PMID": "30125266",
+    "id": "10jxt15v0"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "8",
+    "DOI": "10.1038/ng.3021",
+    "type": "article-journal",
+    "page": "818-825",
+    "source": "Crossref",
+    "title": "Whole-genome sequence variation, population structure and demographic history of the Dutch population",
+    "volume": "46",
+    "author": [
+      {
+        "given": "Laurent C",
+        "family": "Francioli"
+      },
+      {},
+      {
+        "given": "Androniki",
+        "family": "Menelaou"
+      },
+      {
+        "given": "Sara L",
+        "family": "Pulit"
+      },
+      {
+        "given": "Freerk",
+        "family": "van Dijk"
+      },
+      {
+        "given": "Pier Francesco",
+        "family": "Palamara"
+      },
+      {
+        "given": "Clara C",
+        "family": "Elbers"
+      },
+      {
+        "given": "Pieter B T",
+        "family": "Neerincx"
+      },
+      {
+        "given": "Kai",
+        "family": "Ye"
+      },
+      {
+        "given": "Victor",
+        "family": "Guryev"
+      },
+      {
+        "given": "Wigard P",
+        "family": "Kloosterman"
+      },
+      {
+        "given": "Patrick",
+        "family": "Deelen"
+      },
+      {
+        "given": "Abdel",
+        "family": "Abdellaoui"
+      },
+      {
+        "given": "Elisabeth M",
+        "family": "van Leeuwen"
+      },
+      {
+        "given": "Mannis",
+        "family": "van Oven"
+      },
+      {
+        "given": "Martijn",
+        "family": "Vermaat"
+      },
+      {
+        "given": "Mingkun",
+        "family": "Li"
+      },
+      {
+        "given": "Jeroen F J",
+        "family": "Laros"
+      },
+      {
+        "given": "Lennart C",
+        "family": "Karssen"
+      },
+      {
+        "given": "Alexandros",
+        "family": "Kanterakis"
+      },
+      {
+        "given": "Najaf",
+        "family": "Amin"
+      },
+      {
+        "given": "Jouke Jan",
+        "family": "Hottenga"
+      },
+      {
+        "given": "Eric-Wubbo",
+        "family": "Lameijer"
+      },
+      {
+        "given": "Mathijs",
+        "family": "Kattenberg"
+      },
+      {
+        "given": "Martijn",
+        "family": "Dijkstra"
+      },
+      {
+        "given": "Heorhiy",
+        "family": "Byelas"
+      },
+      {
+        "given": "Jessica",
+        "family": "van Setten"
+      },
+      {
+        "given": "Barbera D C",
+        "family": "van Schaik"
+      },
+      {
+        "given": "Jan",
+        "family": "Bot"
+      },
+      {
+        "given": "Isaäc J",
+        "family": "Nijman"
+      },
+      {
+        "given": "Ivo",
+        "family": "Renkens"
+      },
+      {
+        "given": "Tobias",
+        "family": "Marschall"
+      },
+      {
+        "given": "Alexander",
+        "family": "Schönhuth"
+      },
+      {
+        "given": "Jayne Y",
+        "family": "Hehir-Kwa"
+      },
+      {
+        "given": "Robert E",
+        "family": "Handsaker"
+      },
+      {
+        "given": "Paz",
+        "family": "Polak"
+      },
+      {
+        "given": "Mashaal",
+        "family": "Sohail"
+      },
+      {
+        "given": "Dana",
+        "family": "Vuzman"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "David",
+        "family": "van Enckevort"
+      },
+      {
+        "given": "Hailiang",
+        "family": "Mei"
+      },
+      {
+        "given": "Vyacheslav",
+        "family": "Koval"
+      },
+      {
+        "given": "Matthijs H",
+        "family": "Moed"
+      },
+      {
+        "given": "K Joeri",
+        "family": "van der Velde"
+      },
+      {
+        "given": "Fernando",
+        "family": "Rivadeneira"
+      },
+      {
+        "given": "Karol",
+        "family": "Estrada"
+      },
+      {
+        "given": "Carolina",
+        "family": "Medina-Gomez"
+      },
+      {
+        "given": "Aaron",
+        "family": "Isaacs"
+      },
+      {
+        "given": "Steven A",
+        "family": "McCarroll"
+      },
+      {
+        "given": "Marian",
+        "family": "Beekman"
+      },
+      {
+        "given": "Anton J M",
+        "family": "de Craen"
+      },
+      {
+        "given": "H Eka D",
+        "family": "Suchiman"
+      },
+      {
+        "given": "Albert",
+        "family": "Hofman"
+      },
+      {
+        "given": "Ben",
+        "family": "Oostra"
+      },
+      {
+        "given": "André G",
+        "family": "Uitterlinden"
+      },
+      {
+        "given": "Gonneke",
+        "family": "Willemsen"
+      },
+      {
+        "given": "LifeLines Cohort",
+        "family": "Study"
+      },
+      {
+        "given": "Mathieu",
+        "family": "Platteel"
+      },
+      {
+        "given": "Jan H",
+        "family": "Veldink"
+      },
+      {
+        "given": "Leonard H",
+        "family": "van den Berg"
+      },
+      {
+        "given": "Steven J",
+        "family": "Pitts"
+      },
+      {
+        "given": "Shobha",
+        "family": "Potluri"
+      },
+      {
+        "given": "Purnima",
+        "family": "Sundar"
+      },
+      {
+        "given": "David R",
+        "family": "Cox"
+      },
+      {
+        "given": "Shamil R",
+        "family": "Sunyaev"
+      },
+      {
+        "given": "Johan T den",
+        "family": "Dunnen"
+      },
+      {
+        "given": "Mark",
+        "family": "Stoneking"
+      },
+      {
+        "given": "Peter",
+        "family": "de Knijff"
+      },
+      {
+        "given": "Manfred",
+        "family": "Kayser"
+      },
+      {
+        "given": "Qibin",
+        "family": "Li"
+      },
+      {
+        "given": "Yingrui",
+        "family": "Li"
+      },
+      {
+        "given": "Yuanping",
+        "family": "Du"
+      },
+      {
+        "given": "Ruoyan",
+        "family": "Chen"
+      },
+      {
+        "given": "Hongzhi",
+        "family": "Cao"
+      },
+      {
+        "given": "Ning",
+        "family": "Li"
+      },
+      {
+        "given": "Sujie",
+        "family": "Cao"
+      },
+      {
+        "given": "Jun",
+        "family": "Wang"
+      },
+      {
+        "given": "Jasper A",
+        "family": "Bovenberg"
+      },
+      {
+        "given": "Itsik",
+        "family": "Pe'er"
+      },
+      {
+        "given": "P Eline",
+        "family": "Slagboom"
+      },
+      {
+        "given": "Cornelia M",
+        "family": "van Duijn"
+      },
+      {
+        "given": "Dorret I",
+        "family": "Boomsma"
+      },
+      {
+        "given": "Gert-Jan B",
+        "family": "van Ommen"
+      },
+      {
+        "given": "Paul I W",
+        "family": "de Bakker"
+      },
+      {
+        "given": "Morris A",
+        "family": "Swertz"
+      },
+      {
+        "given": "Cisca",
+        "family": "Wijmenga"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          6,
+          29
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f6bxm8",
+    "container-title-short": "Nat Genet",
+    "PMID": "24974849",
+    "id": "py6BC5kj"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "11",
+    "DOI": "10.1038/ng.3964",
+    "type": "article-journal",
+    "page": "1654-1660",
+    "source": "Crossref",
+    "title": "Graphtyper enables population-scale genotyping using pangenome graphs",
+    "volume": "49",
+    "author": [
+      {
+        "given": "Hannes P",
+        "family": "Eggertsson"
+      },
+      {
+        "given": "Hakon",
+        "family": "Jonsson"
+      },
+      {
+        "given": "Snaedis",
+        "family": "Kristmundsdottir"
+      },
+      {
+        "given": "Eirikur",
+        "family": "Hjartarson"
+      },
+      {
+        "given": "Birte",
+        "family": "Kehr"
+      },
+      {
+        "given": "Gisli",
+        "family": "Masson"
+      },
+      {
+        "given": "Florian",
+        "family": "Zink"
+      },
+      {
+        "given": "Kristjan E",
+        "family": "Hjorleifsson"
+      },
+      {
+        "given": "Aslaug",
+        "family": "Jonasdottir"
+      },
+      {
+        "given": "Adalbjorg",
+        "family": "Jonasdottir"
+      },
+      {
+        "given": "Ingileif",
+        "family": "Jonsdottir"
+      },
+      {
+        "given": "Daniel F",
+        "family": "Gudbjartsson"
+      },
+      {
+        "given": "Pall",
+        "family": "Melsted"
+      },
+      {
+        "given": "Kari",
+        "family": "Stefansson"
+      },
+      {
+        "given": "Bjarni V",
+        "family": "Halldorsson"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          9,
+          25
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gbx7v6",
+    "container-title-short": "Nat Genet",
+    "PMID": "28945251",
+    "id": "ohTIiqfV"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "10",
+    "DOI": "10.1038/nmeth.3505",
+    "type": "article-journal",
+    "page": "966-968",
+    "source": "Crossref",
+    "title": "SpeedSeq: ultra-fast personal genome analysis and interpretation",
+    "volume": "12",
+    "author": [
+      {
+        "given": "Colby",
+        "family": "Chiang"
+      },
+      {
+        "given": "Ryan M",
+        "family": "Layer"
+      },
+      {
+        "given": "Gregory G",
+        "family": "Faust"
+      },
+      {
+        "given": "Michael R",
+        "family": "Lindberg"
+      },
+      {
+        "given": "David B",
+        "family": "Rose"
+      },
+      {
+        "given": "Erik P",
+        "family": "Garrison"
+      },
+      {
+        "given": "Gabor T",
+        "family": "Marth"
+      },
+      {
+        "given": "Aaron R",
+        "family": "Quinlan"
+      },
+      {
+        "given": "Ira M",
+        "family": "Hall"
+      }
+    ],
+    "container-title": "Nature Methods",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          8,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gcpgfh",
+    "container-title-short": "Nat Methods",
+    "PMCID": "PMC4589466",
+    "PMID": "26258291",
+    "id": "AltPnocw"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "12",
+    "DOI": "10.1038/nmeth.4035",
+    "type": "article-journal",
+    "page": "1050-1054",
+    "source": "Crossref",
+    "title": "Phased diploid genome assembly with single-molecule real-time sequencing",
+    "volume": "13",
+    "author": [
+      {
+        "given": "Chen-Shan",
+        "family": "Chin"
+      },
+      {
+        "given": "Paul",
+        "family": "Peluso"
+      },
+      {
+        "given": "Fritz J",
+        "family": "Sedlazeck"
+      },
+      {
+        "given": "Maria",
+        "family": "Nattestad"
+      },
+      {
+        "given": "Gregory T",
+        "family": "Concepcion"
+      },
+      {
+        "given": "Alicia",
+        "family": "Clum"
+      },
+      {
+        "given": "Christopher",
+        "family": "Dunn"
+      },
+      {
+        "given": "Ronan",
+        "family": "O'Malley"
+      },
+      {
+        "given": "Rosa",
+        "family": "Figueroa-Balderas"
+      },
+      {
+        "given": "Abraham",
+        "family": "Morales-Cruz"
+      },
+      {
+        "given": "Grant R",
+        "family": "Cramer"
+      },
+      {
+        "given": "Massimo",
+        "family": "Delledonne"
+      },
+      {
+        "given": "Chongyuan",
+        "family": "Luo"
+      },
+      {
+        "given": "Joseph R",
+        "family": "Ecker"
+      },
+      {
+        "given": "Dario",
+        "family": "Cantu"
+      },
+      {
+        "given": "David R",
+        "family": "Rank"
+      },
+      {
+        "given": "Michael C",
+        "family": "Schatz"
+      }
+    ],
+    "container-title": "Nature Methods",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          10,
+          17
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f9fv4w",
+    "container-title-short": "Nat Methods",
+    "PMCID": "PMC5503144",
+    "PMID": "27749838",
+    "id": "Pu6SY37C"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "9",
+    "DOI": "10.1038/nmeth.4366",
+    "type": "article-journal",
+    "page": "915-920",
+    "source": "Crossref",
+    "title": "Genome-wide reconstruction of complex structural variants using read clouds",
+    "volume": "14",
+    "author": [
+      {
+        "given": "Noah",
+        "family": "Spies"
+      },
+      {
+        "given": "Ziming",
+        "family": "Weng"
+      },
+      {
+        "given": "Alex",
+        "family": "Bishara"
+      },
+      {
+        "given": "Jennifer",
+        "family": "McDaniel"
+      },
+      {
+        "given": "David",
+        "family": "Catoe"
+      },
+      {
+        "given": "Justin M",
+        "family": "Zook"
+      },
+      {
+        "given": "Marc",
+        "family": "Salit"
+      },
+      {
+        "given": "Robert B",
+        "family": "West"
+      },
+      {
+        "given": "Serafim",
+        "family": "Batzoglou"
+      },
+      {
+        "given": "Arend",
+        "family": "Sidow"
+      }
+    ],
+    "container-title": "Nature Methods",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          7,
+          17
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gbnhwk",
+    "container-title-short": "Nat Meth",
+    "PMCID": "PMC5578891",
+    "PMID": "28714986",
+    "id": "121OWcTA4"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "1",
+    "DOI": "10.1038/s41467-017-01343-4",
+    "type": "article-journal",
+    "source": "Crossref",
+    "title": "Mapping and phasing of structural variation in patient genomes using nanopore sequencing",
+    "volume": "8",
+    "author": [
+      {
+        "given": "Mircea",
+        "family": "Cretu Stancu"
+      },
+      {
+        "given": "Markus J.",
+        "family": "van Roosmalen"
+      },
+      {
+        "given": "Ivo",
+        "family": "Renkens"
+      },
+      {
+        "given": "Marleen M.",
+        "family": "Nieboer"
+      },
+      {
+        "given": "Sjors",
+        "family": "Middelkamp"
+      },
+      {
+        "given": "Joep",
+        "family": "de Ligt"
+      },
+      {
+        "given": "Giulia",
+        "family": "Pregno"
+      },
+      {
+        "given": "Daniela",
+        "family": "Giachino"
+      },
+      {
+        "given": "Giorgia",
+        "family": "Mandrile"
+      },
+      {
+        "given": "Jose",
+        "family": "Espejo Valle-Inclan"
+      },
+      {
+        "given": "Jerome",
+        "family": "Korzelius"
+      },
+      {
+        "given": "Ewart",
+        "family": "de Bruijn"
+      },
+      {
+        "given": "Edwin",
+        "family": "Cuppen"
+      },
+      {
+        "given": "Michael E.",
+        "family": "Talkowski"
+      },
+      {
+        "given": "Tobias",
+        "family": "Marschall"
+      },
+      {
+        "given": "Jeroen",
+        "family": "de Ridder"
+      },
+      {
+        "given": "Wigard P.",
+        "family": "Kloosterman"
+      }
+    ],
+    "container-title": "Nature Communications",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          11,
+          6
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gftpt9",
+    "container-title-short": "Nat Commun",
+    "PMCID": "PMC5673902",
+    "PMID": "29109544",
+    "id": "PRx3qEIm"
+  },
+  {
+    "publisher": "Springer Nature America, Inc",
+    "issue": "7",
+    "DOI": "10.1038/s41588-018-0145-5",
+    "type": "article-journal",
+    "page": "1054-1059",
+    "source": "Crossref",
+    "title": "Accurate genotyping across variant classes and lengths using variant graphs",
+    "volume": "50",
+    "author": [
+      {
+        "given": "Jonas Andreas",
+        "family": "Sibbesen"
+      },
+      {},
+      {
+        "given": "Lasse",
+        "family": "Maretty"
+      },
+      {
+        "given": "Anders",
+        "family": "Krogh"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          6,
+          18
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gdndnz",
+    "container-title-short": "Nat Genet",
+    "PMID": "29915429",
+    "id": "14Uxmwbxm"
+  },
+  {
+    "publisher": "Springer Nature",
+    "DOI": "10.1038/s41588-018-0316-4",
+    "type": "article-journal",
+    "source": "Crossref",
+    "title": "Fast and accurate genomic analyses using genome graphs",
+    "author": [
+      {
+        "given": "Goran",
+        "family": "Rakocevic"
+      },
+      {
+        "given": "Vladimir",
+        "family": "Semenyuk"
+      },
+      {
+        "given": "Wan-Ping",
+        "family": "Lee"
+      },
+      {
+        "given": "James",
+        "family": "Spencer"
+      },
+      {
+        "given": "John",
+        "family": "Browning"
+      },
+      {
+        "given": "Ivan J.",
+        "family": "Johnson"
+      },
+      {
+        "given": "Vladan",
+        "family": "Arsenijevic"
+      },
+      {
+        "given": "Jelena",
+        "family": "Nadj"
+      },
+      {
+        "given": "Kaushik",
+        "family": "Ghose"
+      },
+      {
+        "given": "Maria C.",
+        "family": "Suciu"
+      },
+      {
+        "given": "Sun-Gou",
+        "family": "Ji"
+      },
+      {
+        "given": "Gülfem",
+        "family": "Demir"
+      },
+      {
+        "given": "Lizao",
+        "family": "Li"
+      },
+      {
+        "given": "Berke Ç.",
+        "family": "Toptaş"
+      },
+      {
+        "given": "Alexey",
+        "family": "Dolgoborodov"
+      },
+      {
+        "given": "Björn",
+        "family": "Pollex"
+      },
+      {
+        "given": "Iosif",
+        "family": "Spulber"
+      },
+      {
+        "given": "Irina",
+        "family": "Glotova"
+      },
+      {
+        "given": "Péter",
+        "family": "Kómár"
+      },
+      {
+        "given": "Andrew L.",
+        "family": "Stachyra"
+      },
+      {
+        "given": "Yilong",
+        "family": "Li"
+      },
+      {
+        "given": "Milos",
+        "family": "Popovic"
+      },
+      {
+        "given": "Morten",
+        "family": "Källberg"
+      },
+      {
+        "given": "Amit",
+        "family": "Jain"
+      },
+      {
+        "given": "Deniz",
+        "family": "Kural"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          1,
+          14
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gftd46",
+    "container-title-short": "Nat Genet",
+    "PMID": "30643257",
+    "id": "11Jy8B61m"
+  },
+  {
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "18",
+    "DOI": "10.1093/bioinformatics/bts378",
+    "type": "article-journal",
+    "page": "i333-i339",
+    "source": "Crossref",
+    "title": "DELLY: structural variant discovery by integrated paired-end and split-read analysis",
+    "volume": "28",
+    "author": [
+      {
+        "given": "T.",
+        "family": "Rausch"
+      },
+      {
+        "given": "T.",
+        "family": "Zichner"
+      },
+      {
+        "given": "A.",
+        "family": "Schlattl"
+      },
+      {
+        "given": "A. M.",
+        "family": "Stutz"
+      },
+      {
+        "given": "V.",
+        "family": "Benes"
+      },
+      {
+        "given": "J. O.",
+        "family": "Korbel"
+      }
+    ],
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          9,
+          7
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f38r2c",
+    "container-title-short": "Bioinformatics",
+    "PMCID": "PMC3436805",
+    "PMID": "22962449",
+    "id": "nLvQCjXU"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
+    "issue": "5",
+    "DOI": "10.1101/gr.214007.116",
+    "type": "article-journal",
+    "page": "677-685",
+    "source": "Crossref",
+    "title": "Discovery and genotyping of structural variation from long-read haploid genome sequence data",
+    "volume": "27",
+    "author": [
+      {
+        "given": "John",
+        "family": "Huddleston"
+      },
+      {
+        "given": "Mark J.P.",
+        "family": "Chaisson"
+      },
+      {
+        "given": "Karyn Meltz",
+        "family": "Steinberg"
+      },
+      {
+        "given": "Wes",
+        "family": "Warren"
+      },
+      {
+        "given": "Kendra",
+        "family": "Hoekzema"
+      },
+      {
+        "given": "David",
+        "family": "Gordon"
+      },
+      {
+        "given": "Tina A.",
+        "family": "Graves-Lindsay"
+      },
+      {
+        "given": "Katherine M.",
+        "family": "Munson"
+      },
+      {
+        "given": "Zev N.",
+        "family": "Kronenberg"
+      },
+      {
+        "given": "Laura",
+        "family": "Vives"
+      },
+      {
+        "given": "Paul",
+        "family": "Peluso"
+      },
+      {
+        "given": "Matthew",
+        "family": "Boitano"
+      },
+      {
+        "given": "Chen-Shin",
+        "family": "Chin"
+      },
+      {
+        "given": "Jonas",
+        "family": "Korlach"
+      },
+      {
+        "given": "Richard K.",
+        "family": "Wilson"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      }
+    ],
+    "container-title": "Genome Research",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          11,
+          28
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f9x79h",
+    "container-title-short": "Genome Res.",
+    "PMCID": "PMC5411763",
+    "PMID": "27895111",
+    "id": "rs7e40wC"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
+    "issue": "5",
+    "DOI": "10.1101/gr.214155.116",
+    "type": "article-journal",
+    "page": "665-676",
+    "source": "Crossref",
+    "title": "Genome graphs and the evolution of genome inference",
+    "volume": "27",
+    "author": [
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      },
+      {
+        "given": "Adam M.",
+        "family": "Novak"
+      },
+      {
+        "given": "Jordan M.",
+        "family": "Eizenga"
+      },
+      {
+        "given": "Erik",
+        "family": "Garrison"
+      }
+    ],
+    "container-title": "Genome Research",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          3,
+          30
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f95nhd",
+    "container-title-short": "Genome Res.",
+    "PMCID": "PMC5411762",
+    "PMID": "28360232",
+    "id": "Qa8mx6Ll"
+  }
+]
