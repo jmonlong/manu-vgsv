@@ -1,28 +1,43 @@
 ---
-title: "Manubot Rootstock: Manuscript Title"
+title: "Genotyping structural variation in variation graphs with the vg toolkit"
 keywords:
-  - markdown
-  - publishing
-  - manubot
+  - structural variation
+  - pangenome
+  - variant genotyping
 lang: en-US
 author_info:
   -
-    github: johndoe
-    name: John Doe
-    initials: JD
+    name: Glenn Hickey
+    initials: GH
     orcid: XXXX-XXXX-XXXX-XXXX
-    email: john.doe@something.com
+    email: glenn.hickey@gmail.com
     affiliations:
-      - Department of Something, University of Whatever
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
     funders: Grant XXXXXXXX
     symbol_str: "☯"
   -
-    github: janeroe
-    name: Jane Roe
-    initials: JR
+    name: David Heller
+    initials: DH
     orcid: XXXX-XXXX-XXXX-XXXX
-    email: jane.roe@whatever.edu
+    email: daheller@ucsc.edu
     affiliations:
-      - Department of Something, University of Whatever
-      - Department of Whatever, University of Something
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+    funders: Grant XXXXXXXX
+    symbol_str: "☯"
+  -
+    name: Jean Monlong
+    initials: JM
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: jmonlong@ucsc.edu
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+    funders: Grant XXXXXXXX
+    symbol_str: "☯"
+  -
+    name: Benedict Paten
+    initials: BP
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: bpaten@ucsc.edu
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
     symbol_str: "†"

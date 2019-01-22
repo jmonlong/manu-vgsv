@@ -1,17 +1,21 @@
-# Automated scholarly manuscripts on GitHub
-
-<!-- usage note: edit the H1 title above to personalize the manuscript -->
-
 [![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://jmonlong.github.io/manu-vgsv/)
 [![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://jmonlong.github.io/manu-vgsv/manuscript.pdf)
 [![Build Status](https://travis-ci.com/jmonlong/manu-vgsv.svg?token=iYnJ9rfnqyHqrADLdak8&branch=master)](https://travis-ci.org/jmonlong/manu-vgsv)
 
-## Manuscript description
+# VG-SV manuscript
 
-<!-- usage note: edit this section. -->
+Quick "how to use":
 
-This repository is a template manuscript (a.k.a. rootstock).
-Actual manuscript instances will clone this repository (see [`SETUP.md`](SETUP.md)) and replace this paragraph with a description of their manuscript.
+- Write content in the Markdown files in the `content` folder.
+- Write one-sentence per line (to get cleaner git diffs).
+- E.g. citation: `[@doi:10.1038/nmeth.4366]` or `[@tag:vgnbt]` in with tag defined in `content/citation-tags.tsv`.
+- Update title/author infos in [content/metadata.yaml](content/metadata.yaml).
+- More in [`USAGE.md`](USAGE.md).
+- Travis is setup to build HTML/PDF (see buttons above). Or [build locally](https://github.com/jmonlong/manu-vgsv#local-execution).
+
+# Manubot documentation: automated scholarly manuscripts on GitHub
+
+<!-- usage note: edit the H1 title above to personalize the manuscript -->
 
 ## Manubot
 
