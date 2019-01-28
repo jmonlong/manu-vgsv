@@ -30,7 +30,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/f2b6e54d5dfafba6119f255b5a0dfa1f93c57452/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/f2b6e54d5dfafba6119f255b5a0dfa1f93c57452">jmonlong/manu-vgsv@f2b6e54</a> on January 28, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/43fb6c60a2e91db36a5b2531d16470b232e4a999/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/43fb6c60a2e91db36a5b2531d16470b232e4a999">jmonlong/manu-vgsv@43fb6c6</a> on January 28, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -46,7 +46,7 @@
 <p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-10jxt15v0">10</a>,<a href="#ref-11Jy8B61m">11</a>,<a href="#ref-Qa8mx6Ll">9</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">10</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">12</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">13</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">14</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">15</a>]</span>.</p>
 <h2 id="results">Results</h2>
 <h3 id="hgsvc">HGSVC</h3>
-<p><span class="citation" data-cites="z91V6jjU">[<a href="#ref-z91V6jjU">3</a>]</span> provides a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
+<p>Chaisson et al.<span class="citation" data-cites="z91V6jjU">[<a href="#ref-z91V6jjU">3</a>]</span> provides a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
 <h4 id="whole-genome-simulation">(Whole-genome) Simulation</h4>
 <p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls.</p>
 <table>
@@ -60,6 +60,7 @@
 <th>FN</th>
 <th>precision</th>
 <th>recall</th>
+<th>F1</th>
 </tr>
 </thead>
 <tbody>
@@ -72,8 +73,10 @@
 <td>2617</td>
 <td>0.8854</td>
 <td>0.902</td>
+<td>0.8936</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>14596</td>
 <td>14264</td>
@@ -84,6 +87,7 @@
 <td>0.9285</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>9855</td>
 <td>9825</td>
@@ -102,6 +106,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>HGSVC-1KG-Construct</td>
@@ -112,8 +117,10 @@
 <td>2891</td>
 <td>0.8804</td>
 <td>0.8917</td>
+<td>0.886</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>14540</td>
 <td>14111</td>
@@ -124,6 +131,7 @@
 <td>0.9213</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>9632</td>
 <td>9704</td>
@@ -142,6 +150,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-Construct</td>
@@ -152,8 +161,10 @@
 <td>15147</td>
 <td>0.6587</td>
 <td>0.4328</td>
+<td>0.5224</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>7733</td>
 <td>8223</td>
@@ -164,6 +175,7 @@
 <td>0.6284</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>2815</td>
 <td>3336</td>
@@ -182,6 +194,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-1KG-Construct</td>
@@ -192,8 +205,10 @@
 <td>15337</td>
 <td>0.6275</td>
 <td>0.4257</td>
+<td>0.5073</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>7497</td>
 <td>7934</td>
@@ -204,6 +219,7 @@
 <td>0.6146</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>2906</td>
 <td>3435</td>
@@ -227,6 +243,7 @@
 <th>FN</th>
 <th>precision</th>
 <th>recall</th>
+<th>F1</th>
 </tr>
 </thead>
 <tbody>
@@ -239,8 +256,10 @@
 <td>253</td>
 <td>0.928</td>
 <td>0.9584</td>
+<td>0.943</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>4026</td>
 <td>3952</td>
@@ -251,6 +270,7 @@
 <td>0.967</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>1875</td>
 <td>1870</td>
@@ -269,6 +289,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>HGSVC-1KG-Construct</td>
@@ -279,8 +300,10 @@
 <td>290</td>
 <td>0.9225</td>
 <td>0.9523</td>
+<td>0.9372</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>4024</td>
 <td>3922</td>
@@ -291,6 +314,7 @@
 <td>0.9602</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>1856</td>
 <td>1863</td>
@@ -309,6 +333,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-Construct</td>
@@ -319,8 +344,10 @@
 <td>2219</td>
 <td>0.9081</td>
 <td>0.6347</td>
+<td>0.7472</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>3091</td>
 <td>3246</td>
@@ -331,6 +358,7 @@
 <td>0.8532</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>474</td>
 <td>610</td>
@@ -349,6 +377,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-1KG-Construct</td>
@@ -359,8 +388,10 @@
 <td>2258</td>
 <td>0.8717</td>
 <td>0.6283</td>
+<td>0.7303</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>3066</td>
 <td>3180</td>
@@ -371,6 +402,7 @@
 <td>0.8416</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>508</td>
 <td>637</td>
@@ -394,6 +426,7 @@
 <th>FN</th>
 <th>precision</th>
 <th>recall</th>
+<th>F1</th>
 </tr>
 </thead>
 <tbody>
@@ -406,8 +439,10 @@
 <td>8206</td>
 <td>0.7378</td>
 <td>0.6927</td>
+<td>0.7145</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>10984</td>
 <td>10600</td>
@@ -418,6 +453,7 @@
 <td>0.7107</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>7452</td>
 <td>7900</td>
@@ -436,6 +472,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>HGSVC-1KG-Construct</td>
@@ -446,8 +483,10 @@
 <td>8760</td>
 <td>0.7426</td>
 <td>0.672</td>
+<td>0.7055</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>10647</td>
 <td>10262</td>
@@ -458,6 +497,7 @@
 <td>0.7017</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>7155</td>
 <td>7684</td>
@@ -476,6 +516,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-Construct</td>
@@ -486,8 +527,10 @@
 <td>16775</td>
 <td>0.4925</td>
 <td>0.3719</td>
+<td>0.4238</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>6972</td>
 <td>7420</td>
@@ -498,6 +541,7 @@
 <td>0.4978</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>2119</td>
 <td>2511</td>
@@ -521,6 +565,7 @@
 <th>FN</th>
 <th>precision</th>
 <th>recall</th>
+<th>F1</th>
 </tr>
 </thead>
 <tbody>
@@ -533,8 +578,10 @@
 <td>831</td>
 <td>0.86</td>
 <td>0.8632</td>
+<td>0.8616</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>3708</td>
 <td>3626</td>
@@ -545,6 +592,7 @@
 <td>0.8834</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>1489</td>
 <td>1618</td>
@@ -563,6 +611,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>HGSVC-1KG-Construct</td>
@@ -573,8 +622,10 @@
 <td>920</td>
 <td>0.8563</td>
 <td>0.8486</td>
+<td>0.8524</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>3642</td>
 <td>3555</td>
@@ -585,6 +636,7 @@
 <td>0.8731</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>1461</td>
 <td>1600</td>
@@ -603,6 +655,7 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>SVPOP-Construct</td>
@@ -613,8 +666,10 @@
 <td>2595</td>
 <td>0.7872</td>
 <td>0.5728</td>
+<td>0.6631</td>
 </tr>
 <tr class="even">
+<td></td>
 <td>INS</td>
 <td>2859</td>
 <td>3009</td>
@@ -625,6 +680,7 @@
 <td>0.7605</td>
 </tr>
 <tr class="odd">
+<td></td>
 <td>DEL</td>
 <td>392</td>
 <td>471</td>
