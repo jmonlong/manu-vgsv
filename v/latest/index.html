@@ -30,7 +30,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/43fb6c60a2e91db36a5b2531d16470b232e4a999/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/43fb6c60a2e91db36a5b2531d16470b232e4a999">jmonlong/manu-vgsv@43fb6c6</a> on January 28, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/3cc1334d4a407c65d21fc7fcb63ba242322a23cc/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/3cc1334d4a407c65d21fc7fcb63ba242322a23cc">jmonlong/manu-vgsv@3cc1334</a> on January 28, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -46,7 +46,7 @@
 <p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-10jxt15v0">10</a>,<a href="#ref-11Jy8B61m">11</a>,<a href="#ref-Qa8mx6Ll">9</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">10</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">12</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">13</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">14</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">15</a>]</span>.</p>
 <h2 id="results">Results</h2>
 <h3 id="hgsvc">HGSVC</h3>
-<p>Chaisson et al.<span class="citation" data-cites="z91V6jjU">[<a href="#ref-z91V6jjU">3</a>]</span> provides a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
+<p>Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">16</a>]</span> provide a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
 <h4 id="whole-genome-simulation">(Whole-genome) Simulation</h4>
 <p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls.</p>
 <table>
@@ -786,6 +786,12 @@ DOI: <a href="https://doi.org/10.1038/nmeth.3505">10.1038/nmeth.3505</a> · PMID
 T. Rausch, T. Zichner, A. Schlattl, A. M. Stutz, V. Benes, J. O. Korbel<br />
 <em>Bioinformatics</em> (2012-09-07) <a href="https://doi.org/f38r2c">https://doi.org/f38r2c</a><br />
 DOI: <a href="https://doi.org/10.1093/bioinformatics/bts378">10.1093/bioinformatics/bts378</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/22962449">22962449</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3436805">PMC3436805</a></p>
+</div>
+<div id="ref-vQTymKCj">
+<p>16. <strong>Multi-platform discovery of haplotype-resolved structural variation in human genomes</strong><br />
+Mark J.P. Chaisson, Ashley D. Sanders, Xuefang Zhao, Ankit Malhotra, David Porubsky, Tobias Rausch, Eugene J. Gardner, Oscar Rodriguez, Li Guo, Ryan L. Collins, … Charles Lee<br />
+<em>Cold Spring Harbor Laboratory</em> (2017-09-23) <a href="https://doi.org/gftxhc">https://doi.org/gftxhc</a><br />
+DOI: <a href="https://doi.org/10.1101/193144">10.1101/193144</a></p>
 </div>
 </div>
 <script>
