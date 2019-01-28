@@ -1643,6 +1643,407 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent-child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome - most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
+    "DOI": "10.1101/193144",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Multi-platform discovery of haplotype-resolved structural variation in human genomes",
+    "author": [
+      {
+        "given": "Mark J.P.",
+        "family": "Chaisson"
+      },
+      {
+        "given": "Ashley D.",
+        "family": "Sanders"
+      },
+      {
+        "given": "Xuefang",
+        "family": "Zhao"
+      },
+      {
+        "given": "Ankit",
+        "family": "Malhotra"
+      },
+      {
+        "given": "David",
+        "family": "Porubsky"
+      },
+      {
+        "given": "Tobias",
+        "family": "Rausch"
+      },
+      {
+        "given": "Eugene J.",
+        "family": "Gardner"
+      },
+      {
+        "given": "Oscar",
+        "family": "Rodriguez"
+      },
+      {
+        "given": "Li",
+        "family": "Guo"
+      },
+      {
+        "given": "Ryan L.",
+        "family": "Collins"
+      },
+      {
+        "given": "Xian",
+        "family": "Fan"
+      },
+      {
+        "given": "Jia",
+        "family": "Wen"
+      },
+      {
+        "given": "Robert E.",
+        "family": "Handsaker"
+      },
+      {
+        "given": "Susan",
+        "family": "Fairley"
+      },
+      {
+        "given": "Zev N.",
+        "family": "Kronenberg"
+      },
+      {
+        "given": "Xiangmeng",
+        "family": "Kong"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "Dillon",
+        "family": "Lee"
+      },
+      {
+        "given": "Aaron M.",
+        "family": "Wenger"
+      },
+      {
+        "given": "Alex",
+        "family": "Hastie"
+      },
+      {
+        "given": "Danny",
+        "family": "Antaki"
+      },
+      {
+        "given": "Peter",
+        "family": "Audano"
+      },
+      {
+        "given": "Harrison",
+        "family": "Brand"
+      },
+      {
+        "given": "Stuart",
+        "family": "Cantsilieris"
+      },
+      {
+        "given": "Han",
+        "family": "Cao"
+      },
+      {
+        "given": "Eliza",
+        "family": "Cerveira"
+      },
+      {
+        "given": "Chong",
+        "family": "Chen"
+      },
+      {
+        "given": "Xintong",
+        "family": "Chen"
+      },
+      {
+        "given": "Chen-Shan",
+        "family": "Chin"
+      },
+      {
+        "given": "Zechen",
+        "family": "Chong"
+      },
+      {
+        "given": "Nelson T.",
+        "family": "Chuang"
+      },
+      {
+        "given": "Christine C.",
+        "family": "Lambert"
+      },
+      {
+        "given": "Deanna M.",
+        "family": "Church"
+      },
+      {
+        "given": "Laura",
+        "family": "Clarke"
+      },
+      {
+        "given": "Andrew",
+        "family": "Farrell"
+      },
+      {
+        "given": "Joey",
+        "family": "Flores"
+      },
+      {
+        "given": "Timur",
+        "family": "Galeev"
+      },
+      {
+        "given": "David",
+        "family": "Gorkin"
+      },
+      {
+        "given": "Madhusudan",
+        "family": "Gujral"
+      },
+      {
+        "given": "Victor",
+        "family": "Guryev"
+      },
+      {
+        "given": "William",
+        "family": "Haynes Heaton"
+      },
+      {
+        "given": "Jonas",
+        "family": "Korlach"
+      },
+      {
+        "given": "Sushant",
+        "family": "Kumar"
+      },
+      {
+        "given": "Jee Young",
+        "family": "Kwon"
+      },
+      {
+        "given": "Jong Eun",
+        "family": "Lee"
+      },
+      {
+        "given": "Joyce",
+        "family": "Lee"
+      },
+      {
+        "given": "Wan-Ping",
+        "family": "Lee"
+      },
+      {
+        "given": "Sau Peng",
+        "family": "Lee"
+      },
+      {
+        "given": "Shantao",
+        "family": "Li"
+      },
+      {
+        "given": "Patrick",
+        "family": "Marks"
+      },
+      {
+        "given": "Karine",
+        "family": "Viaud-Martinez"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meiers"
+      },
+      {
+        "given": "Katherine M.",
+        "family": "Munson"
+      },
+      {
+        "given": "Fabio",
+        "family": "Navarro"
+      },
+      {
+        "given": "Bradley J.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Conor",
+        "family": "Nodzak"
+      },
+      {
+        "given": "Amina",
+        "family": "Noor"
+      },
+      {
+        "given": "Sofia",
+        "family": "Kyriazopoulou-Panagiotopoulou"
+      },
+      {
+        "given": "Andy",
+        "family": "Pang"
+      },
+      {
+        "given": "Yunjiang",
+        "family": "Qiu"
+      },
+      {
+        "given": "Gabriel",
+        "family": "Rosanio"
+      },
+      {
+        "given": "Mallory",
+        "family": "Ryan"
+      },
+      {
+        "given": "Adrian",
+        "family": "Stutz"
+      },
+      {
+        "given": "Diana C.J.",
+        "family": "Spierings"
+      },
+      {
+        "given": "Alistair",
+        "family": "Ward"
+      },
+      {
+        "given": "AnneMarie E.",
+        "family": "Welch"
+      },
+      {
+        "given": "Ming",
+        "family": "Xiao"
+      },
+      {
+        "given": "Wei",
+        "family": "Xu"
+      },
+      {
+        "given": "Chengsheng",
+        "family": "Zhang"
+      },
+      {
+        "given": "Qihui",
+        "family": "Zhu"
+      },
+      {
+        "given": "Xiangqun",
+        "family": "Zheng-Bradley"
+      },
+      {
+        "given": "Ernesto",
+        "family": "Lowy"
+      },
+      {
+        "given": "Sergei",
+        "family": "Yakneen"
+      },
+      {
+        "given": "Steven",
+        "family": "McCarroll"
+      },
+      {
+        "given": "Goo",
+        "family": "Jun"
+      },
+      {
+        "given": "Li",
+        "family": "Ding"
+      },
+      {
+        "given": "Chong Lek",
+        "family": "Koh"
+      },
+      {
+        "given": "Bing",
+        "family": "Ren"
+      },
+      {
+        "given": "Paul",
+        "family": "Flicek"
+      },
+      {
+        "given": "Ken",
+        "family": "Chen"
+      },
+      {
+        "given": "Mark B.",
+        "family": "Gerstein"
+      },
+      {
+        "given": "Pui-Yan",
+        "family": "Kwok"
+      },
+      {
+        "given": "Peter M.",
+        "family": "Lansdorp"
+      },
+      {
+        "given": "Gabor",
+        "family": "Marth"
+      },
+      {
+        "given": "Jonathan",
+        "family": "Sebat"
+      },
+      {
+        "given": "Xinghua",
+        "family": "Shi"
+      },
+      {
+        "given": "Ali",
+        "family": "Bashir"
+      },
+      {
+        "given": "Kai",
+        "family": "Ye"
+      },
+      {
+        "given": "Scott E.",
+        "family": "Devine"
+      },
+      {
+        "given": "Michael",
+        "family": "Talkowski"
+      },
+      {
+        "given": "Ryan E.",
+        "family": "Mills"
+      },
+      {
+        "given": "Tobias",
+        "family": "Marschall"
+      },
+      {
+        "given": "Jan O.",
+        "family": "Korbel"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      },
+      {
+        "given": "Charles",
+        "family": "Lee"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          9,
+          23
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gftxhc",
+    "id": "vQTymKCj"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
     "issue": "5",
     "DOI": "10.1101/gr.214007.116",
     "type": "article-journal",

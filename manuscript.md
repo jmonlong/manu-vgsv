@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/43fb6c60a2e91db36a5b2531d16470b232e4a999/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/3cc1334d4a407c65d21fc7fcb63ba242322a23cc/))
 was automatically generated
-from [jmonlong/manu-vgsv@43fb6c6](https://github.com/jmonlong/manu-vgsv/tree/43fb6c60a2e91db36a5b2531d16470b232e4a999)
+from [jmonlong/manu-vgsv@3cc1334](https://github.com/jmonlong/manu-vgsv/tree/3cc1334d4a407c65d21fc7fcb63ba242322a23cc)
 on January 28, 2019.
 </em></small>
 
@@ -89,7 +89,7 @@ For example SMRT-SV was designed to genotype SVs identified on PacBio reads[@rs7
 
 ### HGSVC
 
-Chaisson et al.[@z91V6jjU] provides a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies. 
+Chaisson et al.[@vQTymKCj] provide a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies. 
 
 
 
