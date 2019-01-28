@@ -8,7 +8,7 @@
   <meta name="author" content="David Heller" />
   <meta name="author" content="Jean Monlong" />
   <meta name="author" content="Benedict Paten" />
-  <meta name="dcterms.date" content="2019-01-22" />
+  <meta name="dcterms.date" content="2019-01-28" />
   <meta name="keywords" content="structural variation, pangenome, variant genotyping" />
   <title>Genotyping structural variation in variation graphs with the vg toolkit</title>
   <style type="text/css">
@@ -30,7 +30,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/2e0caef1fe69af1cc8232e14eb8a669880bc5fcd/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/2e0caef1fe69af1cc8232e14eb8a669880bc5fcd">jmonlong/manu-vgsv@2e0caef</a> on January 22, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/f2b6e54d5dfafba6119f255b5a0dfa1f93c57452/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/f2b6e54d5dfafba6119f255b5a0dfa1f93c57452">jmonlong/manu-vgsv@f2b6e54</a> on January 28, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -45,6 +45,597 @@
 <p>Over the last few years, exciting developments in sequencing technologies and library preparation made it possible to produce long reads or retrieve long-range information over kilobases of sequence. These approaches are maturing to the point were it is feasible to analyze the human genome. This multi-kbp information is particularly useful for SV detection and de novo assembly. In the last few years, several studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which were novel and sequence-resolved<span class="citation" data-cites="z91V6jjU rs7e40wC PRx3qEIm 121OWcTA4">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-rs7e40wC">4</a>,<a href="#ref-PRx3qEIm">5</a>,<a href="#ref-121OWcTA4">6</a>]</span> (<em>REF_PETER_SOON</em>). These technologies are also enabling high-quality de novo genome assemblies to be produced<span class="citation" data-cites="z91V6jjU 6KbgcueR">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-6KbgcueR">7</a>]</span>, as well as large blocks of haplotype-resolved sequences<span class="citation" data-cites="Pu6SY37C">[<a href="#ref-Pu6SY37C">8</a>]</span>. These technological advances promise to expand the amount of known genomic variation in humans in the near future.</p>
 <p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-10jxt15v0">10</a>,<a href="#ref-11Jy8B61m">11</a>,<a href="#ref-Qa8mx6Ll">9</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">10</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">12</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">13</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">14</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">15</a>]</span>.</p>
 <h2 id="results">Results</h2>
+<h3 id="hgsvc">HGSVC</h3>
+<p><span class="citation" data-cites="z91V6jjU">[<a href="#ref-z91V6jjU">3</a>]</span> provides a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
+<h4 id="whole-genome-simulation">(Whole-genome) Simulation</h4>
+<p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Graph</th>
+<th>type</th>
+<th>TP</th>
+<th>TP.baseline</th>
+<th>FP</th>
+<th>FN</th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HGSVC-Construct</td>
+<td>Total</td>
+<td>24451</td>
+<td>24089</td>
+<td>3119</td>
+<td>2617</td>
+<td>0.8854</td>
+<td>0.902</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>14596</td>
+<td>14264</td>
+<td>775</td>
+<td>1421</td>
+<td>0.9485</td>
+<td>0.9094</td>
+<td>0.9285</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>9855</td>
+<td>9825</td>
+<td>2344</td>
+<td>1196</td>
+<td>0.8074</td>
+<td>0.8915</td>
+<td>0.8474</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HGSVC-1KG-Construct</td>
+<td>Total</td>
+<td>24172</td>
+<td>23815</td>
+<td>3236</td>
+<td>2891</td>
+<td>0.8804</td>
+<td>0.8917</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>14540</td>
+<td>14111</td>
+<td>836</td>
+<td>1574</td>
+<td>0.9441</td>
+<td>0.8996</td>
+<td>0.9213</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>9632</td>
+<td>9704</td>
+<td>2400</td>
+<td>1317</td>
+<td>0.8017</td>
+<td>0.8805</td>
+<td>0.8393</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-Construct</td>
+<td>Total</td>
+<td>10548</td>
+<td>11559</td>
+<td>5990</td>
+<td>15147</td>
+<td>0.6587</td>
+<td>0.4328</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>7733</td>
+<td>8223</td>
+<td>2266</td>
+<td>7462</td>
+<td>0.784</td>
+<td>0.5243</td>
+<td>0.6284</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>2815</td>
+<td>3336</td>
+<td>3724</td>
+<td>7685</td>
+<td>0.4725</td>
+<td>0.3027</td>
+<td>0.369</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-1KG-Construct</td>
+<td>Total</td>
+<td>10403</td>
+<td>11369</td>
+<td>6750</td>
+<td>15337</td>
+<td>0.6275</td>
+<td>0.4257</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>7497</td>
+<td>7934</td>
+<td>2198</td>
+<td>7751</td>
+<td>0.7831</td>
+<td>0.5058</td>
+<td>0.6146</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>2906</td>
+<td>3435</td>
+<td>4552</td>
+<td>7586</td>
+<td>0.4301</td>
+<td>0.3117</td>
+<td>0.3615</td>
+</tr>
+</tbody>
+</table>
+<p>When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Graph</th>
+<th>type</th>
+<th>TP</th>
+<th>TP.baseline</th>
+<th>FP</th>
+<th>FN</th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HGSVC-Construct</td>
+<td>Total</td>
+<td>5901</td>
+<td>5822</td>
+<td>452</td>
+<td>253</td>
+<td>0.928</td>
+<td>0.9584</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>4026</td>
+<td>3952</td>
+<td>98</td>
+<td>172</td>
+<td>0.9758</td>
+<td>0.9583</td>
+<td>0.967</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>1875</td>
+<td>1870</td>
+<td>354</td>
+<td>81</td>
+<td>0.8408</td>
+<td>0.9585</td>
+<td>0.8958</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HGSVC-1KG-Construct</td>
+<td>Total</td>
+<td>5880</td>
+<td>5785</td>
+<td>486</td>
+<td>290</td>
+<td>0.9225</td>
+<td>0.9523</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>4024</td>
+<td>3922</td>
+<td>123</td>
+<td>202</td>
+<td>0.9696</td>
+<td>0.951</td>
+<td>0.9602</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>1856</td>
+<td>1863</td>
+<td>363</td>
+<td>88</td>
+<td>0.8369</td>
+<td>0.9549</td>
+<td>0.892</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-Construct</td>
+<td>Total</td>
+<td>3565</td>
+<td>3856</td>
+<td>390</td>
+<td>2219</td>
+<td>0.9081</td>
+<td>0.6347</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>3091</td>
+<td>3246</td>
+<td>239</td>
+<td>878</td>
+<td>0.9314</td>
+<td>0.7871</td>
+<td>0.8532</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>474</td>
+<td>610</td>
+<td>151</td>
+<td>1341</td>
+<td>0.8016</td>
+<td>0.3127</td>
+<td>0.4499</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-1KG-Construct</td>
+<td>Total</td>
+<td>3574</td>
+<td>3817</td>
+<td>562</td>
+<td>2258</td>
+<td>0.8717</td>
+<td>0.6283</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>3066</td>
+<td>3180</td>
+<td>253</td>
+<td>944</td>
+<td>0.9263</td>
+<td>0.7711</td>
+<td>0.8416</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>508</td>
+<td>637</td>
+<td>309</td>
+<td>1314</td>
+<td>0.6734</td>
+<td>0.3265</td>
+<td>0.4398</td>
+</tr>
+</tbody>
+</table>
+<h4 id="whole-genome-real-reads">(Whole-genome) Real reads</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Graph</th>
+<th>type</th>
+<th>TP</th>
+<th>TP.baseline</th>
+<th>FP</th>
+<th>FN</th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HGSVC-Construct</td>
+<td>Total</td>
+<td>18436</td>
+<td>18500</td>
+<td>6575</td>
+<td>8206</td>
+<td>0.7378</td>
+<td>0.6927</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>10984</td>
+<td>10600</td>
+<td>3542</td>
+<td>5085</td>
+<td>0.7495</td>
+<td>0.6758</td>
+<td>0.7107</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>7452</td>
+<td>7900</td>
+<td>3033</td>
+<td>3121</td>
+<td>0.7226</td>
+<td>0.7168</td>
+<td>0.7197</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HGSVC-1KG-Construct</td>
+<td>Total</td>
+<td>17802</td>
+<td>17946</td>
+<td>6221</td>
+<td>8760</td>
+<td>0.7426</td>
+<td>0.672</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>10647</td>
+<td>10262</td>
+<td>3304</td>
+<td>5423</td>
+<td>0.7564</td>
+<td>0.6543</td>
+<td>0.7017</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>7155</td>
+<td>7684</td>
+<td>2917</td>
+<td>3337</td>
+<td>0.7248</td>
+<td>0.6972</td>
+<td>0.7107</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-Construct</td>
+<td>Total</td>
+<td>9091</td>
+<td>9931</td>
+<td>10235</td>
+<td>16775</td>
+<td>0.4925</td>
+<td>0.3719</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>6972</td>
+<td>7420</td>
+<td>6706</td>
+<td>8265</td>
+<td>0.5253</td>
+<td>0.4731</td>
+<td>0.4978</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>2119</td>
+<td>2511</td>
+<td>3529</td>
+<td>8510</td>
+<td>0.4157</td>
+<td>0.2278</td>
+<td>0.2943</td>
+</tr>
+</tbody>
+</table>
+<p>When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Graph</th>
+<th>type</th>
+<th>TP</th>
+<th>TP.baseline</th>
+<th>FP</th>
+<th>FN</th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HGSVC-Construct</td>
+<td>Total</td>
+<td>5197</td>
+<td>5244</td>
+<td>854</td>
+<td>831</td>
+<td>0.86</td>
+<td>0.8632</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>3708</td>
+<td>3626</td>
+<td>459</td>
+<td>498</td>
+<td>0.8876</td>
+<td>0.8792</td>
+<td>0.8834</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>1489</td>
+<td>1618</td>
+<td>395</td>
+<td>333</td>
+<td>0.8038</td>
+<td>0.8293</td>
+<td>0.8164</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HGSVC-1KG-Construct</td>
+<td>Total</td>
+<td>5103</td>
+<td>5155</td>
+<td>865</td>
+<td>920</td>
+<td>0.8563</td>
+<td>0.8486</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>3642</td>
+<td>3555</td>
+<td>464</td>
+<td>569</td>
+<td>0.8845</td>
+<td>0.862</td>
+<td>0.8731</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>1461</td>
+<td>1600</td>
+<td>401</td>
+<td>351</td>
+<td>0.7996</td>
+<td>0.8201</td>
+<td>0.8097</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SVPOP-Construct</td>
+<td>Total</td>
+<td>3251</td>
+<td>3480</td>
+<td>941</td>
+<td>2595</td>
+<td>0.7872</td>
+<td>0.5728</td>
+</tr>
+<tr class="even">
+<td>INS</td>
+<td>2859</td>
+<td>3009</td>
+<td>780</td>
+<td>1115</td>
+<td>0.7941</td>
+<td>0.7296</td>
+<td>0.7605</td>
+</tr>
+<tr class="odd">
+<td>DEL</td>
+<td>392</td>
+<td>471</td>
+<td>161</td>
+<td>1480</td>
+<td>0.7453</td>
+<td>0.2414</td>
+<td>0.3647</td>
+</tr>
+</tbody>
+</table>
 <h2 id="methods">Methods</h2>
 <h2 id="discussion">Discussion</h2>
 <h2 id="references" class="page_break_before">References</h2>
