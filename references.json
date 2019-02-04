@@ -1109,6 +1109,85 @@
   },
   {
     "publisher": "Springer Nature",
+    "issue": "6",
+    "DOI": "10.1038/ng.3847",
+    "type": "article-journal",
+    "page": "913-924",
+    "source": "Crossref",
+    "title": "Contrasting evolutionary genome dynamics between domesticated and wild yeasts",
+    "volume": "49",
+    "author": [
+      {
+        "given": "Jia-Xing",
+        "family": "Yue"
+      },
+      {
+        "given": "Jing",
+        "family": "Li"
+      },
+      {
+        "given": "Louise",
+        "family": "Aigrain"
+      },
+      {
+        "given": "Johan",
+        "family": "Hallin"
+      },
+      {
+        "given": "Karl",
+        "family": "Persson"
+      },
+      {
+        "given": "Karen",
+        "family": "Oliver"
+      },
+      {
+        "given": "Anders",
+        "family": "Bergström"
+      },
+      {
+        "given": "Paul",
+        "family": "Coupland"
+      },
+      {
+        "given": "Jonas",
+        "family": "Warringer"
+      },
+      {
+        "given": "Marco Cosentino",
+        "family": "Lagomarsino"
+      },
+      {
+        "given": "Gilles",
+        "family": "Fischer"
+      },
+      {
+        "given": "Richard",
+        "family": "Durbin"
+      },
+      {
+        "given": "Gianni",
+        "family": "Liti"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          4,
+          17
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f93kpp",
+    "container-title-short": "Nat Genet",
+    "PMCID": "PMC5446901",
+    "PMID": "28416820",
+    "id": "7f5OKa5O"
+  },
+  {
+    "publisher": "Springer Nature",
     "issue": "11",
     "DOI": "10.1038/ng.3964",
     "type": "article-journal",
@@ -1732,6 +1811,79 @@
     "id": "nLvQCjXU"
   },
   {
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "19",
+    "DOI": "10.1093/bioinformatics/btw369",
+    "type": "article-journal",
+    "page": "3021-3023",
+    "source": "Crossref",
+    "title": "Assemblytics: a web analytics tool for the detection of variants from an assembly",
+    "volume": "32",
+    "author": [
+      {
+        "given": "Maria",
+        "family": "Nattestad"
+      },
+      {
+        "given": "Michael C.",
+        "family": "Schatz"
+      }
+    ],
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          6,
+          17
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f9c485",
+    "container-title-short": "Bioinformatics",
+    "PMCID": "PMC6191160",
+    "PMID": "27318204",
+    "id": "krO7WgVi"
+  },
+  {
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "18",
+    "DOI": "10.1093/bioinformatics/bty191",
+    "type": "article-journal",
+    "page": "3094-3100",
+    "source": "Crossref",
+    "title": "Minimap2: pairwise alignment for nucleotide sequences",
+    "volume": "34",
+    "author": [
+      {
+        "given": "Heng",
+        "family": "Li"
+      }
+    ],
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "editor": [
+      {
+        "given": "Inanc",
+        "family": "Birol"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          5,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gdhbqt",
+    "PMCID": "PMC6137996",
+    "PMID": "29750242",
+    "id": "172cJaw4Q"
+  },
+  {
     "publisher": "Cold Spring Harbor Laboratory",
     "abstract": "<jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent-child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome - most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
     "DOI": "10.1101/193144",
@@ -2134,6 +2286,58 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
+    "issue": "9",
+    "DOI": "10.1101/gr.123356.111",
+    "type": "article-journal",
+    "page": "1512-1528",
+    "source": "Crossref",
+    "title": "Cactus: Algorithms for genome multiple sequence alignment",
+    "volume": "21",
+    "author": [
+      {
+        "given": "B.",
+        "family": "Paten"
+      },
+      {
+        "given": "D.",
+        "family": "Earl"
+      },
+      {
+        "given": "N.",
+        "family": "Nguyen"
+      },
+      {
+        "given": "M.",
+        "family": "Diekhans"
+      },
+      {
+        "given": "D.",
+        "family": "Zerbino"
+      },
+      {
+        "given": "D.",
+        "family": "Haussler"
+      }
+    ],
+    "container-title": "Genome Research",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2011,
+          6,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/bk4697",
+    "container-title-short": "Genome Research",
+    "PMCID": "PMC3166836",
+    "PMID": "21665927",
+    "id": "1FgS53pXi"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
     "issue": "5",
     "DOI": "10.1101/gr.214007.116",
     "type": "article-journal",
@@ -2267,5 +2471,56 @@
     "PMCID": "PMC5411762",
     "PMID": "28360232",
     "id": "Qa8mx6Ll"
+  },
+  {
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "1",
+    "DOI": "10.1186/s13742-015-0103-4",
+    "type": "article-journal",
+    "source": "Crossref",
+    "title": "Discovery, genotyping and characterization of structural variation and novel sequence at single nucleotide resolution from de novo genome assemblies on a population scale",
+    "volume": "4",
+    "author": [
+      {
+        "given": "Siyang",
+        "family": "Liu"
+      },
+      {},
+      {
+        "given": "Shujia",
+        "family": "Huang"
+      },
+      {
+        "given": "Junhua",
+        "family": "Rao"
+      },
+      {
+        "given": "Weijian",
+        "family": "Ye"
+      },
+      {
+        "given": "Anders",
+        "family": "Krogh"
+      },
+      {
+        "given": "Jun",
+        "family": "Wang"
+      }
+    ],
+    "container-title": "GigaScience",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          12
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f75r4n",
+    "container-title-short": "GigaSci",
+    "PMCID": "PMC4690232",
+    "PMID": "26705468",
+    "id": "oVaXIwl5"
   }
 ]

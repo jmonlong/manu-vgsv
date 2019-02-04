@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/5a9952bba9ace9657693d9aed1841cdb8238df9a/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/6ac424a22768cb973d7e9abb1890a5edb956e84c/))
 was automatically generated
-from [jmonlong/manu-vgsv@5a9952b](https://github.com/jmonlong/manu-vgsv/tree/5a9952bba9ace9657693d9aed1841cdb8238df9a)
+from [jmonlong/manu-vgsv@6ac424a](https://github.com/jmonlong/manu-vgsv/tree/6ac424a22768cb973d7e9abb1890a5edb956e84c)
 on February 4, 2019.
 </em></small>
 
@@ -196,14 +196,38 @@ When restricting the comparisons to regions not identified as tandem repeats or 
 |                     | INS   | 2859  | 3009        | 780   | 1115  | 0.7941    | 0.7296 | 0.7605 |
 |                     | DEL   | 392   | 471         | 161   | 1480  | 0.7453    | 0.2414 | 0.3647 |
  
+### Genotyping SV using vg and de novo assemblies
+
+We investigated whether genome graphs derived from genome-genome alignments yield advantages for SV genotyping.
+To this end, we analyzed public sequencing datasets for 12 yeast strains from two clades (S. cerevisiae and S. paradoxus) [@7f5OKa5O].
+From these datasets, we generated two different types of genome graphs.
+The first graph type (in the following called *construct graph*) was created from a linear reference genome of the S.c. S288C strain and a set of SVs relative to this reference strain in VCF format.
+We compiled the SV set using the output of three methods for SV detection from genome assemblies: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
+All three methods were run to detect SVs between the reference strain S.c. S288C and each of the other 11 strains.
+Merging the results from the three methods and the 11 strains provided us with a high-sensitivity set of SVs occuring in the two yeast clades.
+We used this set to construct the *construct graph*.
+The second graph (in the following called *cactus graph*) was derived from a multiple genome alignment of all 12 strains using our Cactus tool [@1FgS53pXi].
+While the *construct graph* is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.
+
+![**Mappability comparison.** The fraction of reads mapped (with mapping quality > 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/mapping_comparison_all.png){#fig:mapping-comp width=80%}
+
+In a first step, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains.
+When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the *cactus graph* than to the *construct graph* (see Fig. @fig:mapping-comp).
+Only for the reference strain S.c. S288C, both graphs exhibited similar mappability.
+This suggests that not the higher sequence content in the *cactus graph*  alone (XX Mb compared to XX Mb in the *construct graph*) drives the improvement in mappability.
+Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the *cactus graph* over the *construct graph*.
+Consequently. the gap is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.
 
 
+![**SV genotyping comparison.** SV genotype recall from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/david-yeast-jan29.png){#fig:geno-comp width=80%}
 
-### Yeast assemblies
+Next, we compared the SV genotype performance of both graphs.
+To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set.
+This truth set is a subset of the SV set used for construction of the *construct graph* which is important because only variants already present in the graph can be genotyped.
 
-The recall was higher for the graph constructed from assembly alignment (Figure {@fig:yeastrecall}).
+Figure @fig:geno-comp shows the results of our analysis. Depending on the clade, the *cactus graph* reaches either a substantially higher SV genotyping recall than the *construct graph* (S. paradoxus) or a substantially lower recall (S. cerevisiae).
 
-![**Recall in yeast experiment**. ](images/david-yeast-jan29.png){#fig:yeastrecall width=80%}
+
 
 
 ## Methods

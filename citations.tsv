@@ -5,6 +5,7 @@ string	citation	standard_citation	citation_id
 @doi:10.1038/nbt.4060	doi:10.1038/nbt.4060	doi:10.1038/nbt.4060	6KbgcueR
 @tag:vgnbt	doi:10.1038/nbt.4227	doi:10.1038/nbt.4227	10jxt15v0
 @tag:gonl	doi:10.1038/ng.3021	doi:10.1038/ng.3021	py6BC5kj
+@doi:10.1038/ng.3847	doi:10.1038/ng.3847	doi:10.1038/ng.3847	7f5OKa5O
 @tag:graphtyper	doi:10.1038/ng.3964	doi:10.1038/ng.3964	ohTIiqfV
 @tag:svtyper	doi:10.1038/nmeth.3505	doi:10.1038/nmeth.3505	AltPnocw
 @doi:10.1038/nmeth.4035	doi:10.1038/nmeth.4035	doi:10.1038/nmeth.4035	Pu6SY37C
@@ -13,6 +14,10 @@ string	citation	standard_citation	citation_id
 @tag:bayestyper	doi:10.1038/s41588-018-0145-5	doi:10.1038/s41588-018-0145-5	14Uxmwbxm
 @doi:10.1038/s41588-018-0316-4	doi:10.1038/s41588-018-0316-4	doi:10.1038/s41588-018-0316-4	11Jy8B61m
 @tag:delly	doi:10.1093/bioinformatics/bts378	doi:10.1093/bioinformatics/bts378	nLvQCjXU
+@doi:10.1093/bioinformatics/btw369	doi:10.1093/bioinformatics/btw369	doi:10.1093/bioinformatics/btw369	krO7WgVi
+@doi:10.1093/bioinformatics/bty191	doi:10.1093/bioinformatics/bty191	doi:10.1093/bioinformatics/bty191	172cJaw4Q
 @tag:hgsvc	doi:10.1101/193144	doi:10.1101/193144	vQTymKCj
+@doi:10.1101/gr.123356.111	doi:10.1101/gr.123356.111	doi:10.1101/gr.123356.111	1FgS53pXi
 @tag:smrtsv	doi:10.1101/gr.214007.116	doi:10.1101/gr.214007.116	rs7e40wC
 @tag:patenGRrev	doi:10.1101/gr.214155.116	doi:10.1101/gr.214155.116	Qa8mx6Ll
+@doi:10.1186/s13742-015-0103-4	doi:10.1186/s13742-015-0103-4	doi:10.1186/s13742-015-0103-4	oVaXIwl5
