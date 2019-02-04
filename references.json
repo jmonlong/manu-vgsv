@@ -1,5 +1,95 @@
 [
   {
+    "publisher": "Elsevier BV",
+    "issue": "3",
+    "DOI": "10.1016/j.cell.2018.12.019",
+    "type": "article-journal",
+    "page": "663-675.e19",
+    "source": "Crossref",
+    "title": "Characterizing the Major Structural Variant Alleles of the Human Genome",
+    "volume": "176",
+    "author": [
+      {
+        "given": "Peter A.",
+        "family": "Audano"
+      },
+      {
+        "given": "Arvis",
+        "family": "Sulovari"
+      },
+      {
+        "given": "Tina A.",
+        "family": "Graves-Lindsay"
+      },
+      {
+        "given": "Stuart",
+        "family": "Cantsilieris"
+      },
+      {
+        "given": "Melanie",
+        "family": "Sorensen"
+      },
+      {
+        "given": "AnneMarie E.",
+        "family": "Welch"
+      },
+      {
+        "given": "Max L.",
+        "family": "Dougherty"
+      },
+      {
+        "given": "Bradley J.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Ankeeta",
+        "family": "Shah"
+      },
+      {
+        "given": "Susan K.",
+        "family": "Dutcher"
+      },
+      {
+        "given": "Wesley C.",
+        "family": "Warren"
+      },
+      {
+        "given": "Vincent",
+        "family": "Magrini"
+      },
+      {
+        "given": "Sean D.",
+        "family": "McGrath"
+      },
+      {
+        "given": "Yang I.",
+        "family": "Li"
+      },
+      {
+        "given": "Richard K.",
+        "family": "Wilson"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      }
+    ],
+    "container-title": "Cell",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          1
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfthvz",
+    "container-title-short": "Cell",
+    "PMID": "30661756",
+    "id": "3NNFS6U2"
+  },
+  {
     "publisher": "Springer Nature",
     "issue": "7536",
     "DOI": "10.1038/nature13907",

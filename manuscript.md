@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/710287c27e6ff720363da62e1bdf7a5391a026b6/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/743a92c8413a5ef91913572d8d6b697857b46c19/))
 was automatically generated
-from [jmonlong/manu-vgsv@710287c](https://github.com/jmonlong/manu-vgsv/tree/710287c27e6ff720363da62e1bdf7a5391a026b6)
+from [jmonlong/manu-vgsv@743a92c](https://github.com/jmonlong/manu-vgsv/tree/743a92c8413a5ef91913572d8d6b697857b46c19)
 on February 4, 2019.
 </em></small>
 
@@ -68,7 +68,7 @@ SV detection from short-read sequencing remains laborious and of lower accuracy,
 Over the last few years, exciting developments in sequencing technologies and library preparation made it possible to produce long reads or retrieve long-range information over kilobases of sequence.
 These approaches are maturing to the point were it is feasible to analyze the human genome.
 This multi-kbp information is particularly useful for SV detection and de novo assembly.
-In the last few years, several studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which were novel and sequence-resolved[@z91V6jjU; @rs7e40wC; @PRx3qEIm; @121OWcTA4] (*REF_PETER_SOON*).
+In the last few years, several studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which were novel and sequence-resolved[@z91V6jjU; @rs7e40wC; @PRx3qEIm; @121OWcTA4; @3NNFS6U2].
 These technologies are also enabling high-quality de novo genome assemblies to be produced[@z91V6jjU; @6KbgcueR], as well as large blocks of haplotype-resolved sequences[@Pu6SY37C].
 These technological advances promise to expand the amount of known genomic variation in humans in the near future.
 
@@ -86,6 +86,19 @@ For example SMRT-SV was designed to genotype SVs identified on PacBio reads[@rs7
 
 
 ## Results
+
+### Structural variation in vg
+
+In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure {@fig:cartoon}).
+As a proof-of-concept we simulated genomes and SVs of varying sizes.
+Some errors were added at the breakpoints to investigate their effect on genotyping.
+In all simulations, vg performed better than SVtyper[@AltPnocw] and Delly[@nLvQCjXU] (Figure {@fig:sim}).
+The recall was particularly higher than other methods at low sequencing depth.
+vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.
+
+![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon tag="1a"}
+
+![**Simulation experiment**. ](images/sv-vg-simulation-f1.png){#fig:sim tag="1b"}
 
 ### HGSVC
 
@@ -186,10 +199,11 @@ When restricting the comparisons to regions not identified as tandem repeats or 
 
 
 
+### Yeast assemblies
 
+The recall was higher for the graph constructed from assembly alignment (Figure {@fig:yeastrecall}).
 
-
-
+![**Recall in yeast experiment**. ](images/david-yeast-jan29.png){#fig:yeastrecall width=80%}
 
 
 ## Methods
