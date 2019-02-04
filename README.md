@@ -1,6 +1,6 @@
 [![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://jmonlong.github.io/manu-vgsv/)
 [![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://jmonlong.github.io/manu-vgsv/manuscript.pdf)
-[![Build Status](https://travis-ci.com/jmonlong/manu-vgsv.svg?token=iYnJ9rfnqyHqrADLdak8&branch=master)](https://travis-ci.org/jmonlong/manu-vgsv)
+[![Build Status](https://travis-ci.com/jmonlong/manu-vgsv.svg?token=iYnJ9rfnqyHqrADLdak8&branch=master)](https://travis-ci.com/jmonlong/manu-vgsv)
 
 # VG-SV manuscript
 
