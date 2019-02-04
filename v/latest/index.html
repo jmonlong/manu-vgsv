@@ -30,7 +30,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/710287c27e6ff720363da62e1bdf7a5391a026b6/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/710287c27e6ff720363da62e1bdf7a5391a026b6">jmonlong/manu-vgsv@710287c</a> on February 4, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/743a92c8413a5ef91913572d8d6b697857b46c19/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/743a92c8413a5ef91913572d8d6b697857b46c19">jmonlong/manu-vgsv@743a92c</a> on February 4, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -42,11 +42,19 @@
 <h2 id="abstract" class="page_break_before">Abstract</h2>
 <h2 id="introduction" class="page_break_before">Introduction</h2>
 <p>Structural variation (SV) represents genomic mutation involving 50 bp or more and can take several forms, such as for example deletions, insertions, inversions, or translocations. Although whole-genome sequencing (WGS) made it possible to assess virtually any type of structural variation, many challenges remain. In particular, SV-supporting reads are difficult to map to reference genomes. Multi-mapping, caused by widespread repeated sequences in the genome, is another issue because it often resembles SV-supporting signal. As a result, many SV detection algorithms have been developed and multiple methods must usually be combined to minimize false positives. Several large-scale projects used this ensemble approach, cataloging tens of thousands of SV in humans<span class="citation" data-cites="qA6dWFP py6BC5kj">[<a href="#ref-qA6dWFP">1</a>,<a href="#ref-py6BC5kj">2</a>]</span>. SV detection from short-read sequencing remains laborious and of lower accuracy, explaining why these variants and their impact have been under-studied as compared to single-nucleotide variants (SNVs) and small insertions/deletions (indels).</p>
-<p>Over the last few years, exciting developments in sequencing technologies and library preparation made it possible to produce long reads or retrieve long-range information over kilobases of sequence. These approaches are maturing to the point were it is feasible to analyze the human genome. This multi-kbp information is particularly useful for SV detection and de novo assembly. In the last few years, several studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which were novel and sequence-resolved<span class="citation" data-cites="z91V6jjU rs7e40wC PRx3qEIm 121OWcTA4">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-rs7e40wC">4</a>,<a href="#ref-PRx3qEIm">5</a>,<a href="#ref-121OWcTA4">6</a>]</span> (<em>REF_PETER_SOON</em>). These technologies are also enabling high-quality de novo genome assemblies to be produced<span class="citation" data-cites="z91V6jjU 6KbgcueR">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-6KbgcueR">7</a>]</span>, as well as large blocks of haplotype-resolved sequences<span class="citation" data-cites="Pu6SY37C">[<a href="#ref-Pu6SY37C">8</a>]</span>. These technological advances promise to expand the amount of known genomic variation in humans in the near future.</p>
-<p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-10jxt15v0">10</a>,<a href="#ref-11Jy8B61m">11</a>,<a href="#ref-Qa8mx6Ll">9</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">10</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">12</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">13</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">14</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">15</a>]</span>.</p>
+<p>Over the last few years, exciting developments in sequencing technologies and library preparation made it possible to produce long reads or retrieve long-range information over kilobases of sequence. These approaches are maturing to the point were it is feasible to analyze the human genome. This multi-kbp information is particularly useful for SV detection and de novo assembly. In the last few years, several studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which were novel and sequence-resolved<span class="citation" data-cites="z91V6jjU rs7e40wC PRx3qEIm 121OWcTA4 3NNFS6U2">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-rs7e40wC">4</a>,<a href="#ref-PRx3qEIm">5</a>,<a href="#ref-121OWcTA4">6</a>,<a href="#ref-3NNFS6U2">7</a>]</span>. These technologies are also enabling high-quality de novo genome assemblies to be produced<span class="citation" data-cites="z91V6jjU 6KbgcueR">[<a href="#ref-z91V6jjU">3</a>,<a href="#ref-6KbgcueR">8</a>]</span>, as well as large blocks of haplotype-resolved sequences<span class="citation" data-cites="Pu6SY37C">[<a href="#ref-Pu6SY37C">9</a>]</span>. These technological advances promise to expand the amount of known genomic variation in humans in the near future.</p>
+<p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-Qa8mx6Ll">10</a>,<a href="#ref-10jxt15v0">11</a>,<a href="#ref-11Jy8B61m">12</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">11</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">13</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">14</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">15</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">16</a>]</span>.</p>
 <h2 id="results">Results</h2>
+<h3 id="structural-variation-in-vg">Structural variation in vg</h3>
+<p>In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure <a href="#fig:cartoon">1a</a>). As a proof-of-concept we simulated genomes and SVs of varying sizes. Some errors were added at the breakpoints to investigate their effect on genotyping. In all simulations, vg performed better than SVtyper<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">15</a>]</span> and Delly<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">16</a>]</span> (Figure <a href="#fig:sim">1b</a>). The recall was particularly higher than other methods at low sequencing depth. vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.</p>
+<figure>
+<img src="images/VGSVcartoon.jpg" alt="Figure 1a: Large deletions and insertions in variation graphs" id="fig:cartoon" data-tag="1a" /><figcaption><span>Figure 1a:</span> <strong>Large deletions and insertions in variation graphs</strong></figcaption>
+</figure>
+<figure>
+<img src="images/sv-vg-simulation-f1.png" alt="Figure 1b: Simulation experiment." id="fig:sim" data-tag="1b" /><figcaption><span>Figure 1b:</span> <strong>Simulation experiment</strong>.</figcaption>
+</figure>
 <h3 id="hgsvc">HGSVC</h3>
-<p>Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">16</a>]</span> provide a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
+<p>Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">17</a>]</span> provide a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
 <h4 id="whole-genome-simulation">(Whole-genome) Simulation</h4>
 <p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls.</p>
 <table>
@@ -868,6 +876,11 @@
 </tr>
 </tbody>
 </table>
+<h3 id="yeast-assemblies">Yeast assemblies</h3>
+<p>The recall was higher for the graph constructed from assembly alignment (Figure <a href="#fig:yeastrecall">1</a>).</p>
+<figure>
+<img src="images/david-yeast-jan29.png" alt="Figure 1: Recall in yeast experiment." id="fig:yeastrecall" style="width:80.0%" /><figcaption><span>Figure 1:</span> <strong>Recall in yeast experiment</strong>.</figcaption>
+</figure>
 <h2 id="methods">Methods</h2>
 <h2 id="discussion">Discussion</h2>
 <h2 id="references" class="page_break_before">References</h2>
@@ -909,62 +922,68 @@ Noah Spies, Ziming Weng, Alex Bishara, Jennifer McDaniel, David Catoe, Justin M 
 <em>Nature Methods</em> (2017-07-17) <a href="https://doi.org/gbnhwk">https://doi.org/gbnhwk</a><br />
 DOI: <a href="https://doi.org/10.1038/nmeth.4366">10.1038/nmeth.4366</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28714986">28714986</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5578891">PMC5578891</a></p>
 </div>
+<div id="ref-3NNFS6U2">
+<p>7. <strong>Characterizing the Major Structural Variant Alleles of the Human Genome</strong><br />
+Peter A. Audano, Arvis Sulovari, Tina A. Graves-Lindsay, Stuart Cantsilieris, Melanie Sorensen, AnneMarie E. Welch, Max L. Dougherty, Bradley J. Nelson, Ankeeta Shah, Susan K. Dutcher, … Evan E. Eichler<br />
+<em>Cell</em> (2019-01) <a href="https://doi.org/gfthvz">https://doi.org/gfthvz</a><br />
+DOI: <a href="https://doi.org/10.1016/j.cell.2018.12.019">10.1016/j.cell.2018.12.019</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30661756">30661756</a></p>
+</div>
 <div id="ref-6KbgcueR">
-<p>7. <strong>Nanopore sequencing and assembly of a human genome with ultra-long reads</strong><br />
+<p>8. <strong>Nanopore sequencing and assembly of a human genome with ultra-long reads</strong><br />
 Miten Jain, Sergey Koren, Karen H Miga, Josh Quick, Arthur C Rand, Thomas A Sasani, John R Tyson, Andrew D Beggs, Alexander T Dilthey, Ian T Fiddes, … Matthew Loose<br />
 <em>Nature Biotechnology</em> (2018-01-29) <a href="https://doi.org/gczffw">https://doi.org/gczffw</a><br />
 DOI: <a href="https://doi.org/10.1038/nbt.4060">10.1038/nbt.4060</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29431738">29431738</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5889714">PMC5889714</a></p>
 </div>
 <div id="ref-Pu6SY37C">
-<p>8. <strong>Phased diploid genome assembly with single-molecule real-time sequencing</strong><br />
+<p>9. <strong>Phased diploid genome assembly with single-molecule real-time sequencing</strong><br />
 Chen-Shan Chin, Paul Peluso, Fritz J Sedlazeck, Maria Nattestad, Gregory T Concepcion, Alicia Clum, Christopher Dunn, Ronan O’Malley, Rosa Figueroa-Balderas, Abraham Morales-Cruz, … Michael C Schatz<br />
 <em>Nature Methods</em> (2016-10-17) <a href="https://doi.org/f9fv4w">https://doi.org/f9fv4w</a><br />
 DOI: <a href="https://doi.org/10.1038/nmeth.4035">10.1038/nmeth.4035</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27749838">27749838</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5503144">PMC5503144</a></p>
 </div>
 <div id="ref-Qa8mx6Ll">
-<p>9. <strong>Genome graphs and the evolution of genome inference</strong><br />
+<p>10. <strong>Genome graphs and the evolution of genome inference</strong><br />
 Benedict Paten, Adam M. Novak, Jordan M. Eizenga, Erik Garrison<br />
 <em>Genome Research</em> (2017-03-30) <a href="https://doi.org/f95nhd">https://doi.org/f95nhd</a><br />
 DOI: <a href="https://doi.org/10.1101/gr.214155.116">10.1101/gr.214155.116</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28360232">28360232</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5411762">PMC5411762</a></p>
 </div>
 <div id="ref-10jxt15v0">
-<p>10. <strong>Variation graph toolkit improves read mapping by representing genetic variation in the reference</strong><br />
+<p>11. <strong>Variation graph toolkit improves read mapping by representing genetic variation in the reference</strong><br />
 Erik Garrison, Jouni Sirén, Adam M Novak, Glenn Hickey, Jordan M Eizenga, Eric T Dawson, William Jones, Shilpa Garg, Charles Markello, Michael F Lin, … Richard Durbin<br />
 <em>Nature Biotechnology</em> (2018-08-20) <a href="https://doi.org/gd2zqs">https://doi.org/gd2zqs</a><br />
 DOI: <a href="https://doi.org/10.1038/nbt.4227">10.1038/nbt.4227</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30125266">30125266</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6126949">PMC6126949</a></p>
 </div>
 <div id="ref-11Jy8B61m">
-<p>11. <strong>Fast and accurate genomic analyses using genome graphs</strong><br />
+<p>12. <strong>Fast and accurate genomic analyses using genome graphs</strong><br />
 Goran Rakocevic, Vladimir Semenyuk, Wan-Ping Lee, James Spencer, John Browning, Ivan J. Johnson, Vladan Arsenijevic, Jelena Nadj, Kaushik Ghose, Maria C. Suciu, … Deniz Kural<br />
 <em>Nature Genetics</em> (2019-01-14) <a href="https://doi.org/gftd46">https://doi.org/gftd46</a><br />
 DOI: <a href="https://doi.org/10.1038/s41588-018-0316-4">10.1038/s41588-018-0316-4</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30643257">30643257</a></p>
 </div>
 <div id="ref-ohTIiqfV">
-<p>12. <strong>Graphtyper enables population-scale genotyping using pangenome graphs</strong><br />
+<p>13. <strong>Graphtyper enables population-scale genotyping using pangenome graphs</strong><br />
 Hannes P Eggertsson, Hakon Jonsson, Snaedis Kristmundsdottir, Eirikur Hjartarson, Birte Kehr, Gisli Masson, Florian Zink, Kristjan E Hjorleifsson, Aslaug Jonasdottir, Adalbjorg Jonasdottir, … Bjarni V Halldorsson<br />
 <em>Nature Genetics</em> (2017-09-25) <a href="https://doi.org/gbx7v6">https://doi.org/gbx7v6</a><br />
 DOI: <a href="https://doi.org/10.1038/ng.3964">10.1038/ng.3964</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28945251">28945251</a></p>
 </div>
 <div id="ref-14Uxmwbxm">
-<p>13. <strong>Accurate genotyping across variant classes and lengths using variant graphs</strong><br />
+<p>14. <strong>Accurate genotyping across variant classes and lengths using variant graphs</strong><br />
 Jonas Andreas SibbesenLasse Maretty, Anders Krogh<br />
 <em>Nature Genetics</em> (2018-06-18) <a href="https://doi.org/gdndnz">https://doi.org/gdndnz</a><br />
 DOI: <a href="https://doi.org/10.1038/s41588-018-0145-5">10.1038/s41588-018-0145-5</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29915429">29915429</a></p>
 </div>
 <div id="ref-AltPnocw">
-<p>14. <strong>SpeedSeq: ultra-fast personal genome analysis and interpretation</strong><br />
+<p>15. <strong>SpeedSeq: ultra-fast personal genome analysis and interpretation</strong><br />
 Colby Chiang, Ryan M Layer, Gregory G Faust, Michael R Lindberg, David B Rose, Erik P Garrison, Gabor T Marth, Aaron R Quinlan, Ira M Hall<br />
 <em>Nature Methods</em> (2015-08-10) <a href="https://doi.org/gcpgfh">https://doi.org/gcpgfh</a><br />
 DOI: <a href="https://doi.org/10.1038/nmeth.3505">10.1038/nmeth.3505</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/26258291">26258291</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4589466">PMC4589466</a></p>
 </div>
 <div id="ref-nLvQCjXU">
-<p>15. <strong>DELLY: structural variant discovery by integrated paired-end and split-read analysis</strong><br />
+<p>16. <strong>DELLY: structural variant discovery by integrated paired-end and split-read analysis</strong><br />
 T. Rausch, T. Zichner, A. Schlattl, A. M. Stutz, V. Benes, J. O. Korbel<br />
 <em>Bioinformatics</em> (2012-09-07) <a href="https://doi.org/f38r2c">https://doi.org/f38r2c</a><br />
 DOI: <a href="https://doi.org/10.1093/bioinformatics/bts378">10.1093/bioinformatics/bts378</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/22962449">22962449</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3436805">PMC3436805</a></p>
 </div>
 <div id="ref-vQTymKCj">
-<p>16. <strong>Multi-platform discovery of haplotype-resolved structural variation in human genomes</strong><br />
+<p>17. <strong>Multi-platform discovery of haplotype-resolved structural variation in human genomes</strong><br />
 Mark J.P. Chaisson, Ashley D. Sanders, Xuefang Zhao, Ankit Malhotra, David Porubsky, Tobias Rausch, Eugene J. Gardner, Oscar Rodriguez, Li Guo, Ryan L. Collins, … Charles Lee<br />
 <em>Cold Spring Harbor Laboratory</em> (2017-09-23) <a href="https://doi.org/gftxhc">https://doi.org/gftxhc</a><br />
 DOI: <a href="https://doi.org/10.1101/193144">10.1101/193144</a></p>
