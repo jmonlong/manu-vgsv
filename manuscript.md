@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-04'
+date-meta: '2019-02-06'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/6ac424a22768cb973d7e9abb1890a5edb956e84c/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/bb79aed2c77d8c103a0020024dae705339ee54e4/))
 was automatically generated
-from [jmonlong/manu-vgsv@6ac424a](https://github.com/jmonlong/manu-vgsv/tree/6ac424a22768cb973d7e9abb1890a5edb956e84c)
-on February 4, 2019.
+from [jmonlong/manu-vgsv@bb79aed](https://github.com/jmonlong/manu-vgsv/tree/bb79aed2c77d8c103a0020024dae705339ee54e4)
+on February 6, 2019.
 </em></small>
 
 ## Authors
@@ -219,7 +219,9 @@ Instead, our measurements suggest that genetic distance to the reference strain 
 Consequently. the gap is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.
 
 
-![**SV genotyping comparison.** SV genotype recall from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/david-yeast-jan29.png){#fig:geno-comp width=80%}
+![**SV genotyping comparison.** SV genotype recall from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/yeast-recall.svg){#fig:geno-comp-recall width=80%}
+
+![**SV genotyping comparison.** SV genotype precision from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/yeast-precision.svg){#fig:geno-comp-precision width=80%}
 
 Next, we compared the SV genotype performance of both graphs.
 To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set.
