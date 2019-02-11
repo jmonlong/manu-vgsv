@@ -19,7 +19,7 @@ readEval <- function(files, methods, regions=NULL){
   df
 }
 
-## Simulated reads, all regions
+## Simulated reads
 eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-construct-clip-prcurve.tsv',
                              'sim-hgsvc-bayestyper-prcurve.tsv',
@@ -42,7 +42,7 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
 dev.off()
 
 
-## Real reads, all regions
+## Real reads
 eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                              'real-hgsvc-construct-clip-prcurve.tsv',
                              'real-hgsvc-bayestyper-prcurve.tsv',
@@ -63,6 +63,3 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_brewer(palette='Set1')
 dev.off()
-
-
-## Same for non-repeat regions
