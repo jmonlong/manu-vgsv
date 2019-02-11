@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-06'
+date-meta: '2019-02-11'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/bb79aed2c77d8c103a0020024dae705339ee54e4/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/95382fc581a0946f77f1c663fc8f109a5b5e1f4c/))
 was automatically generated
-from [jmonlong/manu-vgsv@bb79aed](https://github.com/jmonlong/manu-vgsv/tree/bb79aed2c77d8c103a0020024dae705339ee54e4)
-on February 6, 2019.
+from [jmonlong/manu-vgsv@95382fc](https://github.com/jmonlong/manu-vgsv/tree/95382fc581a0946f77f1c663fc8f109a5b5e1f4c)
+on February 11, 2019.
 </em></small>
 
 ## Authors
@@ -96,9 +96,9 @@ In all simulations, vg performed better than SVtyper[@AltPnocw] and Delly[@nLvQC
 The recall was particularly higher than other methods at low sequencing depth.
 vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.
 
-![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon tag="1a"}
+![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon}
 
-![**Simulation experiment**. ](images/sv-vg-simulation-f1.png){#fig:sim tag="1b"}
+![**Simulation experiment**. For each method, depth and input VCF (with/without erros), the deciles of the call qualities was used as threshold and the maximum F1 is reported on the y-axis.](images/simerror.svg){#fig:sim width=80%}
 
 ### HGSVC
 
@@ -108,93 +108,21 @@ Chaisson et al.[@vQTymKCj] provide a high-quality SV catalog of three samples, o
 
 #### (Whole-genome) Simulation
 
-The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim.  The reads were used to call VCFs then compared back to the original HGSVC calls.
+The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim.  The reads were used to call VCFs then compared back to the original HGSVC calls (Figure {@fig:hgsvc-sim} and Table {@tbl:hgsvc-sim}).
 
-| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
-| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
-| HGSVC-Construct     | Total | 24451 | 24089       | 3119  | 2617  | 0.8854    | 0.902  | 0.8936 |
-|                     | INS   | 14596 | 14264       | 775   | 1421  | 0.9485    | 0.9094 | 0.9285 |
-|                     | DEL   | 9855  | 9825        | 2344  | 1196  | 0.8074    | 0.8915 | 0.8474 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-1KG-Construct | Total | 24172 | 23815       | 3236  | 2891  | 0.8804    | 0.8917 | 0.886  |
-|                     | INS   | 14540 | 14111       | 836   | 1574  | 0.9441    | 0.8996 | 0.9213 |
-|                     | DEL   | 9632  | 9704        | 2400  | 1317  | 0.8017    | 0.8805 | 0.8393 |
-|                     |       |       |             |       |       |           |        |        |
-|HGSVC-Bayestyper     | Total | 13895 | 14362       | 123   | 12344 | 0.9915    | 0.5378 | 0.6974 |
-|                     | INS   | 8473  | 8757        | 102   | 6928  | 0.9885    | 0.5583 | 0.7136 |
-|                     | DEL   | 5422  | 5605        | 21    | 5416  | 0.9963    | 0.5086 | 0.6734|
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-Construct     | Total | 10548 | 11559       | 5990  | 15147 | 0.6587    | 0.4328 | 0.5224 |
-|                     | INS   | 7733  | 8223        | 2266  | 7462  | 0.784     | 0.5243 | 0.6284 |
-|                     | DEL   | 2815  | 3336        | 3724  | 7685  | 0.4725    | 0.3027 | 0.369  |
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-1KG-Construct | Total | 10403 | 11369       | 6750  | 15337 | 0.6275    | 0.4257 | 0.5073 |
-|                     | INS   | 7497  | 7934        | 2198  | 7751  | 0.7831    | 0.5058 | 0.6146 |
-|                     | DEL   | 2906  | 3435        | 4552  | 7586  | 0.4301    | 0.3117 | 0.3615 |
+When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser (Table {@tbl:hgsvc-sim-nonrepeat}).
 
-When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:
 
-| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
-| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
-| HGSVC-Construct     | Total | 5901  | 5822        | 452   | 253   | 0.928     | 0.9584 | 0.943  |
-|                     | INS   | 4026  | 3952        | 98    | 172   | 0.9758    | 0.9583 | 0.967  |
-|                     | DEL   | 1875  | 1870        | 354   | 81    | 0.8408    | 0.9585 | 0.8958 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-1KG-Construct | Total | 5880  | 5785        | 486   | 290   | 0.9225    | 0.9523 | 0.9372 |
-|                     | INS   | 4024  | 3922        | 123   | 202   | 0.9696    | 0.951  | 0.9602 |
-|                     | DEL   | 1856  | 1863        | 363   | 88    | 0.8369    | 0.9549 | 0.892  |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-Bayestyper    | Total | 3805  | 3863        | 8     | 2212  | 0.9979    | 0.6359 | 0.7768 |
-|                     | INS   | 2401  | 2430        | 6     | 1694  | 0.9975    | 0.5892 | 0.7408 |
-|                     | DEL   | 1404  | 1433        | 2     | 518   | 0.9986    | 0.7345 | 0.846  |
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-Construct     | Total | 3565  | 3856        | 390   | 2219  | 0.9081    | 0.6347 | 0.7472 |
-|                     | INS   | 3091  | 3246        | 239   | 878   | 0.9314    | 0.7871 | 0.8532 |
-|                     | DEL   | 474   | 610         | 151   | 1341  | 0.8016    | 0.3127 | 0.4499 |
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-1KG-Construct | Total | 3574  | 3817        | 562   | 2258  | 0.8717    | 0.6283 | 0.7303 |
-|                     | INS   | 3066  | 3180        | 253   | 944   | 0.9263    | 0.7711 | 0.8416 |
-|                     | DEL   | 508   | 637         | 309   | 1314  | 0.6734    | 0.3265 | 0.4398 |
+![**HGSVC simulated reads**. ](images/hgsvc-sim.svg){#fig:hgsvc-sim width=80%}
+
+![**HGSVC real reads**. ](images/hgsvc-real.svg){#fig:hgsvc-real width=80%}
 
 #### (Whole-genome) Real reads
 
-| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
-| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
-| HGSVC-Construct     | Total | 18436 | 18500       | 6575  | 8206  | 0.7378    | 0.6927 | 0.7145 |
-|                     | INS   | 10984 | 10600       | 3542  | 5085  | 0.7495    | 0.6758 | 0.7107 |
-|                     | DEL   | 7452  | 7900        | 3033  | 3121  | 0.7226    | 0.7168 | 0.7197 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-1KG-Construct | Total | 17802 | 17946       | 6221  | 8760  | 0.7426    | 0.672  | 0.7055 |
-|                     | INS   | 10647 | 10262       | 3304  | 5423  | 0.7564    | 0.6543 | 0.7017 |
-|                     | DEL   | 7155  | 7684        | 2917  | 3337  | 0.7248    | 0.6972 | 0.7107 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-Bayestyper    | Total | 4342  | 4840        | 1048  | 21866 | 0.822     | 0.1812 | 0.2969 |
-|                     | INS   | 1786  | 1883        | 309   | 13802 | 0.859     | 0.1201 | 0.2107 |
-|                     | DEL   | 2556  | 2957        | 739   | 8064  | 0.8001    | 0.2683 | 0.4018 |
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-Construct     | Total | 9091  | 9931        | 10235 | 16775 | 0.4925    | 0.3719 | 0.4238 |
-|                     | INS   | 6972  | 7420        | 6706  | 8265  | 0.5253    | 0.4731 | 0.4978 |
-|                     | DEL   | 2119  | 2511        | 3529  | 8510  | 0.4157    | 0.2278 | 0.2943 |
+Figure {@fig:hgsvc-real}. 
+Tables {@tbl:hgsvc-real} and {@tbl:hgsvc-real-nonrepeat} for results over the genome or when restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser.
 
-When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:
 
-| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
-| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
-| HGSVC-Construct     | Total | 5197  | 5244        | 854   | 831   | 0.86      | 0.8632 | 0.8616 |
-|                     | INS   | 3708  | 3626        | 459   | 498   | 0.8876    | 0.8792 | 0.8834 |
-|                     | DEL   | 1489  | 1618        | 395   | 333   | 0.8038    | 0.8293 | 0.8164 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-1KG-Construct | Total | 5103  | 5155        | 865   | 920   | 0.8563    | 0.8486 | 0.8524 |
-|                     | INS   | 3642  | 3555        | 464   | 569   | 0.8845    | 0.862  | 0.8731 |
-|                     | DEL   | 1461  | 1600        | 401   | 351   | 0.7996    | 0.8201 | 0.8097 |
-|                     |       |       |             |       |       |           |        |        |
-| HGSVC-Bayestyper    | Total | 1560  | 1731        | 274   | 4344  | 0.8633    | 0.2849 | 0.4284 |
-|                     | INS   | 883   | 901         | 69    | 3223  | 0.9289    | 0.2185 | 0.3538 |
-|                     | DEL   | 677   | 830         | 205   | 1121  | 0.8019    | 0.4254 | 0.5559 |
-|                     |       |       |             |       |       |           |        |        |
-| SVPOP-Construct     | Total | 3251  | 3480        | 941   | 2595  | 0.7872    | 0.5728 | 0.6631 |
-|                     | INS   | 2859  | 3009        | 780   | 1115  | 0.7941    | 0.7296 | 0.7605 |
-|                     | DEL   | 392   | 471         | 161   | 1480  | 0.7453    | 0.2414 | 0.3647 |
  
 ### Genotyping SV using vg and de novo assemblies
 
@@ -227,7 +155,7 @@ Next, we compared the SV genotype performance of both graphs.
 To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set.
 This truth set is a subset of the SV set used for construction of the *construct graph* which is important because only variants already present in the graph can be genotyped.
 
-Figure @fig:geno-comp shows the results of our analysis. Depending on the clade, the *cactus graph* reaches either a substantially higher SV genotyping recall than the *construct graph* (S. paradoxus) or a substantially lower recall (S. cerevisiae).
+Figure {@fig:geno-comp-recall} and {@fig:geno-comp-precision} shows the results of our analysis. Depending on the clade, the *cactus graph* reaches either a substantially higher SV genotyping recall than the *construct graph* (S. paradoxus) or a substantially lower recall (S. cerevisiae).
 
 
 
@@ -238,6 +166,103 @@ Figure @fig:geno-comp shows the results of our analysis. Depending on the clade,
 
 ## Discussion
 
+
+
+## Supplementary Material
+
+| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
+| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
+| HGSVC-Construct     | Total | 24451 | 24089       | 3119  | 2617  | 0.8854    | 0.902  | 0.8936 |
+|                     | INS   | 14596 | 14264       | 775   | 1421  | 0.9485    | 0.9094 | 0.9285 |
+|                     | DEL   | 9855  | 9825        | 2344  | 1196  | 0.8074    | 0.8915 | 0.8474 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-1KG-Construct | Total | 24172 | 23815       | 3236  | 2891  | 0.8804    | 0.8917 | 0.886  |
+|                     | INS   | 14540 | 14111       | 836   | 1574  | 0.9441    | 0.8996 | 0.9213 |
+|                     | DEL   | 9632  | 9704        | 2400  | 1317  | 0.8017    | 0.8805 | 0.8393 |
+|                     |       |       |             |       |       |           |        |        |
+|HGSVC-Bayestyper     | Total | 13895 | 14362       | 123   | 12344 | 0.9915    | 0.5378 | 0.6974 |
+|                     | INS   | 8473  | 8757        | 102   | 6928  | 0.9885    | 0.5583 | 0.7136 |
+|                     | DEL   | 5422  | 5605        | 21    | 5416  | 0.9963    | 0.5086 | 0.6734|
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-Construct     | Total | 10548 | 11559       | 5990  | 15147 | 0.6587    | 0.4328 | 0.5224 |
+|                     | INS   | 7733  | 8223        | 2266  | 7462  | 0.784     | 0.5243 | 0.6284 |
+|                     | DEL   | 2815  | 3336        | 3724  | 7685  | 0.4725    | 0.3027 | 0.369  |
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-1KG-Construct | Total | 10403 | 11369       | 6750  | 15337 | 0.6275    | 0.4257 | 0.5073 |
+|                     | INS   | 7497  | 7934        | 2198  | 7751  | 0.7831    | 0.5058 | 0.6146 |
+|                     | DEL   | 2906  | 3435        | 4552  | 7586  | 0.4301    | 0.3117 | 0.3615 |
+
+Table: HGSVC experiment using simulated reads. {#tbl:hgsvc-sim}
+
+---
+
+| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
+| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
+| HGSVC-Construct     | Total | 5901  | 5822        | 452   | 253   | 0.928     | 0.9584 | 0.943  |
+|                     | INS   | 4026  | 3952        | 98    | 172   | 0.9758    | 0.9583 | 0.967  |
+|                     | DEL   | 1875  | 1870        | 354   | 81    | 0.8408    | 0.9585 | 0.8958 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-1KG-Construct | Total | 5880  | 5785        | 486   | 290   | 0.9225    | 0.9523 | 0.9372 |
+|                     | INS   | 4024  | 3922        | 123   | 202   | 0.9696    | 0.951  | 0.9602 |
+|                     | DEL   | 1856  | 1863        | 363   | 88    | 0.8369    | 0.9549 | 0.892  |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-Bayestyper    | Total | 3805  | 3863        | 8     | 2212  | 0.9979    | 0.6359 | 0.7768 |
+|                     | INS   | 2401  | 2430        | 6     | 1694  | 0.9975    | 0.5892 | 0.7408 |
+|                     | DEL   | 1404  | 1433        | 2     | 518   | 0.9986    | 0.7345 | 0.846  |
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-Construct     | Total | 3565  | 3856        | 390   | 2219  | 0.9081    | 0.6347 | 0.7472 |
+|                     | INS   | 3091  | 3246        | 239   | 878   | 0.9314    | 0.7871 | 0.8532 |
+|                     | DEL   | 474   | 610         | 151   | 1341  | 0.8016    | 0.3127 | 0.4499 |
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-1KG-Construct | Total | 3574  | 3817        | 562   | 2258  | 0.8717    | 0.6283 | 0.7303 |
+|                     | INS   | 3066  | 3180        | 253   | 944   | 0.9263    | 0.7711 | 0.8416 |
+|                     | DEL   | 508   | 637         | 309   | 1314  | 0.6734    | 0.3265 | 0.4398 |
+
+Table: HGSVC experiment using simulated reads and restricting the comparisons to non-repeat regions. {#tbl:hgsvc-sim-nonrepeat}
+
+---
+
+| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
+| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
+| HGSVC-Construct     | Total | 18436 | 18500       | 6575  | 8206  | 0.7378    | 0.6927 | 0.7145 |
+|                     | INS   | 10984 | 10600       | 3542  | 5085  | 0.7495    | 0.6758 | 0.7107 |
+|                     | DEL   | 7452  | 7900        | 3033  | 3121  | 0.7226    | 0.7168 | 0.7197 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-1KG-Construct | Total | 17802 | 17946       | 6221  | 8760  | 0.7426    | 0.672  | 0.7055 |
+|                     | INS   | 10647 | 10262       | 3304  | 5423  | 0.7564    | 0.6543 | 0.7017 |
+|                     | DEL   | 7155  | 7684        | 2917  | 3337  | 0.7248    | 0.6972 | 0.7107 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-Bayestyper    | Total | 4342  | 4840        | 1048  | 21866 | 0.822     | 0.1812 | 0.2969 |
+|                     | INS   | 1786  | 1883        | 309   | 13802 | 0.859     | 0.1201 | 0.2107 |
+|                     | DEL   | 2556  | 2957        | 739   | 8064  | 0.8001    | 0.2683 | 0.4018 |
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-Construct     | Total | 9091  | 9931        | 10235 | 16775 | 0.4925    | 0.3719 | 0.4238 |
+|                     | INS   | 6972  | 7420        | 6706  | 8265  | 0.5253    | 0.4731 | 0.4978 |
+|                     | DEL   | 2119  | 2511        | 3529  | 8510  | 0.4157    | 0.2278 | 0.2943 |
+
+Table: HGSVC experiment using real reads. {#tbl:hgsvc-real}
+
+---
+
+| Graph               | type  | TP    | TP.baseline | FP    | FN    | precision | recall | F1     |
+| -----               | ----- | ----- | -----       | ----- | ----- | -----     | -----  | ---    |
+| HGSVC-Construct     | Total | 5197  | 5244        | 854   | 831   | 0.86      | 0.8632 | 0.8616 |
+|                     | INS   | 3708  | 3626        | 459   | 498   | 0.8876    | 0.8792 | 0.8834 |
+|                     | DEL   | 1489  | 1618        | 395   | 333   | 0.8038    | 0.8293 | 0.8164 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-1KG-Construct | Total | 5103  | 5155        | 865   | 920   | 0.8563    | 0.8486 | 0.8524 |
+|                     | INS   | 3642  | 3555        | 464   | 569   | 0.8845    | 0.862  | 0.8731 |
+|                     | DEL   | 1461  | 1600        | 401   | 351   | 0.7996    | 0.8201 | 0.8097 |
+|                     |       |       |             |       |       |           |        |        |
+| HGSVC-Bayestyper    | Total | 1560  | 1731        | 274   | 4344  | 0.8633    | 0.2849 | 0.4284 |
+|                     | INS   | 883   | 901         | 69    | 3223  | 0.9289    | 0.2185 | 0.3538 |
+|                     | DEL   | 677   | 830         | 205   | 1121  | 0.8019    | 0.4254 | 0.5559 |
+|                     |       |       |             |       |       |           |        |        |
+| SVPOP-Construct     | Total | 3251  | 3480        | 941   | 2595  | 0.7872    | 0.5728 | 0.6631 |
+|                     | INS   | 2859  | 3009        | 780   | 1115  | 0.7941    | 0.7296 | 0.7605 |
+|                     | DEL   | 392   | 471         | 161   | 1480  | 0.7453    | 0.2414 | 0.3647 |
+
+Table: HGSVC experiment using real reads and restricting the comparisons to non-repeat regions. {#tbl:hgsvc-real-nonrepeat}
 
 
 ## References {.page_break_before}
