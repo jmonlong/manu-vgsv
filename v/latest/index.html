@@ -8,7 +8,7 @@
   <meta name="author" content="David Heller" />
   <meta name="author" content="Jean Monlong" />
   <meta name="author" content="Benedict Paten" />
-  <meta name="dcterms.date" content="2019-02-06" />
+  <meta name="dcterms.date" content="2019-02-11" />
   <meta name="keywords" content="structural variation, pangenome, variant genotyping" />
   <title>Genotyping structural variation in variation graphs with the vg toolkit</title>
   <style type="text/css">
@@ -30,7 +30,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/bb79aed2c77d8c103a0020024dae705339ee54e4/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/bb79aed2c77d8c103a0020024dae705339ee54e4">jmonlong/manu-vgsv@bb79aed</a> on February 6, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/95382fc581a0946f77f1c663fc8f109a5b5e1f4c/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/95382fc581a0946f77f1c663fc8f109a5b5e1f4c">jmonlong/manu-vgsv@95382fc</a> on February 11, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -46,18 +46,46 @@
 <p>In parallel, the reference genome is evolving from a linear reference to a graph-based reference that contains known genomic variation<span class="citation" data-cites="Qa8mx6Ll 10jxt15v0 11Jy8B61m">[<a href="#ref-Qa8mx6Ll">10</a>,<a href="#ref-10jxt15v0">11</a>,<a href="#ref-11Jy8B61m">12</a>]</span>. By having variants in the graph, mapping rates are increased and variants are more uniformly covered, including indels and variants in complex regions<span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">11</a>]</span>. Both the mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity. In addition, different variant types are called simultaneously by a unified framework. Graphs have also been used locally, i.e. to call variants at the region level. GraphTyper<span class="citation" data-cites="ohTIiqfV">[<a href="#ref-ohTIiqfV">13</a>]</span> and BayesTyper<span class="citation" data-cites="14Uxmwbxm">[<a href="#ref-14Uxmwbxm">14</a>]</span> both construct variation graphs of small regions and use them for variant genotyping. Here again, the graph-approach showed clear advantages over standard approaches that use the linear reference. Other SV genotyping approaches compare read mapping in the reference genome and a sequence modified with the SV. For example SMRT-SV was designed to genotype SVs identified on PacBio reads<span class="citation" data-cites="rs7e40wC">[<a href="#ref-rs7e40wC">4</a>]</span>, SVTyper uses paired-end mapping and split-read mapping information<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">15</a>]</span>, and Delly provides a genotyping feature in addition to its discovery mode<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">16</a>]</span>.</p>
 <h2 id="results">Results</h2>
 <h3 id="structural-variation-in-vg">Structural variation in vg</h3>
-<p>In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure <a href="#fig:cartoon">1a</a>). As a proof-of-concept we simulated genomes and SVs of varying sizes. Some errors were added at the breakpoints to investigate their effect on genotyping. In all simulations, vg performed better than SVtyper<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">15</a>]</span> and Delly<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">16</a>]</span> (Figure <a href="#fig:sim">1b</a>). The recall was particularly higher than other methods at low sequencing depth. vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.</p>
+<p>In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure <a href="#fig:cartoon">1</a>). As a proof-of-concept we simulated genomes and SVs of varying sizes. Some errors were added at the breakpoints to investigate their effect on genotyping. In all simulations, vg performed better than SVtyper<span class="citation" data-cites="AltPnocw">[<a href="#ref-AltPnocw">15</a>]</span> and Delly<span class="citation" data-cites="nLvQCjXU">[<a href="#ref-nLvQCjXU">16</a>]</span> (Figure <a href="#fig:sim">2</a>). The recall was particularly higher than other methods at low sequencing depth. vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.</p>
 <figure>
-<img src="images/VGSVcartoon.jpg" alt="Figure 1a: Large deletions and insertions in variation graphs" id="fig:cartoon" data-tag="1a" /><figcaption><span>Figure 1a:</span> <strong>Large deletions and insertions in variation graphs</strong></figcaption>
+<img src="images/VGSVcartoon.jpg" alt="Figure 1: Large deletions and insertions in variation graphs" id="fig:cartoon" /><figcaption><span>Figure 1:</span> <strong>Large deletions and insertions in variation graphs</strong></figcaption>
 </figure>
 <figure>
-<img src="images/sv-vg-simulation-f1.png" alt="Figure 1b: Simulation experiment." id="fig:sim" data-tag="1b" /><figcaption><span>Figure 1b:</span> <strong>Simulation experiment</strong>.</figcaption>
+<img src="images/simerror.svg" alt="Figure 2: Simulation experiment. For each method, depth and input VCF (with/without erros), the deciles of the call qualities was used as threshold and the maximum F1 is reported on the y-axis." id="fig:sim" style="width:80.0%" /><figcaption><span>Figure 2:</span> <strong>Simulation experiment</strong>. For each method, depth and input VCF (with/without erros), the deciles of the call qualities was used as threshold and the maximum F1 is reported on the y-axis.</figcaption>
 </figure>
 <h3 id="hgsvc">HGSVC</h3>
 <p>Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">17</a>]</span> provide a high-quality SV catalog of three samples, obtained using a consensus from different sequencing, phasing and variant caling technologies.</p>
 <h4 id="whole-genome-simulation">(Whole-genome) Simulation</h4>
-<p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls.</p>
+<p>The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim. The reads were used to call VCFs then compared back to the original HGSVC calls (Figure <a href="#fig:hgsvc-sim">3</a> and Table <a href="#tbl:hgsvc-sim">1</a>).</p>
+<p>When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser (Table <a href="#tbl:hgsvc-sim-nonrepeat">2</a>).</p>
+<figure>
+<img src="images/hgsvc-sim.svg" alt="Figure 3: HGSVC simulated reads." id="fig:hgsvc-sim" style="width:80.0%" /><figcaption><span>Figure 3:</span> <strong>HGSVC simulated reads</strong>.</figcaption>
+</figure>
+<figure>
+<img src="images/hgsvc-real.svg" alt="Figure 4: HGSVC real reads." id="fig:hgsvc-real" style="width:80.0%" /><figcaption><span>Figure 4:</span> <strong>HGSVC real reads</strong>.</figcaption>
+</figure>
+<h4 id="whole-genome-real-reads">(Whole-genome) Real reads</h4>
+<p>Figure <a href="#fig:hgsvc-real">4</a>. Tables <a href="#tbl:hgsvc-real">3</a> and <a href="#tbl:hgsvc-real-nonrepeat">4</a> for results over the genome or when restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser.</p>
+<h3 id="genotyping-sv-using-vg-and-de-novo-assemblies">Genotyping SV using vg and de novo assemblies</h3>
+<p>We investigated whether genome graphs derived from genome-genome alignments yield advantages for SV genotyping. To this end, we analyzed public sequencing datasets for 12 yeast strains from two clades (S. cerevisiae and S. paradoxus) <span class="citation" data-cites="7f5OKa5O">[<a href="#ref-7f5OKa5O">18</a>]</span>. From these datasets, we generated two different types of genome graphs. The first graph type (in the following called <em>construct graph</em>) was created from a linear reference genome of the S.c. S288C strain and a set of SVs relative to this reference strain in VCF format. We compiled the SV set using the output of three methods for SV detection from genome assemblies: Assemblytics <span class="citation" data-cites="krO7WgVi">[<a href="#ref-krO7WgVi">19</a>]</span>, AsmVar <span class="citation" data-cites="oVaXIwl5">[<a href="#ref-oVaXIwl5">20</a>]</span> and paftools <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q">21</a>]</span>. All three methods were run to detect SVs between the reference strain S.c. S288C and each of the other 11 strains. Merging the results from the three methods and the 11 strains provided us with a high-sensitivity set of SVs occuring in the two yeast clades. We used this set to construct the <em>construct graph</em>. The second graph (in the following called <em>cactus graph</em>) was derived from a multiple genome alignment of all 12 strains using our Cactus tool <span class="citation" data-cites="1FgS53pXi">[<a href="#ref-1FgS53pXi">22</a>]</span>. While the <em>construct graph</em> is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.</p>
+<figure>
+<img src="images/mapping_comparison_all.png" alt="Figure 5: Mappability comparison. The fraction of reads mapped (with mapping quality &gt; 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared" id="fig:mapping-comp" style="width:80.0%" /><figcaption><span>Figure 5:</span> <strong>Mappability comparison.</strong> The fraction of reads mapped (with mapping quality &gt; 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared</figcaption>
+</figure>
+<p>In a first step, we tested our hypothesis that the <em>cactus graph</em> has higher mappability due to its better representation of sequence diversity among the yeast strains. When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the <em>cactus graph</em> than to the <em>construct graph</em> (see Fig. <a href="#fig:mapping-comp">5</a>). Only for the reference strain S.c. S288C, both graphs exhibited similar mappability. This suggests that not the higher sequence content in the <em>cactus graph</em> alone (XX Mb compared to XX Mb in the <em>construct graph</em>) drives the improvement in mappability. Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the <em>cactus graph</em> over the <em>construct graph</em>. Consequently. the gap is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.</p>
+<figure>
+<img src="images/yeast-recall.svg" alt="Figure 6: SV genotyping comparison. SV genotype recall from the cactus graph (y-axis) and construct graph (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively" id="fig:geno-comp-recall" style="width:80.0%" /><figcaption><span>Figure 6:</span> <strong>SV genotyping comparison.</strong> SV genotype recall from the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively</figcaption>
+</figure>
+<figure>
+<img src="images/yeast-precision.svg" alt="Figure 7: SV genotyping comparison. SV genotype precision from the cactus graph (y-axis) and construct graph (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively" id="fig:geno-comp-precision" style="width:80.0%" /><figcaption><span>Figure 7:</span> <strong>SV genotyping comparison.</strong> SV genotype precision from the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively</figcaption>
+</figure>
+<p>Next, we compared the SV genotype performance of both graphs. To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set. This truth set is a subset of the SV set used for construction of the <em>construct graph</em> which is important because only variants already present in the graph can be genotyped.</p>
+<p>Figure <a href="#fig:geno-comp-recall">6</a> and <a href="#fig:geno-comp-precision">7</a> shows the results of our analysis. Depending on the clade, the <em>cactus graph</em> reaches either a substantially higher SV genotyping recall than the <em>construct graph</em> (S. paradoxus) or a substantially lower recall (S. cerevisiae).</p>
+<h2 id="methods">Methods</h2>
+<h2 id="discussion">Discussion</h2>
+<h2 id="supplementary-material">Supplementary Material</h2>
+<a name="tbl:hgsvc-sim"></a>
 <table>
+<caption><span>Table 1:</span> HGSVC experiment using simulated reads. </caption>
 <thead>
 <tr class="header">
 <th>Graph</th>
@@ -283,8 +311,10 @@
 </tr>
 </tbody>
 </table>
-<p>When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:</p>
+<hr />
+<a name="tbl:hgsvc-sim-nonrepeat"></a>
 <table>
+<caption><span>Table 2:</span> HGSVC experiment using simulated reads and restricting the comparisons to non-repeat regions. </caption>
 <thead>
 <tr class="header">
 <th>Graph</th>
@@ -510,8 +540,10 @@
 </tr>
 </tbody>
 </table>
-<h4 id="whole-genome-real-reads">(Whole-genome) Real reads</h4>
+<hr />
+<a name="tbl:hgsvc-real"></a>
 <table>
+<caption><span>Table 3:</span> HGSVC experiment using real reads. </caption>
 <thead>
 <tr class="header">
 <th>Graph</th>
@@ -693,8 +725,10 @@
 </tr>
 </tbody>
 </table>
-<p>When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser:</p>
+<hr />
+<a name="tbl:hgsvc-real-nonrepeat"></a>
 <table>
+<caption><span>Table 4:</span> HGSVC experiment using real reads and restricting the comparisons to non-repeat regions. </caption>
 <thead>
 <tr class="header">
 <th>Graph</th>
@@ -876,22 +910,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="genotyping-sv-using-vg-and-de-novo-assemblies">Genotyping SV using vg and de novo assemblies</h3>
-<p>We investigated whether genome graphs derived from genome-genome alignments yield advantages for SV genotyping. To this end, we analyzed public sequencing datasets for 12 yeast strains from two clades (S. cerevisiae and S. paradoxus) <span class="citation" data-cites="7f5OKa5O">[<a href="#ref-7f5OKa5O">18</a>]</span>. From these datasets, we generated two different types of genome graphs. The first graph type (in the following called <em>construct graph</em>) was created from a linear reference genome of the S.c. S288C strain and a set of SVs relative to this reference strain in VCF format. We compiled the SV set using the output of three methods for SV detection from genome assemblies: Assemblytics <span class="citation" data-cites="krO7WgVi">[<a href="#ref-krO7WgVi">19</a>]</span>, AsmVar <span class="citation" data-cites="oVaXIwl5">[<a href="#ref-oVaXIwl5">20</a>]</span> and paftools <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q">21</a>]</span>. All three methods were run to detect SVs between the reference strain S.c. S288C and each of the other 11 strains. Merging the results from the three methods and the 11 strains provided us with a high-sensitivity set of SVs occuring in the two yeast clades. We used this set to construct the <em>construct graph</em>. The second graph (in the following called <em>cactus graph</em>) was derived from a multiple genome alignment of all 12 strains using our Cactus tool <span class="citation" data-cites="1FgS53pXi">[<a href="#ref-1FgS53pXi">22</a>]</span>. While the <em>construct graph</em> is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.</p>
-<figure>
-<img src="images/mapping_comparison_all.png" alt="Figure 1: Mappability comparison. The fraction of reads mapped (with mapping quality &gt; 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared" id="fig:mapping-comp" style="width:80.0%" /><figcaption><span>Figure 1:</span> <strong>Mappability comparison.</strong> The fraction of reads mapped (with mapping quality &gt; 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared</figcaption>
-</figure>
-<p>In a first step, we tested our hypothesis that the <em>cactus graph</em> has higher mappability due to its better representation of sequence diversity among the yeast strains. When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the <em>cactus graph</em> than to the <em>construct graph</em> (see Fig. <a href="#fig:mapping-comp">1</a>). Only for the reference strain S.c. S288C, both graphs exhibited similar mappability. This suggests that not the higher sequence content in the <em>cactus graph</em> alone (XX Mb compared to XX Mb in the <em>construct graph</em>) drives the improvement in mappability. Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the <em>cactus graph</em> over the <em>construct graph</em>. Consequently. the gap is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.</p>
-<figure>
-<img src="images/yeast-recall.svg" alt="Figure 2: SV genotyping comparison. SV genotype recall from the cactus graph (y-axis) and construct graph (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively" id="fig:geno-comp-recall" style="width:80.0%" /><figcaption><span>Figure 2:</span> <strong>SV genotyping comparison.</strong> SV genotype recall from the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively</figcaption>
-</figure>
-<figure>
-<img src="images/yeast-precision.svg" alt="Figure 3: SV genotyping comparison. SV genotype precision from the cactus graph (y-axis) and construct graph (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively" id="fig:geno-comp-precision" style="width:80.0%" /><figcaption><span>Figure 3:</span> <strong>SV genotyping comparison.</strong> SV genotype precision from the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively</figcaption>
-</figure>
-<p>Next, we compared the SV genotype performance of both graphs. To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set. This truth set is a subset of the SV set used for construction of the <em>construct graph</em> which is important because only variants already present in the graph can be genotyped.</p>
-<p>Figure <span class="citation" data-cites="fig:geno-comp">[<span class="citeproc-not-found" data-reference-id="fig:geno-comp"><strong>???</strong></span>]</span> shows the results of our analysis. Depending on the clade, the <em>cactus graph</em> reaches either a substantially higher SV genotyping recall than the <em>construct graph</em> (S. paradoxus) or a substantially lower recall (S. cerevisiae).</p>
-<h2 id="methods">Methods</h2>
-<h2 id="discussion">Discussion</h2>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs">
