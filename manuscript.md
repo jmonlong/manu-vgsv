@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-11'
+date-meta: '2019-02-12'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/95382fc581a0946f77f1c663fc8f109a5b5e1f4c/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/3018cafab8688f4cde4ff693da904f92b5af95e6/))
 was automatically generated
-from [jmonlong/manu-vgsv@95382fc](https://github.com/jmonlong/manu-vgsv/tree/95382fc581a0946f77f1c663fc8f109a5b5e1f4c)
-on February 11, 2019.
+from [jmonlong/manu-vgsv@3018caf](https://github.com/jmonlong/manu-vgsv/tree/3018cafab8688f4cde4ff693da904f92b5af95e6)
+on February 12, 2019.
 </em></small>
 
 ## Authors
@@ -137,10 +137,12 @@ We used this set to construct the *construct graph*.
 The second graph (in the following called *cactus graph*) was derived from a multiple genome alignment of all 12 strains using our Cactus tool [@1FgS53pXi].
 While the *construct graph* is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.
 
-![**Mappability comparison.** The fraction of reads mapped (with mapping quality > 0) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/mapping_comparison_all.png){#fig:mapping-comp width=80%}
+![**Mapping quality comparison.** The fraction of reads mapped (with different mapping quality thresholds) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-quality.svg){#fig:mapping-qual-comp width=80%}
+
+![**Mapping identity comparison.** The fraction of reads mapped (with different percent identity thresholds) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-identity.svg){#fig:mapping-id-comp width=80%}
 
 In a first step, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains.
-When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the *cactus graph* than to the *construct graph* (see Fig. @fig:mapping-comp).
+When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the *cactus graph* than to the *construct graph* (see Fig. @fig:mapping-qual-comp).
 Only for the reference strain S.c. S288C, both graphs exhibited similar mappability.
 This suggests that not the higher sequence content in the *cactus graph*  alone (XX Mb compared to XX Mb in the *construct graph*) drives the improvement in mappability.
 Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the *cactus graph* over the *construct graph*.
