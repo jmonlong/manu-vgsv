@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-12'
+date-meta: '2019-02-13'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/3018cafab8688f4cde4ff693da904f92b5af95e6/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/becc8881f99c9503975d4230a5d8387b9db2d025/))
 was automatically generated
-from [jmonlong/manu-vgsv@3018caf](https://github.com/jmonlong/manu-vgsv/tree/3018cafab8688f4cde4ff693da904f92b5af95e6)
-on February 12, 2019.
+from [jmonlong/manu-vgsv@becc888](https://github.com/jmonlong/manu-vgsv/tree/becc8881f99c9503975d4230a5d8387b9db2d025)
+on February 13, 2019.
 </em></small>
 
 ## Authors
@@ -98,7 +98,7 @@ vg was also more robust to errors around the breakpoints, performing almost as w
 
 ![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon}
 
-![**Simulation experiment**. For each method, depth and input VCF (with/without erros), the deciles of the call qualities was used as threshold and the maximum F1 is reported on the y-axis.](images/simerror.svg){#fig:sim width=80%}
+![**Simulation experiment**. For each experiment (method, depth and input VCF with/without erros), the deciles of the call qualities were used as threshold and the maximum F1 is reported on the y-axis.](images/simerror.svg){#fig:sim width=80%}
 
 ### HGSVC
 
