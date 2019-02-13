@@ -55,9 +55,9 @@ eval.df %>% ungroup %>%
 dev.off()
 
 ## Precision recall curve for 3x
-## eval.pr %>% filter(depth==3) %>% arrange(qual) %>% 
+## eval.pr %>% filter(depth==1, graph=='truth') %>% arrange(qual) %>% 
 ##   ggplot(aes(x=recall, y=precision, color=method)) +
 ##   geom_path() +
 ##   geom_point() +
-##   facet_grid(type~graph) +
+##   facet_grid(type~method) +
 ##   theme_bw()
