@@ -1,4 +1,7 @@
 library(ggplot2)
+library(dplyr)
+library(ggrepel)
+library(knitr)
 
 ## Function to read PR files and merge data adding a 'label' column
 readEval <- function(files, methods, regions=NULL){
@@ -23,15 +26,21 @@ readEval <- function(files, methods, regions=NULL){
 eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-construct-clip-prcurve.tsv',
                              'sim-hgsvc-bayestyper-prcurve.tsv',
-                             'sim-hgsvc-bayestyper-clip-prcurve.tsv'),
-                   methods = c('vg-construct', 'vg-construct',
-                              'BayesTyper', 'BayesTyper'),
-                   regions=c('all', 'non-repeat', 'all', 'non-repeat'))
+                             'sim-hgsvc-bayestyper-clip-prcurve.tsv',
+                             'sim-hgsvc-delly-prcurve.tsv',
+                             'sim-hgsvc-delly-clip-prcurve.tsv'),
+                   methods = rep(c('vg-construct', 'BayesTyper', 'Delly'), each=2),
+                   regions=rep(c('all', 'non-repeat'), 3))
+
+label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 svg('hgsvc-sim.svg', 8, 4)
+
 ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   geom_point(size=.8) +
+  ## geom_label_repel(aes(label=method), data=label.df) + 
+  geom_point(size=3, data=label.df) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
@@ -39,22 +48,32 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   scale_y_continuous(breaks=seq(0,1,.2), limits=0:1) +
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_brewer(palette='Set1')
+
 dev.off()
 
+## Print Markdown table
+label.df %>% select(region, method, everything()) %>% arrange(region, method) %>%
+  kable(digits=3, format.args=list(big.mark=','))
 
 ## Real reads
 eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                              'real-hgsvc-construct-clip-prcurve.tsv',
                              'real-hgsvc-bayestyper-prcurve.tsv',
-                             'real-hgsvc-bayestyper-clip-prcurve.tsv'),
-                   methods = c('vg-construct', 'vg-construct',
-                              'BayesTyper', 'BayesTyper'),
-                   regions=c('all', 'non-repeat', 'all', 'non-repeat'))
+                             'real-hgsvc-bayestyper-clip-prcurve.tsv',
+                             'real-hgsvc-delly-prcurve.tsv',
+                             'real-hgsvc-delly-clip-prcurve.tsv'),
+                   methods = rep(c('vg-construct', 'BayesTyper', 'Delly'), each=2),
+                   regions=rep(c('all', 'non-repeat'), 3))
+
+label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 svg('hgsvc-real.svg', 8, 4)
+
 ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   geom_point(size=.8) +
+  ## geom_label_repel(aes(label=method), data=label.df) + 
+  geom_point(size=3, data=label.df) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
@@ -62,4 +81,9 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   scale_y_continuous(breaks=seq(0,1,.2), limits=0:1) +
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_brewer(palette='Set1')
+
 dev.off()
+
+## Print Markdown table
+label.df %>% select(region, method, everything()) %>% arrange(region, method) %>%
+  kable(digits=3, format.args=list(big.mark=','))
