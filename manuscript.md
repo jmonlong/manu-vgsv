@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/becc8881f99c9503975d4230a5d8387b9db2d025/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/e503b6a8105e2e9b81bd689aa91d22272b333a09/))
 was automatically generated
-from [jmonlong/manu-vgsv@becc888](https://github.com/jmonlong/manu-vgsv/tree/becc8881f99c9503975d4230a5d8387b9db2d025)
+from [jmonlong/manu-vgsv@e503b6a](https://github.com/jmonlong/manu-vgsv/tree/e503b6a8105e2e9b81bd689aa91d22272b333a09)
 on February 13, 2019.
 </em></small>
 
