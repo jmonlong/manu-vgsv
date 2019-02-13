@@ -27,10 +27,12 @@ eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-construct-clip-prcurve.tsv',
                              'sim-hgsvc-bayestyper-prcurve.tsv',
                              'sim-hgsvc-bayestyper-clip-prcurve.tsv',
+                             'sim-hgsvc-svtyper-prcurve.tsv',
+                             'sim-hgsvc-svtyper-clip-prcurve.tsv',
                              'sim-hgsvc-delly-prcurve.tsv',
                              'sim-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'Delly'), each=2),
-                   regions=rep(c('all', 'non-repeat'), 3))
+                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   regions=rep(c('all', 'non-repeat'), 4))
 
 label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
@@ -60,10 +62,12 @@ eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                              'real-hgsvc-construct-clip-prcurve.tsv',
                              'real-hgsvc-bayestyper-prcurve.tsv',
                              'real-hgsvc-bayestyper-clip-prcurve.tsv',
+                             'real-hgsvc-svtyper-prcurve.tsv',
+                             'real-hgsvc-svtyper-clip-prcurve.tsv',
                              'real-hgsvc-delly-prcurve.tsv',
                              'real-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'Delly'), each=2),
-                   regions=rep(c('all', 'non-repeat'), 3))
+                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   regions=rep(c('all', 'non-repeat'), 4))
 
 label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
