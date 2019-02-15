@@ -47,7 +47,7 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
   scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  scale_y_continuous(breaks=seq(0,1,.2), limits=0:1) +
+  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_brewer(palette='Set1')
 
@@ -82,7 +82,7 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
   scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  scale_y_continuous(breaks=seq(0,1,.2), limits=0:1) +
+  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_brewer(palette='Set1')
 
