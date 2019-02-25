@@ -8,4 +8,5 @@ Rscript hgsvc-figures.R
 Rscript yeast-figures.R
 
 rsync -v *.svg ../content/images/
+rsync -v figures/*.svg ../content/images/
 ```
