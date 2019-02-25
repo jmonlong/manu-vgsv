@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/a66c66ce1a062852c6db98d11fa9a908d47a6c92/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/fddfb3035327cb1aa0951223f2a82bbe433a71dd/))
 was automatically generated
-from [jmonlong/manu-vgsv@a66c66c](https://github.com/jmonlong/manu-vgsv/tree/a66c66ce1a062852c6db98d11fa9a908d47a6c92)
+from [jmonlong/manu-vgsv@fddfb30](https://github.com/jmonlong/manu-vgsv/tree/fddfb3035327cb1aa0951223f2a82bbe433a71dd)
 on February 25, 2019.
 </em></small>
 
@@ -90,11 +90,12 @@ For example SMRT-SV was designed to genotype SVs identified on PacBio reads[@rs7
 ### Structural variation in vg
 
 In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure {@fig:cartoon}).
-As a proof-of-concept we simulated genomes and SVs of varying sizes.
+As a proof-of-concept we simulated genomes and SVs with a size distribution matching real SVs[@vQTymKCj].
 Some errors were added at the breakpoints to investigate their effect on genotyping.
-In all simulations, vg performed better than SVtyper[@AltPnocw] and Delly[@nLvQCjXU] (Figure {@fig:sim}).
-The recall was particularly higher than other methods at low sequencing depth.
-vg was also more robust to errors around the breakpoints, performing almost as well as in the absence of errors.
+In all simulations, vg performed as well or better than SVtyper[@AltPnocw] and Delly[@nLvQCjXU] (Figure {@fig:sim}).
+Overall, vg was more robust to errors around the breakpoints.
+For insertions, vg performed almost as well as in the presence of errors in contrast to Delly and BayesTyper whose performance dropped significantly.
+For deletions, the F1 dropped for all methods but remained high for vg and SVtyper.
 
 ![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon}
 
@@ -121,6 +122,10 @@ When restricting the comparisons to regions not identified as tandem repeats or 
 
 Figure {@fig:hgsvc-real}. 
 Tables {@tbl:hgsvc-real} and {@tbl:hgsvc-real-nonrepeat} for results over the genome or when restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser.
+
+The input SVs could also be derived from short-reads. 
+For example, SVs were first discovered by Manta(REF) from Illumina reads and then genotyped.
+For BayesTyper, the precision drops for insertions while the recall increases for deletions (Figure {@fig:hgsvc-real-manta}).
 
 
  
@@ -265,6 +270,10 @@ Table: HGSVC experiment using real reads. {#tbl:hgsvc-real}
 |                     | DEL   | 392   | 471         | 161   | 1480  | 0.7453    | 0.2414 | 0.3647 |
 
 Table: HGSVC experiment using real reads and restricting the comparisons to non-repeat regions. {#tbl:hgsvc-real-nonrepeat}
+
+---
+
+![**HGSVC real reads**. The genotypers were run using either SVs from the HGSVC catalog (PacBio) or SVs discovered from short-reads using Manta](images/hgsvc-real-manta.svg){#fig:hgsvc-real-manta width=80%}
 
 
 ## References {.page_break_before}
