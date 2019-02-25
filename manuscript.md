@@ -21,9 +21,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/fddfb3035327cb1aa0951223f2a82bbe433a71dd/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/9f9b98b831f8aa17190d220b468e7e62ebe4d5ab/))
 was automatically generated
-from [jmonlong/manu-vgsv@fddfb30](https://github.com/jmonlong/manu-vgsv/tree/fddfb3035327cb1aa0951223f2a82bbe433a71dd)
+from [jmonlong/manu-vgsv@9f9b98b](https://github.com/jmonlong/manu-vgsv/tree/9f9b98b831f8aa17190d220b468e7e62ebe4d5ab)
 on February 25, 2019.
 </em></small>
 
@@ -142,28 +142,40 @@ We used this set to construct the *construct graph*.
 The second graph (in the following called *cactus graph*) was derived from a multiple genome alignment of all 12 strains using our Cactus tool [@1FgS53pXi].
 While the *construct graph* is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.
 
-![**Mapping quality comparison.** The fraction of reads mapped (with different mapping quality thresholds) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-quality.svg){#fig:mapping-qual-comp width=80%}
-
-![**Mapping identity comparison.** The fraction of reads mapped (with different percent identity thresholds) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-identity.svg){#fig:mapping-id-comp width=80%}
+![**Mapping quality comparison.** The fraction of reads mapped (stratified by mapping quality threshold) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-quality.svg){#fig:mapping-qual-comp width=80%}
 
 In a first step, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains.
-When mapping short Illumina reads from the 12 strains to both graphs, we indeed observed a higher fraction of reads mapped to the *cactus graph* than to the *construct graph* (see Fig. @fig:mapping-qual-comp).
+Fig. @fig:mapping-qual-comp shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the *cactus graph* and to the *construct graph*.
+Generally, more reads were mapped to the *cactus graph* than to the *construct graph* regardless of the chosen mapping quality threshold.
 Only for the reference strain S.c. S288C, both graphs exhibited similar mappability.
 This suggests that not the higher sequence content in the *cactus graph*  alone (XX Mb compared to XX Mb in the *construct graph*) drives the improvement in mappability.
 Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the *cactus graph* over the *construct graph*.
-Consequently. the gap is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.
+Consequently. the benefit of the *cactus graph* is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.
 
+![**Mapping identity comparison.** The fraction of reads mapped (stratified by percent identity threshold) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-identity.svg){#fig:mapping-id-comp width=80%}
 
-![**SV genotyping comparison.** SV genotype recall from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/yeast-recall.svg){#fig:geno-comp-recall width=80%}
+When we explored the mapping identity of the short reads on the graphs, we observed a similar trend (see Fig. @fig:mapping-id-comp).
+For strains in the S. paradoxus clade, the *cactus graph* enabled substantially more mappings with high percent identity than the *construct graph*.
+With strains in the S. cerevisiae clade, the difference was smaller, at least for a percent identity threshold up to 90%.
+When comparing read fractions with perfect identity (i.e. percent identity threshold = 100%), the *cactus graph* clearly outperforms the *construct graph* on 11 out of 12 samples.
+The only exception again is the reference strain S288C.
 
-![**SV genotyping comparison.** SV genotype precision from the *cactus graph* (y-axis) and *construct graph* (x-axis) are compared. Colors and shapes represent the 12 strains and two clades, respectively](images/yeast-precision.svg){#fig:geno-comp-precision width=80%}
+![**SV genotyping comparison.** Average mapping identity of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-identity.svg){#fig:geno-comp-identity width=80%}
 
 Next, we compared the SV genotype performance of both graphs.
-To facilitate a fair evaluation of genotype performance, we combined all SVs that were detected by at least two of the three SV callers (Assemblytics, AsmVar and paftools) into a truth set.
-This truth set is a subset of the SV set used for construction of the *construct graph* which is important because only variants already present in the graph can be genotyped.
+We mapped short reads from the 11 non-reference strains to both graphs and called variants using vg's variant calling module.
+To compare the callsets from both graphs, we generated a sample graph for each callset using the reference genome and the callset.
+Each sample graph is a graph representation of the respective callset.
+If a given callset is correct, we would expect that reads from the same sample can be mapped confidently and with high identity to the corresponding sample graph.
+Therefore, we compared the average mapping identity of the short reads on both types of sample graphs (see Figure {@fig:geno-comp-identity}).
+Similar to the results of our mapping analysis above, the *cactus graph* clearly outperformed the *construct graph* for strains in the S. paradoxus clade.
+With strains in the S. cerevisiae clade, both graphs were on a par.
 
-Figure {@fig:geno-comp-recall} and {@fig:geno-comp-precision} shows the results of our analysis. Depending on the clade, the *cactus graph* reaches either a substantially higher SV genotyping recall than the *construct graph* (S. paradoxus) or a substantially lower recall (S. cerevisiae).
+![**SV genotyping comparison.** Average mapping quality of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-quality.svg){#fig:geno-comp-quality width=80%}
 
+![**SV genotyping comparison.** Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-score.svg){#fig:geno-comp-score width=80%}
+
+This trend was confirmed when we looked at two our measures, average mapping quality and average alignment score (see Figures {@fig:geno-comp-quality} and {@fig:geno-comp-score}).
 
 
 
