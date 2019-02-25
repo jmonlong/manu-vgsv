@@ -103,31 +103,31 @@ label.df %>% select(region, method, everything()) %>% arrange(region, method) %>
 
 
 
-## ## SVs from PacBio vs SVs from short-reads (Manta)
-## eval.df = readEval(files = c('real-hgsvc-bayestyper-prcurve.tsv',
-##                              'real-hgsvc-bayestyper-clip-prcurve.tsv',
-##                              'real-hgsvc-bayestyper-manta-prcurve.tsv',
-##                              'real-hgsvc-bayestyper-manta-clip-prcurve.tsv'),
-##                    methods = rep(c('BayesTyper', 'BayesTyper-Manta'), each=2),
-##                    regions=rep(c('all', 'non-repeat'), 2))
-## ## eval.df$method = factor(eval.df$method, levels=names(pal.tools))
+## SVs from PacBio vs SVs from short-reads (Manta)
+eval.df = readEval(files = c('real-hgsvc-bayestyper-prcurve.tsv',
+                             'real-hgsvc-bayestyper-clip-prcurve.tsv',
+                             'real-hgsvc-bayestyper-manta-prcurve.tsv',
+                             'real-hgsvc-bayestyper-manta-clip-prcurve.tsv'),
+                   methods = rep(c('BayesTyper', 'BayesTyper-Manta'), each=2),
+                   regions=rep(c('all', 'non-repeat'), 2))
+## eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
-## label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
+label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-## svg('hgsvc-real-manta.svg', 8, 4)
+svg('hgsvc-real-manta.svg', 8, 4)
 
-## ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
-##   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-##   geom_point(size=.8) +
-##   ## geom_label_repel(aes(label=method), data=label.df) + 
-##   geom_point(size=3, data=label.df) + 
-##   theme_bw() +
-##   facet_grid(.~type) +
-##   theme(legend.position='bottom') +
-##   scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-##   scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-##   scale_linetype_manual(values=c(4,1)) + 
-##   scale_colour_brewer(palette='Set1')
+ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
+  geom_path(aes(linetype=region), size=1, alpha=.8) + 
+  geom_point(size=.8) +
+  ## geom_label_repel(aes(label=method), data=label.df) + 
+  geom_point(size=3, data=label.df) + 
+  theme_bw() +
+  facet_grid(.~type) +
+  theme(legend.position='bottom') +
+  scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
+  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
+  scale_linetype_manual(values=c(4,1)) + 
+  scale_colour_brewer(palette='Set1')
 
-## dev.off()
+dev.off()
 
