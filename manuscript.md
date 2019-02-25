@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-19'
+date-meta: '2019-02-25'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/369d14a6df89914291450da80ba98544901ea52a/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/a66c66ce1a062852c6db98d11fa9a908d47a6c92/))
 was automatically generated
-from [jmonlong/manu-vgsv@369d14a](https://github.com/jmonlong/manu-vgsv/tree/369d14a6df89914291450da80ba98544901ea52a)
-on February 19, 2019.
+from [jmonlong/manu-vgsv@a66c66c](https://github.com/jmonlong/manu-vgsv/tree/a66c66ce1a062852c6db98d11fa9a908d47a6c92)
+on February 25, 2019.
 </em></small>
 
 ## Authors
