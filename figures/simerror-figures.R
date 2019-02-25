@@ -2,9 +2,11 @@ library(ggplot2)
 library(dplyr)
 library(magrittr)
 
+source('colors.R')
+methods.rename = c('toilvg'='vg-construct', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
+
 eval.pr = read.table('simerror-prcurve.tsv', as.is=TRUE, header=TRUE)
-methods = c('toilvg', 'svtyper', 'delly', 'bayestyper')
-eval.pr$method = factor(eval.pr$method, levels=methods, labels=c('vg', 'svtyper', 'delly', 'bayestyper'))
+eval.pr$method = factor(methods.rename[eval.pr$method], levels=names(pal.tools))
 
 ## Merge results across the three samples
 eval.pr = eval.pr %>% group_by(method, graph, depth, type, qual) %>%
@@ -65,8 +67,7 @@ dev.off()
 
 ## Small SVs (<200bp)
 eval.pr = read.table('simerror-max200bp-prcurve.tsv', as.is=TRUE, header=TRUE)
-methods = c('toilvg', 'svtyper', 'delly', 'bayestyper')
-eval.pr$method = factor(eval.pr$method, levels=methods, labels=c('vg', 'svtyper', 'delly', 'bayestyper'))
+eval.pr$method = factor(methods.rename[eval.pr$method], levels=names(pal.tools))
 
 ## Merge results across the three samples
 eval.pr = eval.pr %>% group_by(method, graph, depth, type, qual) %>%
