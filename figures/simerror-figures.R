@@ -5,7 +5,7 @@ library(magrittr)
 source('colors.R')
 methods.rename = c('toilvg'='vg-construct', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
 
-eval.pr = read.table('simerror-prcurve.tsv', as.is=TRUE, header=TRUE)
+eval.pr = read.table('data/simerror-prcurve.tsv', as.is=TRUE, header=TRUE)
 eval.pr$method = factor(methods.rename[eval.pr$method], levels=names(pal.tools))
 
 ## Merge results across the three samples
@@ -25,7 +25,7 @@ dp.lvls = paste(rep(unique(eval.df$depth), each=nlevels(eval.df$method)),
                 levels(eval.df$method))
 eval.df$dp = factor(paste(eval.df$depth, eval.df$method), levels=dp.lvls)
 
-svg('simerror.svg', 8, 4)
+pdf('pdf/simerror.pdf', 8, 4)
 
 ## ggplot(eval.df, aes(x=factor(depth), y=F1, colour=method, shape=graph)) +
 ##   geom_point(aes(group=method), position=position_dodge(.5)) +
@@ -66,7 +66,7 @@ dev.off()
 
 
 ## Small SVs (<200bp)
-eval.pr = read.table('simerror-max200bp-prcurve.tsv', as.is=TRUE, header=TRUE)
+eval.pr = read.table('data/simerror-max200bp-prcurve.tsv', as.is=TRUE, header=TRUE)
 eval.pr$method = factor(methods.rename[eval.pr$method], levels=names(pal.tools))
 
 ## Merge results across the three samples
@@ -86,7 +86,7 @@ dp.lvls = paste(rep(unique(eval.df$depth), each=nlevels(eval.df$method)),
                 levels(eval.df$method))
 eval.df$dp = factor(paste(eval.df$depth, eval.df$method), levels=dp.lvls)
 
-svg('simerror-max200bp.svg', 8, 4)
+pdf('pdf/simerror-max200bp.pdf', 8, 4)
 
 eval.df %>% ungroup %>%
   mutate(graph=ifelse(graph=='truth', 'true SVs in VCF', 'errors in VCF'),
