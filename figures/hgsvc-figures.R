@@ -10,7 +10,7 @@ readEval <- function(files, methods, regions=NULL){
     regions = rep('', length(methods))
   }
   eval.df = lapply(1:length(files), function(ii){
-    df = read.table(files[ii], as.is=TRUE, header=TRUE)
+    df = read.table(paste0('data/', files[ii]), as.is=TRUE, header=TRUE)
     df$method = methods[ii]
     df$region = regions[ii]
     df
@@ -41,7 +41,7 @@ eval.df = subset(eval.df, type!='Total' | method!='svtyper')
 
 label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-svg('hgsvc-sim.svg', 8, 4)
+pdf('pdf/hgsvc-sim.pdf', 8, 4)
 
 ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
@@ -51,8 +51,8 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
-  scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
+  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
+  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
   scale_linetype_manual(values=c(4,1)) + 
   scale_colour_manual(values=pal.tools)
 
@@ -80,7 +80,7 @@ eval.df = subset(eval.df, type!='Total' | method!='svtyper')
 
 label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-svg('hgsvc-real.svg', 8, 4)
+pdf('pdf/hgsvc-real.pdf', 8, 4)
 
 ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
@@ -90,8 +90,8 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
-  scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
+  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
+  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
   scale_linetype_manual(values=c(4,1)) + 
   scale_colour_manual(values=pal.tools)
 
@@ -114,7 +114,7 @@ eval.df = readEval(files = c('real-hgsvc-bayestyper-prcurve.tsv',
 
 label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-svg('hgsvc-real-manta.svg', 8, 4)
+pdf('pdf/hgsvc-real-manta.pdf', 8, 4)
 
 ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
@@ -124,8 +124,8 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
-  scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
+  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
+  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
   scale_linetype_manual(values=c(4,1)) + 
   scale_colour_brewer(palette='Set1')
 
