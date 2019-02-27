@@ -4,7 +4,7 @@ author-meta:
 - David Heller
 - Jean Monlong
 - Benedict Paten
-date-meta: '2019-02-25'
+date-meta: '2019-02-27'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +21,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/98c940ff0b5fcadd6635ebade75a749235524dd0/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/2d49ec7594383994d694c9fa986317f34f35e4b7/))
 was automatically generated
-from [jmonlong/manu-vgsv@98c940f](https://github.com/jmonlong/manu-vgsv/tree/98c940ff0b5fcadd6635ebade75a749235524dd0)
-on February 25, 2019.
+from [jmonlong/manu-vgsv@2d49ec7](https://github.com/jmonlong/manu-vgsv/tree/2d49ec7594383994d694c9fa986317f34f35e4b7)
+on February 27, 2019.
 </em></small>
 
 ## Authors
@@ -89,17 +89,18 @@ For example SMRT-SV was designed to genotype SVs identified on PacBio reads[@rs7
 
 ### Structural variation in vg
 
-In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure {@fig:cartoon}).
+In addition to SNV and short indels, vg can handle large deletions and insertions (and inversion?) (Figure {@fig:1}a).
 As a proof-of-concept we simulated genomes and SVs with a size distribution matching real SVs[@vQTymKCj].
 Some errors were added at the breakpoints to investigate their effect on genotyping.
-In all simulations, vg performed as well or better than SVtyper[@AltPnocw] and Delly[@nLvQCjXU] (Figure {@fig:sim}).
+In all simulations, vg performed as well or better than SVtyper[@AltPnocw] and Delly[@nLvQCjXU] (Figure {@fig:1}b).
 Overall, vg was more robust to errors around the breakpoints.
 For insertions, vg performed almost as well as in the presence of errors in contrast to Delly and BayesTyper whose performance dropped significantly.
 For deletions, the F1 dropped for all methods but remained high for vg and SVtyper.
 
-![**Large deletions and insertions in variation graphs**](images/VGSVcartoon.jpg){#fig:cartoon}
-
-![**Simulation experiment**. For each experiment (method, depth and input VCF with/without erros), the deciles of the call qualities were used as threshold and the maximum F1 is reported on the y-axis.](images/simerror.svg){#fig:sim width=80%}
+![**Structural variation in vg.** 
+a) Adding large deletions and insertions in a variation graph. 
+b) Simulation experiment. For each experiment (method, depth and input VCF with/without erros), the deciles of the call qualities were used as threshold and the maximum F1 is reported on the y-axis.
+](images/panel1.png){#fig:1}
 
 ### HGSVC
 
@@ -109,18 +110,19 @@ Chaisson et al.[@vQTymKCj] provide a high-quality SV catalog of three samples, o
 
 #### (Whole-genome) Simulation
 
-The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim.  The reads were used to call VCFs then compared back to the original HGSVC calls (Figure {@fig:hgsvc-sim} and Table {@tbl:hgsvc-sim}).
+The phasing information in the HGSVC VCF was used to extract two haplotypes for sample HG00514, and 30X pairend-end reads were simulated using vg sim.  The reads were used to call VCFs then compared back to the original HGSVC calls (Figure {@fig:2}a and Table {@tbl:hgsvc-sim}).
 
 When restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser (Table {@tbl:hgsvc-sim-nonrepeat}).
 
 
-![**HGSVC simulated reads**. ](images/hgsvc-sim.svg){#fig:hgsvc-sim width=80%}
-
-![**HGSVC real reads**. ](images/hgsvc-real.svg){#fig:hgsvc-real width=80%}
+![**Structural variants from the HGSVC dataset**. 
+a) Simulated reads.
+b) Real Illumina reads.
+](images/panel2.png){#fig:2}
 
 #### (Whole-genome) Real reads
 
-Figure {@fig:hgsvc-real}. 
+Figure {@fig:2}b. 
 Tables {@tbl:hgsvc-real} and {@tbl:hgsvc-real-nonrepeat} for results over the genome or when restricting the comparisons to regions not identified as tandem repeats or segmental duplications in the Genome Browser.
 
 The input SVs could also be derived from short-reads. 
@@ -142,40 +144,42 @@ We used this set to construct the *construct graph*.
 The second graph (in the following called *cactus graph*) was derived from a multiple genome alignment of all 12 strains using our Cactus tool [@1FgS53pXi].
 While the *construct graph* is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.
 
-![**Mapping quality comparison.** The fraction of reads mapped (stratified by mapping quality threshold) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-quality.svg){#fig:mapping-qual-comp width=80%}
+![**Mapping comparison.** 
+The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared.
+a) Stratified by mapping quality threshold.
+b) Stratified by percent identity threshold.
+](images/panel3.png){#fig:3}
 
 In a first step, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains.
-Fig. @fig:mapping-qual-comp shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the *cactus graph* and to the *construct graph*.
+Fig. {@fig:3}a shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the *cactus graph* and to the *construct graph*.
 Generally, more reads were mapped to the *cactus graph* than to the *construct graph* regardless of the chosen mapping quality threshold.
 Only for the reference strain S.c. S288C, both graphs exhibited similar mappability.
 This suggests that not the higher sequence content in the *cactus graph*  alone (XX Mb compared to XX Mb in the *construct graph*) drives the improvement in mappability.
 Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the *cactus graph* over the *construct graph*.
 Consequently. the benefit of the *cactus graph* is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.
 
-![**Mapping identity comparison.** The fraction of reads mapped (stratified by percent identity threshold) to the cactus graph (y-axis) and the construct graph (x-axis) are compared](images/yeast-mapping-identity.svg){#fig:mapping-id-comp width=80%}
-
-When we explored the mapping identity of the short reads on the graphs, we observed a similar trend (see Fig. @fig:mapping-id-comp).
+When we explored the mapping identity of the short reads on the graphs, we observed a similar trend (see Fig. {@fig:3}b).
 For strains in the S. paradoxus clade, the *cactus graph* enabled substantially more mappings with high percent identity than the *construct graph*.
 With strains in the S. cerevisiae clade, the difference was smaller, at least for a percent identity threshold up to 90%.
 When comparing read fractions with perfect identity (i.e. percent identity threshold = 100%), the *cactus graph* clearly outperforms the *construct graph* on 11 out of 12 samples.
 The only exception again is the reference strain S288C.
 
-![**SV genotyping comparison.** Average mapping identity of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-identity.svg){#fig:geno-comp-identity width=80%}
+![**SV genotyping comparison.** 
+a) Average mapping quality of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis).
+b) Average mapping identity of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis). 
+Colors and shapes represent the 11 non-reference strains and two clades, respectively
+](images/panel4.png){#fig:4}
 
 Next, we compared the SV genotype performance of both graphs.
 We mapped short reads from the 11 non-reference strains to both graphs and called variants using vg's variant calling module.
 To compare the callsets from both graphs, we generated a sample graph for each callset using the reference genome and the callset.
 Each sample graph is a graph representation of the respective callset.
 If a given callset is correct, we would expect that reads from the same sample can be mapped confidently and with high identity to the corresponding sample graph.
-Therefore, we compared the average mapping identity of the short reads on both types of sample graphs (see Figure {@fig:geno-comp-identity}).
+Therefore, we compared the average mapping identity of the short reads on both types of sample graphs (see Figure {@fig:4}b).
 Similar to the results of our mapping analysis above, the *cactus graph* clearly outperformed the *construct graph* for strains in the S. paradoxus clade.
 With strains in the S. cerevisiae clade, both graphs were on a par.
 
-![**SV genotyping comparison.** Average mapping quality of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-quality.svg){#fig:geno-comp-quality width=80%}
-
-![**SV genotyping comparison.** Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively](images/yeast-genotyping-score.svg){#fig:geno-comp-score width=80%}
-
-This trend was confirmed when we looked at two our measures, average mapping quality and average alignment score (see Figures {@fig:geno-comp-quality} and {@fig:geno-comp-score}).
+This trend was confirmed when we looked at two our measures, average mapping quality and average alignment score (see Figures {@fig:4}a and {@fig:geno-comp-score}).
 
 
 
@@ -285,7 +289,14 @@ Table: HGSVC experiment using real reads and restricting the comparisons to non-
 
 ---
 
-![**HGSVC real reads**. The genotypers were run using either SVs from the HGSVC catalog (PacBio) or SVs discovered from short-reads using Manta](images/hgsvc-real-manta.svg){#fig:hgsvc-real-manta width=80%}
+![**HGSVC real reads**. 
+The genotypers were run using either SVs from the HGSVC catalog (PacBio) or SVs discovered from short-reads using Manta
+](images/hgsvc-real-manta.png){#fig:hgsvc-real-manta tag="S1"}
+
+![**SV genotyping comparison.** 
+Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. 
+Colors and shapes represent the 11 non-reference strains and two clades, respectively
+](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S2"}
 
 
 ## References {.page_break_before}
