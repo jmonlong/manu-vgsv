@@ -8,6 +8,8 @@ Depends on R, LaTeX and the following bash commands:  `pdftoppm`, `pdfcrop`
 Rscript simerror-figures.R
 Rscript hgsvc-figures.R
 Rscript yeast-figures.R
+Rscript chmpd-figures.R
+Rscript svpop-figures.R
 
 ## Convert to PNG in png/
 for FILE in pdf/*.pdf
