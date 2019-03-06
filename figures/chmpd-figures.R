@@ -2,8 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(knitr)
-source('colors.R')
-source('hgsvc-figures.R')
+source('colors-functions.R')
 
 ## CHM Pseudodiploid reads (SMRT-SV2 training data from Audano et. al 2019)
 eval.df = readEval(files = c('chmpd-construct-prcurve.tsv',
