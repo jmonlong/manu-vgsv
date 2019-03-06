@@ -2,7 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(magrittr)
 
-source('colors.R')
+source('colors-functions.R')
 methods.rename = c('toilvg'='vg-construct', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
 
 eval.pr = read.table('data/simerror-prcurve.tsv', as.is=TRUE, header=TRUE)

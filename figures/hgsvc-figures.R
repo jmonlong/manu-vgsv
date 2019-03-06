@@ -2,26 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(knitr)
-source('colors.R')
-
-## Function to read PR files and merge data adding a 'label' column
-readEval <- function(files, methods, regions=NULL){
-  if(is.null(regions)){
-    regions = rep('', length(methods))
-  }
-  eval.df = lapply(1:length(files), function(ii){
-    df = read.table(paste0('data/', files[ii]), as.is=TRUE, header=TRUE)
-    df$method = methods[ii]
-    df$region = regions[ii]
-    df
-  })
-  df = do.call(rbind, eval.df)
-  ## order by quality to make sure the lines/paths are correctly drawn
-  df = df[order(df$qual),]
-  df = subset(df, type!='INV' & TP.baseline>5)
-  df$type = factor(df$type, levels=c('Total', 'INS', 'DEL'))
-  df
-}
+source('colors-functions.R')
 
 ## Simulated reads
 eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
@@ -36,6 +17,7 @@ eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
+eval.df = subset(eval.df, type!='INV' & TP.baseline>5)
 ## Remove svtyper from "Total" because it's being penalized by not genotyping insertions
 eval.df = subset(eval.df, type!='Total' | method!='svtyper')
 
@@ -75,6 +57,7 @@ eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
+eval.df = subset(eval.df, type!='INV' & TP.baseline>5)
 ## Remove svtyper from "Total" because it's being penalized by not genotyping insertions
 eval.df = subset(eval.df, type!='Total' | method!='svtyper')
 

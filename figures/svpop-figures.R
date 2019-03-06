@@ -2,8 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(knitr)
-source('colors.R')
-source('hgsvc-figures.R')
+source('colors-functions.R')
 
 ## HG00514 reads, but processed with 15-sample graph of SMRT-SV2 discovery data from Audano et. al 2019
 ## There are no genotypes for this data, but there are a few inversions
