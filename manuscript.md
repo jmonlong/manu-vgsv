@@ -3,8 +3,9 @@ author-meta:
 - Glenn Hickey
 - David Heller
 - Jean Monlong
+- Adam Novak
 - Benedict Paten
-date-meta: '2019-02-27'
+date-meta: '2019-03-06'
 keywords:
 - structural variation
 - pangenome
@@ -21,10 +22,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/2d49ec7594383994d694c9fa986317f34f35e4b7/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/a73fe12b1b3ada7eed4d0a43c3add27c96f1d2eb/))
 was automatically generated
-from [jmonlong/manu-vgsv@2d49ec7](https://github.com/jmonlong/manu-vgsv/tree/2d49ec7594383994d694c9fa986317f34f35e4b7)
-on February 27, 2019.
+from [jmonlong/manu-vgsv@a73fe12](https://github.com/jmonlong/manu-vgsv/tree/a73fe12b1b3ada7eed4d0a43c3add27c96f1d2eb)
+on March 6, 2019.
 </em></small>
 
 ## Authors
@@ -36,6 +37,8 @@ Glenn Hickey<sup>1,☯</sup>,
 David Heller<sup>1,☯</sup>,
 [![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
 Jean Monlong<sup>1,☯</sup>,
+[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+Adam Novak<sup>1</sup>,
 [![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
 Benedict Paten<sup>1,†</sup>
 
@@ -120,6 +123,8 @@ a) Simulated reads.
 b) Real Illumina reads.
 ](images/panel2.png){#fig:2}
 
+Genotyping evaluation results in Fig {@fig:hgsvc-sim-geno}.
+
 #### (Whole-genome) Real reads
 
 Figure {@fig:2}b. 
@@ -129,6 +134,7 @@ The input SVs could also be derived from short-reads.
 For example, SVs were first discovered by Manta(REF) from Illumina reads and then genotyped.
 For BayesTyper, the precision drops for insertions while the recall increases for deletions (Figure {@fig:hgsvc-real-manta}).
 
+Genotyping evaluation results in Fig {@fig:hgsvc-real-geno}.
 
  
 ### Genotyping SV using vg and de novo assemblies
@@ -289,9 +295,11 @@ Table: HGSVC experiment using real reads and restricting the comparisons to non-
 
 ---
 
-![**HGSVC real reads**. 
-The genotypers were run using either SVs from the HGSVC catalog (PacBio) or SVs discovered from short-reads using Manta
-](images/hgsvc-real-manta.png){#fig:hgsvc-real-manta tag="S1"}
+
+![**Structural variants from the HGSVC dataset**. Genotyping evaluation for simulated reads.](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno}
+
+![**Structural variants from the HGSVC dataset**. Genotyping evaluation for real reads.](images/hgsvc-real-geno.png){#fig:hgsvc-real-geno}
+
 
 ![**SV genotyping comparison.** 
 Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. 

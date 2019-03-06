@@ -1,5 +1,5 @@
 {
-  "date": "February 27, 2019",
+  "date": "March 6, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -44,6 +44,18 @@
       ]
     },
     {
+      "name": "Adam Novak",
+      "initials": "AN",
+      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "email": "anovak@soe.ucsc.edu",
+      "affiliations": [
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
+      ],
+      "affiliation_numbers": [
+        1
+      ]
+    },
+    {
       "name": "Benedict Paten",
       "initials": "BP",
       "orcid": "XXXX-XXXX-XXXX-XXXX",
@@ -67,13 +79,13 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "2d49ec7594383994d694c9fa986317f34f35e4b7"
+    "commit": "a73fe12b1b3ada7eed4d0a43c3add27c96f1d2eb"
   },
   "manuscript_stats": {
     "reference_counts": {
       "doi": 22,
       "total": 22
     },
-    "word_count": 3113
+    "word_count": 3123
   }
 }
