@@ -7,8 +7,10 @@ source('colors-functions.R')
 ## HG00514 reads, but processed with 15-sample graph of SMRT-SV2 discovery data from Audano et. al 2019
 ## There are no genotypes for this data, but there are a few inversions
 eval.df = readEval(files = c('svpop-construct-prcurve.tsv',
-                             'svpop-construct-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct'), each=2),
+                             'svpop-construct-clip-prcurve.tsv',
+                             'svpop-smrtsv2-prcurve.tsv',									
+                             'svpop-smrtsv2-clip-prcurve.tsv'),									  
+                   methods = rep(c('vg-construct', 'SMRT-SV2'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
