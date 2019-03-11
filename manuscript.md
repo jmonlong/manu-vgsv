@@ -5,7 +5,7 @@ author-meta:
 - Jean Monlong
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-03-07'
+date-meta: '2019-03-11'
 keywords:
 - structural variation
 - pangenome
@@ -22,10 +22,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/efc7c25412a05e48c2c51ab61f8b20ada8213044/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/8d0fae6f085f6de338efbcf8e9a0cd3a8f3a618f/))
 was automatically generated
-from [jmonlong/manu-vgsv@efc7c25](https://github.com/jmonlong/manu-vgsv/tree/efc7c25412a05e48c2c51ab61f8b20ada8213044)
-on March 7, 2019.
+from [jmonlong/manu-vgsv@8d0fae6](https://github.com/jmonlong/manu-vgsv/tree/8d0fae6f085f6de338efbcf8e9a0cd3a8f3a618f)
+on March 11, 2019.
 </em></small>
 
 ## Authors
