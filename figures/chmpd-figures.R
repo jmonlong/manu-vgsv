@@ -32,8 +32,11 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
 
 dev.off()
 
-## Print Markdown table
-label.df %>% select(region, method, everything()) %>% arrange(region, method) %>%
-  kable(digits=3, format.args=list(big.mark=','))
+## Markdown table
+label.df %>% select(region, method, everything()) %>%
+  arrange(method, region, type) %>%
+  select(method, region, type, everything(), -qual, -TP) %>% 
+  kable(digits=3, format.args=list(big.mark=',')) %>% 
+  cat(file='tables/chmpd.md', sep='\n')
 
 
