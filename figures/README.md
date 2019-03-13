@@ -22,7 +22,7 @@ done
 pdflatex panels.tex
 pdfcrop --margins 10 panels.pdf pdf/panels.pdf
 rm panels.pdf panels.aux panels.log
-for PAN in `seq 1 4`
+for PAN in `seq 1 5`
 do
     pdftoppm -png -f $PAN pdf/panels.pdf -r 300 > png/panel${PAN}.png
 done
