@@ -535,6 +535,268 @@
   },
   {
     "publisher": "Springer Nature",
+    "issue": "7665",
+    "DOI": "10.1038/nature23264",
+    "type": "article-journal",
+    "page": "87-91",
+    "source": "Crossref",
+    "title": "Sequencing and de novo assembly of 150 genomes from Denmark as a population reference",
+    "volume": "548",
+    "author": [
+      {
+        "given": "Lasse",
+        "family": "Maretty"
+      },
+      {
+        "given": "Jacob Malte",
+        "family": "Jensen"
+      },
+      {
+        "given": "Bent",
+        "family": "Petersen"
+      },
+      {
+        "given": "Jonas Andreas",
+        "family": "Sibbesen"
+      },
+      {
+        "given": "Siyang",
+        "family": "Liu"
+      },
+      {
+        "given": "Palle",
+        "family": "Villesen"
+      },
+      {
+        "given": "Laurits",
+        "family": "Skov"
+      },
+      {
+        "given": "Kirstine",
+        "family": "Belling"
+      },
+      {
+        "given": "Christian",
+        "family": "Theil Have"
+      },
+      {
+        "given": "Jose M. G.",
+        "family": "Izarzugaza"
+      },
+      {
+        "given": "Marie",
+        "family": "Grosjean"
+      },
+      {
+        "given": "Jette",
+        "family": "Bork-Jensen"
+      },
+      {
+        "given": "Jakob",
+        "family": "Grove"
+      },
+      {
+        "given": "Thomas D.",
+        "family": "Als"
+      },
+      {
+        "given": "Shujia",
+        "family": "Huang"
+      },
+      {
+        "given": "Yuqi",
+        "family": "Chang"
+      },
+      {
+        "given": "Ruiqi",
+        "family": "Xu"
+      },
+      {
+        "given": "Weijian",
+        "family": "Ye"
+      },
+      {
+        "given": "Junhua",
+        "family": "Rao"
+      },
+      {
+        "given": "Xiaosen",
+        "family": "Guo"
+      },
+      {
+        "given": "Jihua",
+        "family": "Sun"
+      },
+      {
+        "given": "Hongzhi",
+        "family": "Cao"
+      },
+      {
+        "given": "Chen",
+        "family": "Ye"
+      },
+      {
+        "given": "Johan",
+        "family": "van Beusekom"
+      },
+      {
+        "given": "Thomas",
+        "family": "Espeseth"
+      },
+      {
+        "given": "Esben",
+        "family": "Flindt"
+      },
+      {
+        "given": "Rune M.",
+        "family": "Friborg"
+      },
+      {
+        "given": "Anders E.",
+        "family": "Halager"
+      },
+      {
+        "given": "Stephanie",
+        "family": "Le Hellard"
+      },
+      {
+        "given": "Christina M.",
+        "family": "Hultman"
+      },
+      {
+        "given": "Francesco",
+        "family": "Lescai"
+      },
+      {
+        "given": "Shengting",
+        "family": "Li"
+      },
+      {
+        "given": "Ole",
+        "family": "Lund"
+      },
+      {
+        "given": "Peter",
+        "family": "Løngren"
+      },
+      {
+        "given": "Thomas",
+        "family": "Mailund"
+      },
+      {
+        "given": "Maria Luisa",
+        "family": "Matey-Hernandez"
+      },
+      {
+        "given": "Ole",
+        "family": "Mors"
+      },
+      {
+        "given": "Christian N. S.",
+        "family": "Pedersen"
+      },
+      {
+        "given": "Thomas",
+        "family": "Sicheritz-Pontén"
+      },
+      {
+        "given": "Patrick",
+        "family": "Sullivan"
+      },
+      {
+        "given": "Ali",
+        "family": "Syed"
+      },
+      {
+        "given": "David",
+        "family": "Westergaard"
+      },
+      {
+        "given": "Rachita",
+        "family": "Yadav"
+      },
+      {
+        "given": "Ning",
+        "family": "Li"
+      },
+      {
+        "given": "Xun",
+        "family": "Xu"
+      },
+      {
+        "given": "Torben",
+        "family": "Hansen"
+      },
+      {
+        "given": "Anders",
+        "family": "Krogh"
+      },
+      {
+        "given": "Lars",
+        "family": "Bolund"
+      },
+      {
+        "given": "Thorkild I. A.",
+        "family": "Sørensen"
+      },
+      {
+        "given": "Oluf",
+        "family": "Pedersen"
+      },
+      {
+        "given": "Ramneek",
+        "family": "Gupta"
+      },
+      {
+        "given": "Simon",
+        "family": "Rasmussen"
+      },
+      {
+        "given": "Søren",
+        "family": "Besenbacher"
+      },
+      {
+        "given": "Anders D.",
+        "family": "Børglum"
+      },
+      {
+        "given": "Jun",
+        "family": "Wang"
+      },
+      {
+        "given": "Hans",
+        "family": "Eiberg"
+      },
+      {
+        "given": "Karsten",
+        "family": "Kristiansen"
+      },
+      {
+        "given": "Søren",
+        "family": "Brunak"
+      },
+      {
+        "given": "Mikkel Heide",
+        "family": "Schierup"
+      }
+    ],
+    "container-title": "Nature",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          7,
+          26
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gbpnnx",
+    "container-title-short": "Nature",
+    "PMID": "28746312",
+    "id": "pJAv1D8R"
+  },
+  {
+    "publisher": "Springer Nature",
     "issue": "4",
     "DOI": "10.1038/nbt.4060",
     "type": "article-journal",
@@ -1501,6 +1763,48 @@
   },
   {
     "publisher": "Springer Nature",
+    "issue": "2",
+    "DOI": "10.1038/nrg3373",
+    "type": "article-journal",
+    "page": "125-138",
+    "source": "Crossref",
+    "title": "Phenotypic impact of genomic structural variation: insights from and for human disease",
+    "volume": "14",
+    "author": [
+      {
+        "given": "Joachim",
+        "family": "Weischenfeldt"
+      },
+      {
+        "given": "Orsolya",
+        "family": "Symmons"
+      },
+      {
+        "given": "François",
+        "family": "Spitz"
+      },
+      {
+        "given": "Jan O.",
+        "family": "Korbel"
+      }
+    ],
+    "container-title": "Nature Reviews Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          2
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f4nhxh",
+    "container-title-short": "Nat Rev Genet",
+    "PMID": "23329113",
+    "id": "ebc66eBr"
+  },
+  {
+    "publisher": "Springer Nature",
     "issue": "1",
     "DOI": "10.1038/s41467-017-01343-4",
     "type": "article-journal",
@@ -1757,6 +2061,244 @@
     "container-title-short": "Nat Genet",
     "PMID": "30643257",
     "id": "11Jy8B61m"
+  },
+  {
+    "publisher": "Springer Nature",
+    "DOI": "10.1038/sdata.2016.25",
+    "type": "article-journal",
+    "page": "160025",
+    "source": "Crossref",
+    "title": "Extensive sequencing of seven human genomes to characterize benchmark reference materials",
+    "volume": "3",
+    "author": [
+      {
+        "given": "Justin M.",
+        "family": "Zook"
+      },
+      {
+        "given": "David",
+        "family": "Catoe"
+      },
+      {
+        "given": "Jennifer",
+        "family": "McDaniel"
+      },
+      {
+        "given": "Lindsay",
+        "family": "Vang"
+      },
+      {
+        "given": "Noah",
+        "family": "Spies"
+      },
+      {
+        "given": "Arend",
+        "family": "Sidow"
+      },
+      {
+        "given": "Ziming",
+        "family": "Weng"
+      },
+      {
+        "given": "Yuling",
+        "family": "Liu"
+      },
+      {
+        "given": "Christopher E.",
+        "family": "Mason"
+      },
+      {
+        "given": "Noah",
+        "family": "Alexander"
+      },
+      {
+        "given": "Elizabeth",
+        "family": "Henaff"
+      },
+      {
+        "given": "Alexa B.R.",
+        "family": "McIntyre"
+      },
+      {
+        "given": "Dhruva",
+        "family": "Chandramohan"
+      },
+      {
+        "given": "Feng",
+        "family": "Chen"
+      },
+      {
+        "given": "Erich",
+        "family": "Jaeger"
+      },
+      {
+        "given": "Ali",
+        "family": "Moshrefi"
+      },
+      {
+        "given": "Khoa",
+        "family": "Pham"
+      },
+      {
+        "given": "William",
+        "family": "Stedman"
+      },
+      {
+        "given": "Tiffany",
+        "family": "Liang"
+      },
+      {
+        "given": "Michael",
+        "family": "Saghbini"
+      },
+      {
+        "given": "Zeljko",
+        "family": "Dzakula"
+      },
+      {
+        "given": "Alex",
+        "family": "Hastie"
+      },
+      {
+        "given": "Han",
+        "family": "Cao"
+      },
+      {
+        "given": "Gintaras",
+        "family": "Deikus"
+      },
+      {
+        "given": "Eric",
+        "family": "Schadt"
+      },
+      {
+        "given": "Robert",
+        "family": "Sebra"
+      },
+      {
+        "given": "Ali",
+        "family": "Bashir"
+      },
+      {
+        "given": "Rebecca M.",
+        "family": "Truty"
+      },
+      {
+        "given": "Christopher C.",
+        "family": "Chang"
+      },
+      {
+        "given": "Natali",
+        "family": "Gulbahce"
+      },
+      {
+        "given": "Keyan",
+        "family": "Zhao"
+      },
+      {
+        "given": "Srinka",
+        "family": "Ghosh"
+      },
+      {
+        "given": "Fiona",
+        "family": "Hyland"
+      },
+      {
+        "given": "Yutao",
+        "family": "Fu"
+      },
+      {
+        "given": "Mark",
+        "family": "Chaisson"
+      },
+      {
+        "given": "Chunlin",
+        "family": "Xiao"
+      },
+      {
+        "given": "Jonathan",
+        "family": "Trow"
+      },
+      {
+        "given": "Stephen T.",
+        "family": "Sherry"
+      },
+      {
+        "given": "Alexander W.",
+        "family": "Zaranek"
+      },
+      {
+        "given": "Madeleine",
+        "family": "Ball"
+      },
+      {
+        "given": "Jason",
+        "family": "Bobe"
+      },
+      {
+        "given": "Preston",
+        "family": "Estep"
+      },
+      {
+        "given": "George M.",
+        "family": "Church"
+      },
+      {
+        "given": "Patrick",
+        "family": "Marks"
+      },
+      {
+        "given": "Sofia",
+        "family": "Kyriazopoulou-Panagiotopoulou"
+      },
+      {
+        "given": "Grace X.Y.",
+        "family": "Zheng"
+      },
+      {
+        "given": "Michael",
+        "family": "Schnall-Levin"
+      },
+      {
+        "given": "Heather S.",
+        "family": "Ordonez"
+      },
+      {
+        "given": "Patrice A.",
+        "family": "Mudivarti"
+      },
+      {
+        "given": "Kristina",
+        "family": "Giorda"
+      },
+      {
+        "given": "Ying",
+        "family": "Sheng"
+      },
+      {
+        "given": "Karoline Bjarnesdatter",
+        "family": "Rypdal"
+      },
+      {
+        "given": "Marc",
+        "family": "Salit"
+      }
+    ],
+    "container-title": "Scientific Data",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          6,
+          7
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f84nqc",
+    "container-title-short": "Sci. Data",
+    "PMCID": "PMC4896128",
+    "PMID": "27271295",
+    "id": "14neTdqfN"
   },
   {
     "publisher": "Oxford University Press (OUP)",
@@ -2283,6 +2825,138 @@
     },
     "URL": "https://doi.org/gftxhc",
     "id": "vQTymKCj"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:p>Benchmark small variant calls from the Genome in a Bottle Consortium (GIAB) for the CEPH/HapMap genome NA12878 (HG001) have been used extensively for developing, optimizing, and demonstrating performance of sequencing and bioinformatics methods.  Here, we develop a reproducible, cloud-based pipeline to integrate multiple sequencing datasets and form benchmark calls, enabling application to arbitrary human genomes. We use these reproducible methods to form high-confidence calls with respect to GRCh37 and GRCh38 for HG001 and 4 additional broadly-consented genomes from the Personal Genome Project that are available as NIST Reference Materials. These new genomes' broad, open consent with few restrictions on availability of samples and data is enabling a uniquely diverse array of applications.  Our new methods produce 17% more high-confidence SNPs, 176% more indels, and 12% larger regions than our previously published calls.  To demonstrate that these calls can be used for accurate benchmarking, we compare other high-quality callsets to ours (e.g., Illumina Platinum Genomes), and we demonstrate that the majority of discordant calls are errors in the other callsets, We also highlight challenges in interpreting performance metrics when benchmarking against imperfect high-confidence calls. We show that benchmarking tools from the Global Alliance for Genomics and Health can be used with our calls to stratify performance metrics by variant type and genome context and elucidate strengths and weaknesses of a method.</jats:p>",
+    "DOI": "10.1101/281006",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials",
+    "author": [
+      {
+        "given": "Justin",
+        "family": "Zook"
+      },
+      {
+        "given": "Jennifer",
+        "family": "McDaniel"
+      },
+      {
+        "given": "Hemang",
+        "family": "Parikh"
+      },
+      {
+        "given": "Haynes",
+        "family": "Heaton"
+      },
+      {
+        "given": "Sean A",
+        "family": "Irvine"
+      },
+      {
+        "given": "Len",
+        "family": "Trigg"
+      },
+      {
+        "given": "Rebecca",
+        "family": "Truty"
+      },
+      {
+        "given": "Cory Y",
+        "family": "McLean"
+      },
+      {
+        "given": "Francisco M",
+        "family": "De La Vega"
+      },
+      {
+        "given": "Chunlin",
+        "family": "Xiao"
+      },
+      {
+        "given": "Stephen",
+        "family": "Sherry"
+      },
+      {
+        "given": "Marc",
+        "family": "Salit"
+      },
+      {}
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          3,
+          13
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfwsmj",
+    "id": "16GvGhO20"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:p>Background: In recent years, Structural Variation (SV) has been identified as having a pivotal role in causing genetic disease. Nevertheless, the discovery of SVs based on short DNA sequence reads from next-generation DNA sequence methods is still error-prone, suffering from low sensitivity and high false discovery. These shortcomings can be partially overcome with the use of long reads, but the current expense precludes their application for routine clinical diagnostics. Structural Variation genotyping, on the other hand, offers cost-effective application as diagnostic tool in the clinic, with potentially no false positives and low occurrence of false negatives.\nResults: We assess five state- of-the-art SV genotyping software methods that test short read sequence data. These methods are characterized based on their ability to genotype certain SV types and size ranges. Furthermore, we analyze their applicability to parse different VCF file sub-formats, or to rely on specific meta information that is not always at hand. We compare the SV genotyping methods across a range of simulated and real data including SVs that were not found with Illumina data alone. We assess their sensitivity and ability to filter out initial false discovery calls to assess their reliability.\nConclusion: Our results indicate that, although SV genotypers have superior performance to SV callers, there are performance limitations that suggest the need for further innovation.</jats:p>",
+    "DOI": "10.1101/558247",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Evaluation of computational genotyping of Structural Variations for clinical diagnoses.",
+    "author": [
+      {
+        "given": "Varuna",
+        "family": "Chander"
+      },
+      {
+        "given": "Richard A",
+        "family": "Gibbs"
+      },
+      {
+        "given": "Fritz J",
+        "family": "Sedlazeck"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          2,
+          22
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfwf66",
+    "id": "16glGyppX"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:title>Abstract</jats:title><jats:sec><jats:title>Motivation</jats:title><jats:p>Large scale catalogs of common genetic variants (including indels and structural variants) are being created using data from second and third generation whole-genome sequencing technologies. However, the genotyping of these variants in newly sequenced samples is a nontrivial task that requires extensive computational resources. Furthermore, current approaches are mostly limited to only specific types of variants and are generally prone to various errors and ambiguities when genotyping events in repeat regions. Thus we are proposing an ultra-efficient approach for genotyping any type of structural variation that is not limited by the shortcomings and complexities of current mapping-based approaches.</jats:p></jats:sec><jats:sec><jats:title>Results</jats:title><jats:p>Our method Nebula utilizes the changes in the count of <jats:italic>k</jats:italic>-mers to predict the genotype of common structural variations. We have shown that not only Nebula is an order of magnitude faster than mapping based approaches for genotyping deletions and mobile-element insertions, but also has comparable accuracy to state-of-the-art approaches. Furthermore, Nebula is a generic framework not limited to any specific type of event.</jats:p></jats:sec><jats:sec><jats:title>Availability</jats:title><jats:p>Nebula is publicly available at <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"https://github.com/Parsoa/NebulousSerendipity\">https://github.com/Parsoa/NebulousSerendipity</jats:ext-link></jats:p></jats:sec>",
+    "DOI": "10.1101/566620",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Nebula: Ultra-efficient mapping-free structural variant genotyper",
+    "author": [
+      {
+        "given": "Parsoa",
+        "family": "Khorsand"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          3,
+          4
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfwf67",
+    "id": "zRHJDqQ9"
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
