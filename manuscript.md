@@ -22,9 +22,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/e1388679e021f3a230f199994070c36dda10ee0d/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/db02fc6e7b787af68e9be0a49f42d9cba8806ff8/))
 was automatically generated
-from [jmonlong/manu-vgsv@e138867](https://github.com/jmonlong/manu-vgsv/tree/e1388679e021f3a230f199994070c36dda10ee0d)
+from [jmonlong/manu-vgsv@db02fc6](https://github.com/jmonlong/manu-vgsv/tree/db02fc6e7b787af68e9be0a49f42d9cba8806ff8)
 on March 13, 2019.
 </em></small>
 
@@ -390,10 +390,16 @@ Table: SVPOP experiment. Calling evaluation in the HG5014 individual, one of the
 ![**Structural variants from the HGSVC dataset**. Calling evaluation for real reads.](images/hgsvc-real.png){#fig:hgsvc-real tag="S4"}
 
 
+![**Mapping comparison on graphs of five strains.**
+The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared.
+a) Stratified by mapping quality threshold.
+b) Stratified by percent identity threshold.
+](images/panel5.png){#fig:yeast-mapping-four tag="S5"}
+
 ![**SV genotyping comparison.** 
 Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. 
 Colors and shapes represent the 11 non-reference strains and two clades, respectively
-](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S5"}
+](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S6"}
 
 
 ## References {.page_break_before}
