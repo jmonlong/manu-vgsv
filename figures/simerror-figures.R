@@ -1,6 +1,8 @@
 library(ggplot2)
 library(dplyr)
 library(magrittr)
+library(tidyr)
+library(knitr)
 
 source('colors-functions.R')
 
@@ -76,6 +78,14 @@ eval.df %>% ungroup %>%
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
 dev.off()
+
+## Drop due to errors
+eval.df %>% select(method, depth, F1, type, graph) %>% spread(graph, F1) %>%
+  group_by(method, type) %>%
+  summarize(F1.mean.diff=mean(truth-calls), F1.max.diff=max(truth-calls)) %>%
+  filter(!is.na(F1.mean.diff)) %>%
+  kable(digits=3) %>%
+  cat(file='tables/simerror-geno-F1-mean-diff-truthVsErrors.md')
 
 ##
 ## Small SVs (<200bp)
