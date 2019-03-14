@@ -1,5 +1,5 @@
 {
-  "date": "March 13, 2019",
+  "date": "March 14, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -79,7 +79,7 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "db02fc6e7b787af68e9be0a49f42d9cba8806ff8"
+    "commit": "0bd80ffb2f5d84695e038fbfca5be94b60998fcd"
   },
   "manuscript_stats": {
     "reference_counts": {
