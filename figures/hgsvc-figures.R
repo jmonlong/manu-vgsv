@@ -13,7 +13,7 @@ eval.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-svtyper-clip-prcurve.tsv',
                              'sim-hgsvc-delly-prcurve.tsv',
                              'sim-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
@@ -49,7 +49,7 @@ eval.df = readEval(files = c('sim-hgsvc-construct-prcurve-geno.tsv',
                              'sim-hgsvc-svtyper-clip-prcurve-geno.tsv',
                              'sim-hgsvc-delly-prcurve-geno.tsv',
                              'sim-hgsvc-delly-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
@@ -87,7 +87,7 @@ eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                              'real-hgsvc-svtyper-clip-prcurve.tsv',
                              'real-hgsvc-delly-prcurve.tsv',
                              'real-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
@@ -124,7 +124,7 @@ eval.df = readEval(files = c('real-hgsvc-construct-prcurve-geno.tsv',
                              'real-hgsvc-svtyper-clip-prcurve-geno.tsv',
                              'real-hgsvc-delly-prcurve-geno.tsv',
                              'real-hgsvc-delly-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
@@ -163,7 +163,7 @@ eval.df = readEval(files = c('real-hgsvc-construct-prcurve.tsv',
                              'real-hgsvc-svtyper-clip-prcurve.tsv',
                              'real-hgsvc-delly-prcurve.tsv',
                              'real-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.geno.df = readEval(files = c('real-hgsvc-construct-prcurve-geno.tsv',
                              'real-hgsvc-construct-clip-prcurve-geno.tsv',
@@ -173,7 +173,7 @@ eval.geno.df = readEval(files = c('real-hgsvc-construct-prcurve-geno.tsv',
                              'real-hgsvc-svtyper-clip-prcurve-geno.tsv',
                              'real-hgsvc-delly-prcurve-geno.tsv',
                              'real-hgsvc-delly-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.sim.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-construct-clip-prcurve.tsv',
@@ -183,7 +183,7 @@ eval.sim.df = readEval(files = c('sim-hgsvc-construct-prcurve.tsv',
                              'sim-hgsvc-svtyper-clip-prcurve.tsv',
                              'sim-hgsvc-delly-prcurve.tsv',
                              'sim-hgsvc-delly-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.sim.geno.df = readEval(files = c('sim-hgsvc-construct-prcurve-geno.tsv',
                              'sim-hgsvc-construct-clip-prcurve-geno.tsv',
@@ -193,7 +193,7 @@ eval.sim.geno.df = readEval(files = c('sim-hgsvc-construct-prcurve-geno.tsv',
                              'sim-hgsvc-svtyper-clip-prcurve-geno.tsv',
                              'sim-hgsvc-delly-prcurve-geno.tsv',
                              'sim-hgsvc-delly-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg-construct', 'BayesTyper', 'svtyper', 'Delly'), each=2),
+                   methods = rep(c('vg', 'BayesTyper', 'svtyper', 'Delly'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 
 

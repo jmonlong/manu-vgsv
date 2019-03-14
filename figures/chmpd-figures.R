@@ -9,7 +9,7 @@ eval.df = readEval(files = c('chmpd-construct-prcurve.tsv',
                              'chmpd-construct-clip-prcurve.tsv',
                              'chmpd-smrtsv2-prcurve.tsv',									
                              'chmpd-smrtsv2-clip-prcurve.tsv'),
-                   methods = rep(c('vg-construct', 'SMRT-SV2'), each=2),
+                   methods = rep(c('vg', 'SMRT-SV2'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
@@ -44,7 +44,7 @@ eval.df = readEval(files = c('chmpd-construct-prcurve-geno.tsv',
                              'chmpd-construct-clip-prcurve-geno.tsv',
                              'chmpd-smrtsv2-prcurve-geno.tsv',									
                              'chmpd-smrtsv2-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg-construct', 'SMRT-SV2'), each=2),
+                   methods = rep(c('vg', 'SMRT-SV2'), each=2),
                    regions=rep(c('all', 'non-repeat'), 4))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 

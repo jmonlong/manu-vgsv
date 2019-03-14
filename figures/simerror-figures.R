@@ -6,7 +6,7 @@ library(knitr)
 
 source('colors-functions.R')
 
-methods.rename = c('toilvg-symb'='vg-construct', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
+methods.rename = c('toilvg-symb'='vg', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
 
 
 ##
