@@ -10,8 +10,8 @@ eval.df = readEval(files = c('svpop-construct-prcurve.tsv',
                              'svpop-construct-clip-prcurve.tsv'),
                              ## 'svpop-smrtsv2-prcurve.tsv',
                              ## 'svpop-smrtsv2-clip-prcurve.tsv'),  
-                   ## methods = rep(c('vg-construct', 'SMRT-SV2'), each=2),
-                   methods = rep(c('vg-construct'), each=2),
+                   ## methods = rep(c('vg', 'SMRT-SV2'), each=2),
+                   methods = rep(c('vg'), each=2),
                    regions=rep(c('all', 'non-repeat'), 2))
 eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 eval.df = subset(eval.df, TP.baseline>5)
