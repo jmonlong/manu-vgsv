@@ -22,9 +22,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/0bd80ffb2f5d84695e038fbfca5be94b60998fcd/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/4cf1e743dbea5fba51e93c5235b830fd3a3f49f1/))
 was automatically generated
-from [jmonlong/manu-vgsv@0bd80ff](https://github.com/jmonlong/manu-vgsv/tree/0bd80ffb2f5d84695e038fbfca5be94b60998fcd)
+from [jmonlong/manu-vgsv@4cf1e74](https://github.com/jmonlong/manu-vgsv/tree/4cf1e743dbea5fba51e93c5235b830fd3a3f49f1)
 on March 14, 2019.
 </em></small>
 
@@ -131,7 +131,7 @@ The differences between the methods were the most visible at lower sequencing de
 In the presence of 1-10 bp errors in the breakpoint location, the performance of Delly and BayesTyper dropped significantly.
 The dramatic drop for BayesTyper can be explained by its khmer-based approach that requires exact SV definition.
 In contrast, vg was only slightly affected by the presence of errors in the input VCF (Figure {@fig:1}b).
-For vg, the F1 scores for all SV types decreased no more than of 0.04 point.
+For vg, the F1 scores for all SV types decreased no more than of 0.07 point.
 Overall, these results show that vg is capable of genotyping SVs and is robust to errors in the input VCF.
 
 ![**Structural variation in vg.** 
