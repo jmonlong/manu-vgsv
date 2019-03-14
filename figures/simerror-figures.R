@@ -85,7 +85,7 @@ eval.df %>% select(method, depth, F1, type, graph) %>% spread(graph, F1) %>%
   summarize(F1.mean.diff=mean(truth-calls), F1.max.diff=max(truth-calls)) %>%
   filter(!is.na(F1.mean.diff)) %>%
   kable(digits=3) %>%
-  cat(file='tables/simerror-geno-F1-mean-diff-truthVsErrors.md')
+  cat(file='tables/simerror-geno-F1-mean-diff-truthVsErrors.md', sep='\n')
 
 ##
 ## Small SVs (<200bp)
