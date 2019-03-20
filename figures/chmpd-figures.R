@@ -5,23 +5,26 @@ library(knitr)
 source('colors-functions.R')
 
 ## CHM Pseudodiploid reads (SMRT-SV2 training data from Audano et. al 2019)
-eval.df = readEval(files = c('chmpd-construct-prcurve.tsv',
-                             'chmpd-construct-clip-prcurve.tsv',
-                             'chmpd-smrtsv2-prcurve.tsv',									
-                             'chmpd-smrtsv2-clip-prcurve.tsv'),
-                   methods = rep(c('vg', 'SMRT-SV2'), each=2),
-                   regions=rep(c('all', 'non-repeat'), 4))
-eval.df$method = factor(eval.df$method, levels=names(pal.tools))
 
-label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
+## Method names and renaming vector to fit color palette
+methods = c('vg','smrtsv')
+methconv = c(vg='vg', smrtsv='SMRT-SV2')
+
+samples = 'chmpd'
+chmpd.df = readEval4(methods, samples, prefix='data/chmpd/chmpd')
+chmpd.df$method = factor(methconv[chmpd.df$method], levels=names(pal.tools))
+
+chmpd.df = chmpd.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
+label.df = chmpd.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/chmpd.pdf', 8, 4)
 
-ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
+chmpd.df %>% filter(eval=='call') %>% 
+  ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=label.df) + 
+  geom_point(size=3, data=subset(label.df, eval=='call')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
@@ -31,32 +34,15 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
   scale_colour_manual(values=pal.tools)
 
 dev.off()
-
-## Markdown table
-label.df %>% select(region, method, everything()) %>%
-  arrange(method, region, type) %>%
-  select(method, region, type, everything(), -qual, -TP) %>% 
-  kable(digits=3, format.args=list(big.mark=',')) %>% 
-  cat(file='tables/chmpd.md', sep='\n')
-
-## CHM Pseudodiploid reads (SMRT-SV2 training data from Audano et. al 2019) Genotype evaluation
-eval.df = readEval(files = c('chmpd-construct-prcurve-geno.tsv',
-                             'chmpd-construct-clip-prcurve-geno.tsv',
-                             'chmpd-smrtsv2-prcurve-geno.tsv',									
-                             'chmpd-smrtsv2-clip-prcurve-geno.tsv'),
-                   methods = rep(c('vg', 'SMRT-SV2'), each=2),
-                   regions=rep(c('all', 'non-repeat'), 4))
-eval.df$method = factor(eval.df$method, levels=names(pal.tools))
-
-label.df = eval.df %>% group_by(region, method, type) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/chmpd-geno.pdf', 8, 4)
 
-ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
+chmpd.df %>% filter(eval=='geno') %>% 
+  ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=label.df) + 
+  geom_point(size=3, data=subset(label.df, eval=='geno')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
@@ -67,11 +53,32 @@ ggplot(eval.df, aes(x=recall, y=precision, colour=method)) +
 
 dev.off()
 
-## Markdown table
-label.df %>% select(region, method, everything()) %>%
-  arrange(method, region, type) %>%
-  select(method, region, type, everything(), -qual, -TP) %>% 
-  kable(digits=3, format.args=list(big.mark=',')) %>% 
-  cat(file='tables/chmpd-geno.md', sep='\n')
 
 
+## Bar plots with best F1
+eval.f1 = label.df %>% ungroup %>%
+  mutate(F1=ifelse(is.infinite(F1), NA, F1),
+         eval=factor(eval, levels=c('call','geno'),
+                     labels=c('absence/presence', 'genotype')))
+  
+
+pdf('pdf/chmpd-best-f1.pdf', 8, 4)
+
+eval.f1 %>% 
+  ggplot(aes(x=method, y=F1, fill=region, alpha=eval, group=region)) +
+  geom_bar(stat='identity', position=position_dodge()) +
+  facet_grid(type~.) +
+  scale_fill_brewer(name='genomic regions', palette='Set1') +
+  scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
+  theme_bw() +
+  ylab('best F1') + 
+  theme(axis.text.x=element_text(angle=30, hjust=1),
+        axis.title.x=element_blank())
+
+dev.off()
+
+eval.f1 %>% filter(eval=='genotype', !is.na(F1)) %>%
+  select(method, region, type, precision, recall, F1) %>%
+  arrange(method, region) %>%
+  kable(digits=3) %>%
+  cat(file='tables/chmpd-geno-precision-recall-F1.md', sep='\n')

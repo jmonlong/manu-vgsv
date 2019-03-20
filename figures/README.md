@@ -10,6 +10,7 @@ Rscript hgsvc-figures.R
 Rscript giab-figures.R
 Rscript chmpd-figures.R
 Rscript svpop-figures.R
+Rscript hgsvc-giab-svpop-chmpd-combined.R
 Rscript yeast-figures.R
 
 ## Convert to PNG in png/

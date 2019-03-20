@@ -26,11 +26,11 @@ readEval <- function(files, methods, regions=NULL, folder='data'){
 
 ## Read 4 evaluation files (call/geno x all/nonrep) for each method-sample pair
 ## tsv files must be named: {prefix}-{method}-{sample}-{all|nonrep}-{call|geno}-prcurve.tsv
-readEval4 <- function(methods, samples, prefix, regions=c('all','nonrep')){
+readEval4 <- function(methods, samples, prefix, regions=c('all','nonrep'), eval=c('call', 'geno')){
   res = lapply(methods, function(meth){
     res = lapply(samples, function(samp){
       res = lapply(regions, function(reg){
-        res = lapply(c('call', 'geno'), function(ev){
+        res = lapply(eval, function(ev){
           df = read.table(paste(prefix, meth, samp, reg, ev, 'prcurve.tsv', sep='-'), as.is=TRUE, header=TRUE)
           df$method = meth
           df$region = reg

@@ -8,7 +8,6 @@ source('colors-functions.R')
 methods = c('vg','delly','svtyper')
 methconv = c(vg='vg', delly='Delly', svtyper='svtyper')
 
-## Simulated reads from HG00514
 samples = 'HG002'
 giab5.df = readEval4(methods, samples, prefix='data/giab/giab5')
 giab5.df$method = factor(methconv[giab5.df$method], levels=names(pal.tools))
