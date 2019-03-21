@@ -22,9 +22,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/80e1db5a8cb4976896b7b2f1f0264ae171f733e3/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/a97792f4c2dc23fa02f46ae69bc368ef223e4411/))
 was automatically generated
-from [jmonlong/manu-vgsv@80e1db5](https://github.com/jmonlong/manu-vgsv/tree/80e1db5a8cb4976896b7b2f1f0264ae171f733e3)
+from [jmonlong/manu-vgsv@a97792f](https://github.com/jmonlong/manu-vgsv/tree/a97792f4c2dc23fa02f46ae69bc368ef223e4411)
 on March 21, 2019.
 </em></small>
 
@@ -158,28 +158,38 @@ In non-repeat regions and across the whole genome, the F1 scores and precision-r
 For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692.
 We observed similar results when evaluating the absence/presence of a SV instead of the exact genotype (Figures {@fig:2} and  {@fig:hgsvc-real}).
 
-![**Structural variants from the HGSVC dataset**. 
-Simulated and real reads from HG00514 were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[@vQTymKCj].
-Maximum F1 score for each method, across the whole genome (red) or focusing on non-repeat regions (blue). 
-The calling and genotyping evaluation are shown with different shapes.
-](images/hgsvc-best-f1.png){#fig:2}
+![**Structural variants from the HGSVC and Genome in a Bottle datasets**. 
+HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[@vQTymKCj].
+Reads were simulated from the HG00514 individual.
+Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested.
+GiaB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium.[@14neTdqfN;@16GvGhO20].
+Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
+The calling and genotyping evaluation are shown with different shades.
+](images/hgsvc-giab-best-f1.png){#fig:2}
 
 ### Other long-read datasets
 
 The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for a Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20].
 Dozens of SV callers and datasets from short, long and linked reads were used to produce this set of SVs.
-vg performed similarly on this dataset than in the HGSVC dataset, with a F1 score of XX and XX for insertions and deletions respectively (FIG).
-As before, other methods produced lower F1 scores and precision-recall curves (FIG).
+vg performed similarly on this dataset than in the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
+As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotype for deletions in non-repeat regions.
 
 A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals [@3NNFS6U2].
 These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study.
 We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines[@3NNFS6U2].
-Although no false-positives were predicted by SMRT-SV2, the higher recall for vg resulted in a higher F1 score (e.g. 0.809 vs 0.726 across the whole genome, see Table {@tbl:chmpd}). 
-Using publicly available Illumina reads, we then genotyped SVs in one of the 15 individuals that was used for discovery in Audano et al.[@3NNFS6U2].
-Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (FIG and Table {@tbl:svpop}).
-The overall F1 score for vg was 0.574 versus XX for SMRT-SV2.
-Of note, Audano et al. had identified 27 sequence-resolved inversions, 7 of which were predicted correctly by vg.
+The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-chmpd}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
+Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
+Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
+Of note, Audano et al. had identified 217 sequence-resolved inversions.
+vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table {@tbl:svpop}).
 Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.
+
+![**Structural variants from Audano et al.[@3NNFS6U2]**.
+The pseudo-diploid genome built from CHM cell lines was used originally used to train SMRT-SV2 in Audano et al.[@3NNFS6U2].
+The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2].
+Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
+The calling and genotyping evaluation are shown with different shades.
+](images/chmpd-svpop-best-f1.png){#fig:chmpd-svpop}
 
  
 ### Genotyping SV using vg and de novo assemblies
@@ -258,6 +268,14 @@ Illumina reads were downloaded from ...
 
 *Potential topics for the discussion.*
 
+#### Performance across datasets
+
+Although vg was overall the best genotyper in our benchmarks, other methods were superior in some datasets and some situations.
+Some of these differences might be explained by the quality of the input SV catalog.
+The GiaB catalog is more curated and, specifically for deletions in non-repeat regions, Delly and BayesTyper were better at predicting genotypes compared to vg.
+This might be because the breakpoint resolution for this type of SV in these regions is better in this dataset compared to the HGSVC dataset which was derived mostly from long-read sequencing.
+Similarly, SMRT-SV2 performs better for deletions in the pseudo-diploid genome constructed from two high quality genome assembly of CHM cell lines.
+
 #### Providing a resource to be used by large-scale sequencing project
 
 As a result of this study we provide a variation graph containing XX millions of SNVs and indels from the 1000 Genomes Project as well as XX thousands of SVs derived from long-read sequencing.
@@ -311,72 +329,71 @@ For example, in our experiment with yeast assemblies, we identified XX variants 
 
 ## Supplementary Material
 
-| Experiment      | Method       | Region     | Type | Precision | Recall |    F1 |
-|:----------------|:-------------|:-----------|:-----|----------:|-------:|------:|
-| Simulated reads | vg-construct | all        | INS  |     0.770 |  0.810 | 0.790 |
-|                 |              |            | DEL  |     0.868 |  0.771 | 0.817 |
-|                 |              | non-repeat | INS  |     0.891 |  0.873 | 0.882 |
-|                 |              |            | DEL  |     0.973 |  0.917 | 0.944 |
-|                 | BayesTyper   | all        | INS  |     0.910 |  0.835 | 0.871 |
-|                 |              |            | DEL  |     0.893 |  0.807 | 0.848 |
-|                 |              | non-repeat | INS  |     0.935 |  0.899 | 0.917 |
-|                 |              |            | DEL  |     0.981 |  0.930 | 0.955 |
-|                 | svtyper      | all        | DEL  |     0.823 |  0.130 | 0.224 |
-|                 |              | non-repeat | DEL  |     0.923 |  0.329 | 0.486 |
-|                 | Delly        | all        | INS  |     0.770 |  0.093 | 0.166 |
-|                 |              |            | DEL  |     0.695 |  0.707 | 0.701 |
-|                 |              | non-repeat | INS  |     0.858 |  0.226 | 0.357 |
-|                 |              |            | DEL  |     0.903 |  0.847 | 0.874 |
-| Real reads      | vg-construct | all        | INS  |     0.448 |  0.523 | 0.482 |
-|                 |              |            | DEL  |     0.614 |  0.522 | 0.564 |
-|                 |              | non-repeat | INS  |     0.697 |  0.724 | 0.710 |
-|                 |              |            | DEL  |     0.885 |  0.731 | 0.801 |
-|                 | BayesTyper   | all        | INS  |     0.587 |  0.227 | 0.327 |
-|                 |              |            | DEL  |     0.568 |  0.327 | 0.415 |
-|                 |              | non-repeat | INS  |     0.748 |  0.410 | 0.530 |
-|                 |              |            | DEL  |     0.869 |  0.412 | 0.559 |
-|                 | svtyper      | all        | DEL  |     0.707 |  0.262 | 0.382 |
-|                 |              | non-repeat | DEL  |     0.790 |  0.594 | 0.678 |
-|                 | Delly        | all        | INS  |     0.540 |  0.063 | 0.113 |
-|                 |              |            | DEL  |     0.535 |  0.450 | 0.489 |
-|                 |              | non-repeat | INS  |     0.642 |  0.168 | 0.266 |
-|                 |              |            | DEL  |     0.866 |  0.577 | 0.692 |
+| Experiment      | Method     | Type | Precision     | Recall        | F1            |
+|:----------------|:-----------|:-----|:--------------|:--------------|:--------------|
+| Simulated reads | vg         | INS  | 0.795 (0.885) | 0.796 (0.883) | 0.795 (0.884) |
+|                 |            | DEL  | 0.869 (0.971) | 0.771 (0.92)  | 0.817 (0.945) |
+|                 | BayesTyper | INS  | 0.91 (0.935)  | 0.835 (0.9)   | 0.871 (0.917) |
+|                 |            | DEL  | 0.898 (0.981) | 0.806 (0.929) | 0.849 (0.954) |
+|                 | svtyper    | DEL  | 0.809 (0.876) | 0.328 (0.754) | 0.467 (0.81)  |
+|                 | Delly      | INS  | 0.767 (0.866) | 0.093 (0.225) | 0.166 (0.358) |
+|                 |            | DEL  | 0.696 (0.903) | 0.707 (0.846) | 0.701 (0.874) |
+| Real reads      | vg         | INS  | 0.431 (0.683) | 0.541 (0.726) | 0.48 (0.704)  |
+|                 |            | DEL  | 0.65 (0.886)  | 0.519 (0.708) | 0.577 (0.787) |
+|                 | BayesTyper | INS  | 0.601 (0.747) | 0.254 (0.433) | 0.357 (0.549) |
+|                 |            | DEL  | 0.627 (0.91)  | 0.325 (0.381) | 0.428 (0.537) |
+|                 | svtyper    | DEL  | 0.661 (0.733) | 0.236 (0.551) | 0.348 (0.629) |
+|                 | Delly      | INS  | 0.516 (0.621) | 0.068 (0.176) | 0.12 (0.275)  |
+|                 |            | DEL  | 0.55 (0.838)  | 0.445 (0.547) | 0.492 (0.662) |
 
-Table: HGSVC experiment. Precision, recall and F1 score for the call set with the best F1 score. {#tbl:hgsvc tag="S1"}
+Table: Genotyping evaluation on the HGSVC dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parenthesis corresponds to the results in non-repeat regions. {#tbl:hgsvc tag="S1"}
 
 ---
 
-| Method       | Region     | Type  |    TP |    FP |    FN | Precision | Recall |    F1 |
-|:-------------|:-----------|:------|------:|------:|------:|----------:|-------:|------:|
-| vg-construct | all        | Total | 9,415 | 1,369 | 3,085 |     0.873 |  0.753 | 0.809 |
-|              |            | INS   | 5,789 | 1,192 | 1,467 |     0.829 |  0.798 | 0.813 |
-|              |            | DEL   | 3,626 |   177 | 1,618 |     0.954 |  0.692 | 0.802 |
-|              | non-repeat | Total | 2,966 |   273 |   620 |     0.919 |  0.827 | 0.871 |
-|              |            | INS   | 2,148 |   270 |   501 |     0.894 |  0.811 | 0.851 |
-|              |            | DEL   |   818 |     3 |   119 |     0.996 |  0.873 | 0.931 |
-| SMRT-SV2     | all        | Total | 9,224 |     0 | 6,956 |     1.000 |  0.570 | 0.726 |
-|              |            | INS   | 5,322 |     0 | 3,631 |     1.000 |  0.594 | 0.746 |
-|              |            | DEL   | 3,902 |     0 | 3,325 |     1.000 |  0.540 | 0.701 |
-|              | non-repeat | Total | 2,816 |     0 | 1,914 |     1.000 |  0.595 | 0.746 |
-|              |            | INS   | 2,020 |     0 | 1,306 |     1.000 |  0.607 | 0.756 |
-|              |            | DEL   |   796 |     0 |   608 |     1.000 |  0.567 | 0.724 |
+| Method     | Type | Precision     | Recall        | F1            |
+|:-----------|:-----|:--------------|:--------------|:--------------|
+| vg         | INS  | 0.658 (0.774) | 0.646 (0.735) | 0.652 (0.754) |
+|            | DEL  | 0.68 (0.768)  | 0.643 (0.735) | 0.661 (0.751) |
+| BayesTyper | INS  | 0.776 (0.879) | 0.286 (0.379) | 0.418 (0.53)  |
+|            | DEL  | 0.808 (0.886) | 0.512 (0.696) | 0.627 (0.779) |
+| svtyper    | DEL  | 0.742 (0.818) | 0.342 (0.496) | 0.468 (0.618) |
+| Delly      | INS  | 0.822 (0.894) | 0.177 (0.268) | 0.291 (0.412) |
+|            | DEL  | 0.722 (0.822) | 0.645 (0.768) | 0.681 (0.794) |
 
-Table: SVPOP experiment. Calling evaluation for the pseudo-diploid genome built from CHM cell lines in Audano et al.[@3NNFS6U2]. {#tbl:chmpd tag="S2"}
+Table: Genotyping evaluation on the Genome in a Bottle dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parenthesis corresponds to the results in non-repeat regions. {#tbl:giab tag="S2"}
+
+---
 
 
-| Method       | Region     | Type  |     TP |    FP |     FN | Precision | Recall |    F1 |
-|:-------------|:-----------|:------|-------:|------:|-------:|----------:|-------:|------:|
-| vg-construct | all        | Total | 13,630 | 9,897 | 10,376 |     0.580 |  0.568 | 0.574 |
-|              |            | INS   |  8,867 | 7,850 |  5,172 |     0.533 |  0.632 | 0.578 |
-|              |            | DEL   |  4,752 | 2,039 |  5,150 |     0.697 |  0.480 | 0.568 |
-|              |            | INV   |     11 |     8 |     54 |     0.579 |  0.169 | 0.262 |
-|              | non-repeat | Total |  3,864 | 1,165 |    855 |     0.768 |  0.819 | 0.792 |
-|              |            | INS   |  2,677 |   985 |    514 |     0.731 |  0.839 | 0.781 |
-|              |            | DEL   |  1,180 |   176 |    321 |     0.869 |  0.786 | 0.825 |
-|              |            | INV   |      7 |     4 |     20 |     0.636 |  0.259 | 0.368 |
+| Method   | Region     | Type | Precision | Recall |    F1 |
+|:---------|:-----------|:-----|----------:|-------:|------:|
+| vg       | all        | INS  |     0.665 |  0.661 | 0.663 |
+|          |            | DEL  |     0.688 |  0.500 | 0.579 |
+|          | non-repeat | INS  |     0.806 |  0.784 | 0.795 |
+|          |            | DEL  |     0.869 |  0.762 | 0.812 |
+| SMRT-SV2 | all        | INS  |     0.757 |  0.536 | 0.628 |
+|          |            | DEL  |     0.848 |  0.630 | 0.723 |
+|          | non-repeat | INS  |     0.880 |  0.680 | 0.767 |
+|          |            | DEL  |     0.971 |  0.824 | 0.891 |
 
+Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.[@3NNFS6U2]. {#tbl:chmpd tag="S3"}
 
-Table: SVPOP experiment. Calling evaluation in the HG5014 individual, one of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S3"}
+---
+
+| Method   | Region     | Type |    TP |    FP |    FN | Precision | Recall |    F1 |
+|:---------|:-----------|:-----|------:|------:|------:|----------:|-------:|------:|
+| vg       | all        | INS  | 25838 | 22042 | 15772 |     0.540 |  0.621 | 0.577 |
+|          |            | DEL  | 14545 |  6824 | 15425 |     0.681 |  0.485 | 0.567 |
+|          |            | INV  |    27 |    26 |   173 |     0.509 |  0.135 | 0.213 |
+|          | non-repeat | INS  |  8051 |  3258 |  1817 |     0.712 |  0.816 | 0.760 |
+|          |            | DEL  |  3769 |   623 |   818 |     0.858 |  0.822 | 0.840 |
+|          |            | INV  |    19 |    12 |    75 |     0.613 |  0.202 | 0.304 |
+| SMRT-SV2 | all        | INS  | 16270 | 26031 | 25340 |     0.385 |  0.391 | 0.388 |
+|          |            | DEL  | 11793 | 10106 | 18177 |     0.539 |  0.393 | 0.455 |
+|          | non-repeat | INS  |  4483 |  4659 |  5385 |     0.490 |  0.454 | 0.472 |
+|          |            | DEL  |  2928 |   930 |  1659 |     0.759 |  0.638 | 0.693 |
+
+Table: Calling evaluation on the SVPOP dataset. Combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S4"}
 
 ---
 
@@ -389,17 +406,29 @@ Table: SVPOP experiment. Calling evaluation in the HG5014 individual, one of the
 
 ![**Structural variants from the HGSVC dataset**. Calling evaluation for real reads.](images/hgsvc-real.png){#fig:hgsvc-real tag="S4"}
 
+![**Structural variants from the Genome in a Bottle dataset**. Genotyping evaluation.](images/giab5-geno.png){#fig:giab-geno tag="S5"}
+
+![**Structural variants from the Genome in a Bottle dataset**. Genotyping evaluation.](images/giab5.png){#fig:giab tag="S6"}
+
+![**Structural variants from the CHM pseudo-diploid dataset**. Genotyping evaluation.](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
+
+![**Structural variants from the CHM pseudo-diploid dataset**. Calling evaluation.](images/chmpd.png){#fig:chmpd tag="S10"}
+
+![**Structural variants from the SVPOP dataset**. Calling evaluation.](images/svpop.png){#fig:svpop tag="S11"}
+
+
+
 
 ![**Mapping comparison on graphs of five strains.**
 The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared.
 a) Stratified by mapping quality threshold.
 b) Stratified by percent identity threshold.
-](images/panel5.png){#fig:yeast-mapping-four tag="S5"}
+](images/panel5.png){#fig:yeast-mapping-four tag="S12"}
 
 ![**SV genotyping comparison.** 
 Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. 
 Colors and shapes represent the 11 non-reference strains and two clades, respectively
-](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S6"}
+](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S13"}
 
 
 ## References {.page_break_before}

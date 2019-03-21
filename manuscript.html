@@ -31,7 +31,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/80e1db5a8cb4976896b7b2f1f0264ae171f733e3/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/80e1db5a8cb4976896b7b2f1f0264ae171f733e3">jmonlong/manu-vgsv@80e1db5</a> on March 21, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/a97792f4c2dc23fa02f46ae69bc368ef223e4411/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/a97792f4c2dc23fa02f46ae69bc368ef223e4411">jmonlong/manu-vgsv@a97792f</a> on March 21, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -59,23 +59,26 @@
 <p>First, by simulating reads for HG00514, we compared the different methods in the ideal situation where the SV catalog is correct and matches exactly the SVs supported by the reads. While vg outperformed Delly and SVTyper, BayesTyper showed the best F1 score and precision-recall trade-off (Figures <a href="#fig:2">2</a> and <a href="#fig:hgsvc-sim-geno">S1</a>, Table <a href="#tbl:hgsvc">S1</a>). When restricting the comparisons to regions not identified as tandem repeats or segmental duplications, the genotyping predictions were significantly better for all methods, with vg almost as good as BayesTyper on deletions (F1 of 0.944 vs 0.955). We observed similar results when evaluating the absence/presence of a SV instead of the exact genotype (Figures <a href="#fig:2">2</a> and <a href="#fig:hgsvc-sim">S2</a>). Overall, both graph-based methods, vg and BayesTyper, outperformed the two other methods tested.</p>
 <p>We then repeated the analysis using real Illumina reads from HG00514, to benchmark the methods on a more realistic experiment. Here vg clearly outperformed other approach, most likely because of its graph-based strategy and robustness to errors in the SV catalog (Figures <a href="#fig:2">2</a> and <a href="#fig:hgsvc-real-geno">S3</a>). In non-repeat regions and across the whole genome, the F1 scores and precision-recall curves were higher for vg compared to other methods. For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692. We observed similar results when evaluating the absence/presence of a SV instead of the exact genotype (Figures <a href="#fig:2">2</a> and <a href="#fig:hgsvc-real">S4</a>).</p>
 <figure>
-<img src="images/hgsvc-best-f1.png" alt="Figure 2: Structural variants from the HGSVC dataset. Simulated and real reads from HG00514 were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[18]. Maximum F1 score for each method, across the whole genome (red) or focusing on non-repeat regions (blue). The calling and genotyping evaluation are shown with different shapes." id="fig:2" /><figcaption><span>Figure 2:</span> <strong>Structural variants from the HGSVC dataset</strong>. Simulated and real reads from HG00514 were used to genotype SVs and compared with the high-quality calls from Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">18</a>]</span>. Maximum F1 score for each method, across the whole genome (red) or focusing on non-repeat regions (blue). The calling and genotyping evaluation are shown with different shapes.</figcaption>
+<img src="images/hgsvc-giab-best-f1.png" alt="Figure 2: Structural variants from the HGSVC and Genome in a Bottle datasets. HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[18]. Reads were simulated from the HG00514 individual. Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested. GiaB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium.[19,20]. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades." id="fig:2" /><figcaption><span>Figure 2:</span> <strong>Structural variants from the HGSVC and Genome in a Bottle datasets</strong>. HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">18</a>]</span>. Reads were simulated from the HG00514 individual. Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested. GiaB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium.<span class="citation" data-cites="14neTdqfN 16GvGhO20">[<a href="#ref-14neTdqfN">19</a>,<a href="#ref-16GvGhO20">20</a>]</span>. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades.</figcaption>
 </figure>
 <h3 id="other-long-read-datasets">Other long-read datasets</h3>
-<p>The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for a Ashkenazim individual (HG002)<span class="citation" data-cites="14neTdqfN 16GvGhO20">[<a href="#ref-14neTdqfN">19</a>,<a href="#ref-16GvGhO20">20</a>]</span>. Dozens of SV callers and datasets from short, long and linked reads were used to produce this set of SVs. vg performed similarly on this dataset than in the HGSVC dataset, with a F1 score of XX and XX for insertions and deletions respectively (FIG). As before, other methods produced lower F1 scores and precision-recall curves (FIG).</p>
-<p>A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals <span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study. We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Although no false-positives were predicted by SMRT-SV2, the higher recall for vg resulted in a higher F1 score (e.g. 0.809 vs 0.726 across the whole genome, see Table <a href="#tbl:chmpd">S2</a>). Using publicly available Illumina reads, we then genotyped SVs in one of the 15 individuals that was used for discovery in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (FIG and Table <a href="#tbl:svpop">S3</a>). The overall F1 score for vg was 0.574 versus XX for SMRT-SV2. Of note, Audano et al. had identified 27 sequence-resolved inversions, 7 of which were predicted correctly by vg. Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.</p>
+<p>The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for a Ashkenazim individual (HG002)<span class="citation" data-cites="14neTdqfN 16GvGhO20">[<a href="#ref-14neTdqfN">19</a>,<a href="#ref-16GvGhO20">20</a>]</span>. Dozens of SV callers and datasets from short, long and linked reads were used to produce this set of SVs. vg performed similarly on this dataset than in the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures <a href="#fig:2">2</a>, <a href="#fig:giab-geno">S5</a> and <a href="#fig:giab">S6</a>, and Table <a href="#tbl:giab">S2</a>). As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotype for deletions in non-repeat regions.</p>
+<p>A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals <span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study. We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures {<span class="citation" data-cites="fig:chmpd-chmpd">[<span class="citeproc-not-found" data-reference-id="fig:chmpd-chmpd"><strong>???</strong></span>]</span>}, <a href="#fig:chmpd-geno">S7</a> and <a href="#fig:chmpd">S10</a>, and Table <a href="#tbl:chmpd">S3</a>). Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures <a href="#fig:chmpd-svpop">3</a> and <a href="#fig:svpop">S11</a>, and Table <a href="#tbl:svpop">S4</a>). Of note, Audano et al. had identified 217 sequence-resolved inversions. vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table <a href="#tbl:svpop">S4</a>). Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.</p>
+<figure>
+<img src="images/chmpd-svpop-best-f1.png" alt="Figure 3: Structural variants from Audano et al.[8]. The pseudo-diploid genome built from CHM cell lines was used originally used to train SMRT-SV2 in Audano et al.[8]. The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[8]. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades." id="fig:chmpd-svpop" /><figcaption><span>Figure 3:</span> <strong>Structural variants from Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span></strong>. The pseudo-diploid genome built from CHM cell lines was used originally used to train SMRT-SV2 in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades.</figcaption>
+</figure>
 <h3 id="genotyping-sv-using-vg-and-de-novo-assemblies">Genotyping SV using vg and de novo assemblies</h3>
 <p>We investigated whether genome graphs derived from genome-genome alignments yield advantages for SV genotyping. To this end, we analyzed public sequencing datasets for 12 yeast strains from two clades (S. cerevisiae and S. paradoxus) <span class="citation" data-cites="7f5OKa5O">[<a href="#ref-7f5OKa5O">21</a>]</span>. From these datasets, we generated two different types of genome graphs. The first graph type (in the following called <em>construct graph</em>) was created from a linear reference genome of the S.c. S288C strain and a set of SVs relative to this reference strain in VCF format. We compiled the SV set using the output of three methods for SV detection from genome assemblies: Assemblytics <span class="citation" data-cites="krO7WgVi">[<a href="#ref-krO7WgVi">22</a>]</span>, AsmVar <span class="citation" data-cites="oVaXIwl5">[<a href="#ref-oVaXIwl5">23</a>]</span> and paftools <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q">24</a>]</span>. All three methods were run to detect SVs between the reference strain S.c. S288C and each of the other 11 strains. Merging the results from the three methods and the 11 strains provided us with a high-sensitivity set of SVs occuring in the two yeast clades. We used this set to construct the <em>construct graph</em>. The second graph (in the following called <em>cactus graph</em>) was derived from a multiple genome alignment of all 12 strains using our Cactus tool <span class="citation" data-cites="1FgS53pXi">[<a href="#ref-1FgS53pXi">25</a>]</span>. While the <em>construct graph</em> is still mainly linear and highly dependent on the reference genome, the cactus graph is completely unbiased in that regard.</p>
 <figure>
-<img src="images/panel3.png" alt="Figure 3: Mapping comparison. The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold." id="fig:3" /><figcaption><span>Figure 3:</span> <strong>Mapping comparison.</strong> The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold.</figcaption>
+<img src="images/panel3.png" alt="Figure 4: Mapping comparison. The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold." id="fig:3" /><figcaption><span>Figure 4:</span> <strong>Mapping comparison.</strong> The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold.</figcaption>
 </figure>
-<p>In a first step, we tested our hypothesis that the <em>cactus graph</em> has higher mappability due to its better representation of sequence diversity among the yeast strains. Figure <a href="#fig:3">3</a>a shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the <em>cactus graph</em> and to the <em>construct graph</em>. Generally, more reads were mapped to the <em>cactus graph</em> than to the <em>construct graph</em> regardless of the chosen mapping quality threshold. Only for the reference strain S.c. S288C, both graphs exhibited similar mappability. This suggests that not the higher sequence content in the <em>cactus graph</em> alone (XX Mb compared to XX Mb in the <em>construct graph</em>) drives the improvement in mappability. Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the <em>cactus graph</em> over the <em>construct graph</em>. Consequently. the benefit of the <em>cactus graph</em> is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.</p>
-<p>When we explored the mapping identity of the short reads on the graphs, we observed a similar trend (see Figure <a href="#fig:3">3</a>b). For strains in the S. paradoxus clade, the <em>cactus graph</em> enabled substantially more mappings with high percent identity than the <em>construct graph</em>. With strains in the S. cerevisiae clade, the difference was smaller, at least for a percent identity threshold up to 90%. When comparing read fractions with perfect identity (i.e. percent identity threshold = 100%), the <em>cactus graph</em> clearly outperforms the <em>construct graph</em> on 11 out of 12 samples. The only exception again is the reference strain S288C.</p>
+<p>In a first step, we tested our hypothesis that the <em>cactus graph</em> has higher mappability due to its better representation of sequence diversity among the yeast strains. Figure <a href="#fig:3">4</a>a shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the <em>cactus graph</em> and to the <em>construct graph</em>. Generally, more reads were mapped to the <em>cactus graph</em> than to the <em>construct graph</em> regardless of the chosen mapping quality threshold. Only for the reference strain S.c. S288C, both graphs exhibited similar mappability. This suggests that not the higher sequence content in the <em>cactus graph</em> alone (XX Mb compared to XX Mb in the <em>construct graph</em>) drives the improvement in mappability. Instead, our measurements suggest that genetic distance to the reference strain increases the advantage of the <em>cactus graph</em> over the <em>construct graph</em>. Consequently. the benefit of the <em>cactus graph</em> is largest for strains in the S. paradoxus clade and smaller for reads from strains in the S. cerevisiae clade.</p>
+<p>When we explored the mapping identity of the short reads on the graphs, we observed a similar trend (see Figure <a href="#fig:3">4</a>b). For strains in the S. paradoxus clade, the <em>cactus graph</em> enabled substantially more mappings with high percent identity than the <em>construct graph</em>. With strains in the S. cerevisiae clade, the difference was smaller, at least for a percent identity threshold up to 90%. When comparing read fractions with perfect identity (i.e. percent identity threshold = 100%), the <em>cactus graph</em> clearly outperforms the <em>construct graph</em> on 11 out of 12 samples. The only exception again is the reference strain S288C.</p>
 <figure>
-<img src="images/panel4.png" alt="Figure 4: SV genotyping comparison. a) Average mapping quality of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis). b) Average mapping identity of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis). Colors and shapes represent the 11 non-reference strains and two clades, respectively" id="fig:4" /><figcaption><span>Figure 4:</span> <strong>SV genotyping comparison.</strong> a) Average mapping quality of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis). b) Average mapping identity of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis). Colors and shapes represent the 11 non-reference strains and two clades, respectively</figcaption>
+<img src="images/panel4.png" alt="Figure 5: SV genotyping comparison. a) Average mapping quality of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis). b) Average mapping identity of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis). Colors and shapes represent the 11 non-reference strains and two clades, respectively" id="fig:4" /><figcaption><span>Figure 5:</span> <strong>SV genotyping comparison.</strong> a) Average mapping quality of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis). b) Average mapping identity of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis). Colors and shapes represent the 11 non-reference strains and two clades, respectively</figcaption>
 </figure>
-<p>Next, we compared the SV genotype performance of both graphs. We mapped short reads from the 11 non-reference strains to both graphs and called variants using vg’s variant calling module. To compare the callsets from both graphs, we generated a sample graph for each callset using the reference genome and the callset. Each sample graph is a graph representation of the respective callset. If a given callset is correct, we would expect that reads from the same sample can be mapped confidently and with high identity to the corresponding sample graph. Therefore, we compared the average mapping identity of the short reads on both types of sample graphs (see Figure <a href="#fig:4">4</a>b). Similar to the results of our mapping analysis above, the <em>cactus graph</em> clearly outperformed the <em>construct graph</em> for strains in the S. paradoxus clade. With strains in the S. cerevisiae clade, both graphs were on a par.</p>
-<p>This trend was confirmed when we looked at two our measures, average mapping quality and average alignment score (see Figures <a href="#fig:4">4</a>a and <a href="#fig:geno-comp-score">S6</a>).</p>
+<p>Next, we compared the SV genotype performance of both graphs. We mapped short reads from the 11 non-reference strains to both graphs and called variants using vg’s variant calling module. To compare the callsets from both graphs, we generated a sample graph for each callset using the reference genome and the callset. Each sample graph is a graph representation of the respective callset. If a given callset is correct, we would expect that reads from the same sample can be mapped confidently and with high identity to the corresponding sample graph. Therefore, we compared the average mapping identity of the short reads on both types of sample graphs (see Figure <a href="#fig:4">5</a>b). Similar to the results of our mapping analysis above, the <em>cactus graph</em> clearly outperformed the <em>construct graph</em> for strains in the S. paradoxus clade. With strains in the S. cerevisiae clade, both graphs were on a par.</p>
+<p>This trend was confirmed when we looked at two our measures, average mapping quality and average alignment score (see Figures <a href="#fig:4">5</a>a and <a href="#fig:geno-comp-score">S13</a>).</p>
 <h2 id="methods">Methods</h2>
 <h3 id="simulation-experiment">Simulation experiment</h3>
 <h3 id="hgsvc">HGSVC</h3>
@@ -87,6 +90,8 @@
 <h3 id="de-novo-assembly-alignment-from-12-yeast-strains">De novo assembly alignment from 12 yeast strains</h3>
 <h2 id="discussion">Discussion</h2>
 <p><em>Potential topics for the discussion.</em></p>
+<h4 id="performance-across-datasets">Performance across datasets</h4>
+<p>Although vg was overall the best genotyper in our benchmarks, other methods were superior in some datasets and some situations. Some of these differences might be explained by the quality of the input SV catalog. The GiaB catalog is more curated and, specifically for deletions in non-repeat regions, Delly and BayesTyper were better at predicting genotypes compared to vg. This might be because the breakpoint resolution for this type of SV in these regions is better in this dataset compared to the HGSVC dataset which was derived mostly from long-read sequencing. Similarly, SMRT-SV2 performs better for deletions in the pseudo-diploid genome constructed from two high quality genome assembly of CHM cell lines.</p>
 <h4 id="providing-a-resource-to-be-used-by-large-scale-sequencing-project">Providing a resource to be used by large-scale sequencing project</h4>
 <p>As a result of this study we provide a variation graph containing XX millions of SNVs and indels from the 1000 Genomes Project as well as XX thousands of SVs derived from long-read sequencing. This variation graph could serve as a richer reference for large scale projects that use short-read sequencing. For instance, more and more large-scale projects are sequencing the genomes of thousands or hundreds of thousands of individuals, e.g the Pancancer Analysis of Whole Genomes, the Genomics England initiative, and the TOPMed consortium(REFS). These large WGS studies will provide a deeper look into the mechanism of common diseases and, in some cases, will be used directly in a clinical setting. Clinicians and researchers are eager to use these growing WGS resources to interrogate the importance of SVs in disease at a scale never achieved before, either to get a more complete picture of the genetic factors of a disease or to produce a more comprehensive clinical report. As sequencing reaches the clinic, whole-genome sequencing will become routine for many patients. Clinicians will rely on variant calling and interpretation for diagnosis and treatment. For variant interpretation in particular, a comprehensive and unified characterization of the genomic variation will be extremely valuable.</p>
 <h4 id="easier-to-use">Easier to use</h4>
@@ -102,285 +107,206 @@
 <h2 id="supplementary-material">Supplementary Material</h2>
 <a name="tbl:hgsvc"></a>
 <table>
-<caption><span>Table S1:</span> HGSVC experiment. Precision, recall and F1 score for the call set with the best F1 score. </caption>
+<caption><span>Table S1:</span> Genotyping evaluation on the HGSVC dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parenthesis corresponds to the results in non-repeat regions. </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Experiment</th>
 <th style="text-align: left;">Method</th>
-<th style="text-align: left;">Region</th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: right;">Precision</th>
-<th style="text-align: right;">Recall</th>
-<th style="text-align: right;">F1</th>
+<th style="text-align: left;">Precision</th>
+<th style="text-align: left;">Recall</th>
+<th style="text-align: left;">F1</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Simulated reads</td>
-<td style="text-align: left;">vg-construct</td>
-<td style="text-align: left;">all</td>
+<td style="text-align: left;">vg</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.770</td>
-<td style="text-align: right;">0.810</td>
-<td style="text-align: right;">0.790</td>
+<td style="text-align: left;">0.795 (0.885)</td>
+<td style="text-align: left;">0.796 (0.883)</td>
+<td style="text-align: left;">0.795 (0.884)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.868</td>
-<td style="text-align: right;">0.771</td>
-<td style="text-align: right;">0.817</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.891</td>
-<td style="text-align: right;">0.873</td>
-<td style="text-align: right;">0.882</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.973</td>
-<td style="text-align: right;">0.917</td>
-<td style="text-align: right;">0.944</td>
+<td style="text-align: left;">0.869 (0.971)</td>
+<td style="text-align: left;">0.771 (0.92)</td>
+<td style="text-align: left;">0.817 (0.945)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">BayesTyper</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.910</td>
-<td style="text-align: right;">0.835</td>
-<td style="text-align: right;">0.871</td>
+<td style="text-align: left;">0.91 (0.935)</td>
+<td style="text-align: left;">0.835 (0.9)</td>
+<td style="text-align: left;">0.871 (0.917)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.893</td>
-<td style="text-align: right;">0.807</td>
-<td style="text-align: right;">0.848</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.935</td>
-<td style="text-align: right;">0.899</td>
-<td style="text-align: right;">0.917</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.981</td>
-<td style="text-align: right;">0.930</td>
-<td style="text-align: right;">0.955</td>
+<td style="text-align: left;">0.898 (0.981)</td>
+<td style="text-align: left;">0.806 (0.929)</td>
+<td style="text-align: left;">0.849 (0.954)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">svtyper</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.823</td>
-<td style="text-align: right;">0.130</td>
-<td style="text-align: right;">0.224</td>
+<td style="text-align: left;">0.809 (0.876)</td>
+<td style="text-align: left;">0.328 (0.754)</td>
+<td style="text-align: left;">0.467 (0.81)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.923</td>
-<td style="text-align: right;">0.329</td>
-<td style="text-align: right;">0.486</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Delly</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.770</td>
-<td style="text-align: right;">0.093</td>
-<td style="text-align: right;">0.166</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.695</td>
-<td style="text-align: right;">0.707</td>
-<td style="text-align: right;">0.701</td>
+<td style="text-align: left;">0.767 (0.866)</td>
+<td style="text-align: left;">0.093 (0.225)</td>
+<td style="text-align: left;">0.166 (0.358)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.858</td>
-<td style="text-align: right;">0.226</td>
-<td style="text-align: right;">0.357</td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.696 (0.903)</td>
+<td style="text-align: left;">0.707 (0.846)</td>
+<td style="text-align: left;">0.701 (0.874)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.903</td>
-<td style="text-align: right;">0.847</td>
-<td style="text-align: right;">0.874</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Real reads</td>
-<td style="text-align: left;">vg-construct</td>
-<td style="text-align: left;">all</td>
+<td style="text-align: left;">vg</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.448</td>
-<td style="text-align: right;">0.523</td>
-<td style="text-align: right;">0.482</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.614</td>
-<td style="text-align: right;">0.522</td>
-<td style="text-align: right;">0.564</td>
+<td style="text-align: left;">0.431 (0.683)</td>
+<td style="text-align: left;">0.541 (0.726)</td>
+<td style="text-align: left;">0.48 (0.704)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.697</td>
-<td style="text-align: right;">0.724</td>
-<td style="text-align: right;">0.710</td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.65 (0.886)</td>
+<td style="text-align: left;">0.519 (0.708)</td>
+<td style="text-align: left;">0.577 (0.787)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.885</td>
-<td style="text-align: right;">0.731</td>
-<td style="text-align: right;">0.801</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">BayesTyper</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.587</td>
-<td style="text-align: right;">0.227</td>
-<td style="text-align: right;">0.327</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.568</td>
-<td style="text-align: right;">0.327</td>
-<td style="text-align: right;">0.415</td>
+<td style="text-align: left;">0.601 (0.747)</td>
+<td style="text-align: left;">0.254 (0.433)</td>
+<td style="text-align: left;">0.357 (0.549)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.748</td>
-<td style="text-align: right;">0.410</td>
-<td style="text-align: right;">0.530</td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.627 (0.91)</td>
+<td style="text-align: left;">0.325 (0.381)</td>
+<td style="text-align: left;">0.428 (0.537)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.869</td>
-<td style="text-align: right;">0.412</td>
-<td style="text-align: right;">0.559</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">svtyper</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.707</td>
-<td style="text-align: right;">0.262</td>
-<td style="text-align: right;">0.382</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.790</td>
-<td style="text-align: right;">0.594</td>
-<td style="text-align: right;">0.678</td>
+<td style="text-align: left;">0.661 (0.733)</td>
+<td style="text-align: left;">0.236 (0.551)</td>
+<td style="text-align: left;">0.348 (0.629)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Delly</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.540</td>
-<td style="text-align: right;">0.063</td>
-<td style="text-align: right;">0.113</td>
+<td style="text-align: left;">0.516 (0.621)</td>
+<td style="text-align: left;">0.068 (0.176)</td>
+<td style="text-align: left;">0.12 (0.275)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.55 (0.838)</td>
+<td style="text-align: left;">0.445 (0.547)</td>
+<td style="text-align: left;">0.492 (0.662)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<a name="tbl:giab"></a>
+<table>
+<caption><span>Table S2:</span> Genotyping evaluation on the Genome in a Bottle dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parenthesis corresponds to the results in non-repeat regions. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Precision</th>
+<th style="text-align: left;">Recall</th>
+<th style="text-align: left;">F1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">vg</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.658 (0.774)</td>
+<td style="text-align: left;">0.646 (0.735)</td>
+<td style="text-align: left;">0.652 (0.754)</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.535</td>
-<td style="text-align: right;">0.450</td>
-<td style="text-align: right;">0.489</td>
+<td style="text-align: left;">0.68 (0.768)</td>
+<td style="text-align: left;">0.643 (0.735)</td>
+<td style="text-align: left;">0.661 (0.751)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BayesTyper</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.776 (0.879)</td>
+<td style="text-align: left;">0.286 (0.379)</td>
+<td style="text-align: left;">0.418 (0.53)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.808 (0.886)</td>
+<td style="text-align: left;">0.512 (0.696)</td>
+<td style="text-align: left;">0.627 (0.779)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">svtyper</td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.742 (0.818)</td>
+<td style="text-align: left;">0.342 (0.496)</td>
+<td style="text-align: left;">0.468 (0.618)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delly</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.822 (0.894)</td>
+<td style="text-align: left;">0.177 (0.268)</td>
+<td style="text-align: left;">0.291 (0.412)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.642</td>
-<td style="text-align: right;">0.168</td>
-<td style="text-align: right;">0.266</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.866</td>
-<td style="text-align: right;">0.577</td>
-<td style="text-align: right;">0.692</td>
+<td style="text-align: left;">0.722 (0.822)</td>
+<td style="text-align: left;">0.645 (0.768)</td>
+<td style="text-align: left;">0.681 (0.794)</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <a name="tbl:chmpd"></a>
 <table>
-<caption><span>Table S2:</span> SVPOP experiment. Calling evaluation for the pseudo-diploid genome built from CHM cell lines in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. </caption>
+<caption><span>Table S3:</span> Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Method</th>
 <th style="text-align: left;">Region</th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: right;">TP</th>
-<th style="text-align: right;">FP</th>
-<th style="text-align: right;">FN</th>
 <th style="text-align: right;">Precision</th>
 <th style="text-align: right;">Recall</th>
 <th style="text-align: right;">F1</th>
@@ -388,142 +314,75 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">vg-construct</td>
+<td style="text-align: left;">vg</td>
 <td style="text-align: left;">all</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">9,415</td>
-<td style="text-align: right;">1,369</td>
-<td style="text-align: right;">3,085</td>
-<td style="text-align: right;">0.873</td>
-<td style="text-align: right;">0.753</td>
-<td style="text-align: right;">0.809</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">0.665</td>
+<td style="text-align: right;">0.661</td>
+<td style="text-align: right;">0.663</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">5,789</td>
-<td style="text-align: right;">1,192</td>
-<td style="text-align: right;">1,467</td>
-<td style="text-align: right;">0.829</td>
-<td style="text-align: right;">0.798</td>
-<td style="text-align: right;">0.813</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">3,626</td>
-<td style="text-align: right;">177</td>
-<td style="text-align: right;">1,618</td>
-<td style="text-align: right;">0.954</td>
-<td style="text-align: right;">0.692</td>
-<td style="text-align: right;">0.802</td>
+<td style="text-align: right;">0.688</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.579</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">2,966</td>
-<td style="text-align: right;">273</td>
-<td style="text-align: right;">620</td>
-<td style="text-align: right;">0.919</td>
-<td style="text-align: right;">0.827</td>
-<td style="text-align: right;">0.871</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">2,148</td>
-<td style="text-align: right;">270</td>
-<td style="text-align: right;">501</td>
-<td style="text-align: right;">0.894</td>
-<td style="text-align: right;">0.811</td>
-<td style="text-align: right;">0.851</td>
+<td style="text-align: right;">0.806</td>
+<td style="text-align: right;">0.784</td>
+<td style="text-align: right;">0.795</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">818</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">0.996</td>
-<td style="text-align: right;">0.873</td>
-<td style="text-align: right;">0.931</td>
+<td style="text-align: right;">0.869</td>
+<td style="text-align: right;">0.762</td>
+<td style="text-align: right;">0.812</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SMRT-SV2</td>
 <td style="text-align: left;">all</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">9,224</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">6,956</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.570</td>
-<td style="text-align: right;">0.726</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">0.757</td>
+<td style="text-align: right;">0.536</td>
+<td style="text-align: right;">0.628</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">5,322</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3,631</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.594</td>
-<td style="text-align: right;">0.746</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">3,902</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3,325</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.540</td>
-<td style="text-align: right;">0.701</td>
+<td style="text-align: right;">0.848</td>
+<td style="text-align: right;">0.630</td>
+<td style="text-align: right;">0.723</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">2,816</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1,914</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.595</td>
-<td style="text-align: right;">0.746</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">2,020</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1,306</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.607</td>
-<td style="text-align: right;">0.756</td>
+<td style="text-align: right;">0.880</td>
+<td style="text-align: right;">0.680</td>
+<td style="text-align: right;">0.767</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">796</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">608</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.567</td>
-<td style="text-align: right;">0.724</td>
+<td style="text-align: right;">0.971</td>
+<td style="text-align: right;">0.824</td>
+<td style="text-align: right;">0.891</td>
 </tr>
 </tbody>
 </table>
+<hr />
 <a name="tbl:svpop"></a>
 <table>
-<caption><span>Table S3:</span> SVPOP experiment. Calling evaluation in the HG5014 individual, one of the 15 individuals used to generate the high-quality SV catalog in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. </caption>
+<caption><span>Table S4:</span> Calling evaluation on the SVPOP dataset. Combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Method</th>
@@ -539,92 +398,114 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">vg-construct</td>
+<td style="text-align: left;">vg</td>
 <td style="text-align: left;">all</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">13,630</td>
-<td style="text-align: right;">9,897</td>
-<td style="text-align: right;">10,376</td>
-<td style="text-align: right;">0.580</td>
-<td style="text-align: right;">0.568</td>
-<td style="text-align: right;">0.574</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">25838</td>
+<td style="text-align: right;">22042</td>
+<td style="text-align: right;">15772</td>
+<td style="text-align: right;">0.540</td>
+<td style="text-align: right;">0.621</td>
+<td style="text-align: right;">0.577</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">14545</td>
+<td style="text-align: right;">6824</td>
+<td style="text-align: right;">15425</td>
+<td style="text-align: right;">0.681</td>
+<td style="text-align: right;">0.485</td>
+<td style="text-align: right;">0.567</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">0.509</td>
+<td style="text-align: right;">0.135</td>
+<td style="text-align: right;">0.213</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">non-repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">8,867</td>
-<td style="text-align: right;">7,850</td>
-<td style="text-align: right;">5,172</td>
-<td style="text-align: right;">0.533</td>
-<td style="text-align: right;">0.632</td>
-<td style="text-align: right;">0.578</td>
+<td style="text-align: right;">8051</td>
+<td style="text-align: right;">3258</td>
+<td style="text-align: right;">1817</td>
+<td style="text-align: right;">0.712</td>
+<td style="text-align: right;">0.816</td>
+<td style="text-align: right;">0.760</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">4,752</td>
-<td style="text-align: right;">2,039</td>
-<td style="text-align: right;">5,150</td>
-<td style="text-align: right;">0.697</td>
-<td style="text-align: right;">0.480</td>
-<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">3769</td>
+<td style="text-align: right;">623</td>
+<td style="text-align: right;">818</td>
+<td style="text-align: right;">0.858</td>
+<td style="text-align: right;">0.822</td>
+<td style="text-align: right;">0.840</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">0.579</td>
-<td style="text-align: right;">0.169</td>
-<td style="text-align: right;">0.262</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">0.613</td>
+<td style="text-align: right;">0.202</td>
+<td style="text-align: right;">0.304</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SMRT-SV2</td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">16270</td>
+<td style="text-align: right;">26031</td>
+<td style="text-align: right;">25340</td>
+<td style="text-align: right;">0.385</td>
+<td style="text-align: right;">0.391</td>
+<td style="text-align: right;">0.388</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">11793</td>
+<td style="text-align: right;">10106</td>
+<td style="text-align: right;">18177</td>
+<td style="text-align: right;">0.539</td>
+<td style="text-align: right;">0.393</td>
+<td style="text-align: right;">0.455</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">Total</td>
-<td style="text-align: right;">3,864</td>
-<td style="text-align: right;">1,165</td>
-<td style="text-align: right;">855</td>
-<td style="text-align: right;">0.768</td>
-<td style="text-align: right;">0.819</td>
-<td style="text-align: right;">0.792</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">4483</td>
+<td style="text-align: right;">4659</td>
+<td style="text-align: right;">5385</td>
+<td style="text-align: right;">0.490</td>
+<td style="text-align: right;">0.454</td>
+<td style="text-align: right;">0.472</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">2,677</td>
-<td style="text-align: right;">985</td>
-<td style="text-align: right;">514</td>
-<td style="text-align: right;">0.731</td>
-<td style="text-align: right;">0.839</td>
-<td style="text-align: right;">0.781</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">1,180</td>
-<td style="text-align: right;">176</td>
-<td style="text-align: right;">321</td>
-<td style="text-align: right;">0.869</td>
-<td style="text-align: right;">0.786</td>
-<td style="text-align: right;">0.825</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">INV</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">0.636</td>
-<td style="text-align: right;">0.259</td>
-<td style="text-align: right;">0.368</td>
+<td style="text-align: right;">2928</td>
+<td style="text-align: right;">930</td>
+<td style="text-align: right;">1659</td>
+<td style="text-align: right;">0.759</td>
+<td style="text-align: right;">0.638</td>
+<td style="text-align: right;">0.693</td>
 </tr>
 </tbody>
 </table>
@@ -642,10 +523,25 @@
 <img src="images/hgsvc-real.png" alt="Figure S4: Structural variants from the HGSVC dataset. Calling evaluation for real reads." id="fig:hgsvc-real" data-tag="S4" /><figcaption><span>Figure S4:</span> <strong>Structural variants from the HGSVC dataset</strong>. Calling evaluation for real reads.</figcaption>
 </figure>
 <figure>
-<img src="images/panel5.png" alt="Figure S5: Mapping comparison on graphs of five strains. The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold." id="fig:yeast-mapping-four" data-tag="S5" /><figcaption><span>Figure S5:</span> <strong>Mapping comparison on graphs of five strains.</strong> The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold.</figcaption>
+<img src="images/giab5-geno.png" alt="Figure S5: Structural variants from the Genome in a Bottle dataset. Genotyping evaluation." id="fig:giab-geno" data-tag="S5" /><figcaption><span>Figure S5:</span> <strong>Structural variants from the Genome in a Bottle dataset</strong>. Genotyping evaluation.</figcaption>
 </figure>
 <figure>
-<img src="images/yeast-genotyping-score.png" alt="Figure S6: SV genotyping comparison. Average alignment score of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively" id="fig:geno-comp-score" data-tag="S6" /><figcaption><span>Figure S6:</span> <strong>SV genotyping comparison.</strong> Average alignment score of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively</figcaption>
+<img src="images/giab5.png" alt="Figure S6: Structural variants from the Genome in a Bottle dataset. Genotyping evaluation." id="fig:giab" data-tag="S6" /><figcaption><span>Figure S6:</span> <strong>Structural variants from the Genome in a Bottle dataset</strong>. Genotyping evaluation.</figcaption>
+</figure>
+<figure>
+<img src="images/chmpd-geno.png" alt="Figure S7: Structural variants from the CHM pseudo-diploid dataset. Genotyping evaluation." id="fig:chmpd-geno" data-tag="S7" /><figcaption><span>Figure S7:</span> <strong>Structural variants from the CHM pseudo-diploid dataset</strong>. Genotyping evaluation.</figcaption>
+</figure>
+<figure>
+<img src="images/chmpd.png" alt="Figure S10: Structural variants from the CHM pseudo-diploid dataset. Calling evaluation." id="fig:chmpd" data-tag="S10" /><figcaption><span>Figure S10:</span> <strong>Structural variants from the CHM pseudo-diploid dataset</strong>. Calling evaluation.</figcaption>
+</figure>
+<figure>
+<img src="images/svpop.png" alt="Figure S11: Structural variants from the SVPOP dataset. Calling evaluation." id="fig:svpop" data-tag="S11" /><figcaption><span>Figure S11:</span> <strong>Structural variants from the SVPOP dataset</strong>. Calling evaluation.</figcaption>
+</figure>
+<figure>
+<img src="images/panel5.png" alt="Figure S12: Mapping comparison on graphs of five strains. The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold." id="fig:yeast-mapping-four" data-tag="S12" /><figcaption><span>Figure S12:</span> <strong>Mapping comparison on graphs of five strains.</strong> The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared. a) Stratified by mapping quality threshold. b) Stratified by percent identity threshold.</figcaption>
+</figure>
+<figure>
+<img src="images/yeast-genotyping-score.png" alt="Figure S13: SV genotyping comparison. Average alignment score of short reads mapped to the cactus graph (y-axis) and construct graph (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively" id="fig:geno-comp-score" data-tag="S13" /><figcaption><span>Figure S13:</span> <strong>SV genotyping comparison.</strong> Average alignment score of short reads mapped to the <em>cactus graph</em> (y-axis) and <em>construct graph</em> (x-axis) is compared. Colors and shapes represent the 11 non-reference strains and two clades, respectively</figcaption>
 </figure>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
