@@ -64,16 +64,15 @@ eval.f1 = label.df %>% ungroup %>%
 
 pdf('pdf/chmpd-best-f1.pdf', 8, 4)
 
-eval.f1 %>% 
-  ggplot(aes(x=method, y=F1, fill=region, alpha=eval, group=region)) +
+eval.f1 %>%
+  ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
   facet_grid(type~.) +
-  scale_fill_brewer(name='genomic regions', palette='Set1') +
+  scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') + 
-  theme(axis.text.x=element_text(angle=30, hjust=1),
-        axis.title.x=element_blank())
+  ylab('best F1') + xlab('genomic regions') + 
+  theme()
 
 dev.off()
 

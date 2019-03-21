@@ -30,7 +30,7 @@ hgsvc.df$F1 = ifelse(hgsvc.df$recall==0, 0, hgsvc.df$F1)
 hgsvc.df = hgsvc.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
 
 ## GiaB real reads from HG002
-methods = c('vg','delly','svtyper')
+methods = c('vg','delly','svtyper', 'bayestyper')
 samples = 'HG002'
 giab5.df = readEval4(methods, samples, prefix='data/giab/giab5')
 giab5.df$method = factor(methconv[giab5.df$method], levels=names(pal.tools))
@@ -72,16 +72,54 @@ eval.f1 = eval.f1 %>% ungroup %>%
                      labels=c('absence/presence', 'genotype')),
          experiment=factor(experiment, levels=unique(experiment)))
 
-pdf('pdf/vcf-combined-best-f1.pdf', 8, 4)
+pdf('pdf/hgsvc-giab-chmpd-svpop-best-f1.pdf', 8, 4)
 eval.f1 %>% 
-  ggplot(aes(x=method, y=F1, fill=region, alpha=eval, group=region)) +
+  ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
   facet_grid(type~experiment, scales='free', space='free') +
-  scale_fill_brewer(name='genomic regions', palette='Set1') +
+  scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') + 
-  theme(axis.text.x=element_text(angle=30, hjust=1),
-        axis.title.x=element_blank(),
-        legend.position='bottom')
+  ylab('best F1') +  xlab('genomic regions') + 
+  theme(legend.position='top') +
+  guides(fill=guide_legend(ncol=3))
 dev.off()
+
+pdf('pdf/hgsvc-giab-best-f1.pdf', 8, 4)
+eval.f1 %>%
+  filter(experiment %in% c('HGSVC simulated reads',
+                           'HGSVC real reads',
+                           'GiaB')) %>% 
+  ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
+  geom_bar(stat='identity', position=position_dodge()) +
+  facet_grid(type~experiment, scales='free', space='free') +
+  scale_fill_manual(values=pal.tools) + 
+  scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
+  theme_bw() +
+  ylab('best F1') +  xlab('genomic regions') + 
+  theme(legend.position='top') +
+  guides(fill=guide_legend(ncol=3))
+dev.off()
+
+pdf('pdf/chmpd-svpop-best-f1.pdf', 8, 4)
+eval.f1 %>%
+  filter(experiment %in% c('CHM-PD',
+                           'SVPOP')) %>% 
+  mutate(experiment=as.character(experiment),
+         experiment=ifelse(experiment=='CHM-PD', 'CHM pseudo diploid', experiment)) %>%
+  ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
+  geom_bar(stat='identity', position=position_dodge()) +
+  facet_grid(type~experiment, scales='free', space='free') +
+  scale_fill_manual(values=pal.tools) + 
+  scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
+  theme_bw() +
+  ylab('best F1') +  xlab('genomic regions') + 
+  theme()
+dev.off()
+
+
+eval.f1 %>% filter(eval=='genotype', !is.na(F1)) %>%
+  select(experiment, method, region, type, precision, recall, F1) %>%
+  arrange(experiment, method, region, type) %>%
+  kable(digits=3) %>%
+  cat(file='tables/hgsvc-giab-chmpd-svpop-geno-precision-recall-F1.md', sep='\n')

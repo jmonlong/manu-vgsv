@@ -5,8 +5,8 @@ library(knitr)
 source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
-methods = c('vg','delly','svtyper')
-methconv = c(vg='vg', delly='Delly', svtyper='svtyper')
+methods = c('vg','delly','svtyper', 'bayestyper')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='svtyper')
 
 samples = 'HG002'
 giab5.df = readEval4(methods, samples, prefix='data/giab/giab5')
@@ -63,15 +63,13 @@ eval.f1 = label.df %>% ungroup %>%
 pdf('pdf/giab5-best-f1.pdf', 8, 4)
 
 eval.f1 %>% 
-  ggplot(aes(x=method, y=F1, fill=region, alpha=eval, group=region)) +
+  ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
   facet_grid(type~.) +
-  scale_fill_brewer(name='genomic regions', palette='Set1') +
+  scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') + 
-  theme(axis.text.x=element_text(angle=30, hjust=1),
-        axis.title.x=element_blank())
+  ylab('best F1') +  xlab('genomic regions')
 
 dev.off()
 
