@@ -7,9 +7,11 @@ Depends on R, LaTeX and the following bash commands:  `pdftoppm`, `pdfcrop`
 ## Create PDF in pdf/
 Rscript simerror-figures.R
 Rscript hgsvc-figures.R
-Rscript yeast-figures.R
+Rscript giab-figures.R
 Rscript chmpd-figures.R
 Rscript svpop-figures.R
+Rscript hgsvc-giab-svpop-chmpd-combined.R
+Rscript yeast-figures.R
 
 ## Convert to PNG in png/
 for FILE in pdf/*.pdf
