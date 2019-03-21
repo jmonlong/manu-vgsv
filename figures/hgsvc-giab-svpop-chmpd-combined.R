@@ -120,6 +120,9 @@ dev.off()
 
 eval.f1 %>% filter(eval=='genotype', !is.na(F1)) %>%
   select(experiment, method, region, type, precision, recall, F1) %>%
-  arrange(experiment, method, region, type) %>%
-  kable(digits=3) %>%
+  arrange(region) %>% select(-region) %>% 
+  group_by(experiment, method, type) %>%
+  summarize_all(function(x) {x=round(x,3); paste0(x[1], ' (', x[2], ')')}) %>%
+  arrange(experiment, method, type) %>%
+  kable() %>%
   cat(file='tables/hgsvc-giab-chmpd-svpop-geno-precision-recall-F1.md', sep='\n')
