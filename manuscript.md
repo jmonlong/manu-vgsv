@@ -5,7 +5,7 @@ author-meta:
 - Jean Monlong
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-03-21'
+date-meta: '2019-03-23'
 keywords:
 - structural variation
 - pangenome
@@ -22,10 +22,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/a97792f4c2dc23fa02f46ae69bc368ef223e4411/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/d9d1e97404ac4992792a02af97aab89a46ce75a9/))
 was automatically generated
-from [jmonlong/manu-vgsv@a97792f](https://github.com/jmonlong/manu-vgsv/tree/a97792f4c2dc23fa02f46ae69bc368ef223e4411)
-on March 21, 2019.
+from [jmonlong/manu-vgsv@d9d1e97](https://github.com/jmonlong/manu-vgsv/tree/d9d1e97404ac4992792a02af97aab89a46ce75a9)
+on March 23, 2019.
 </em></small>
 
 ## Authors
@@ -177,7 +177,7 @@ As before, other methods produced lower F1 scores in most cases, although Delly 
 A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals [@3NNFS6U2].
 These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study.
 We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines[@3NNFS6U2].
-The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-chmpd}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
+The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
 Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
 Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
 Of note, Audano et al. had identified 217 sequence-resolved inversions.
@@ -191,7 +191,20 @@ Maximum F1 score for each method (color), across the whole genome or focusing on
 The calling and genotyping evaluation are shown with different shades.
 ](images/chmpd-svpop-best-f1.png){#fig:chmpd-svpop}
 
- 
+
+### Breakpoint fine-tuning
+
+*Maybe better in discussion.*
+
+In addition to genotyping, vg can be used in "call" mode and use an augmentation step to modify the graph based on the read alignment.
+On the simulated SVs from Figure {@fig:1}b, this approach was able to correct the many errors in the input VCF.
+The breakpoints were accurately fine-tuned for 93.8% of the insertions (Figure {@fig:simerror-bkpt}a and Table {@tbl:simerror-bkpt}).
+For deletions, 78.1% of the variants were corrected when only one breakpoint had an error.
+In situations where both breakpoints of the deletions were incorrect, only 18.6% were correctly fine-tuned, and only when the amount of error was small (Figure {@fig:simerror-bkpt}b).
+The breakpoints of less than 20% of the inversions could be corrected.
+Across all SV types, the size of the variant didn't affect the ability to fine-tune the breakpoints throught graph augmentation (Figure {@fig:simerror-bkpt}c).
+
+
 ### Genotyping SV using vg and de novo assemblies
 
 We investigated whether genome graphs derived from genome-genome alignments yield advantages for SV genotyping.
@@ -397,6 +410,25 @@ Table: Calling evaluation on the SVPOP dataset. Combined results for the HG5014,
 
 ---
 
+| SV type | Error type   | Breakpoint | Variant | Proportion | Mean size (bp) | Mean error (bp) |
+|:--------|:-------------|:-----------|--------:|-----------:|---------------:|----------------:|
+| DEL     | one end      | incorrect  |     220 |      0.219 |        422.655 |           6.095 |
+|         |              | fine-tuned |     784 |      0.781 |        670.518 |           5.430 |
+|         | both ends    | incorrect  |     811 |      0.814 |        826.070 |           6.275 |
+|         |              | fine-tuned |     185 |      0.186 |        586.676 |           2.232 |
+| INS     | location/seq | incorrect  |     123 |      0.062 |        428.724 |           6.667 |
+|         |              | fine-tuned |    1877 |      0.938 |        440.043 |           6.439 |
+| INV     | one end      | incorrect  |     868 |      0.835 |        762.673 |           5.161 |
+|         |              | fine-tuned |     172 |      0.165 |        130.244 |           5.884 |
+|         | both ends    | incorrect  |     950 |      0.992 |        556.274 |           5.624 |
+|         |              | fine-tuned |       8 |      0.008 |        200.000 |           1.375 |
+
+Table: Breakpoint fine-tuning using augmentation through "vg call". 
+For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. 
+For insertions, the insertion location and sequence contained errors.
+{#tbl:simerror-bkpt tag="S5"}
+
+---
 
 ![**Structural variants from the HGSVC dataset**. Genotyping evaluation for simulated reads.](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno tag="S1"}
 
@@ -416,19 +448,25 @@ Table: Calling evaluation on the SVPOP dataset. Combined results for the HG5014,
 
 ![**Structural variants from the SVPOP dataset**. Calling evaluation.](images/svpop.png){#fig:svpop tag="S11"}
 
-
+![**Breakpoint fine-tuning using augmentation through "vg call".**.
+For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. 
+For insertions, the insertion location and sequence contained errors.
+a) Proportion of variant for which breakpoints could be fine-tuned. 
+b) Distribution of the amount of errors that could be corrected or not.
+c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
+](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S12"}
 
 
 ![**Mapping comparison on graphs of five strains.**
 The fraction of reads mapped to the cactus graph (y-axis) and the construct graph (x-axis) are compared.
 a) Stratified by mapping quality threshold.
 b) Stratified by percent identity threshold.
-](images/panel5.png){#fig:yeast-mapping-four tag="S12"}
+](images/panel5.png){#fig:yeast-mapping-four tag="S13"}
 
 ![**SV genotyping comparison.** 
 Average alignment score of short reads mapped to the *cactus graph* (y-axis) and *construct graph* (x-axis) is compared. 
 Colors and shapes represent the 11 non-reference strains and two clades, respectively
-](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S13"}
+](images/yeast-genotyping-score.png){#fig:geno-comp-score tag="S14"}
 
 
 ## References {.page_break_before}
