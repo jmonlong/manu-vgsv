@@ -3,6 +3,7 @@ library(dplyr)
 library(magrittr)
 library(tidyr)
 library(knitr)
+library(gridExtra)
 
 source('colors-functions.R')
 
@@ -120,4 +121,49 @@ eval.df %>% ungroup %>%
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
+dev.off()
+
+
+
+##
+## vg call (augmentation) to fine-tune breakpoints
+##
+df = read.table('data/simerror-bkpt-finetuning-vgcall.tsv', as.is=TRUE, header=TRUE)
+df = df %>% mutate(etype=factor(etype, levels=c("location/seq","start","both"),
+                                labels=c('location/seq', 'one end', 'both ends')))
+
+## Table
+df %>% group_by(type, correct.bkpt, etype) %>%
+  summarize(n=n(), mean.size=mean(size), mean.error=mean(error)) %>%
+  group_by(type, etype) %>%
+  mutate(prop=n/sum(n)) %>%
+  arrange(type, etype, correct.bkpt) %>% 
+  kable(digits=3) %>%
+  cat(file='tables/simerror-bkpt-finetuning-vgcall.md', sep='\n')
+
+ggp.l = list()
+
+ggp.l$prop = ggplot(df, aes(x=etype, fill=correct.bkpt)) + geom_bar(position='fill') +
+  theme_bw() + facet_grid(.~type, scales='free', space='free') +
+  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  ylab('variant proportion') + xlab('error type') + ggtitle('a)')
+
+ggp.l$error = df %>% mutate(type.etype=paste(type, etype)) %>% 
+  ggplot(aes(x=error, fill=correct.bkpt)) + geom_histogram(binwidth=1) +
+  theme_bw() + facet_wrap(~type.etype, scales='free') +
+  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  ylab('variant') + ggtitle('b)') +
+  xlab('error (bp)') + scale_x_continuous(breaks=seq(0,20,2)) +
+  guides(fill=FALSE)
+
+ggp.l$size = df %>% mutate(type.etype=paste(type, etype)) %>% 
+  ggplot(aes(x=size, fill=correct.bkpt)) + geom_histogram() +
+  theme_bw() + facet_wrap(~type.etype, scales='free') +
+  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  scale_x_log10() + xlab('size (bp)') + ylab('variant') + ggtitle('c)') + 
+  guides(fill=FALSE)
+
+
+pdf('pdf/simerror-bkpt-finetuning-vgcall.pdf', 8, 8)
+grid.arrange(grobs=ggp.l, heights=c(2,3,3))
 dev.off()
