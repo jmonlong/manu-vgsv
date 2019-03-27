@@ -11,7 +11,8 @@ Rscript giab-figures.R
 Rscript chmpd-figures.R
 Rscript svpop-figures.R
 Rscript hgsvc-giab-svpop-chmpd-combined.R
-Rscript yeast-figures.R
+Rscript yeast-figures-all.R
+Rscript yeast-figures-four.R
 
 ## Convert to PNG in png/
 for FILE in pdf/*.pdf
@@ -24,7 +25,7 @@ done
 pdflatex panels.tex
 pdfcrop --margins 10 panels.pdf pdf/panels.pdf
 rm panels.pdf panels.aux panels.log
-for PAN in `seq 1 5`
+for PAN in `seq 1 6`
 do
     pdftoppm -png -f $PAN pdf/panels.pdf -r 300 > png/panel${PAN}.png
 done
