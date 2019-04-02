@@ -798,6 +798,141 @@
   {
     "publisher": "Springer Nature",
     "issue": "4",
+    "DOI": "10.1038/nbt.3772",
+    "type": "article-journal",
+    "page": "314-316",
+    "source": "Crossref",
+    "title": "Toil enables reproducible, open source, big biomedical data analyses",
+    "volume": "35",
+    "author": [
+      {
+        "given": "John",
+        "family": "Vivian"
+      },
+      {
+        "given": "Arjun Arkal",
+        "family": "Rao"
+      },
+      {
+        "given": "Frank Austin",
+        "family": "Nothaft"
+      },
+      {
+        "given": "Christopher",
+        "family": "Ketchum"
+      },
+      {
+        "given": "Joel",
+        "family": "Armstrong"
+      },
+      {
+        "given": "Adam",
+        "family": "Novak"
+      },
+      {
+        "given": "Jacob",
+        "family": "Pfeil"
+      },
+      {
+        "given": "Jake",
+        "family": "Narkizian"
+      },
+      {
+        "given": "Alden D",
+        "family": "Deran"
+      },
+      {
+        "given": "Audrey",
+        "family": "Musselman-Brown"
+      },
+      {
+        "given": "Hannes",
+        "family": "Schmidt"
+      },
+      {
+        "given": "Peter",
+        "family": "Amstutz"
+      },
+      {
+        "given": "Brian",
+        "family": "Craft"
+      },
+      {
+        "given": "Mary",
+        "family": "Goldman"
+      },
+      {
+        "given": "Kate",
+        "family": "Rosenbloom"
+      },
+      {
+        "given": "Melissa",
+        "family": "Cline"
+      },
+      {
+        "given": "Brian",
+        "family": "O'Connor"
+      },
+      {
+        "given": "Megan",
+        "family": "Hanna"
+      },
+      {
+        "given": "Chet",
+        "family": "Birger"
+      },
+      {
+        "given": "W James",
+        "family": "Kent"
+      },
+      {
+        "given": "David A",
+        "family": "Patterson"
+      },
+      {
+        "given": "Anthony D",
+        "family": "Joseph"
+      },
+      {
+        "given": "Jingchun",
+        "family": "Zhu"
+      },
+      {
+        "given": "Sasha",
+        "family": "Zaranek"
+      },
+      {
+        "given": "Gad",
+        "family": "Getz"
+      },
+      {
+        "given": "David",
+        "family": "Haussler"
+      },
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      }
+    ],
+    "container-title": "Nature Biotechnology",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          4
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfxbhs",
+    "container-title-short": "Nat Biotechnol",
+    "PMCID": "PMC5546205",
+    "PMID": "28398314",
+    "id": "faeC2cx0"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "4",
     "DOI": "10.1038/nbt.4060",
     "type": "article-journal",
     "page": "338-345",
@@ -2299,6 +2434,57 @@
     "PMCID": "PMC4896128",
     "PMID": "27271295",
     "id": "14neTdqfN"
+  },
+  {
+    "publisher": "Mary Ann Liebert Inc",
+    "issue": "7",
+    "DOI": "10.1089/cmb.2017.0251",
+    "type": "article-journal",
+    "page": "649-663",
+    "source": "Crossref",
+    "title": "Superbubbles, Ultrabubbles, and Cacti",
+    "volume": "25",
+    "author": [
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      },
+      {
+        "given": "Jordan M.",
+        "family": "Eizenga"
+      },
+      {
+        "given": "Yohei M.",
+        "family": "Rosen"
+      },
+      {
+        "given": "Adam M.",
+        "family": "Novak"
+      },
+      {
+        "given": "Erik",
+        "family": "Garrison"
+      },
+      {
+        "given": "Glenn",
+        "family": "Hickey"
+      }
+    ],
+    "container-title": "Journal of Computational Biology",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          7
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gdw582",
+    "container-title-short": "Journal of Computational Biology",
+    "PMCID": "PMC6067107",
+    "PMID": "29461862",
+    "id": "xJlNnKH2"
   },
   {
     "publisher": "Oxford University Press (OUP)",
