@@ -22,9 +22,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/fbdb06c28c9ffcf47b01821ebdee29c9d0cc9b3b/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517/))
 was automatically generated
-from [jmonlong/manu-vgsv@fbdb06c](https://github.com/jmonlong/manu-vgsv/tree/fbdb06c28c9ffcf47b01821ebdee29c9d0cc9b3b)
+from [jmonlong/manu-vgsv@b1fc19e](https://github.com/jmonlong/manu-vgsv/tree/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517)
 on April 8, 2019.
 </em></small>
 
@@ -180,7 +180,10 @@ We first called SVs from the pseudo-diploid genome and reads used to train SMRT-
 The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
 Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
 Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
-Of note, Audano et al. had identified 217 sequence-resolved inversions.
+SMR-SV2 produce *no-calls* when the read coverage is too low.
+We note that SMRT-SV2's recall increased when filtering these calls out.
+Interestingly, vg performed well even in regions where SMRT-SV2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
+Finally, Audano et al. had identified 217 sequence-resolved inversions.
 vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table {@tbl:svpop}).
 Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.
 
@@ -289,15 +292,98 @@ The algorithm is as follows:
 7. The VCF variants are derived from the paths.
 (todo: expand and clarify these last steps.  could leave them fairly brief here and go into detail in the supplement).
 
-
 Due to the high memory requirements of the current implementation of vg call, toil-vg call splits the input graph into 2.5Mb overlapping chunks along the reference path.
 Each chunk is called independently in parallel and the results are concatenated into the output VCF.   
 
-#### Toil-vg sveval / SVEval
+#### Toil-vg sveval
 
-Sveval can almost be its own application note, but needs at least to be described a bit here.  
+The variants are first normalized with `bcftools norm` to ensure consistent representation between called variants and baseline variants.
+We then implemented an overlap-based strategy to compare SVs and compute evaluation metrics (sveval R package: [https://github.com/jmonlong/sveval](https://github.com/jmonlong/sveval)).
 
-#### HGSVC Analysis
+For deletions and inversions, the affected region in the reference genome is overlapped and matched between the two sets od SVs.
+First, we select pairs of SVs with at least 10% reciprocal overlap.
+Then for each variant we compute the proportion of its region that is covered by an overlapping variant in the other set.
+If this coverage proportion is higher than 80%, the variant is considered *covered*.
+True positives are covered variants from the call set or the truth set.
+False positives are variants from the call set that are not covered.
+False negative are variants from the truth set that are not covered.
+
+For insertions, we select pairs of insertions that are located no farther than XX bp from each other.
+We then align the inserted sequences using a Smith-Waterman alignment.
+Then for each insertion we compute the proportion of its inserted sequence that aligns a matched variant in the other set.
+As for deletions/inversions, this coverage proportion is used to annotate variants as true positives, false positives and false negatives.
+
+sveval accepts VCF files with symbolic or explicit representation of the SVs.
+If the explicit representation is used, multi-allelic variants are split and their sequences right-trimmed.
+When inversions are considered, the reverse-complement of the ALT sequence of variants larger than 10 bp is aligned with the REF sequence and classified as an inversion if more than 80% of the sequence aligns.
+
+We assess either the *calling* performance (absence/presence of a SV) or the *genotyping* performance.
+For the *calling* evaluation, both heterozygous and homozygous alternate SVs are compared using the approach described above.
+To compute genotype-level metrics, the heterozygous and homozygous SVs are compared separately.
+Before splitting the variants by genotype, consecutive heterozygous variants are first stitched together if located at less that 20 bp from each other, and then merged into homozygous variants if their reciprocal overlap is at least 80%.
+
+### Other SV genotypers
+
+#### BayesTyper
+
+If not specified otherwise BayesTyper was run as follow.
+Raw reads were mapped to the reference genome using `bwa mem`.
+GATK and Platypus were run on the mapped reads to call SNVs and short indels (<50bp).
+The VCFs with these variants and the SVs to genotype were combined and used as input for BayesTyper.
+The BayesTyper genotyping pipeline started by counting the kmers in the raw reads using `kmc -k55 -ci1 -m8`.
+These kmers are then passed through a Bloom filter using `bayesTyperTools makeBloom`.
+Finally variants are clustered and genotyped using `bayestyper cluster` and `bayestyper genotype --min-genotype-posterior 0`
+
+#### Delly
+
+The `delly call` command was run on the reads mapped by `bwa mem`, the reference genome fasta file and the VCF containing the SVs to genotype in their explicit representation.
+
+#### SVTyper
+
+The VCF containing deletions was converted to symbolic representation and passed to `svtyper` as long as the reads mapped by `bwa mem`.
+The output VCF was converted back to explicit representation, to facilitate variant normalization later, using `bayesTyperTools convertAllele`.
+
+#### SMRT-SV2
+
+SMRT-SV2 was run on VCFs generated for SMRT-SV2 using the command: `XXX`
+The output VCF was converted back to explicit representation, to facilitate variant normalization later??
+
+
+### Simulation experiment
+
+We simulated a synthetic genome with 1000 insertions, deletions and inversions.
+Each variant was separated from the next by a buffer region of 500 bp.
+The size of deletions and insertions followed the distribution of real SVs from the HGSVC catalog.
+We used the same size distribution as deletions for inversions.
+Then a VCF file was produced for three simulated samples with random genotypes (homozygous reference, heterozygous, homozygous alternate).
+
+We created another VCF file containing errors in the SV definition.
+One or both breakpoints of deletions were shifted between 1 and 10 bp.
+The location and sequence of insertions were also modified, either shifted or deleted at the flanks, again up to 10 bp. 
+
+Paired-end reads were simulated using `vg sim` on graph that contained the true SVs.
+Different read depth were tested: 1x, 3x, 7x, 10x, 13x, 20x.
+We used real Illumina reads from NA12878 provided by the Genome in a Bottle consortium to model base qualities and sequencing errors.
+
+The different methods were tested using either the true VCF or the VCF that contained errors.
+For vg, a graph was constructed from the VCF file, indexed, then used to map simulated reads and call variants using toil-vg (see [toil-vg](#toil-vg)).
+A beta version 1.5 of BayesTyper was run directly on the simulared reads and using only SVs in the input VCF.
+In order to run the other methods, reads were mapped to the linear reference sequence using `bwa mem` and sorted using `samtools`.
+For Delly, insertions and deletions were first genotyped together using these mapped reads and the `delly call` command.
+Inversions were genotyped separately using a VCF that was formatted according to Delly's preference.
+SVTyper was run on the mapped reads and a VCF that was converted to symbolic variant representation.
+All commands used for this analysis are available at [ANALYSIS_REPO](XXX).
+
+The genotypes called in each experiment (method/VCF with or without errors/sequencing depth) were compared to the true SV genotypes to compute the precision, recall and F1 score (see [toil-vg sveval](#toil-vg-sveval)).
+
+#### Breakpoint fine-tuning using graph augmentation
+
+vg can call variants after augmenting the graph with the read alignments to discover new variants (see [Toil-vg call](#toil-vg-call)).
+We tested if this approach could fine-tune the breakpoint location of SVs in the graph.
+We started with the graph that contained approximate SVs (1-10 bp errors in breakpoint location) and 20x simulated reads from the simulation experiment (see [Simulation experiment](#simulation-experiment)).
+The variants called after graph augmentation were compared with the true SVs and considered fine-tuned if the breakpoints matched exactly.
+
+### HGSVC Analysis
 
 Phased VCFs were obtained for the three HGSVC samples from the authors of [@vQTymKCj] and combined with bcftools merge.
 A variation graph was created and indexed using the combined VCF and the HS38D1 reference with alt loci excluded.
@@ -310,7 +396,7 @@ The process was repeated with the same reads on the linear reference, using bwa-
 Illumina HiSeq 2500 paired end reads were downloaded from the EBI's ENA FTP site for the three samples, using Run Accessions ERR903030, ERR895347 and ERR894724 for HG00514, HG00733 and NA19240, respectively.
 The graph and linear mapping and genotyping pipelines were run exactly as for the simulation, and the comparison results were aggregated across the three samples.
 
-#### GIAB Analysis
+### GIAB Analysis
 
 Version 0.6 of the GIAB SV VCF for the Ashkenazim son (HG002) was obtained from the NCBI FTP site.
 Illumina reads downsampled to 50x coverage obtained as described in [@10jxt15v0], were used to run the vg and linear SV genotyping pipelines described above though with GRCh37 instead of 38.
@@ -318,17 +404,24 @@ Since this dataset contains only one sample, variants without a determined genot
 
 Todo: I think some more thought may need to go into this comparison.  I'd actually assumed before writing this up that the whole trio was in the VCF but this is not the case -- it's just for the one sample.  The curreny results will count as a false positive a call that was not assigned a genotype by GIAB.  This is probably a pretty good estimate, but I think it's too hand wavy to publish.  In the worst case, we can switch to just looking at recall on the whole set (which has the advantage of being exactly what that other paper did for deletions).
 
-#### SMRT-SV2 Comparison (CHMPD and SVPOP)
+### SMRT-SV2 Comparison (CHMPD and SVPOP)
 
 The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on our simulated, HGSVC or GIAB data.
-The authors shared their training and evaluation set, a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples, along with a negative control (NA19240).  
+The authors shared their training and evaluation set, a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples, along with a negative control (NA19240). 
 The high quality of the CHM assemblies makes this set an attractive alternative to using simulated reads.
 We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV2 genotyper with the "30x-4" model and min-call-depth 8 cutoff, and compared the two back to the original VCF.
 
 In an effort to extend this comparison to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV2 discovery VCF (which contains them in addition to 12 other samples) published in [@3NNFS6U2] using vg and SMRT-SV2 Genotyper.
 The discovery VCF does not contain genotypes so we did not distinguish between heterozygous and homozygous genotypes, looking at only the presence or absence of an alt allele in each variant.
 
+SMRT-SV2 produce some explicit *no-calls* prediction when the read coverage is too low to produce accurate genotypes.
+These no-calls are considered homozygous reference in the main evaluation.
+We also explored the performance of vg and SMRT-SV2 in different sets of regions:
 
+1. Non-repeat regions, i.e. excluding segmental duplications and tandem repeats.
+1. Repeat regions defined as segmental duplications and tandem repeats.
+1. Regions where SMRT-SV2 could call variants.
+1. Regions where SMRT-SV2 produced no-calls.
 
 
 ## Discussion
@@ -465,6 +558,37 @@ Table: Calling evaluation on the SVPOP dataset. Combined results for the HG5014,
 
 ---
 
+| Method   | Region                | Type |   TP |   FP |   FN | Precision | Recall |    F1 |
+|:---------|:----------------------|:-----|-----:|-----:|-----:|----------:|-------:|------:|
+| vg       | all                   | INS  | 8618 | 7237 | 5416 |     0.546 |  0.614 | 0.578 |
+|          |                       | DEL  | 4762 | 2048 | 5145 |     0.696 |  0.481 | 0.569 |
+|          |                       | INV  |   11 |    8 |   54 |     0.579 |  0.169 | 0.262 |
+|          | repeat                | INS  | 6176 | 6923 | 4678 |     0.475 |  0.569 | 0.518 |
+|          |                       | DEL  | 2428 | 1701 | 4542 |     0.584 |  0.348 | 0.436 |
+|          |                       | INV  |    1 |    1 |    6 |     0.500 |  0.143 | 0.222 |
+|          | non-repeat            | INS  | 2677 |  987 |  514 |     0.731 |  0.839 | 0.781 |
+|          |                       | DEL  | 1180 |  176 |  321 |     0.869 |  0.786 | 0.825 |
+|          |                       | INV  |    7 |    4 |   20 |     0.636 |  0.259 | 0.368 |
+|          | called in SMRT-SV     | INS  | 3410 | 3789 | 2108 |     0.478 |  0.618 | 0.539 |
+|          |                       | DEL  | 2544 | 1092 | 1518 |     0.699 |  0.626 | 0.661 |
+|          |                       | INV  |    8 |    8 |   52 |     0.500 |  0.133 | 0.210 |
+|          | not called in SMRT-SV | INS  | 4838 |  542 | 3678 |     0.899 |  0.568 | 0.696 |
+|          |                       | DEL  | 2034 |   26 | 3723 |     0.987 |  0.353 | 0.520 |
+| SMRT-SV2 | all                   | INS  | 5245 | 8563 | 8789 |     0.394 |  0.374 | 0.384 |
+|          |                       | DEL  | 3741 | 3382 | 6166 |     0.533 |  0.378 | 0.442 |
+|          | repeat                | INS  | 3848 | 7125 | 7006 |     0.368 |  0.354 | 0.361 |
+|          |                       | DEL  | 1990 | 2832 | 4980 |     0.426 |  0.286 | 0.342 |
+|          | non-repeat            | INS  | 1396 | 1468 | 1795 |     0.493 |  0.438 | 0.464 |
+|          |                       | DEL  |  901 |  308 |  600 |     0.745 |  0.600 | 0.665 |
+|          | called in SMRT-SV     | INS  | 4343 | 5595 | 1175 |     0.445 |  0.787 | 0.569 |
+|          |                       | DEL  | 3227 | 2451 |  835 |     0.573 |  0.794 | 0.666 |
+|          | not called in SMRT-SV | INS  |  116 |  109 | 8400 |     0.551 |  0.014 | 0.026 |
+|          |                       | DEL  |  206 |   16 | 5551 |     0.911 |  0.036 | 0.069 |
+
+Table: Calling evaluation on the SVPOP dataset in different sets of regions for the HG5014 individual. {#tbl:svpop-regions tag="S5"}
+
+---
+
 | SV type | Error type   | Breakpoint | Variant | Proportion | Mean size (bp) | Mean error (bp) |
 |:--------|:-------------|:-----------|--------:|-----------:|---------------:|----------------:|
 | DEL     | one end      | incorrect  |     220 |      0.219 |        422.655 |           6.095 |
@@ -502,6 +626,9 @@ For insertions, the insertion location and sequence contained errors.
 ![**Structural variants from the CHM pseudo-diploid dataset**. Calling evaluation.](images/chmpd.png){#fig:chmpd tag="S10"}
 
 ![**Structural variants from the SVPOP dataset**. Calling evaluation.](images/svpop.png){#fig:svpop tag="S11"}
+
+![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S11"}
+
 
 ![**Breakpoint fine-tuning using augmentation through "vg call".**.
 For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. 
