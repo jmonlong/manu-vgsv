@@ -31,7 +31,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/fbdb06c28c9ffcf47b01821ebdee29c9d0cc9b3b/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/fbdb06c28c9ffcf47b01821ebdee29c9d0cc9b3b">jmonlong/manu-vgsv@fbdb06c</a> on April 8, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517">jmonlong/manu-vgsv@b1fc19e</a> on April 8, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -63,7 +63,7 @@
 </figure>
 <h3 id="other-long-read-datasets">Other long-read datasets</h3>
 <p>The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for a Ashkenazim individual (HG002)<span class="citation" data-cites="14neTdqfN 16GvGhO20">[<a href="#ref-14neTdqfN">19</a>,<a href="#ref-16GvGhO20">20</a>]</span>. Dozens of SV callers and datasets from short, long and linked reads were used to produce this set of SVs. vg performed similarly on this dataset than in the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures <a href="#fig:2">2</a>, <a href="#fig:giab-geno">S5</a> and <a href="#fig:giab">S6</a>, and Table <a href="#tbl:giab">S2</a>). As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotype for deletions in non-repeat regions.</p>
-<p>A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals <span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study. We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures <a href="#fig:chmpd-svpop">3</a>, <a href="#fig:chmpd-geno">S7</a> and <a href="#fig:chmpd">S10</a>, and Table <a href="#tbl:chmpd">S3</a>). Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures <a href="#fig:chmpd-svpop">3</a> and <a href="#fig:svpop">S11</a>, and Table <a href="#tbl:svpop">S4</a>). Of note, Audano et al. had identified 217 sequence-resolved inversions. vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table <a href="#tbl:svpop">S4</a>). Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.</p>
+<p>A recent study by Audano et al. generated a SV catalog using long-read sequencing across 15 individuals <span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study. We first called SVs from the pseudo-diploid genome and reads used to train SMRT-SV2 and constructed by merging datasets from two haploid cell lines<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. The absence/presence predictions from vg were systematically better than SMRT-SV2 for both SV types but SMRT-SV2 produced better genotypes for deletions (see Figures <a href="#fig:chmpd-svpop">3</a>, <a href="#fig:chmpd-geno">S7</a> and <a href="#fig:chmpd">S10</a>, and Table <a href="#tbl:chmpd">S3</a>). Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (Figures <a href="#fig:chmpd-svpop">3</a> and <a href="#fig:svpop">S11</a>, and Table <a href="#tbl:svpop">S4</a>). SMR-SV2 produce <em>no-calls</em> when the read coverage is too low. We note that SMRT-SV2’s recall increased when filtering these calls out. Interestingly, vg performed well even in regions where SMRT-SV2 produced <em>no-calls</em> (Figure <a href="#fig:svpop-regions">S11</a> and Table <a href="#tbl:svpop-regions">S5</a>). Finally, Audano et al. had identified 217 sequence-resolved inversions. vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table <a href="#tbl:svpop">S4</a>). Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.</p>
 <figure>
 <img src="images/chmpd-svpop-best-f1.png" alt="Figure 3: Structural variants from Audano et al.[8]. The pseudo-diploid genome built from CHM cell lines was used originally used to train SMRT-SV2 in Audano et al.[8]. The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[8]. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades." id="fig:chmpd-svpop" /><figcaption><span>Figure 3:</span> <strong>Structural variants from Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span></strong>. The pseudo-diploid genome built from CHM cell lines was used originally used to train SMRT-SV2 in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span>. Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). The calling and genotyping evaluation are shown with different shades.</figcaption>
 </figure>
@@ -101,18 +101,45 @@
 <li>The VCF variants are derived from the paths. (todo: expand and clarify these last steps. could leave them fairly brief here and go into detail in the supplement).</li>
 </ol>
 <p>Due to the high memory requirements of the current implementation of vg call, toil-vg call splits the input graph into 2.5Mb overlapping chunks along the reference path. Each chunk is called independently in parallel and the results are concatenated into the output VCF.</p>
-<h4 id="toil-vg-sveval-sveval">Toil-vg sveval / SVEval</h4>
-<p>Sveval can almost be its own application note, but needs at least to be described a bit here.</p>
-<h4 id="hgsvc-analysis">HGSVC Analysis</h4>
+<h4 id="toil-vg-sveval">Toil-vg sveval</h4>
+<p>The variants are first normalized with <code>bcftools norm</code> to ensure consistent representation between called variants and baseline variants. We then implemented an overlap-based strategy to compare SVs and compute evaluation metrics (sveval R package: <a href="https://github.com/jmonlong/sveval">https://github.com/jmonlong/sveval</a>).</p>
+<p>For deletions and inversions, the affected region in the reference genome is overlapped and matched between the two sets od SVs. First, we select pairs of SVs with at least 10% reciprocal overlap. Then for each variant we compute the proportion of its region that is covered by an overlapping variant in the other set. If this coverage proportion is higher than 80%, the variant is considered <em>covered</em>. True positives are covered variants from the call set or the truth set. False positives are variants from the call set that are not covered. False negative are variants from the truth set that are not covered.</p>
+<p>For insertions, we select pairs of insertions that are located no farther than XX bp from each other. We then align the inserted sequences using a Smith-Waterman alignment. Then for each insertion we compute the proportion of its inserted sequence that aligns a matched variant in the other set. As for deletions/inversions, this coverage proportion is used to annotate variants as true positives, false positives and false negatives.</p>
+<p>sveval accepts VCF files with symbolic or explicit representation of the SVs. If the explicit representation is used, multi-allelic variants are split and their sequences right-trimmed. When inversions are considered, the reverse-complement of the ALT sequence of variants larger than 10 bp is aligned with the REF sequence and classified as an inversion if more than 80% of the sequence aligns.</p>
+<p>We assess either the <em>calling</em> performance (absence/presence of a SV) or the <em>genotyping</em> performance. For the <em>calling</em> evaluation, both heterozygous and homozygous alternate SVs are compared using the approach described above. To compute genotype-level metrics, the heterozygous and homozygous SVs are compared separately. Before splitting the variants by genotype, consecutive heterozygous variants are first stitched together if located at less that 20 bp from each other, and then merged into homozygous variants if their reciprocal overlap is at least 80%.</p>
+<h3 id="other-sv-genotypers">Other SV genotypers</h3>
+<h4 id="bayestyper">BayesTyper</h4>
+<p>If not specified otherwise BayesTyper was run as follow. Raw reads were mapped to the reference genome using <code>bwa mem</code>. GATK and Platypus were run on the mapped reads to call SNVs and short indels (&lt;50bp). The VCFs with these variants and the SVs to genotype were combined and used as input for BayesTyper. The BayesTyper genotyping pipeline started by counting the kmers in the raw reads using <code>kmc -k55 -ci1 -m8</code>. These kmers are then passed through a Bloom filter using <code>bayesTyperTools makeBloom</code>. Finally variants are clustered and genotyped using <code>bayestyper cluster</code> and <code>bayestyper genotype --min-genotype-posterior 0</code></p>
+<h4 id="delly">Delly</h4>
+<p>The <code>delly call</code> command was run on the reads mapped by <code>bwa mem</code>, the reference genome fasta file and the VCF containing the SVs to genotype in their explicit representation.</p>
+<h4 id="svtyper">SVTyper</h4>
+<p>The VCF containing deletions was converted to symbolic representation and passed to <code>svtyper</code> as long as the reads mapped by <code>bwa mem</code>. The output VCF was converted back to explicit representation, to facilitate variant normalization later, using <code>bayesTyperTools convertAllele</code>.</p>
+<h4 id="smrt-sv2">SMRT-SV2</h4>
+<p>SMRT-SV2 was run on VCFs generated for SMRT-SV2 using the command: <code>XXX</code> The output VCF was converted back to explicit representation, to facilitate variant normalization later??</p>
+<h3 id="simulation-experiment">Simulation experiment</h3>
+<p>We simulated a synthetic genome with 1000 insertions, deletions and inversions. Each variant was separated from the next by a buffer region of 500 bp. The size of deletions and insertions followed the distribution of real SVs from the HGSVC catalog. We used the same size distribution as deletions for inversions. Then a VCF file was produced for three simulated samples with random genotypes (homozygous reference, heterozygous, homozygous alternate).</p>
+<p>We created another VCF file containing errors in the SV definition. One or both breakpoints of deletions were shifted between 1 and 10 bp. The location and sequence of insertions were also modified, either shifted or deleted at the flanks, again up to 10 bp.</p>
+<p>Paired-end reads were simulated using <code>vg sim</code> on graph that contained the true SVs. Different read depth were tested: 1x, 3x, 7x, 10x, 13x, 20x. We used real Illumina reads from NA12878 provided by the Genome in a Bottle consortium to model base qualities and sequencing errors.</p>
+<p>The different methods were tested using either the true VCF or the VCF that contained errors. For vg, a graph was constructed from the VCF file, indexed, then used to map simulated reads and call variants using toil-vg (see <a href="#toil-vg">toil-vg</a>). A beta version 1.5 of BayesTyper was run directly on the simulared reads and using only SVs in the input VCF. In order to run the other methods, reads were mapped to the linear reference sequence using <code>bwa mem</code> and sorted using <code>samtools</code>. For Delly, insertions and deletions were first genotyped together using these mapped reads and the <code>delly call</code> command. Inversions were genotyped separately using a VCF that was formatted according to Delly’s preference. SVTyper was run on the mapped reads and a VCF that was converted to symbolic variant representation. All commands used for this analysis are available at <a href="XXX">ANALYSIS_REPO</a>.</p>
+<p>The genotypes called in each experiment (method/VCF with or without errors/sequencing depth) were compared to the true SV genotypes to compute the precision, recall and F1 score (see <a href="#toil-vg-sveval">toil-vg sveval</a>).</p>
+<h4 id="breakpoint-fine-tuning-using-graph-augmentation">Breakpoint fine-tuning using graph augmentation</h4>
+<p>vg can call variants after augmenting the graph with the read alignments to discover new variants (see <a href="#toil-vg-call">Toil-vg call</a>). We tested if this approach could fine-tune the breakpoint location of SVs in the graph. We started with the graph that contained approximate SVs (1-10 bp errors in breakpoint location) and 20x simulated reads from the simulation experiment (see <a href="#simulation-experiment">Simulation experiment</a>). The variants called after graph augmentation were compared with the true SVs and considered fine-tuned if the breakpoints matched exactly.</p>
+<h3 id="hgsvc-analysis">HGSVC Analysis</h3>
 <p>Phased VCFs were obtained for the three HGSVC samples from the authors of <span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">18</a>]</span> and combined with bcftools merge. A variation graph was created and indexed using the combined VCF and the HS38D1 reference with alt loci excluded. The phasing information was used to construct a GWBT index, from which the two haploid sequences from HG00514 were extracted. Illumina read pairs with 30x coverage were simulated from these sequences using vg, with an error model learned from real reads from the same sample. Still, these reads reflect the idealized situation where the breakpoints of the SVs being genotyped are exactly known a priori. The reads were mapped to the graph and the mappings used to genotype the SVs in the graph, which were finally compared back to the HG00514 genotypes from the HGSVC VCF. The process was repeated with the same reads on the linear reference, using bwa-mem for mapping and DELLY, SVTYPER and Bayestyper for SV genotyping.</p>
 <p>Illumina HiSeq 2500 paired end reads were downloaded from the EBI’s ENA FTP site for the three samples, using Run Accessions ERR903030, ERR895347 and ERR894724 for HG00514, HG00733 and NA19240, respectively. The graph and linear mapping and genotyping pipelines were run exactly as for the simulation, and the comparison results were aggregated across the three samples.</p>
-<h4 id="giab-analysis">GIAB Analysis</h4>
+<h3 id="giab-analysis">GIAB Analysis</h3>
 <p>Version 0.6 of the GIAB SV VCF for the Ashkenazim son (HG002) was obtained from the NCBI FTP site. Illumina reads downsampled to 50x coverage obtained as described in <span class="citation" data-cites="10jxt15v0">[<a href="#ref-10jxt15v0">12</a>]</span>, were used to run the vg and linear SV genotyping pipelines described above though with GRCh37 instead of 38. Since this dataset contains only one sample, variants without a determined genotype (14649 out of 74012) were considered “false positives” as a proxy measure for precision.</p>
 <p>Todo: I think some more thought may need to go into this comparison. I’d actually assumed before writing this up that the whole trio was in the VCF but this is not the case – it’s just for the one sample. The curreny results will count as a false positive a call that was not assigned a genotype by GIAB. This is probably a pretty good estimate, but I think it’s too hand wavy to publish. In the worst case, we can switch to just looking at recall on the whole set (which has the advantage of being exactly what that other paper did for deletions).</p>
-<h4 id="smrt-sv2-comparison-chmpd-and-svpop">SMRT-SV2 Comparison (CHMPD and SVPOP)</h4>
-<p>The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on our simulated, HGSVC or GIAB data. The authors shared their training and evaluation set, a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples, along with a negative control (NA19240).<br />
-The high quality of the CHM assemblies makes this set an attractive alternative to using simulated reads. We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV2 genotyper with the “30x-4” model and min-call-depth 8 cutoff, and compared the two back to the original VCF.</p>
+<h3 id="smrt-sv2-comparison-chmpd-and-svpop">SMRT-SV2 Comparison (CHMPD and SVPOP)</h3>
+<p>The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on our simulated, HGSVC or GIAB data. The authors shared their training and evaluation set, a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples, along with a negative control (NA19240). The high quality of the CHM assemblies makes this set an attractive alternative to using simulated reads. We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV2 genotyper with the “30x-4” model and min-call-depth 8 cutoff, and compared the two back to the original VCF.</p>
 <p>In an effort to extend this comparison to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV2 discovery VCF (which contains them in addition to 12 other samples) published in <span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">8</a>]</span> using vg and SMRT-SV2 Genotyper. The discovery VCF does not contain genotypes so we did not distinguish between heterozygous and homozygous genotypes, looking at only the presence or absence of an alt allele in each variant.</p>
+<p>SMRT-SV2 produce some explicit <em>no-calls</em> prediction when the read coverage is too low to produce accurate genotypes. These no-calls are considered homozygous reference in the main evaluation. We also explored the performance of vg and SMRT-SV2 in different sets of regions:</p>
+<ol type="1">
+<li>Non-repeat regions, i.e. excluding segmental duplications and tandem repeats.</li>
+<li>Repeat regions defined as segmental duplications and tandem repeats.</li>
+<li>Regions where SMRT-SV2 could call variants.</li>
+<li>Regions where SMRT-SV2 produced no-calls.</li>
+</ol>
 <h2 id="discussion">Discussion</h2>
 <p><em>Potential topics for the discussion.</em></p>
 <h4 id="performance-across-datasets">Performance across datasets</h4>
@@ -535,6 +562,290 @@ The high quality of the CHM assemblies makes this set an attractive alternative 
 </tbody>
 </table>
 <hr />
+<a name="tbl:svpop-regions"></a>
+<table>
+<caption><span>Table S5:</span> Calling evaluation on the SVPOP dataset in different sets of regions for the HG5014 individual. </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Region</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">TP</th>
+<th style="text-align: right;">FP</th>
+<th style="text-align: right;">FN</th>
+<th style="text-align: right;">Precision</th>
+<th style="text-align: right;">Recall</th>
+<th style="text-align: right;">F1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">vg</td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">8618</td>
+<td style="text-align: right;">7237</td>
+<td style="text-align: right;">5416</td>
+<td style="text-align: right;">0.546</td>
+<td style="text-align: right;">0.614</td>
+<td style="text-align: right;">0.578</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">4762</td>
+<td style="text-align: right;">2048</td>
+<td style="text-align: right;">5145</td>
+<td style="text-align: right;">0.696</td>
+<td style="text-align: right;">0.481</td>
+<td style="text-align: right;">0.569</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0.579</td>
+<td style="text-align: right;">0.169</td>
+<td style="text-align: right;">0.262</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">repeat</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">6176</td>
+<td style="text-align: right;">6923</td>
+<td style="text-align: right;">4678</td>
+<td style="text-align: right;">0.475</td>
+<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.518</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">2428</td>
+<td style="text-align: right;">1701</td>
+<td style="text-align: right;">4542</td>
+<td style="text-align: right;">0.584</td>
+<td style="text-align: right;">0.348</td>
+<td style="text-align: right;">0.436</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.143</td>
+<td style="text-align: right;">0.222</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">non-repeat</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">2677</td>
+<td style="text-align: right;">987</td>
+<td style="text-align: right;">514</td>
+<td style="text-align: right;">0.731</td>
+<td style="text-align: right;">0.839</td>
+<td style="text-align: right;">0.781</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">1180</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">321</td>
+<td style="text-align: right;">0.869</td>
+<td style="text-align: right;">0.786</td>
+<td style="text-align: right;">0.825</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0.636</td>
+<td style="text-align: right;">0.259</td>
+<td style="text-align: right;">0.368</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">called in SMRT-SV</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">3410</td>
+<td style="text-align: right;">3789</td>
+<td style="text-align: right;">2108</td>
+<td style="text-align: right;">0.478</td>
+<td style="text-align: right;">0.618</td>
+<td style="text-align: right;">0.539</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">2544</td>
+<td style="text-align: right;">1092</td>
+<td style="text-align: right;">1518</td>
+<td style="text-align: right;">0.699</td>
+<td style="text-align: right;">0.626</td>
+<td style="text-align: right;">0.661</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">0.500</td>
+<td style="text-align: right;">0.133</td>
+<td style="text-align: right;">0.210</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">not called in SMRT-SV</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">4838</td>
+<td style="text-align: right;">542</td>
+<td style="text-align: right;">3678</td>
+<td style="text-align: right;">0.899</td>
+<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">0.696</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">2034</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">3723</td>
+<td style="text-align: right;">0.987</td>
+<td style="text-align: right;">0.353</td>
+<td style="text-align: right;">0.520</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SMRT-SV2</td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">5245</td>
+<td style="text-align: right;">8563</td>
+<td style="text-align: right;">8789</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: right;">0.374</td>
+<td style="text-align: right;">0.384</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">3741</td>
+<td style="text-align: right;">3382</td>
+<td style="text-align: right;">6166</td>
+<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">0.378</td>
+<td style="text-align: right;">0.442</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">repeat</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">3848</td>
+<td style="text-align: right;">7125</td>
+<td style="text-align: right;">7006</td>
+<td style="text-align: right;">0.368</td>
+<td style="text-align: right;">0.354</td>
+<td style="text-align: right;">0.361</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">1990</td>
+<td style="text-align: right;">2832</td>
+<td style="text-align: right;">4980</td>
+<td style="text-align: right;">0.426</td>
+<td style="text-align: right;">0.286</td>
+<td style="text-align: right;">0.342</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">non-repeat</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">1396</td>
+<td style="text-align: right;">1468</td>
+<td style="text-align: right;">1795</td>
+<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.438</td>
+<td style="text-align: right;">0.464</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">901</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">0.745</td>
+<td style="text-align: right;">0.600</td>
+<td style="text-align: right;">0.665</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">called in SMRT-SV</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">4343</td>
+<td style="text-align: right;">5595</td>
+<td style="text-align: right;">1175</td>
+<td style="text-align: right;">0.445</td>
+<td style="text-align: right;">0.787</td>
+<td style="text-align: right;">0.569</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">3227</td>
+<td style="text-align: right;">2451</td>
+<td style="text-align: right;">835</td>
+<td style="text-align: right;">0.573</td>
+<td style="text-align: right;">0.794</td>
+<td style="text-align: right;">0.666</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">not called in SMRT-SV</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">8400</td>
+<td style="text-align: right;">0.551</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">5551</td>
+<td style="text-align: right;">0.911</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.069</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <a name="tbl:simerror-bkpt"></a>
 <table>
 <caption><span>Table S5:</span> Breakpoint fine-tuning using augmentation through “vg call”. For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. For insertions, the insertion location and sequence contained errors. </caption>
@@ -678,6 +989,9 @@ The high quality of the CHM assemblies makes this set an attractive alternative 
 </figure>
 <figure>
 <img src="images/svpop.png" alt="Figure S11: Structural variants from the SVPOP dataset. Calling evaluation." id="fig:svpop" data-tag="S11" /><figcaption><span>Figure S11:</span> <strong>Structural variants from the SVPOP dataset</strong>. Calling evaluation.</figcaption>
+</figure>
+<figure>
+<img src="images/svpop-regions.png" alt="Figure S11: Evaluation across different sets of regions in HG00514 (SVPOP dataset). Calling evaluation." id="fig:svpop-regions" data-tag="S11" /><figcaption><span>Figure S11:</span> <strong>Evaluation across different sets of regions in HG00514 (SVPOP dataset)</strong>. Calling evaluation.</figcaption>
 </figure>
 <figure>
 <img src="images/simerror-bkpt-finetuning-vgcall.png" alt="Figure S12: Breakpoint fine-tuning using augmentation through “vg call”.. For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. For insertions, the insertion location and sequence contained errors. a) Proportion of variant for which breakpoints could be fine-tuned. b) Distribution of the amount of errors that could be corrected or not. c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not." id="fig:simerror-bkpt" data-tag="S12" /><figcaption><span>Figure S12:</span> <strong>Breakpoint fine-tuning using augmentation through “vg call”.</strong>. For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. For insertions, the insertion location and sequence contained errors. a) Proportion of variant for which breakpoints could be fine-tuned. b) Distribution of the amount of errors that could be corrected or not. c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.</figcaption>
