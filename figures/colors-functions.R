@@ -46,7 +46,8 @@ readEval4 <- function(methods, samples, prefix, regions=c('all','nonrep'), eval=
   })
   res = do.call(rbind, res)
   res$type = factor(res$type, levels=c('Total', 'INS', 'DEL', 'INV'))
-  res$region = factor(res$region, levels=c('all','nonrep'), labels=c('all','non-repeat'))
+  res$region = factor(res$region, levels=c('all','rep', 'nonrep', 'called', 'nocalls'),
+                      labels=c('all','repeat', 'non-repeat', 'called', 'not called'))
   res
 }
 
