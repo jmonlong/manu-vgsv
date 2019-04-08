@@ -45,7 +45,6 @@ svpop.df %>% filter(eval=='call') %>%
 dev.off()
 
 
-
 ## Bar plots with best F1
 eval.f1 = label.df %>% ungroup %>%
   mutate(F1=ifelse(is.infinite(F1), NA, F1),
@@ -72,3 +71,42 @@ eval.f1 %>% filter(!is.na(F1)) %>%
   arrange(method, region) %>%
   kable(digits=3) %>%
   cat(file='tables/svpop.md', sep='\n')
+
+
+
+##
+## Regional analysis analysis
+## Regions: all, repeats, non-repeats, called in SMRT-SV, not called in SMRT-SV
+##
+samples = c('HG00514')
+svpop.df = readEval4(methods, samples, prefix='data/svpop/svpop', eval='call',
+                     regions=c('all','rep', 'nonrep', 'nocalls', 'called'))
+svpop.df$method = factor(methconv[svpop.df$method], levels=names(pal.tools))
+
+svpop.df = svpop.df %>% filter(type!='Total') %>% arrange(qual)
+levels(svpop.df$region) = c('all','repeat', 'non-repeat','called in SMRT-SV','not called in SMRT-SV')
+label.df = svpop.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
+
+pdf('pdf/svpop-regions.pdf', 8, 5)
+
+svpop.df %>% filter(type!='INV', eval=='call') %>%
+  ggplot(aes(x=recall, y=precision, colour=region)) +
+  geom_path(size=1, alpha=.9) + 
+  theme_bw() +
+  facet_grid(method~type) +
+  scale_colour_brewer(palette='Set1')
+
+dev.off()
+
+## Bar plots with best F1
+eval.f1 = label.df %>% ungroup %>%
+  mutate(F1=ifelse(is.infinite(F1), NA, F1),
+         eval=factor(eval, levels=c('call','geno'),
+                     labels=c('absence/presence', 'genotype')))
+  
+
+eval.f1 %>% filter(!is.na(F1)) %>%
+  select(method, region, type, TP.baseline, FP, FN, precision, recall, F1) %>%
+  arrange(method, region, type) %>%
+  kable(digits=3) %>%
+  cat(file='tables/svpop-regions.md', sep='\n')
