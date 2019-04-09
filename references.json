@@ -2648,6 +2648,123 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:p>There is increasing recognition that a single, monoploid reference genome is a poor universal reference structure for human genetics, because it represents only a tiny fraction of human variation. Adding this missing variation results in a structure that can be described as a mathematical graph: a genome graph. We demonstrate that, in comparison to the existing reference genome (GRCh38), genome graphs can substantially improve the fractions of reads that map uniquely and perfectly. Furthermore, we show that this fundamental simplification of read mapping transforms the variant calling problem from one in which many non-reference variants must be discovered de-novo to one in which the vast majority of variants are simply re-identified within the graph. Using standard benchmarks as well as a novel reference-free evaluation, we show that a simplistic variant calling procedure on a genome graph can already call variants at least as well as, and in many cases better than, a state-of-the-art method on the linear human reference genome. We anticipate that graph-based references will supplant linear references in humans and in other applications where cohorts of sequenced individuals are available.</jats:p>",
+    "DOI": "10.1101/101378",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Genome Graphs",
+    "author": [
+      {
+        "given": "Adam M",
+        "family": "Novak"
+      },
+      {
+        "given": "Glenn",
+        "family": "Hickey"
+      },
+      {
+        "given": "Erik",
+        "family": "Garrison"
+      },
+      {
+        "given": "Sean",
+        "family": "Blum"
+      },
+      {
+        "given": "Abram",
+        "family": "Connelly"
+      },
+      {
+        "given": "Alexander",
+        "family": "Dilthey"
+      },
+      {
+        "given": "Jordan",
+        "family": "Eizenga"
+      },
+      {
+        "given": "M. A. Saleh",
+        "family": "Elmohamed"
+      },
+      {
+        "given": "Sally",
+        "family": "Guthrie"
+      },
+      {
+        "given": "André",
+        "family": "Kahles"
+      },
+      {
+        "given": "Stephen",
+        "family": "Keenan"
+      },
+      {
+        "given": "Jerome",
+        "family": "Kelleher"
+      },
+      {
+        "given": "Deniz",
+        "family": "Kural"
+      },
+      {
+        "given": "Heng",
+        "family": "Li"
+      },
+      {
+        "given": "Michael F",
+        "family": "Lin"
+      },
+      {
+        "given": "Karen",
+        "family": "Miga"
+      },
+      {
+        "given": "Nancy",
+        "family": "Ouyang"
+      },
+      {
+        "given": "Goran",
+        "family": "Rakocevic"
+      },
+      {
+        "given": "Maciek",
+        "family": "Smuga-Otto"
+      },
+      {
+        "given": "Alexander Wait",
+        "family": "Zaranek"
+      },
+      {
+        "given": "Richard",
+        "family": "Durbin"
+      },
+      {
+        "given": "Gil",
+        "family": "McVean"
+      },
+      {
+        "given": "David",
+        "family": "Haussler"
+      },
+      {
+        "given": "Benedict",
+        "family": "Paten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          1,
+          18
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gdcc74",
+    "id": "DuODeStx"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
     "abstract": "<jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent-child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome - most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
     "DOI": "10.1101/193144",
     "type": "manuscript",

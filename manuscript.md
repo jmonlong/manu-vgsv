@@ -22,9 +22,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/b194b1ddb1b7228ec7b0fd58d811b8a957108f18/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/5acc35a45f19bfdf37f65c4785ab1abb6d5501f9/))
 was automatically generated
-from [jmonlong/manu-vgsv@b194b1d](https://github.com/jmonlong/manu-vgsv/tree/b194b1ddb1b7228ec7b0fd58d811b8a957108f18)
+from [jmonlong/manu-vgsv@5acc35a](https://github.com/jmonlong/manu-vgsv/tree/5acc35a45f19bfdf37f65c4785ab1abb6d5501f9)
 on April 9, 2019.
 </em></small>
 
@@ -72,26 +72,26 @@ Beyond single nucleotide variants and short insertions/deletions, the vg toolkit
 
 ## Introduction {.page_break_before}
 
-Structural variation (SV) represents genomic mutation involving 50 bp or more and can take several forms, such as for example deletions, insertions, inversions, or translocations.
-SVs have long been associated with developmental disorders, cancer and other complex diseases and phenotypes[@ebc66eBr].
-However, SVs have been under-studied for technological reasons and due to their complexity as compared to other types of genomic variation.
-Although whole-genome sequencing (WGS) made it possible to assess virtually any type of structural variation, many challenges remain.
-SV-supporting reads are generally difficult to map to reference genomes, in part because most SVs are larger than the sequencing reads.
-Repeated sequences in the genome often confuse read mapping algorithms, which can produce mappings that seem to support an SV.
-In practice, large-scale projects had to combine several methods to achieve better accuracy.
-This methodology has been used to compile catalogs with tens of thousands of SVs in humans[@qA6dWFP; @py6BC5kj].
-Overall, SV detection from short-read sequencing remains laborious and of lower accuracy than small variant detection.
-This explains why these variants and their impact have been under-studied as compared to single-nucleotide variants (SNVs) and small insertions/deletions (indels).
+A structural variant (SV) is a genomic mutation involving 50 or more base pairs.
+SVs can take several forms such as deletions, insertions, inversions, or translocations.
+It is intuitive that their greater size relative to smaller events such as single nucleotide variants (SNVs) and small insertions and deletions (indels) would imply that SVs can have a larger impact on phenotype.
+Ineed, SVs have long been associated with developmental disorders, cancer and other complex diseases and phenotypes[@ebc66eBr], but remain much more poorly studied than their smaller mutational counterparts.
+This discrepancy is entirely due to technological limitation: short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost, but is poorly suited for discovering SVs, which often like in repeat-rich regions and whose lengths can far exceed read sizes.
+The central obstacle is in mapping short reads to the human reference genome.
+It is generally difficult or impossible to unambiguously map a short read if the sample whose genome is being analyzed differs substantially from the reference at the read's location.
+If, for example, the read derives from the middle of what would be termed a large insertion relative to the reference, the best result a read mapper could hope to produce would be to leave it unmapped.
+In some cases, SVs can be inferred indirectly from short read mappings via split reads and discordant read pairs, but the accuracy of such approaches remains limited[@vQTymKCj].
 
-Over the last few years, exciting developments in sequencing technologies and library preparation have made it possible to produce long reads or retrieve long-range information over kilobases of sequence.
-This is particularly useful for SV detection and de novo assembly.
+In practice, large-scale projects have had to combine short read mapping to several other methods to achieve better accuracy.
+This methodology has been used to compile catalogs with tens of thousands of SVs in humans[@qA6dWFP; @py6BC5kj].
+Recent developments in sequencing technologies and library preparation continue to pave the way for better SV detection.
 Several recent studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which was novel and sequence-resolved[@z91V6jjU; @rs7e40wC; @PRx3qEIm; @121OWcTA4; @3NNFS6U2].
 These technologies are also enabling the production of high-quality de novo genome assemblies[@z91V6jjU; @6KbgcueR], and large blocks of haplotype-resolved sequences[@Pu6SY37C].
 Such technical advances promise to expand the amount of known genomic variation in humans in the near future.
 However, their cost prohibits their use in large-scale studies that require hundreds or thousands of samples, such as disease association studies.
 
 At the same time, the reference genome is evolving from a linear reference to a graph-based reference that incorporates known genomic variation[@Qa8mx6Ll; @10jxt15v0; @11Jy8B61m].
-By including variants in the graph, both read mapping and variant calling become variant-aware and benefit in term of accuracy and sensitivity[@10jxt15v0].
+By including variants in the graph, both read mapping and variant calling become variant-aware and benefit in terms of accuracy and sensitivity[@10jxt15v0; @DuODeStx].
 In addition, different variant types are called simultaneously by a unified framework.
 vg was the first openly available tool that scaled to multi-gigabase genomes and provides read mapping, variant calling and haplotype modeling[@10jxt15v0].
 In vg, graphs can be built from both variant catalogs in the VCF format or assembly alignment.
