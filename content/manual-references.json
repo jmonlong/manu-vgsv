@@ -18,5 +18,23 @@
       "family": "Himmelstein"
     }
   ]
+},
+{
+  "type": "webpage",
+  "standard_citation": "url:https://www.genomicsengland.co.uk",
+  "URL": "https://www.genomicsengland.co.uk",
+  "title": "Genomics England 100,000 Genomes Project. "
+}, 
+{
+  "type": "webpage",
+  "standard_citation": "url:https://www.nhlbiwgs.org/",
+  "URL": "https://www.nhlbiwgs.org/",
+  "title": "Whole Genome Sequencing in the NHLBI Trans-Omics for Precision Medicine (TOPMed). "
+}, 
+{
+  "type": "webpage",
+  "standard_citation": "url:https://dcc.icgc.org/pcawg",
+  "URL": "https://dcc.icgc.org/pcawg",
+  "title": "The Pancancer Analysis of Whole Genomes (PCAWG). "
 }
 ]

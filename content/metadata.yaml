@@ -34,6 +34,13 @@ author_info:
     funders: Grant XXXXXXXX
     symbol_str: "☯"
   -
+    name: Jonas Andreas Sibbesen
+    initials: JAS
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: jsibbese@ucsc.edu
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+  -
     name: Adam Novak
     initials: AN
     orcid: XXXX-XXXX-XXXX-XXXX
