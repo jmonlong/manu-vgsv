@@ -5,7 +5,7 @@ author-meta:
 - Jean Monlong
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-04-08'
+date-meta: '2019-04-09'
 keywords:
 - structural variation
 - pangenome
@@ -22,10 +22,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/f958e0a02ff4d664b4a61d16f35108f85c9eb03e/))
 was automatically generated
-from [jmonlong/manu-vgsv@b1fc19e](https://github.com/jmonlong/manu-vgsv/tree/b1fc19e3dea88b1cad0bb0c87f1116ee5411e517)
-on April 8, 2019.
+from [jmonlong/manu-vgsv@f958e0a](https://github.com/jmonlong/manu-vgsv/tree/f958e0a02ff4d664b4a61d16f35108f85c9eb03e)
+on April 9, 2019.
 </em></small>
 
 ## Authors
@@ -208,7 +208,7 @@ The breakpoints of less than 20% of the inversions could be corrected.
 Across all SV types, the size of the variant didn't affect the ability to fine-tune the breakpoints throught graph augmentation (Figure {@fig:simerror-bkpt}c).
 
 
-### Genotyping SV using vg and de novo assemblies
+### Graphs from alignment of de novo assemblies
 
 We investigated whether genome graphs derived from de-novo assembly alignments yield advantages for SV genotyping.
 To this end, we analyzed public sequencing datasets for 12 yeast strains from two related clades (S. cerevisiae and S. paradoxus) [@7f5OKa5O].
@@ -422,6 +422,36 @@ We also explored the performance of vg and SMRT-SV2 in different sets of regions
 1. Repeat regions defined as segmental duplications and tandem repeats.
 1. Regions where SMRT-SV2 could call variants.
 1. Regions where SMRT-SV2 produced no-calls.
+
+#### Yeast graph analysis
+
+For the analysis of graphs from de novo assemblies, we utilized publically available PacBio-derived assemblies and Illumina short read sequencing datasets for 12 yeast strains from two related clades (S. cerevisiae and S. paradoxus) [@7f5OKa5O].
+Two different genome graphs were constructed from the assemblies of five selected strains (S.c. S288C, S.c. SK1, S.c. YPS128, S.p. CBS432, S.p.UFRJ50816).
+In the following, we describe the steps for the construction of both graphs and the calling of variants.
+For more details and the precise commands used in our analyses, see the following Github repository: https://github.com/eldariont/yeast_sv.
+
+#### Construction of the *construct graph*
+For the first graph (throughout the paper called *construct graph*) the usual graph construction method was applied that uses a linear reference genome and a VCF file of variants.
+As reference genome, the PacBio assembly of the S.c. S288C strain was chosen because it is the strain used for the S. cerevisiae genome reference assembly.
+To obtain variants three methods for SV detection from genome assemblies were combined: Assemblytics [@krO7WgVi] (commit df5361f809a7034d4ab6acde1691cc962b82d833), AsmVar (commit 5abd91a47feedfbd39b89ec3e2d6d20c02fe5a5e) [@oVaXIwl5] and paftools (version 2.14-r883) [@172cJaw4Q].
+All three methods were run to detect SVs between the PacBio assembly of reference strain S.c. S288C and the PacBio assemblies of each of the four other selected yeast strains.
+The union of variants detected by the three methods was produced and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set.
+These union sets of variants for each of the four selected (and non-reference) strains were merged and another deduplication step was applied to combine variants with a reciprocal overlap of at least 90%.
+The resulting total set of variants in VCF format and the linear reference genome were used to build the *construct graph* with `vg construct`.
+
+#### Construction of the *cactus graph*
+For the second graph (throughout the paper called *cactus graph*) an alternative graph construction methods directly from de novo genome assemblies was applied.
+First, the repeat-masked PacBio-assemblies of the five selected strains were aligned with our Cactus tool [@1FgS53pXi].
+Subsequently, the output file in HAL format was converted to a variant graph with hal2vg (https://github.com/ComparativeGenomicsToolkit/hal2vg).
+
+#### Calling and genotyping of SVs
+Prior to variant calling, the Illumina short reads of all 12 yeast strains were mapped to both graphs using `vg map`.
+The fractions of reads mapped with specific properties were measured using `vg view` and the JSON processor `jq`.
+Then, `toil-vg call` (commit be8b6dadac5372081ae54fad868458656258948e from March 20, 2019) was used to analyze the mapped reads of each of the 11 non-reference strains and to call variants.
+Thus, a separate variant callset was obtained for each of the strains and both of the graphs.
+To evalute the callsets, a sample graph was generated for each callset using `vg construct` and `vg mod` on the reference assembly S.c. S288C and the callset.
+Subsequently, short reads from the respective strains were mapped to each sample graph using `vg map`.
+The resulting alignments were analyzed `vg view` and the `jq`.
 
 
 ## Discussion
