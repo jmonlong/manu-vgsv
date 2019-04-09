@@ -31,7 +31,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variation in variation graphs with the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/f958e0a02ff4d664b4a61d16f35108f85c9eb03e/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/f958e0a02ff4d664b4a61d16f35108f85c9eb03e">jmonlong/manu-vgsv@f958e0a</a> on April 9, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/b194b1ddb1b7228ec7b0fd58d811b8a957108f18/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/b194b1ddb1b7228ec7b0fd58d811b8a957108f18">jmonlong/manu-vgsv@b194b1d</a> on April 9, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -140,12 +140,84 @@
 <li>Regions where SMRT-SV2 could call variants.</li>
 <li>Regions where SMRT-SV2 produced no-calls.</li>
 </ol>
-<h4 id="yeast-graph-analysis">Yeast graph analysis</h4>
-<p>For the analysis of graphs from de novo assemblies, we utilized publically available PacBio-derived assemblies and Illumina short read sequencing datasets for 12 yeast strains from two related clades (S. cerevisiae and S. paradoxus) <span class="citation" data-cites="7f5OKa5O">[<a href="#ref-7f5OKa5O">21</a>]</span>. Two different genome graphs were constructed from the assemblies of five selected strains (S.c. S288C, S.c. SK1, S.c. YPS128, S.p. CBS432, S.p.UFRJ50816). In the following, we describe the steps for the construction of both graphs and the calling of variants. For more details and the precise commands used in our analyses, see the following Github repository: https://github.com/eldariont/yeast_sv.</p>
+<h3 id="yeast-graph-analysis">Yeast graph analysis</h3>
+<p>For the analysis of graphs from de novo assemblies, we utilized publically available PacBio-derived assemblies and Illumina short read sequencing datasets for 12 yeast strains from two related clades (Table {<span class="citation" data-cites="tbl:strains">[<span class="citeproc-not-found" data-reference-id="tbl:strains"><strong>???</strong></span>]</span>}) <span class="citation" data-cites="7f5OKa5O">[<a href="#ref-7f5OKa5O">21</a>]</span>. Two different genome graphs were constructed from the assemblies of five selected strains (S.c. S288C, S.c. SK1, S.c. YPS128, S.p. CBS432, and S.p. UFRJ50816). In the following, we describe the steps for the construction of both graphs and the calling of variants. For more details and the precise commands used in our analyses, see the following Github repository: https://github.com/eldariont/yeast_sv.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Strain</th>
+<th>Clade</th>
+<th>Included in graph</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S288C</td>
+<td>S. cerevisiae</td>
+<td>✓</td>
+</tr>
+<tr class="even">
+<td>SK1</td>
+<td>S. cerevisiae</td>
+<td>✓</td>
+</tr>
+<tr class="odd">
+<td>YPS128</td>
+<td>S. cerevisiae</td>
+<td>✓</td>
+</tr>
+<tr class="even">
+<td>UWOPS034614</td>
+<td>S. cerevisiae</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Y12</td>
+<td>S. cerevisiae</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>DBVPG6765</td>
+<td>S. cerevisiae</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>DBVPG6044</td>
+<td>S. cerevisiae</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>CBS432</td>
+<td>S. paradoxus</td>
+<td>✓</td>
+</tr>
+<tr class="odd">
+<td>UFRJ50816</td>
+<td>S. paradoxus</td>
+<td>✓</td>
+</tr>
+<tr class="even">
+<td>N44</td>
+<td>S. paradoxus</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>UWOPS919171</td>
+<td>S. paradoxus</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>YPS138</td>
+<td>S. paradoxus</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: 12 yeast strains from two related clades were used in our analysis. Five strains were selected to be included in the graphs while the remaining seven were used for variant calling only. {#tbl:strains}</p>
 <h4 id="construction-of-the-construct-graph">Construction of the <em>construct graph</em></h4>
-<p>For the first graph (throughout the paper called <em>construct graph</em>) the usual graph construction method was applied that uses a linear reference genome and a VCF file of variants. As reference genome, the PacBio assembly of the S.c. S288C strain was chosen because it is the strain used for the S. cerevisiae genome reference assembly. To obtain variants three methods for SV detection from genome assemblies were combined: Assemblytics <span class="citation" data-cites="krO7WgVi">[<a href="#ref-krO7WgVi">22</a>]</span> (commit df5361f809a7034d4ab6acde1691cc962b82d833), AsmVar (commit 5abd91a47feedfbd39b89ec3e2d6d20c02fe5a5e) <span class="citation" data-cites="oVaXIwl5">[<a href="#ref-oVaXIwl5">23</a>]</span> and paftools (version 2.14-r883) <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q">24</a>]</span>. All three methods were run to detect SVs between the PacBio assembly of reference strain S.c. S288C and the PacBio assemblies of each of the four other selected yeast strains. The union of variants detected by the three methods was produced and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set. These union sets of variants for each of the four selected (and non-reference) strains were merged and another deduplication step was applied to combine variants with a reciprocal overlap of at least 90%. The resulting total set of variants in VCF format and the linear reference genome were used to build the <em>construct graph</em> with <code>vg construct</code>.</p>
+<p>For the first graph (throughout the paper called <em>construct graph</em>) the most common graph construction method was applied. It requires a linear reference genome and a VCF file of variants on that reference to build the graph. As reference genome, the PacBio assembly of the S.c. S288C strain was chosen because this strain was used for the S. cerevisiae genome reference assembly. To obtain variants three methods for SV detection from genome assemblies were combined: Assemblytics <span class="citation" data-cites="krO7WgVi">[<a href="#ref-krO7WgVi">22</a>]</span> (commit df5361f), AsmVar (commit 5abd91a) <span class="citation" data-cites="oVaXIwl5">[<a href="#ref-oVaXIwl5">23</a>]</span> and paftools (version 2.14-r883) <span class="citation" data-cites="172cJaw4Q">[<a href="#ref-172cJaw4Q">24</a>]</span>. All three methods were run to detect SVs between the PacBio assembly of reference strain S.c. S288C and the PacBio assemblies of each of the four other selected yeast strains. The union of variants detected by the three methods was produced (using bedtools [̍@1HWiAHnIw]) and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set. These union sets of variants for each of the four selected (and non-reference) strains were merged and another deduplication step was applied to combine variants with a reciprocal overlap of at least 90%. The resulting total set of variants in VCF format and the linear reference genome were used to build the <em>construct graph</em> with <code>vg construct</code>.</p>
 <h4 id="construction-of-the-cactus-graph">Construction of the <em>cactus graph</em></h4>
-<p>For the second graph (throughout the paper called <em>cactus graph</em>) an alternative graph construction methods directly from de novo genome assemblies was applied. First, the repeat-masked PacBio-assemblies of the five selected strains were aligned with our Cactus tool <span class="citation" data-cites="1FgS53pXi">[<a href="#ref-1FgS53pXi">25</a>]</span>. Subsequently, the output file in HAL format was converted to a variant graph with hal2vg (https://github.com/ComparativeGenomicsToolkit/hal2vg).</p>
+<p>For the second graph (throughout the paper called <em>cactus graph</em>) an alternative graph construction methods directly from de novo genome assemblies was applied. First, the repeat-masked PacBio-assemblies of the five selected strains were aligned with our Cactus tool <span class="citation" data-cites="1FgS53pXi">[<a href="#ref-1FgS53pXi">25</a>]</span>. Cactus requires a phylogenetic tree of the strains which was estimated using Mash <span class="citation" data-cites="mH9pzoIn">[<a href="#ref-mH9pzoIn">28</a>]</span> and PHYLIP. Subsequently, the output file in HAL format was converted to a variant graph with hal2vg (https://github.com/ComparativeGenomicsToolkit/hal2vg).</p>
 <h4 id="calling-and-genotyping-of-svs">Calling and genotyping of SVs</h4>
 <p>Prior to variant calling, the Illumina short reads of all 12 yeast strains were mapped to both graphs using <code>vg map</code>. The fractions of reads mapped with specific properties were measured using <code>vg view</code> and the JSON processor <code>jq</code>. Then, <code>toil-vg call</code> (commit be8b6dadac5372081ae54fad868458656258948e from March 20, 2019) was used to analyze the mapped reads of each of the 11 non-reference strains and to call variants. Thus, a separate variant callset was obtained for each of the strains and both of the graphs. To evalute the callsets, a sample graph was generated for each callset using <code>vg construct</code> and <code>vg mod</code> on the reference assembly S.c. S288C and the callset. Subsequently, short reads from the respective strains were mapped to each sample graph using <code>vg map</code>. The resulting alignments were analyzed <code>vg view</code> and the <code>jq</code>.</p>
 <h2 id="discussion">Discussion</h2>
@@ -155,9 +227,9 @@
 <h4 id="providing-a-resource-to-be-used-by-large-scale-sequencing-project">Providing a resource to be used by large-scale sequencing project</h4>
 <p>As a result of this study we provide a variation graph containing XX millions of SNVs and indels from the 1000 Genomes Project as well as XX thousands of SVs derived from long-read sequencing. This variation graph could serve as a richer reference for large scale projects that use short-read sequencing. For instance, more and more large-scale projects are sequencing the genomes of thousands or hundreds of thousands of individuals, e.g the Pancancer Analysis of Whole Genomes, the Genomics England initiative, and the TOPMed consortium(REFS). These large WGS studies will provide a deeper look into the mechanism of common diseases and, in some cases, will be used directly in a clinical setting. Clinicians and researchers are eager to use these growing WGS resources to interrogate the importance of SVs in disease at a scale never achieved before, either to get a more complete picture of the genetic factors of a disease or to produce a more comprehensive clinical report. As sequencing reaches the clinic, whole-genome sequencing will become routine for many patients. Clinicians will rely on variant calling and interpretation for diagnosis and treatment. For variant interpretation in particular, a comprehensive and unified characterization of the genomic variation will be extremely valuable.</p>
 <h4 id="easier-to-use">Easier to use</h4>
-<p>Some methods require additional information or special VCF formatting <span class="citation" data-cites="16glGyppX">[<a href="#ref-16glGyppX">28</a>]</span>. SVTyper was designed to use VCFs created by Lumpy. The genotyping module from Delly was implemented for variants found by its discovery module. SMRT-SV requires a VCF with information about XXX. Nebula, a new khmer-based genotyper, requires reads from a sample containing the SV during khmer selection<span class="citation" data-cites="zRHJDqQ9">[<a href="#ref-zRHJDqQ9">29</a>]</span>. In contrast, vg can take as input either explicit or symbolic VCFs, as well as assembly alignment.</p>
+<p>Some methods require additional information or special VCF formatting <span class="citation" data-cites="16glGyppX">[<a href="#ref-16glGyppX">29</a>]</span>. SVTyper was designed to use VCFs created by Lumpy. The genotyping module from Delly was implemented for variants found by its discovery module. SMRT-SV requires a VCF with information about XXX. Nebula, a new khmer-based genotyper, requires reads from a sample containing the SV during khmer selection<span class="citation" data-cites="zRHJDqQ9">[<a href="#ref-zRHJDqQ9">30</a>]</span>. In contrast, vg can take as input either explicit or symbolic VCFs, as well as assembly alignment.</p>
 <h4 id="assemblies-are-the-future">Assemblies are the future</h4>
-<p>Our results suggest that constructing a graph from de novo assembly alignment is more representative of the sequencing reads and leads to better SV genotyping. De novo assemblies for human are becoming more and more common, for example from optimized mate-pair libraries<span class="citation" data-cites="pJAv1D8R">[<a href="#ref-pJAv1D8R">30</a>]</span> or long-read sequencing<span class="citation" data-cites="pJAv1D8R">[<a href="#ref-pJAv1D8R">30</a>]</span>. For an optimal representation of the genomic variation, we expect the future graphs to include information from the alignment of numerous de novo assemblies. Aligning assembled contigs to existing variation graphs, like to ones created from SVs catalogs, is still experimental but could generate a genome graph augmented with both existing variant databases and new high-quality assemblies.</p>
+<p>Our results suggest that constructing a graph from de novo assembly alignment is more representative of the sequencing reads and leads to better SV genotyping. De novo assemblies for human are becoming more and more common, for example from optimized mate-pair libraries<span class="citation" data-cites="pJAv1D8R">[<a href="#ref-pJAv1D8R">31</a>]</span> or long-read sequencing<span class="citation" data-cites="pJAv1D8R">[<a href="#ref-pJAv1D8R">31</a>]</span>. For an optimal representation of the genomic variation, we expect the future graphs to include information from the alignment of numerous de novo assemblies. Aligning assembled contigs to existing variation graphs, like to ones created from SVs catalogs, is still experimental but could generate a genome graph augmented with both existing variant databases and new high-quality assemblies.</p>
 <h4 id="future-improvements-in-vg">Future improvements in vg</h4>
 <p>The vg toolkit is in active development. Read mapping is an area of constant improvement, both in term of computational efficiency and accuracy. For example, haplotype information can be modeled in variation graph and, in the future, assist read mapping and variant calling. These upcoming developments will directly benefit SV genotyping with vg.</p>
 <h4 id="limitations">Limitations</h4>
@@ -1175,20 +1247,26 @@ Benedict Paten, Jordan M. Eizenga, Yohei M. Rosen, Adam M. Novak, Erik Garrison,
 <em>Journal of Computational Biology</em> (2018-07) <a href="https://doi.org/gdw582">https://doi.org/gdw582</a><br />
 DOI: <a href="https://doi.org/10.1089/cmb.2017.0251">10.1089/cmb.2017.0251</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29461862">29461862</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6067107">PMC6067107</a></p>
 </div>
+<div id="ref-mH9pzoIn">
+<p>28. <strong>Mash: fast genome and metagenome distance estimation using MinHash</strong><br />
+Brian D. Ondov, Todd J. Treangen, Páll Melsted, Adam B. Mallonee, Nicholas H. Bergman, Sergey Koren, Adam M. Phillippy<br />
+<em>Genome Biology</em> (2016-06-20) <a href="https://doi.org/gfx74q">https://doi.org/gfx74q</a><br />
+DOI: <a href="https://doi.org/10.1186/s13059-016-0997-x">10.1186/s13059-016-0997-x</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/27323842">27323842</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4915045">PMC4915045</a></p>
+</div>
 <div id="ref-16glGyppX">
-<p>28. <strong>Evaluation of computational genotyping of Structural Variations for clinical diagnoses.</strong><br />
+<p>29. <strong>Evaluation of computational genotyping of Structural Variations for clinical diagnoses.</strong><br />
 Varuna Chander, Richard A Gibbs, Fritz J Sedlazeck<br />
 <em>Cold Spring Harbor Laboratory</em> (2019-02-22) <a href="https://doi.org/gfwf66">https://doi.org/gfwf66</a><br />
 DOI: <a href="https://doi.org/10.1101/558247">10.1101/558247</a></p>
 </div>
 <div id="ref-zRHJDqQ9">
-<p>29. <strong>Nebula: Ultra-efficient mapping-free structural variant genotyper</strong><br />
+<p>30. <strong>Nebula: Ultra-efficient mapping-free structural variant genotyper</strong><br />
 Parsoa Khorsand, Fereydoun Hormozdiari<br />
 <em>Cold Spring Harbor Laboratory</em> (2019-03-04) <a href="https://doi.org/gfwf67">https://doi.org/gfwf67</a><br />
 DOI: <a href="https://doi.org/10.1101/566620">10.1101/566620</a></p>
 </div>
 <div id="ref-pJAv1D8R">
-<p>30. <strong>Sequencing and de novo assembly of 150 genomes from Denmark as a population reference</strong><br />
+<p>31. <strong>Sequencing and de novo assembly of 150 genomes from Denmark as a population reference</strong><br />
 Lasse Maretty, Jacob Malte Jensen, Bent Petersen, Jonas Andreas Sibbesen, Siyang Liu, Palle Villesen, Laurits Skov, Kirstine Belling, Christian Theil Have, Jose M. G. Izarzugaza, … Mikkel Heide Schierup<br />
 <em>Nature</em> (2017-07-26) <a href="https://doi.org/gbpnnx">https://doi.org/gbpnnx</a><br />
 DOI: <a href="https://doi.org/10.1038/nature23264">10.1038/nature23264</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/28746312">28746312</a></p>

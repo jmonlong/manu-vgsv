@@ -2488,6 +2488,41 @@
   },
   {
     "publisher": "Oxford University Press (OUP)",
+    "issue": "6",
+    "DOI": "10.1093/bioinformatics/btq033",
+    "type": "article-journal",
+    "page": "841-842",
+    "source": "Crossref",
+    "title": "BEDTools: a flexible suite of utilities for comparing genomic features",
+    "volume": "26",
+    "author": [
+      {
+        "given": "Aaron R.",
+        "family": "Quinlan"
+      },
+      {
+        "given": "Ira M.",
+        "family": "Hall"
+      }
+    ],
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2010,
+          1,
+          28
+        ]
+      ]
+    },
+    "URL": "https://doi.org/cmrms3",
+    "PMCID": "PMC2832824",
+    "PMID": "20110278",
+    "id": "1HWiAHnIw"
+  },
+  {
+    "publisher": "Oxford University Press (OUP)",
     "issue": "18",
     "DOI": "10.1093/bioinformatics/bts378",
     "type": "article-journal",
@@ -3331,6 +3366,61 @@
     "PMCID": "PMC5411762",
     "PMID": "28360232",
     "id": "Qa8mx6Ll"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "1",
+    "DOI": "10.1186/s13059-016-0997-x",
+    "type": "article-journal",
+    "source": "Crossref",
+    "title": "Mash: fast genome and metagenome distance estimation using MinHash",
+    "volume": "17",
+    "author": [
+      {
+        "given": "Brian D.",
+        "family": "Ondov"
+      },
+      {
+        "given": "Todd J.",
+        "family": "Treangen"
+      },
+      {
+        "given": "Páll",
+        "family": "Melsted"
+      },
+      {
+        "given": "Adam B.",
+        "family": "Mallonee"
+      },
+      {
+        "given": "Nicholas H.",
+        "family": "Bergman"
+      },
+      {
+        "given": "Sergey",
+        "family": "Koren"
+      },
+      {
+        "given": "Adam M.",
+        "family": "Phillippy"
+      }
+    ],
+    "container-title": "Genome Biology",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          6,
+          20
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfx74q",
+    "container-title-short": "Genome Biol",
+    "PMCID": "PMC4915045",
+    "PMID": "27323842",
+    "id": "mH9pzoIn"
   },
   {
     "publisher": "Oxford University Press (OUP)",
