@@ -1,7 +1,7 @@
 # Output directory containing the formatted manuscript
 
 The [`gh-pages`](https://github.com/jmonlong/manu-vgsv/tree/gh-pages) branch hosts the contents of this directory at https://jmonlong.github.io/manu-vgsv/.
-The permalink for this webpage version is https://jmonlong.github.io/manu-vgsv/v/f958e0a02ff4d664b4a61d16f35108f85c9eb03e/.
+The permalink for this webpage version is https://jmonlong.github.io/manu-vgsv/v/b194b1ddb1b7228ec7b0fd58d811b8a957108f18/.
 To redirect to the permalink for the latest manuscript version at anytime, use the link https://jmonlong.github.io/manu-vgsv/v/freeze/.
 
 ## Files
@@ -36,4 +36,4 @@ Verifying timestamps with the `ots verify` command requires running a local bitc
 ## Source
 
 The manuscripts in this directory were built from
-[`f958e0a02ff4d664b4a61d16f35108f85c9eb03e`](https://github.com/jmonlong/manu-vgsv/commit/f958e0a02ff4d664b4a61d16f35108f85c9eb03e).
+[`b194b1ddb1b7228ec7b0fd58d811b8a957108f18`](https://github.com/jmonlong/manu-vgsv/commit/b194b1ddb1b7228ec7b0fd58d811b8a957108f18).
