@@ -3540,6 +3540,153 @@
     "id": "mH9pzoIn"
   },
   {
+    "publisher": "Springer Nature",
+    "issue": "1",
+    "DOI": "10.1186/s13059-017-1158-6",
+    "type": "article-journal",
+    "source": "Crossref",
+    "title": "Defining the diverse spectrum of inversions, complex structural variation, and chromothripsis in the morbid human genome",
+    "volume": "18",
+    "author": [
+      {
+        "given": "Ryan L.",
+        "family": "Collins"
+      },
+      {
+        "given": "Harrison",
+        "family": "Brand"
+      },
+      {
+        "given": "Claire E.",
+        "family": "Redin"
+      },
+      {
+        "given": "Carrie",
+        "family": "Hanscom"
+      },
+      {
+        "given": "Caroline",
+        "family": "Antolik"
+      },
+      {
+        "given": "Matthew R.",
+        "family": "Stone"
+      },
+      {
+        "given": "Joseph T.",
+        "family": "Glessner"
+      },
+      {
+        "given": "Tamara",
+        "family": "Mason"
+      },
+      {
+        "given": "Giulia",
+        "family": "Pregno"
+      },
+      {
+        "given": "Naghmeh",
+        "family": "Dorrani"
+      },
+      {
+        "given": "Giorgia",
+        "family": "Mandrile"
+      },
+      {
+        "given": "Daniela",
+        "family": "Giachino"
+      },
+      {
+        "given": "Danielle",
+        "family": "Perrin"
+      },
+      {
+        "given": "Cole",
+        "family": "Walsh"
+      },
+      {
+        "given": "Michelle",
+        "family": "Cipicchio"
+      },
+      {
+        "given": "Maura",
+        "family": "Costello"
+      },
+      {
+        "given": "Alexei",
+        "family": "Stortchevoi"
+      },
+      {
+        "given": "Joon-Yong",
+        "family": "An"
+      },
+      {
+        "given": "Benjamin B.",
+        "family": "Currall"
+      },
+      {
+        "given": "Catarina M.",
+        "family": "Seabra"
+      },
+      {
+        "given": "Ashok",
+        "family": "Ragavendran"
+      },
+      {
+        "given": "Lauren",
+        "family": "Margolin"
+      },
+      {
+        "given": "Julian A.",
+        "family": "Martinez-Agosto"
+      },
+      {
+        "given": "Diane",
+        "family": "Lucente"
+      },
+      {
+        "given": "Brynn",
+        "family": "Levy"
+      },
+      {
+        "given": "Stephan J.",
+        "family": "Sanders"
+      },
+      {
+        "given": "Ronald J.",
+        "family": "Wapner"
+      },
+      {
+        "given": "Fabiola",
+        "family": "Quintero-Rivera"
+      },
+      {
+        "given": "Wigard",
+        "family": "Kloosterman"
+      },
+      {
+        "given": "Michael E.",
+        "family": "Talkowski"
+      }
+    ],
+    "container-title": "Genome Biology",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          3,
+          6
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f9zjh2",
+    "container-title-short": "Genome Biol",
+    "PMCID": "PMC5338099",
+    "PMID": "28260531",
+    "id": "1BciDpJfo"
+  },
+  {
     "publisher": "Oxford University Press (OUP)",
     "issue": "1",
     "DOI": "10.1186/s13742-015-0103-4",
@@ -3589,5 +3736,23 @@
     "PMCID": "PMC4690232",
     "PMID": "26705468",
     "id": "oVaXIwl5"
+  },
+  {
+    "type": "webpage",
+    "URL": "https://dcc.icgc.org/pcawg",
+    "title": "The Pancancer Analysis of Whole Genomes (PCAWG). ",
+    "id": "10Jid8Wql"
+  },
+  {
+    "type": "webpage",
+    "URL": "https://www.genomicsengland.co.uk",
+    "title": "Genomics England 100,000 Genomes Project. ",
+    "id": "mWj2p7Xp"
+  },
+  {
+    "type": "webpage",
+    "URL": "https://www.nhlbiwgs.org/",
+    "title": "Whole Genome Sequencing in the NHLBI Trans-Omics for Precision Medicine (TOPMed). ",
+    "id": "ir1O1h8n"
   }
 ]

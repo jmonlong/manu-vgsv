@@ -44,6 +44,18 @@
       ]
     },
     {
+      "name": "Jonas Andreas Sibbesen",
+      "initials": "JAS",
+      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "email": "jsibbese@ucsc.edu",
+      "affiliations": [
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
+      ],
+      "affiliation_numbers": [
+        1
+      ]
+    },
+    {
       "name": "Adam Novak",
       "initials": "AN",
       "orcid": "XXXX-XXXX-XXXX-XXXX",
@@ -79,13 +91,14 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "5acc35a45f19bfdf37f65c4785ab1abb6d5501f9"
+    "commit": "104e88ac6c2f546cc51ad7747cb9c433286302bc"
   },
   "manuscript_stats": {
     "reference_counts": {
-      "doi": 33,
-      "total": 33
+      "doi": 34,
+      "url": 3,
+      "total": 37
     },
-    "word_count": 8830
+    "word_count": 8872
   }
 }
