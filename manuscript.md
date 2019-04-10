@@ -23,9 +23,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/c53a6ec62c0721f0f3381dcd2daf8c7890a6adba/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/08b659de0cbd3d2d17bf3600cbf3fdc83b5bcc6a/))
 was automatically generated
-from [jmonlong/manu-vgsv@c53a6ec](https://github.com/jmonlong/manu-vgsv/tree/c53a6ec62c0721f0f3381dcd2daf8c7890a6adba)
+from [jmonlong/manu-vgsv@08b659d](https://github.com/jmonlong/manu-vgsv/tree/08b659de0cbd3d2d17bf3600cbf3fdc83b5bcc6a)
 on April 10, 2019.
 </em></small>
 
@@ -80,7 +80,7 @@ A structural variant (SV) is a genomic mutation involving 50 or more base pairs.
 SVs can take several forms such as deletions, insertions, inversions, or translocations.
 It is intuitive that their greater size relative to smaller events such as single nucleotide variants (SNVs) and small insertions and deletions (indels) would imply that SVs can have a larger impact on phenotype.
 Indeed, SVs have long been associated with developmental disorders, cancer and other complex diseases and phenotypes[@ebc66eBr], but remain much more poorly studied than their smaller mutational counterparts.
-This discrepancy stems technological limitation: short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost. However, it is poorly suited for discovering SVs, which often lie in repeat-rich regions and whose lengths can far exceed read sizes.
+This discrepancy stems from technological limitation: short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost. However, it is poorly suited for discovering SVs, which often lie in repeat-rich regions and whose lengths can far exceed read sizes.
 The central obstacle is in mapping short reads to the human reference genome.
 It is generally difficult or impossible to unambiguously map a short read if the sample whose genome is being analyzed differs substantially from the reference at the read's location.
 If, for example, the read derives from the middle of what would be termed a large insertion relative to the reference, the best result a read mapper could hope to produce would be to leave it unmapped.
@@ -132,7 +132,20 @@ Going further, we show that building graphs from the alignment of de novo assemb
 
 ### Structural variation in vg
 
-In addition to SNVs and short indels, vg can handle large deletions, insertions and inversions (Figure {@fig:1}a).
+A variation graph encodes DNA sequence in its nodes.
+Such graphs are bidirected, in that we distinguish between edges incident on the starts of nodes from those incident on their ends.
+A path in such a graph is an  ordered list of nodes where each is associated with an orientation.
+If a path walks from, for example, node A in the forward orientation to node B in the reverse orientation, then an edge must exist from the end of node A to the end of node B.
+Concatenating the sequences on each node in the path, taking the reverse complement when the node is visited in reverse orientation, produces a string, and it is in this way that haploid sequences are embedded in the graph.
+Variation between sequences shows up as bubbles in the graph [@xJlNnKH2].
+(Figure {@fig:1}a). shows how a graph with SNP and an indel can be extended to contain more complex SVs.
+
+The vg toolkit provides open source tools for constructing and mapping reads to such variation graphs [@10jxt15v0].
+We used it to implement a simple SV genotyping pipeline, described as follows and in more detail in Section 4.
+Reads are mapped to the graph and used to compute the read support for each node and edge.
+Sites of variation are then identified using the snarl decomposition as described in [@xJlNnKH2].
+For each site, the two most supported paths (haplotypes) are determined, and their relative supports used to produce a genotype at that site.
+
 As a proof-of-concept we simulated genomes and different types of SVs with a size distribution matching real SVs[@vQTymKCj].
 We compared vg against SVTyper, Delly and BayesTyper across different levels of sequencing depth.
 Some errors were also added at the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
