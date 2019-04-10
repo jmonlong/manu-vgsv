@@ -23,9 +23,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/a6683ba931e18bc3d12858cc994bbdde66bb1cea/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/551ebd8a6d48a260fb385f4b06b635f8b5bb6491/))
 was automatically generated
-from [jmonlong/manu-vgsv@a6683ba](https://github.com/jmonlong/manu-vgsv/tree/a6683ba931e18bc3d12858cc994bbdde66bb1cea)
+from [jmonlong/manu-vgsv@551ebd8](https://github.com/jmonlong/manu-vgsv/tree/551ebd8a6d48a260fb385f4b06b635f8b5bb6491)
 on April 10, 2019.
 </em></small>
 
@@ -520,6 +520,7 @@ The resulting alignments were analyzed with `vg view` and `jq`.
 ## Discussion
 
 *Potential topics for the discussion.*
+*This section still needs a fair amount of work.*
 
 #### Performance across datasets
 
