@@ -27,21 +27,20 @@ svpop.df = svpop.df %>% filter(type!='Total') %>% arrange(qual)
 label.df = svpop.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/svpop.pdf', 8, 4)
-
 svpop.df %>% filter(eval=='call') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
-
 dev.off()
 
 
@@ -53,7 +52,6 @@ eval.f1 = label.df %>% ungroup %>%
   
 
 pdf('pdf/svpop-best-f1.pdf', 8, 4)
-
 eval.f1 %>% 
   ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
@@ -61,9 +59,8 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions') + 
+  labs(x='Genomic regions', y='Best F1', fill='Method') + 
   theme()
-
 dev.off()
 
 eval.f1 %>% filter(!is.na(F1)) %>%
@@ -88,14 +85,13 @@ levels(svpop.df$region) = c('all','repeat', 'non-repeat','called in SMRT-SV','no
 label.df = svpop.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/svpop-regions.pdf', 8, 5)
-
 svpop.df %>% filter(type!='INV', eval=='call') %>%
   ggplot(aes(x=recall, y=precision, colour=region)) +
   geom_path(size=1, alpha=.9) + 
   theme_bw() +
+  labs(x='Recall', y='Precision', color='Genomic regions') + 
   facet_grid(method~type) +
   scale_colour_brewer(palette='Set1')
-
 dev.off()
 
 ## Bar plots with best F1

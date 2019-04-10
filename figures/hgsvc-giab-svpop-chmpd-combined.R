@@ -6,7 +6,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper','bayestyper', 'smrtsv')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='svtyper', smrtsv='SMRT-SV2')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', smrtsv='SMRT-SV2')
 
 
 ## HGSVC Simulated reads from HG00514
@@ -80,7 +80,7 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions') + 
+  labs(x='Genomic regions', y='Best F1', fill='Method') +
   theme(legend.position='top') +
   guides(fill=guide_legend(ncol=3))
 dev.off()
@@ -96,7 +96,7 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions') + 
+  labs(x='Genomic regions', y='Best F1', fill='Method') +
   theme(legend.position='top') +
   guides(fill=guide_legend(ncol=3))
 dev.off()
@@ -113,8 +113,7 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions') + 
-  theme()
+  labs(x='Genomic regions', y='Best F1', fill='Method')
 dev.off()
 
 

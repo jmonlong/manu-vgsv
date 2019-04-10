@@ -53,8 +53,7 @@ construct_new %>%
         legend.background=element_rect(colour='black', size=.1)) +
   guides(pch=guide_legend(order=1, title.hjust=1),
          size=guide_legend(ncol=4, order=3, title.hjust=1),
-         alpha=guide_legend(order=2, title.hjust=1, title.position='bottom',
-                            override.aes=list()),
+         alpha=guide_legend(order=2, title.hjust=1, title.position='bottom'),
          color=FALSE)
 dev.off()
 
@@ -76,7 +75,7 @@ construct_new %>%
                    min.segment.length=Inf, size=3, seed=123,
                    nudge_y=-.01, nudge_x=.01,
                    alpha=1, label.size=.5) + 
-  labs(color="Strain", size="Percent identity\nthreshold",
+  labs(color="Strain", size="Percent identity threshold",
        x="Mapped read fraction on construct graph",
        y="Mapped read fraction on cactus graph",
        alpha="during graph\nconstruction ", pch="Clade") +
@@ -176,7 +175,7 @@ score %>%
        y="Average alignment score of short reads on sample graph (from cactus graph)",
        alpha="during graph\n construction ") +
   coord_cartesian(xlim=c(90,150), ylim=c(90,150)) +
-  scale_alpha_discrete(range=c(.3,1)) +
+  scale_alpha_discrete(range=c(1, .3)) +
   theme_bw() +
   theme(legend.position=c(.99,.01), legend.justification=c(1, 0),
         legend.box.just='right',

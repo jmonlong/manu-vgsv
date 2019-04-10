@@ -8,8 +8,8 @@
 |simulated reads |BayesTyper |all        |DEL  |     0.898|  0.806| 0.849|
 |simulated reads |BayesTyper |non-repeat |INS  |     0.935|  0.900| 0.917|
 |simulated reads |BayesTyper |non-repeat |DEL  |     0.981|  0.929| 0.954|
-|simulated reads |svtyper    |all        |DEL  |     0.809|  0.328| 0.467|
-|simulated reads |svtyper    |non-repeat |DEL  |     0.876|  0.754| 0.810|
+|simulated reads |SVTyper    |all        |DEL  |     0.809|  0.328| 0.467|
+|simulated reads |SVTyper    |non-repeat |DEL  |     0.876|  0.754| 0.810|
 |simulated reads |Delly      |all        |INS  |     0.767|  0.093| 0.166|
 |simulated reads |Delly      |all        |DEL  |     0.696|  0.707| 0.701|
 |simulated reads |Delly      |non-repeat |INS  |     0.866|  0.225| 0.358|
@@ -22,10 +22,10 @@
 |real reads      |BayesTyper |all        |DEL  |     0.627|  0.325| 0.428|
 |real reads      |BayesTyper |non-repeat |INS  |     0.747|  0.433| 0.549|
 |real reads      |BayesTyper |non-repeat |DEL  |     0.910|  0.381| 0.537|
-|real reads      |svtyper    |all        |INS  |       NaN|  0.000| 0.000|
-|real reads      |svtyper    |all        |DEL  |     0.661|  0.236| 0.348|
-|real reads      |svtyper    |non-repeat |INS  |       NaN|  0.000| 0.000|
-|real reads      |svtyper    |non-repeat |DEL  |     0.733|  0.551| 0.629|
+|real reads      |SVTyper    |all        |INS  |       NaN|  0.000| 0.000|
+|real reads      |SVTyper    |all        |DEL  |     0.661|  0.236| 0.348|
+|real reads      |SVTyper    |non-repeat |INS  |       NaN|  0.000| 0.000|
+|real reads      |SVTyper    |non-repeat |DEL  |     0.733|  0.551| 0.629|
 |real reads      |Delly      |all        |INS  |     0.516|  0.068| 0.120|
 |real reads      |Delly      |all        |DEL  |     0.550|  0.445| 0.492|
 |real reads      |Delly      |non-repeat |INS  |     0.621|  0.176| 0.275|

@@ -6,7 +6,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper','bayestyper')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='svtyper')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper')
 
 ## Simulated reads from HG00514
 samples = 'HG00514'
@@ -17,45 +17,44 @@ hgsvcsim.df = hgsvcsim.df %>% filter(type!='INV', type!='Total') %>% arrange(qua
 label.df = hgsvcsim.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/hgsvc-sim.pdf', 8, 4)
-
 hgsvcsim.df %>% filter(eval=='call') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
-
 dev.off()
 
-pdf('pdf/hgsvc-sim-geno.pdf', 8, 4)
+library(ggforce)
 
+pdf('pdf/hgsvc-sim-geno.pdf', 8, 4)
 hgsvcsim.df %>% filter(eval=='geno') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='geno')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='geno')) + 
   theme_bw() +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
   theme(legend.position='bottom') +
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
-
 dev.off()
 
 
 ## Real reads across three samples
 methods = c('vg','delly','svtyper','bayestyper')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='svtyper')
 samples = c('HG00514', 'HG00733', 'NA19240')
 hgsvc.df = readEval4(methods, samples, prefix='data/hgsvc/hgsvc')
 hgsvc.df$method = factor(methconv[hgsvc.df$method], levels=names(pal.tools))
@@ -72,39 +71,37 @@ hgsvc.df = hgsvc.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
 label.df = hgsvc.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/hgsvc-real.pdf', 8, 4)
-
 hgsvc.df %>% filter(eval=='call') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
   theme_bw() +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
   theme(legend.position='bottom') +
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
-
 dev.off()
 
 pdf('pdf/hgsvc-real-geno.pdf', 8, 4)
-
 hgsvc.df %>% filter(eval=='geno') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='geno')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='geno')) + 
   theme_bw() +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
   theme(legend.position='bottom') +
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
-
 dev.off()
 
 
@@ -131,7 +128,7 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions') + 
+  labs(x='Genomic regions', y='Best F1', fill='Method') + 
   theme(legend.position='top') +
   guides(fill=guide_legend(ncol=3))
 
