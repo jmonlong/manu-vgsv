@@ -1,5 +1,5 @@
 {
-  "date": "April 9, 2019",
+  "date": "April 10, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -21,12 +21,14 @@
       "orcid": "XXXX-XXXX-XXXX-XXXX",
       "email": "daheller@ucsc.edu",
       "affiliations": [
-        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
+        "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA",
+        "Max Planck Institute for Molecular Genetics, Berlin, Germany"
       ],
       "funders": "Grant XXXXXXXX",
       "symbol_str": "\u262f",
       "affiliation_numbers": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -85,13 +87,17 @@
     {
       "affiliation": "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA",
       "affiliation_number": 1
+    },
+    {
+      "affiliation": "Max Planck Institute for Molecular Genetics, Berlin, Germany",
+      "affiliation_number": 2
     }
   ],
   "ci_source": {
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "104e88ac6c2f546cc51ad7747cb9c433286302bc"
+    "commit": "097c4955be130f51349fd0cf400e1e346dfd9d22"
   },
   "manuscript_stats": {
     "reference_counts": {
@@ -99,6 +105,6 @@
       "url": 3,
       "total": 37
     },
-    "word_count": 8872
+    "word_count": 8880
   }
 }
