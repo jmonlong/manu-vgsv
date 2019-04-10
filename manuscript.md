@@ -23,9 +23,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/08b659de0cbd3d2d17bf3600cbf3fdc83b5bcc6a/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/a6683ba931e18bc3d12858cc994bbdde66bb1cea/))
 was automatically generated
-from [jmonlong/manu-vgsv@08b659d](https://github.com/jmonlong/manu-vgsv/tree/08b659de0cbd3d2d17bf3600cbf3fdc83b5bcc6a)
+from [jmonlong/manu-vgsv@a6683ba](https://github.com/jmonlong/manu-vgsv/tree/a6683ba931e18bc3d12858cc994bbdde66bb1cea)
 on April 10, 2019.
 </em></small>
 
@@ -141,7 +141,7 @@ Variation between sequences shows up as bubbles in the graph [@xJlNnKH2].
 (Figure {@fig:1}a). shows how a graph with SNP and an indel can be extended to contain more complex SVs.
 
 The vg toolkit provides open source tools for constructing and mapping reads to such variation graphs [@10jxt15v0].
-We used it to implement a simple SV genotyping pipeline, described as follows and in more detail in Section 4.
+We used it to implement a simple SV genotyping pipeline, described as follows and in more detail in [Methods](#simulation-experiment).
 Reads are mapped to the graph and used to compute the read support for each node and edge.
 Sites of variation are then identified using the snarl decomposition as described in [@xJlNnKH2].
 For each site, the two most supported paths (haplotypes) are determined, and their relative supports used to produce a genotype at that site.
@@ -235,8 +235,13 @@ Across all SV types, the size of the variant didn't affect the ability to fine-t
 
 ### Graphs from alignment of de novo assemblies
 
-We investigated whether genome graphs derived from de-novo assembly alignments yield advantages for SV genotyping.
+Genome graphs can be constructed directly from multiple sequence alignments [@10jxt15v0].
+This bypasses the need of going through a variant caller which could be a source of error from, for example, reference bias.
+Furthermore, genome alignments from software such as Cactus [@1FgS53pXi] can contain complex structural variation that is extremely difficult to represent outside of a graph, let alone call.
+We therefore investigated whether genome graphs derived from de-novo assembly alignments yield advantages for SV genotyping.
 To this end, we analyzed public sequencing datasets for 12 yeast strains from two related clades (*S. cerevisiae* and *S. paradoxus*) [@7f5OKa5O].
+We are presently working on scaling this pipeline to human-sized genomes.
+
 By generating genome graphs from only five of the strains we could measure how well variation from a small subset of strains represents the variation present in the full set of 12 strains.
 We generated and compared two different types of genome graphs.
 The first graph type (in the following called *construct graph*) was created from a linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format.
@@ -313,20 +318,18 @@ Here it is used to genotype structural variants already present in the graph, bu
 The algorithm is as follows:
 
 1. The average read support for each node and edge, adjusted for mapping and base quality, is computed. 
-The graph can optionally be augmented to include new variation from the reads.
+The graph can optionally be augmented to include new variation from the reads using a support cutoff.
 1. The graph is then decomposed into snarls. 
-Briefly, a snarl is a subgraph defined by two end nodes, where cutting the graph at these nodes disconnects the snarl from the rest of the graph.  (todo: work on way to define this without getting into bidirected graphs, or is that a lost cause?). 
+Briefly, a snarl is a subgraph defined by two end nodes, where cutting the graph at these nodes disconnects the snarl from the rest of the graph.
 Snarls can be nested inside other snarls, and this nesting hierarchy forms a forest (todo: I don't think chains get used anywhere in vg call so we can ignore here). 
 The snarl decomposition is a fundamental structure for identifying variants in a graph and were formally defined by Paten et al.[@xJlNnKH2], along with an algorithm to identify them.
 1. Root-level snarls from the decomposition are considered independently and in parallel. 
 Only snarls whose two ends lie on a reference (i.e. chromosome) path are considered as the VCF format used for output requires reference positions. 
 The following steps are performed on each root snarl. 
-    1. A set of paths between the snarls end nodes are computed. (todo, consult with Adam about writing up the RepresentativeTraversalFinder)
+    1. A set of paths between the snarls end nodes are computed using a heuristic search that enumerates paths until all nodes and edges in the snarl are contained in at least one path.
     1. The paths are ranked according to their average support.
-    1. A genotype is determined using the relative support of the best traversals, as well as the background read depth.
+    1. A genotype is determined using the relative support of the best paths, as well as the background read depth. The same logic is used for all types of variation, each of which can be expressed simply as a path in the graph.
     1. The VCF variants are derived from the paths.
-
-(todo: expand and clarify these last steps.  could leave them fairly brief here and go into detail in the supplement).
 
 Due to the high memory requirements of the current implementation of vg call, toil-vg call splits the input graph into 2.5Mb overlapping chunks along the reference path.
 Each chunk is called independently in parallel and the results are concatenated into the output VCF. 
@@ -382,11 +385,10 @@ The output VCF was converted back to explicit representation using `bayesTyperTo
 
 #### SMRT-SV2
 
-SMRT-SV2 was run on VCFs generated for SMRT-SV2 with the "30x-4" model and min-call-depth 8 cutoff.
-The output VCF was converted back to explicit representation, to facilitate variant normalization later.
-
-(todo: double-check and maybe more details from Glenn)
-
+SMRT-SV2 was run with the "30x-4" model and min-call-depth 8 cutoff.
+It was run only on VCFs created by SMRT-SV, for which the required contig BAMs were available.
+The Illumina BAMs used where the same as the other methods described above.
+The output VCF was converted back to explicit representation to facilitate variant normalization later.
 
 ### Simulation experiment
 
@@ -452,7 +454,7 @@ In an effort to extend this comparison to a more realistic setting, we reran the
 The discovery VCF does not contain genotypes so we did not distinguish between heterozygous and homozygous genotypes, looking at only the presence or absence of an alt allele for each variant.
 
 SMRT-SV2 produces some explicit *no-calls* predictions when the read coverage is too low to produce accurate genotypes.
-These no-calls are considered homozygous reference in the main evaluation.
+These no-calls are considered homozygous reference in the main accuracy evaluation.
 We also explored the performance of vg and SMRT-SV2 in different sets of regions:
 
 1. Non-repeat regions, i.e. excluding segmental duplications and tandem repeats.
@@ -521,13 +523,15 @@ The resulting alignments were analyzed with `vg view` and `jq`.
 
 #### Performance across datasets
 
-vg was overall the best genotyper in our benchmarks.
-The other methods were superior in few datasets and situations.
-This might be partly explained by the quality of the input SV catalog.
+vg was, overall, the most accurate genotyper in our benchmarks.
+The other methods were superior in a handful datasets and situations, primarily when genotyping deletions.
+That vg generally had the best accuracy when restricting the comparison to presence/absence even in most of these cases is evidence that the performance shortfall can be attributed to the graph genotyping rather than mapping pipeline.
+We hope to address these issues in a future release.
+The quality of the input SV catalog also has an impact on relative performance.
 The GiaB catalog is more curated and, specifically for deletions in non-repeat regions, Delly and BayesTyper were better at predicting genotypes compared to vg.
 This might be because the breakpoint resolution for this type of SV in these regions is better in this dataset compared to the HGSVC dataset which was derived mostly from long-read sequencing.
 Similarly, SMRT-SV2 performs better for deletions in the pseudo-diploid genome constructed from two high quality genome assemblies of CHM cell lines.
-
+ 
 #### Providing a resource to be used by large-scale sequencing project
 
 As a result of this study we provide a variation graph containing XX millions of SNVs and indels from the 1000 Genomes Project as well as XX thousands of SVs derived from long-read sequencing.
