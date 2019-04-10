@@ -35,3 +35,7 @@ __pycache__/
 ## Windows
 Thumbs.db
 [Dd]esktop.ini
+
+# Ignore generated figures
+figures/png
+figures/pdf
