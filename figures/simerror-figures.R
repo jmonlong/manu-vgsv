@@ -7,7 +7,7 @@ library(gridExtra)
 
 source('colors-functions.R')
 
-methods.rename = c('toilvg-symb'='vg', 'svtyper'='svtyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
+methods.rename = c('toilvg-symb'='vg', 'svtyper'='SVTyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
 
 
 ##
@@ -34,12 +34,12 @@ eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) 
 
 pdf('pdf/simerror.pdf', 6, 4)
 eval.df %>% ungroup %>%
-  mutate(graph=ifelse(graph=='truth', 'true SVs in VCF', 'errors in VCF'),
-         graph=factor(graph, levels=c('true SVs in VCF', 'errors in VCF'))) %>% 
+  mutate(graph=ifelse(graph=='truth', 'True SVs in VCF', 'Errors in VCF'),
+         graph=factor(graph, levels=c('True SVs in VCF', 'Errors in VCF'))) %>% 
   ggplot(aes(x=factor(depth), y=F1, colour=method)) +
   geom_line(aes(group=method2), size=1, alpha=.8) +
   facet_grid(type~graph, scales='free') + theme_bw() +
-  xlab('depth') +
+  labs(x='Depth', color='Method') +
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
@@ -69,12 +69,12 @@ eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) 
 
 pdf('pdf/simerror-geno.pdf', 6, 4)
 eval.df %>% ungroup %>%
-  mutate(graph=ifelse(graph=='truth', 'true SVs in VCF', 'errors in VCF'),
-         graph=factor(graph, levels=c('true SVs in VCF', 'errors in VCF'))) %>% 
+  mutate(graph=ifelse(graph=='truth', 'True SVs in VCF', 'Errors in VCF'),
+         graph=factor(graph, levels=c('True SVs in VCF', 'Errors in VCF'))) %>% 
   ggplot(aes(x=factor(depth), y=F1, colour=method)) +
   geom_line(aes(group=method2), size=1, alpha=.8) +
   facet_grid(type~graph, scales='free') + theme_bw() +
-  xlab('depth') +
+  labs(x='Depth', color='Method') +
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
@@ -112,12 +112,12 @@ eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) 
 
 pdf('pdf/simerror-max200bp-geno.pdf', 6, 4)
 eval.df %>% ungroup %>%
-  mutate(graph=ifelse(graph=='truth', 'true SVs in VCF', 'errors in VCF'),
-         graph=factor(graph, levels=c('true SVs in VCF', 'errors in VCF'))) %>% 
+  mutate(graph=ifelse(graph=='truth', 'True SVs in VCF', 'Errors in VCF'),
+         graph=factor(graph, levels=c('True SVs in VCF', 'Errors in VCF'))) %>% 
   ggplot(aes(x=factor(depth), y=F1, colour=method)) +
   geom_line(aes(group=method2), size=1, alpha=.8) +
   facet_grid(type~graph, scales='free') + theme_bw() +
-  xlab('depth') +
+  labs(x='Depth', color='Method') +
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
@@ -145,22 +145,22 @@ ggp.l = list()
 
 ggp.l$prop = ggplot(df, aes(x=etype, fill=correct.bkpt)) + geom_bar(position='fill') +
   theme_bw() + facet_grid(.~type, scales='free', space='free') +
-  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
-  ylab('variant proportion') + xlab('error type') + ggtitle('a)')
+  scale_fill_brewer(name='Breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  ylab('Variant proportion') + xlab('Error type') + ggtitle('a)')
 
 ggp.l$error = df %>% mutate(type.etype=paste(type, etype)) %>% 
   ggplot(aes(x=error, fill=correct.bkpt)) + geom_histogram(binwidth=1) +
   theme_bw() + facet_wrap(~type.etype, scales='free') +
-  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
-  ylab('variant') + ggtitle('b)') +
-  xlab('error (bp)') + scale_x_continuous(breaks=seq(0,20,2)) +
+  scale_fill_brewer(name='Breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  ylab('Variant') + ggtitle('b)') +
+  xlab('Error (bp)') + scale_x_continuous(breaks=seq(0,20,2)) +
   guides(fill=FALSE)
 
 ggp.l$size = df %>% mutate(type.etype=paste(type, etype)) %>% 
   ggplot(aes(x=size, fill=correct.bkpt)) + geom_histogram() +
   theme_bw() + facet_wrap(~type.etype, scales='free') +
-  scale_fill_brewer(name='breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
-  scale_x_log10() + xlab('size (bp)') + ylab('variant') + ggtitle('c)') + 
+  scale_fill_brewer(name='Breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
+  scale_x_log10() + xlab('Size (bp)') + ylab('Variant') + ggtitle('c)') + 
   guides(fill=FALSE)
 
 
