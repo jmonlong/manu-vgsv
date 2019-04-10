@@ -6,7 +6,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper', 'bayestyper')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='svtyper')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper')
 
 samples = 'HG002'
 giab5.df = readEval4(methods, samples, prefix='data/giab/giab5')
@@ -20,15 +20,16 @@ pdf('pdf/giab5.pdf', 8, 4)
 giab5.df %>% filter(eval=='call') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
   theme_bw() +
   facet_grid(.~type) +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   theme(legend.position='bottom') +
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
 
 dev.off()
@@ -38,15 +39,16 @@ pdf('pdf/giab5-geno.pdf', 8, 4)
 giab5.df %>% filter(eval=='geno') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  geom_point(size=.8) +
+  ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(size=3, data=subset(label.df, eval=='geno')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='geno')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(4,1)) + 
+  scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
 
 dev.off()
@@ -69,7 +71,7 @@ eval.f1 %>%
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() +
-  ylab('best F1') +  xlab('genomic regions')
+  labs(x='Genomic regions', y='Best F1', fill='Method')
 
 dev.off()
 

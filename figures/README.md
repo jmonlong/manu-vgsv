@@ -30,5 +30,5 @@ do
     pdftoppm -png -f $PAN pdf/panels.pdf -r 300 > png/panel${PAN}.png
 done
 
-rsync -av png/*.png ../content/images/
+rsync -avc png/*.png ../content/images/
 ```
