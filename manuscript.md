@@ -23,9 +23,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/39137a2ddaf7ba57d375e140eb86aac9dd6fddea/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/c53a6ec62c0721f0f3381dcd2daf8c7890a6adba/))
 was automatically generated
-from [jmonlong/manu-vgsv@39137a2](https://github.com/jmonlong/manu-vgsv/tree/39137a2ddaf7ba57d375e140eb86aac9dd6fddea)
+from [jmonlong/manu-vgsv@c53a6ec](https://github.com/jmonlong/manu-vgsv/tree/c53a6ec62c0721f0f3381dcd2daf8c7890a6adba)
 on April 10, 2019.
 </em></small>
 
@@ -80,13 +80,14 @@ A structural variant (SV) is a genomic mutation involving 50 or more base pairs.
 SVs can take several forms such as deletions, insertions, inversions, or translocations.
 It is intuitive that their greater size relative to smaller events such as single nucleotide variants (SNVs) and small insertions and deletions (indels) would imply that SVs can have a larger impact on phenotype.
 Indeed, SVs have long been associated with developmental disorders, cancer and other complex diseases and phenotypes[@ebc66eBr], but remain much more poorly studied than their smaller mutational counterparts.
-This discrepancy is entirely due to technological limitation: short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost. However, it is poorly suited for discovering SVs, which often lie in repeat-rich regions and whose lengths can far exceed read sizes.
+This discrepancy stems technological limitation: short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost. However, it is poorly suited for discovering SVs, which often lie in repeat-rich regions and whose lengths can far exceed read sizes.
 The central obstacle is in mapping short reads to the human reference genome.
 It is generally difficult or impossible to unambiguously map a short read if the sample whose genome is being analyzed differs substantially from the reference at the read's location.
 If, for example, the read derives from the middle of what would be termed a large insertion relative to the reference, the best result a read mapper could hope to produce would be to leave it unmapped.
 In some cases, SVs can be inferred indirectly from short read mappings via split reads, discordant read pairs, or read depth, but the accuracy of such approaches remains limited[@vQTymKCj].
+Assembling deeply sequenced short reads and aligning the contigs or scaffolds back to the reference provides an effective means of SV discovery at increased computational and sequencing cost [@pJAv1D8R]. 
 
-In practice, large-scale projects have had to combine short read mapping to several other methods to achieve better accuracy.
+In practice, large-scale projects must often combine short read mapping to several other methods to achieve better accuracy.
 This methodology has been used to compile catalogs with tens of thousands of SVs in humans[@qA6dWFP; @py6BC5kj].
 Recent developments in sequencing technologies and library preparation continue to pave the way for better SV detection.
 Several recent studies using long-read or linked-read sequencing have produced large catalogs of structural variation, the majority of which was novel and sequence-resolved[@z91V6jjU; @rs7e40wC; @PRx3qEIm; @121OWcTA4; @3NNFS6U2].
@@ -94,11 +95,18 @@ These technologies are also enabling the production of high-quality de novo geno
 Such technical advances promise to expand the amount of known genomic variation in humans in the near future.
 However, their cost prohibits their use in large-scale studies that require hundreds or thousands of samples, such as disease association studies.
 
-At the same time, the reference genome is evolving from a linear reference to a graph-based reference that incorporates known genomic variation[@Qa8mx6Ll; @10jxt15v0; @11Jy8B61m].
-By including variants in the graph, both read mapping and variant calling become variant-aware and benefit in terms of accuracy and sensitivity[@10jxt15v0; @DuODeStx].
+Representing structural variation poses an additional challenge.
+Standard formats such as VCF are unweildly when used for SVs due to ambiguity in their specification and limited support across tools.
+Incorporating SVs into a linear pan-genome reference via alt contigs involves custom pipelines and non-standard metadata formats linking the contigs back to the reference.
+They often contain redundant sequence.
+These issues make them difficult to use, maintain and scale as SV catalogs continue to expand.
+[todo: cite? even just grch38 is a pretty good case study of how awful this is]
+Development of pan-genome graph reference representations offers a solution to such problems [@Qa8mx6Ll].  
+The graph structure enables SVs to be as succinctly and directly represented as point mutations.  
+By including variants in the graph, both read mapping and variant calling become variant-aware and benefit in terms of accuracy and sensitivity[@10jxt15v0; @DuODeStx; @11Jy8B61m].
 In addition, different variant types are called simultaneously by a unified framework.
-vg was the first openly available tool that scaled to multi-gigabase genomes and provides read mapping, variant calling and haplotype modeling[@10jxt15v0].
-In vg, graphs can be built from both variant catalogs in the VCF format or assembly alignment.
+vg is the first openly available variation graph tool to scale to multi-gigabase genomes and provides read mapping, variant calling and haplotype modeling[@10jxt15v0].
+In vg, graphs can be built from both variant catalogs in the VCF format or from assembly alignments.
 Other genome graph implementations have also been used specifically to genotype variants.
 Using a sliding-window approach, GraphTyper realigns reads to a graph built from known SNVs and short indels[@ohTIiqfV].
 BayesTyper builds graphs with both short variants and SVs, and genotypes variants based on the k-mer distribution of sequencing reads[@14Uxmwbxm].
@@ -109,7 +117,7 @@ For example SMRT-SV was designed to genotype SVs identified on PacBio reads[@rs7
 SVTyper uses paired-end mapping and split-read mapping information and can genotype deletions, duplications, inversions and translocations[@AltPnocw].
 Delly provides a genotyping feature in addition to its discovery mode and can genotype all types of SVs although the VCF needs special formatting for some[@nLvQCjXU].
 SMRT-SV2 is a machine learning tool that was trained to genotype SVs from the alignment of reads to the reference genome augmented with SV-containing sequences as alternate contigs[@3NNFS6U2].
-
+[todo: I think we need to expand on the description of these methods, especially smrt-sv.  I will take a stab in a future pass]
 
 We show that the unified variant calling framework implemented in vg is capable of genotyping deletions, insertions and inversions.
 We compare vg with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm] and SMRT-SV2[@3NNFS6U2].
