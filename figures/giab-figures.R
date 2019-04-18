@@ -59,7 +59,7 @@ dev.off()
 eval.f1 = label.df %>% ungroup %>%
   mutate(F1=ifelse(is.infinite(F1), NA, F1),
          eval=factor(eval, levels=c('call','geno'),
-                     labels=c('absence/presence', 'genotype')))
+                     labels=c('presence', 'genotype')))
   
 
 pdf('pdf/giab5-best-f1.pdf', 8, 4)
@@ -70,7 +70,7 @@ eval.f1 %>%
   facet_grid(type~.) +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
-  theme_bw() +
+  theme_bw() + ylim(0,1) + 
   labs(x='Genomic regions', y='Best F1', fill='Method')
 
 dev.off()

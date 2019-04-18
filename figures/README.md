@@ -14,13 +14,6 @@ Rscript hgsvc-giab-svpop-chmpd-combined.R
 Rscript yeast-figures-all.R
 Rscript yeast-figures-four.R
 
-## Convert to PNG in png/
-for FILE in pdf/*.pdf
-do
-    FILE=`basename $FILE`
-    pdftoppm -png pdf/$FILE > png/${FILE%pdf}png
-done
-
 ## Panels defined using LaTeX subfigures in panels.tex
 pdflatex panels.tex
 pdfcrop --margins 10 panels.pdf pdf/panels.pdf
@@ -30,5 +23,7 @@ do
     pdftoppm -png -f $PAN pdf/panels.pdf -r 300 > png/panel${PAN}.png
 done
 
-rsync -avc png/*.png ../content/images/
+## Copy and convert to PNG only the files that we want
+## (listed in 'includeInManuscript.txt), if more recent
+make
 ```
