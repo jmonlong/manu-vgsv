@@ -21,6 +21,12 @@
 },
 {
   "type": "webpage",
+  "standard_citation": "url:bcftools",
+  "URL": "https://samtools.github.io/bcftools/",
+  "title": "Bcftools 1.9"
+},
+{
+  "type": "webpage",
   "standard_citation": "url:https://www.genomicsengland.co.uk",
   "URL": "https://www.genomicsengland.co.uk",
   "title": "Genomics England 100,000 Genomes Project. "
