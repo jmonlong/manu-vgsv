@@ -41,7 +41,7 @@ construct_new %>%
                    alpha=1, segment.size=.5, label.size=.5,
                    arrow=arrow(length = unit(0.01, "npc"))) + 
   labs(color="Strain", size="Mapping quality threshold",
-       x="Mapped read fraction on construct graph",
+       x="Mapped read fraction on VCF graph",
        y="Mapped read fraction on cactus graph",
        alpha="during graph\nconstruction ", pch="Clade") +
   coord_cartesian(xlim=c(0.6,1), ylim=c(0.6,1)) +
@@ -76,7 +76,7 @@ construct_new %>%
                    nudge_y=-.01, nudge_x=.01,
                    alpha=1, label.size=.5) + 
   labs(color="Strain", size="Percent identity threshold",
-       x="Mapped read fraction on construct graph",
+       x="Mapped read fraction on VCF graph",
        y="Mapped read fraction on cactus graph",
        alpha="during graph\nconstruction ", pch="Clade") +
   coord_cartesian(xlim=c(0,1), ylim=c(0,1)) +
@@ -115,7 +115,7 @@ identity %>%
                    nudge_x=.01,
                    alpha=1, label.size=.5) + 
   labs(color="Strain", shape="Clade",
-       x="Average mapping identity of short reads on sample graph (from construct graph)",
+       x="Average mapping identity of short reads on sample graph (from VCF graph)",
        y="Average mapping identity of short reads on sample graph (from cactus graph)",
        alpha="during graph\nconstruction ") +
   coord_cartesian(xlim=c(0.6,1), ylim=c(0.6,1)) +
@@ -143,7 +143,7 @@ quality %>%
                    nudge_x=-.01,
                    alpha=1, label.size=.5) + 
   labs(color="Strain", shape="Clade",
-       x="Average mapping quality of short reads on sample graph (from construct graph)",
+       x="Average mapping quality of short reads on sample graph (from VCF graph)",
        y="Average mapping quality of short reads on sample graph (from cactus graph)",
        alpha="during graph\n construction ") +
   coord_cartesian(xlim=c(42,55), ylim=c(42,55)) +
@@ -171,7 +171,7 @@ score %>%
                    nudge_x=-.01,
                    alpha=1, label.size=.5) + 
   labs(color="Strain", shape="Clade",
-       x="Average alignment score of short reads on sample graph (from construct graph)",
+       x="Average alignment score of short reads on sample graph (from VCF graph)",
        y="Average alignment score of short reads on sample graph (from cactus graph)",
        alpha="during graph\n construction ") +
   coord_cartesian(xlim=c(90,150), ylim=c(90,150)) +

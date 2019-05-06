@@ -21,6 +21,12 @@
 },
 {
   "type": "webpage",
+  "standard_citation": "url:bcftools",
+  "URL": "https://samtools.github.io/bcftools/",
+  "title": "Bcftools 1.9"
+},
+{
+  "type": "webpage",
   "standard_citation": "url:https://www.genomicsengland.co.uk",
   "URL": "https://www.genomicsengland.co.uk",
   "title": "Genomics England 100,000 Genomes Project. "
@@ -36,5 +42,26 @@
   "standard_citation": "url:https://dcc.icgc.org/pcawg",
   "URL": "https://dcc.icgc.org/pcawg",
   "title": "The Pancancer Analysis of Whole Genomes (PCAWG). "
+}, 
+{
+    "type": "article-journal",
+    "standard_citation": "raw:phylip",
+    "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
+    "container-title": "Cladistics",
+    "page": "164-166",
+    "volume": "5",
+    "author": [
+        {
+            "family": "Felsenstein",
+            "given": "Joel"
+        }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1989
+        ]
+      ]
+    }
 }
 ]

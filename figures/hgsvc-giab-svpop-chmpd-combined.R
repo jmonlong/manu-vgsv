@@ -69,7 +69,7 @@ eval.f1 = rbind(
 eval.f1 = eval.f1 %>% ungroup %>%
   mutate(F1=ifelse(is.infinite(F1), NA, F1),
          eval=factor(eval, levels=c('call','geno'),
-                     labels=c('absence/presence', 'genotype')),
+                     labels=c('presence', 'genotype')),
          experiment=factor(experiment, levels=unique(experiment)))
 
 pdf('pdf/hgsvc-giab-chmpd-svpop-best-f1.pdf', 8, 4)
@@ -79,7 +79,7 @@ eval.f1 %>%
   facet_grid(type~experiment, scales='free', space='free') +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
-  theme_bw() +
+  theme_bw() + ylim(0,1) + 
   labs(x='Genomic regions', y='Best F1', fill='Method') +
   theme(legend.position='top') +
   guides(fill=guide_legend(ncol=3))
@@ -95,7 +95,7 @@ eval.f1 %>%
   facet_grid(type~experiment, scales='free', space='free') +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
-  theme_bw() +
+  theme_bw() + ylim(0,1) + 
   labs(x='Genomic regions', y='Best F1', fill='Method') +
   theme(legend.position='top') +
   guides(fill=guide_legend(ncol=3))
@@ -112,7 +112,7 @@ eval.f1 %>%
   facet_grid(type~experiment, scales='free', space='free') +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
-  theme_bw() +
+  theme_bw() + ylim(0,1) + 
   labs(x='Genomic regions', y='Best F1', fill='Method')
 dev.off()
 

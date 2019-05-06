@@ -42,6 +42,34 @@ author_info:
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
+    name: Jouni Siren
+    initials: JS
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: jltsiren@gmail.com
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+  -
+    name: Jordan Eizenga
+    initials: JE
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: jeizenga@ucsc.edu
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+  -
+    name: Eric Dawson
+    initials: ED
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: eric.t.dawson@gmail.com
+    affiliations:
+      - Department of Genetics, University of Cambridge, Cambridge, UK
+  -
+    name: Erik Garrison
+    initials: EG
+    orcid: XXXX-XXXX-XXXX-XXXX
+    email: ergarris@ucsc.edu
+    affiliations:
+      - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
+  -
     name: Adam Novak
     initials: AN
     orcid: XXXX-XXXX-XXXX-XXXX
