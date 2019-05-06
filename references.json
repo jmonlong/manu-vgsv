@@ -1505,6 +1505,67 @@
     "id": "py6BC5kj"
   },
   {
+    "publisher": "Springer Science and Business Media LLC",
+    "issue": "8",
+    "DOI": "10.1038/ng.3036",
+    "type": "article-journal",
+    "page": "912-918",
+    "source": "Crossref",
+    "title": "Integrating mapping-, assembly- and haplotype-based approaches for calling variants in clinical sequencing applications",
+    "volume": "46",
+    "author": [
+      {
+        "given": "Andy",
+        "family": "Rimmer"
+      },
+      {},
+      {
+        "given": "Hang",
+        "family": "Phan"
+      },
+      {
+        "given": "Iain",
+        "family": "Mathieson"
+      },
+      {
+        "given": "Zamin",
+        "family": "Iqbal"
+      },
+      {
+        "given": "Stephen R F",
+        "family": "Twigg"
+      },
+      {
+        "given": "Andrew O M",
+        "family": "Wilkie"
+      },
+      {
+        "given": "Gil",
+        "family": "McVean"
+      },
+      {
+        "given": "Gerton",
+        "family": "Lunter"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          7,
+          13
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f6b6dk",
+    "container-title-short": "Nat Genet",
+    "PMCID": "PMC4753679",
+    "PMID": "25017105",
+    "id": "1DYmkalz4"
+  },
+  {
     "publisher": "Springer Nature",
     "issue": "6",
     "DOI": "10.1038/ng.3847",
@@ -1668,6 +1729,106 @@
     "container-title-short": "Nat Genet",
     "PMID": "28945251",
     "id": "ohTIiqfV"
+  },
+  {
+    "publisher": "Springer Nature",
+    "issue": "5",
+    "DOI": "10.1038/ng.806",
+    "type": "article-journal",
+    "page": "491-498",
+    "source": "Crossref",
+    "title": "A framework for variation discovery and genotyping using next-generation DNA sequencing data",
+    "volume": "43",
+    "author": [
+      {
+        "given": "Mark A",
+        "family": "DePristo"
+      },
+      {
+        "given": "Eric",
+        "family": "Banks"
+      },
+      {
+        "given": "Ryan",
+        "family": "Poplin"
+      },
+      {
+        "given": "Kiran V",
+        "family": "Garimella"
+      },
+      {
+        "given": "Jared R",
+        "family": "Maguire"
+      },
+      {
+        "given": "Christopher",
+        "family": "Hartl"
+      },
+      {
+        "given": "Anthony A",
+        "family": "Philippakis"
+      },
+      {
+        "given": "Guillermo",
+        "family": "del Angel"
+      },
+      {
+        "given": "Manuel A",
+        "family": "Rivas"
+      },
+      {
+        "given": "Matt",
+        "family": "Hanna"
+      },
+      {
+        "given": "Aaron",
+        "family": "McKenna"
+      },
+      {
+        "given": "Tim J",
+        "family": "Fennell"
+      },
+      {
+        "given": "Andrew M",
+        "family": "Kernytsky"
+      },
+      {
+        "given": "Andrey Y",
+        "family": "Sivachenko"
+      },
+      {
+        "given": "Kristian",
+        "family": "Cibulskis"
+      },
+      {
+        "given": "Stacey B",
+        "family": "Gabriel"
+      },
+      {
+        "given": "David",
+        "family": "Altshuler"
+      },
+      {
+        "given": "Mark J",
+        "family": "Daly"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2011,
+          4,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/d9k453",
+    "container-title-short": "Nat Genet",
+    "PMCID": "PMC3083463",
+    "PMID": "21478889",
+    "id": "NCr4QkOg"
   },
   {
     "publisher": "Springer Nature",
@@ -3236,68 +3397,6 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:p>Background: In recent years, Structural Variation (SV) has been identified as having a pivotal role in causing genetic disease. Nevertheless, the discovery of SVs based on short DNA sequence reads from next-generation DNA sequence methods is still error-prone, suffering from low sensitivity and high false discovery. These shortcomings can be partially overcome with the use of long reads, but the current expense precludes their application for routine clinical diagnostics. Structural Variation genotyping, on the other hand, offers cost-effective application as diagnostic tool in the clinic, with potentially no false positives and low occurrence of false negatives.\nResults: We assess five state- of-the-art SV genotyping software methods that test short read sequence data. These methods are characterized based on their ability to genotype certain SV types and size ranges. Furthermore, we analyze their applicability to parse different VCF file sub-formats, or to rely on specific meta information that is not always at hand. We compare the SV genotyping methods across a range of simulated and real data including SVs that were not found with Illumina data alone. We assess their sensitivity and ability to filter out initial false discovery calls to assess their reliability.\nConclusion: Our results indicate that, although SV genotypers have superior performance to SV callers, there are performance limitations that suggest the need for further innovation.</jats:p>",
-    "DOI": "10.1101/558247",
-    "type": "manuscript",
-    "source": "Crossref",
-    "title": "Evaluation of computational genotyping of Structural Variations for clinical diagnoses.",
-    "author": [
-      {
-        "given": "Varuna",
-        "family": "Chander"
-      },
-      {
-        "given": "Richard A",
-        "family": "Gibbs"
-      },
-      {
-        "given": "Fritz J",
-        "family": "Sedlazeck"
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          2019,
-          2,
-          22
-        ]
-      ]
-    },
-    "URL": "https://doi.org/gfwf66",
-    "id": "16glGyppX"
-  },
-  {
-    "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>Abstract</jats:title><jats:sec><jats:title>Motivation</jats:title><jats:p>Large scale catalogs of common genetic variants (including indels and structural variants) are being created using data from second and third generation whole-genome sequencing technologies. However, the genotyping of these variants in newly sequenced samples is a nontrivial task that requires extensive computational resources. Furthermore, current approaches are mostly limited to only specific types of variants and are generally prone to various errors and ambiguities when genotyping events in repeat regions. Thus we are proposing an ultra-efficient approach for genotyping any type of structural variation that is not limited by the shortcomings and complexities of current mapping-based approaches.</jats:p></jats:sec><jats:sec><jats:title>Results</jats:title><jats:p>Our method Nebula utilizes the changes in the count of <jats:italic>k</jats:italic>-mers to predict the genotype of common structural variations. We have shown that not only Nebula is an order of magnitude faster than mapping based approaches for genotyping deletions and mobile-element insertions, but also has comparable accuracy to state-of-the-art approaches. Furthermore, Nebula is a generic framework not limited to any specific type of event.</jats:p></jats:sec><jats:sec><jats:title>Availability</jats:title><jats:p>Nebula is publicly available at <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"https://github.com/Parsoa/NebulousSerendipity\">https://github.com/Parsoa/NebulousSerendipity</jats:ext-link></jats:p></jats:sec>",
-    "DOI": "10.1101/566620",
-    "type": "manuscript",
-    "source": "Crossref",
-    "title": "Nebula: Ultra-efficient mapping-free structural variant genotyper",
-    "author": [
-      {
-        "given": "Parsoa",
-        "family": "Khorsand"
-      },
-      {
-        "given": "Fereydoun",
-        "family": "Hormozdiari"
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          2019,
-          3,
-          4
-        ]
-      ]
-    },
-    "URL": "https://doi.org/gfwf67",
-    "id": "zRHJDqQ9"
-  },
-  {
-    "publisher": "Cold Spring Harbor Laboratory",
     "issue": "9",
     "DOI": "10.1101/gr.123356.111",
     "type": "article-journal",
@@ -3540,153 +3639,6 @@
     "id": "mH9pzoIn"
   },
   {
-    "publisher": "Springer Nature",
-    "issue": "1",
-    "DOI": "10.1186/s13059-017-1158-6",
-    "type": "article-journal",
-    "source": "Crossref",
-    "title": "Defining the diverse spectrum of inversions, complex structural variation, and chromothripsis in the morbid human genome",
-    "volume": "18",
-    "author": [
-      {
-        "given": "Ryan L.",
-        "family": "Collins"
-      },
-      {
-        "given": "Harrison",
-        "family": "Brand"
-      },
-      {
-        "given": "Claire E.",
-        "family": "Redin"
-      },
-      {
-        "given": "Carrie",
-        "family": "Hanscom"
-      },
-      {
-        "given": "Caroline",
-        "family": "Antolik"
-      },
-      {
-        "given": "Matthew R.",
-        "family": "Stone"
-      },
-      {
-        "given": "Joseph T.",
-        "family": "Glessner"
-      },
-      {
-        "given": "Tamara",
-        "family": "Mason"
-      },
-      {
-        "given": "Giulia",
-        "family": "Pregno"
-      },
-      {
-        "given": "Naghmeh",
-        "family": "Dorrani"
-      },
-      {
-        "given": "Giorgia",
-        "family": "Mandrile"
-      },
-      {
-        "given": "Daniela",
-        "family": "Giachino"
-      },
-      {
-        "given": "Danielle",
-        "family": "Perrin"
-      },
-      {
-        "given": "Cole",
-        "family": "Walsh"
-      },
-      {
-        "given": "Michelle",
-        "family": "Cipicchio"
-      },
-      {
-        "given": "Maura",
-        "family": "Costello"
-      },
-      {
-        "given": "Alexei",
-        "family": "Stortchevoi"
-      },
-      {
-        "given": "Joon-Yong",
-        "family": "An"
-      },
-      {
-        "given": "Benjamin B.",
-        "family": "Currall"
-      },
-      {
-        "given": "Catarina M.",
-        "family": "Seabra"
-      },
-      {
-        "given": "Ashok",
-        "family": "Ragavendran"
-      },
-      {
-        "given": "Lauren",
-        "family": "Margolin"
-      },
-      {
-        "given": "Julian A.",
-        "family": "Martinez-Agosto"
-      },
-      {
-        "given": "Diane",
-        "family": "Lucente"
-      },
-      {
-        "given": "Brynn",
-        "family": "Levy"
-      },
-      {
-        "given": "Stephan J.",
-        "family": "Sanders"
-      },
-      {
-        "given": "Ronald J.",
-        "family": "Wapner"
-      },
-      {
-        "given": "Fabiola",
-        "family": "Quintero-Rivera"
-      },
-      {
-        "given": "Wigard",
-        "family": "Kloosterman"
-      },
-      {
-        "given": "Michael E.",
-        "family": "Talkowski"
-      }
-    ],
-    "container-title": "Genome Biology",
-    "language": "en",
-    "issued": {
-      "date-parts": [
-        [
-          2017,
-          3,
-          6
-        ]
-      ]
-    },
-    "URL": "https://doi.org/f9zjh2",
-    "container-title-short": "Genome Biol",
-    "PMCID": "PMC5338099",
-    "PMID": "28260531",
-    "id": "1BciDpJfo"
-  },
-  {
     "publisher": "Oxford University Press (OUP)",
     "issue": "1",
     "DOI": "10.1186/s13742-015-0103-4",
@@ -3736,6 +3688,33 @@
     "PMCID": "PMC4690232",
     "PMID": "26705468",
     "id": "oVaXIwl5"
+  },
+  {
+    "type": "article-journal",
+    "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
+    "container-title": "Cladistics",
+    "page": "164-166",
+    "volume": "5",
+    "author": [
+      {
+        "family": "Felsenstein",
+        "given": "Joel"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1989
+        ]
+      ]
+    },
+    "id": "tIvRXd6o"
+  },
+  {
+    "type": "webpage",
+    "URL": "https://samtools.github.io/bcftools/",
+    "title": "Bcftools 1.9",
+    "id": "LAG2q9WK"
   },
   {
     "type": "webpage",
