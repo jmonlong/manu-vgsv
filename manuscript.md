@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/0679f118f404dcf1421d7b671f731b7721877bb4/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/b7e940b083ed713f71bffe52ec525860a4d861b2/))
 was automatically generated
-from [jmonlong/manu-vgsv@0679f11](https://github.com/jmonlong/manu-vgsv/tree/0679f118f404dcf1421d7b671f731b7721877bb4)
+from [jmonlong/manu-vgsv@b7e940b](https://github.com/jmonlong/manu-vgsv/tree/b7e940b083ed713f71bffe52ec525860a4d861b2)
 on May 6, 2019.
 </em></small>
 
@@ -549,7 +549,7 @@ It requires a linear reference genome and a VCF file of variants on that referen
 As reference genome, the PacBio assembly of the S.c. S288C strain was chosen because this strain was used for the S. cerevisiae genome reference assembly.
 To obtain variants three methods for SV detection from genome assemblies were combined: Assemblytics [@krO7WgVi] (commit df5361f), AsmVar (commit 5abd91a) [@oVaXIwl5] and paftools (version 2.14-r883) [@172cJaw4Q].
 All three methods were run to detect SVs between the PacBio assembly of reference strain S.c. S288C and the PacBio assemblies of each of the four other selected yeast strains.
-The union of variants detected by the three methods was produced (using bedtools [̍@1HWiAHnIw]) and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set.
+The union of variants detected by the three methods was produced (using bedtools [@1HWiAHnIw]) and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set.
 These union sets of variants for each of the four selected (and non-reference) strains were merged and another deduplication step was applied to combine variants with a reciprocal overlap of at least 90%.
 The resulting total set of variants in VCF format and the linear reference genome were used to build the *VCF graph* with `vg construct`.
 
