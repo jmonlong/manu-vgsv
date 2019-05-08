@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/fcb717797ca878b96a4238e6350af5697760d1d2/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/453702bca57b7773916264438b3ee43d4ee032e9/))
 was automatically generated
-from [jmonlong/manu-vgsv@fcb7177](https://github.com/jmonlong/manu-vgsv/tree/fcb717797ca878b96a4238e6350af5697760d1d2)
+from [jmonlong/manu-vgsv@453702b](https://github.com/jmonlong/manu-vgsv/tree/453702bca57b7773916264438b3ee43d4ee032e9)
 on May 8, 2019.
 </em></small>
 
@@ -300,10 +300,10 @@ Transparency indicates whether the strain was included or excluded in the graphs
 ## Discussion
 
 <!-- Discuss why vg is doing better -->
-Overall, vg was the most accurate genotyper in our benchmarks.
-These results show that variant calling benefits from a variant-aware read mapping, a finding consistent with previous graph-based studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
+vg was the most accurate SV genotyper in our benchmarks, overall.
+These results show that variant calling benefits from variant-aware read mapping, a finding consistent with previous graph-based studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
 <!-- Other advantages: SV representation, unified variant calling. -->
-In addition to its variant-aware read mapping, vg offer additional advantages.
+In addition to its variant-aware read mapping, vg offers additional advantages.
 Its unified framework calls and scores different variant types simultaneously.
 For variant interpretation in particular, a comprehensive and unified characterization of the genomic variation will be extremely valuable. 
 Variation graphs that contain known SNVs, indels and SVs could serve as a richer reference for large scale projects that use short-read sequencing.
@@ -325,7 +325,8 @@ The vg toolkit is under active development.
 Read mapping is an area of constant improvement, in terms of both computational efficiency and accuracy.
 One technique under development is the application of haplotype information for the improvement of read mapping and variant calling. 
 We believe that this technique stands to benefit SV genotyping with vg, as haplotype information might enable inference at the scale of SVs when using short reads.
-In our benchmark, the other methods were superior in a handful datasets and situations, primarily when genotyping deletions.
+
+In our benchmarks, other methods were superior in a handful datasets and situations, primarily when genotyping deletions.
 However, even in most of these cases, vg had the best accuracy when evaluating only the presence or absence of each variant call.
 This suggests that the performance shortfall can be attributed to the genotyping algorithm rather than the mapping pipeline.
 We hope to address these issues in a future release.
@@ -340,7 +341,7 @@ Aligning assembled contigs to existing variation graphs, like to ones created fr
 ## Conclusion
 
 In this study, the vg toolkit was compared to existing SV genotypers across several high-quality SV catalogs.
-We showed that its implementation of variation graphs lead to a better SV genotyping compared to methods that rely on read mapping to a linear reference genome or a variation graph approach that requires sequence-resolved variants.
+We showed that its implementation of variation graphs lead to a better SV genotyping compared to methods that rely on read mapping to a linear reference genome or a variation graph approach that requires exact sequence-resolved variants.
 This work introduces a flexible strategy to integrate the growing number of SVs being discovered with higher resolution technologies into the unified framework of variation graphs.
 This study also shows the benefit of starting directly from de novo assemblies rather than variant catalogs to integrate SVs in genome graphs.
 
