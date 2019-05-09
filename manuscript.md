@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-08'
+date-meta: '2019-05-09'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/453702bca57b7773916264438b3ee43d4ee032e9/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/8f1036ab732e865340e23aa05b54d01ceefcadb0/))
 was automatically generated
-from [jmonlong/manu-vgsv@453702b](https://github.com/jmonlong/manu-vgsv/tree/453702bca57b7773916264438b3ee43d4ee032e9)
-on May 8, 2019.
+from [jmonlong/manu-vgsv@8f1036a](https://github.com/jmonlong/manu-vgsv/tree/8f1036ab732e865340e23aa05b54d01ceefcadb0)
+on May 9, 2019.
 </em></small>
 
 ## Authors
@@ -149,20 +149,20 @@ In addition, we show that building graphs from the alignment of de novo assembli
 
 ### Structural variation in vg
 
-In vg, a variation graph represents DNA sequences and genomic variation using sequence nodes linked by edges (see [Supplementary Information](#supplementary-information) and {@fig:vg-sv-cartoon}).
-We used vg to implement a simple SV genotyping pipeline.
-Reads are mapped to the graph and used to compute the read support for each node and edge.
+We used vg to implement a simple SV genotyping pipeline (Figure {@fig:vg-sv-cartoon}).
+Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
 Sites of variation are then identified using the snarl decomposition as described in [@xJlNnKH2].
 For each site, the two most supported paths (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
 The pipeline is described in more detail in [Methods](#simulation-experiment).
-We rigorously evaluated the accuracy of our method on a variety of datasets,  and the results are presented in the remainder of this section.
+We rigorously evaluated the accuracy of our method on a variety of datasets, and the results are presented in the remainder of this section.
 
 ### Simulated dataset
 
-As a proof-of-concept we simulated genomes and different types of SVs with a size distribution matching real SVs[@vQTymKCj].
-We compared vg against SVTyper, Delly and BayesTyper across different levels of sequencing depth.
-Some errors were also added at the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
+As a proof-of-concept, we simulated genomes and different types of SVs with a size distribution matching real SVs[@vQTymKCj].
+We compared vg against SVTyper, Delly, and BayesTyper across different levels of sequencing depth.
+We also added some errors at the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
 The results are shown in Figure {@fig:1}b.
+
 When using the correct breakpoints, vg tied with Delly as the best genotyper for deletions, and with BayesTyper as the best genotyper for insertions.
 For inversions, vg was the second best genotyper after BayesTyper.
 The differences between the methods were the most visible at lower sequencing depth. 
@@ -174,18 +174,19 @@ Overall, these results show that vg is capable of genotyping SVs and is robust t
 
 ![**Structural variation in vg.** 
 a) Adding large insertions, deletions and inversions in a variation graph. 
-b) Simulation experiment. For each experiment (method, depth and input VCF with/without breakpoint errors), the y-axis shows the maximum F1 across different minimum quality thresholds.
+b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
 ](images/panel1.png){#fig:1}
 
 ### HGSVC dataset
 
-Structural variants from The Human Genome Structural Variation Consortium (HGSVC) were used to benchmark the genotyping performance of vg against 3 other SV genotyping methods
-This high-quality SV catalog was generated from three samples using a consensus from different sequencing, phasing and variant calling technologies[@vQTymKCj]. 
+Structural variants from The Human Genome Structural Variation Consortium (HGSVC) were used to benchmark the genotyping performance of vg against the three other SV genotyping methods.
+This high-quality SV catalog was generated from three samples using a consensus from different sequencing, phasing, and variant calling technologies[@vQTymKCj]. 
 The three samples come from different human populations: a Han Chinese individual (HG00514), a Puerto-Rican individual (HG00733), and a Yoruban Nigerian individual (NA19240).
-These SVs were used to construct a graph with vg and as input for the other genotypers.
+We used these SVs to construct a graph with vg and as input for the other genotypers.
 Using short sequencing reads, the SVs were genotyped and compared with the genotypes in the original catalog (see [Methods](#hgsvc-analysis)).
 
-First, by simulating reads for HG00514, we compared the different methods in the ideal error-free situation where the SV catalog matches exactly the SVs supported by the reads.
+First we compared the methods using simulated reads for HG00514.
+This represents the ideal situation where the SV catalog exactly matches the SVs supported by the reads.
 While vg outperformed Delly and SVTyper, BayesTyper showed the best F1 score and precision-recall trade-off (Figures {@fig:2} and {@fig:hgsvc-sim-geno}, Table {@tbl:hgsvc}).
 When restricting the comparisons to regions not identified as tandem repeats or segmental duplications, the genotyping predictions were significantly better for all methods, with vg almost as good as BayesTyper on deletions (F1 of 0.944 vs 0.955).
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2} and {@fig:hgsvc-sim}).
@@ -198,37 +199,45 @@ Using real reads, the three HG00514, HG00733, and NA19240 individuals were teste
 GiaB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[@14neTdqfN;@16GvGhO20].
 Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
 We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars).
-SVTyper cannot genotype insertions hence the absent bars in the top panel.
+Results are separated across panels by variant type: insertions and deletions.
+SVTyper cannot genotype insertions, hence the missing bars in the top panels.
 ](images/hgsvc-giab-best-f1.png){#fig:2}
 
-We then repeated the analysis using real Illumina reads from HG00514 to benchmark the methods on a more realistic experiment.
-Here vg clearly outperformed other approaches, most likely because of its graph-based strategy and robustness to errors in the SV catalog (Figures {@fig:2} and  {@fig:hgsvc-real-geno}).
+We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment.
+Here vg clearly outperformed other approaches (Figures {@fig:2} and  {@fig:hgsvc-real-geno}).
 In non-repeat regions and across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods. 
 For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2} and {@fig:hgsvc-real}).
 Figure {@fig:hgsvc-ex} shows examples of an exonic deletion and an exonic insertion that were correctly genotyped by vg but not by the other methods.
 
 ![**Exonic SVs in the HGSVC dataset correctly genotyped by vg**. 
-The red/blue segments represent read mapped to the graph whose topology is shown at the bottom in black.
+The red and blue bars represent read mapped to the graph whose topology is shown at the bottom in black.
 Between the graph and the reads, a colored horizontal bar shows the path followed by the reference genome (GRCh38).
 a) 51 bp homozygous deletion in the last exon of the LONRF2 gene.
 b) 114 bp homozygous insertion in a short tandem repeat region overlapping the first exon of the MED13L gene, a gene predicted to be loss of function intolerant.
+The vg read mappings show consistent coverage even over these SVs.
 ](images/panel7.png){#fig:hgsvc-ex}
 
 
 ### Other long-read datasets
 
-The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for a Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20].
+#### Genome in a Bottle Consortium
+
+The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for an Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20].
 Dozens of SV callers and datasets from short, long and linked reads were used to produce this set of SVs.
+We evaluated the SV genotyping methods on this sample as well using the GIAB VCF, which also contains parental calls.
 vg performed similarly on this dataset as on the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
 As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotypes for deletions in non-repeat regions.
 
+#### Audano, et al. [@3NNFS6U2]
+
 A recent study by Audano et al. generated an SV catalog using long-read sequencing across 15 individuals[@3NNFS6U2].
-These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine-learning genotyper implemented for this study.
+These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine learning-based genotyper implemented for that study.
 SMRT-SV2 was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines.
 We first called SVs in this dataset, using the same SV catalog and short read dataset.
 vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
 Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
+
 Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (SVPOP in Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
 Of note, SMRT-SV2 produces *no-calls* in regions where the read coverage is too low, and we observed that its recall increased when filtering these regions out the input set.
 Interestingly, vg performed well even in regions where SMRT-SV2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
@@ -238,7 +247,7 @@ Inversions are often complex, harboring additional variation that makes their ch
 
 ![**Structural variants from Audano et al.[@3NNFS6U2]**.
 The pseudo-diploid genome built from CHM cell lines was originally used to train SMRT-SV2 in Audano et al.[@3NNFS6U2].
-The SVPOP panel shows the combined results for the HG5014, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2].
+The SVPOP panel shows the combined results for the HG00514, HG00733, and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2].
 Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
 We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars).
 Genotype information is not available in the SVPOP catalog hence genotyping performance could not be evaluated.
@@ -247,52 +256,45 @@ Genotype information is not available in the SVPOP catalog hence genotyping perf
 ### Graphs from alignment of de novo assemblies
 
 Genome graphs can be constructed directly from multiple sequence alignments of de novo assemblies[@10jxt15v0].
-This bypasses the need for generating an explicit variant catalog relative to a linear reference which could be a source of error (for example, from reference bias during read mapping and variant calling).
-Furthermore, genome alignments from software such as Cactus [@1FgS53pXi] can contain complex structural variation that is extremely difficult to represent, let alone call, outside of a graph.
-We therefore investigated whether genome graphs derived from de-novo assembly alignments yield advantages for SV genotyping.
-To this end, we analyzed public sequencing datasets for 12 yeast strains from two related clades (*S. cerevisiae* and *S. paradoxus*) [@7f5OKa5O].
-We generated and compared two different types of genome graphs using 5 of the 12 strains, *S.c. S288C* as the reference strain and two other strains for each yeast clade (see [Methods](#yeast-graph-analysis)).
-The first graph type (in the following called *VCF graph*) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
-The second graph (in the following called *cactus graph*) was derived from a multiple genome alignment of the five strains using our Cactus tool [@1FgS53pXi].
-The *VCF graph* is mainly linear and highly dependent on the reference genome.
-In contrast, the *cactus graph* is structurally complex and free of reference bias.
+This bypasses the need for generating an explicit variant catalog relative to a linear reference, which could be a source of error (for example, from reference bias during read mapping and variant calling).
+Furthermore, genome alignments from graph-based software such as Cactus [@1FgS53pXi] can contain complex structural variation that is extremely difficult to represent, let alone call, outside of a graph.
+We therefore investigated whether genome graphs derived from alignments of de-novo assemblies yield advantages for SV genotyping.
 
-![**Mapping comparison.** 
-Short reads from all 12 yeast strains were aligned to both graphs. 
-The fraction of reads mapped to the cactus graph (y-axis) and the VCF graph (x-axis) are compared.
-a) Stratified by mapping quality threshold.
-b) Stratified by percent identity threshold.
-Colors and shapes represent the 12 strains and two clades, respectively. 
-Transparency indicates whether the strain was included or excluded in the graphs.
-](images/panel3.png){#fig:3}
+We analyzed public sequencing datasets for 12 yeast strains from two related clades (*S. cerevisiae* and *S. paradoxus*) [@7f5OKa5O].
+We compared genotyping results using two different types of genome graphs.
+The graphs were constructed using 5 of the 12 strains.
+*S.c. S288C* was used as the reference strain, and we selected two other strains from each of the two clades (see [Methods](#yeast-graph-analysis)).
+The first graph (called *VCF graph* below) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
+The second graph (called *cactus graph* below) was derived from a multiple genome alignment of the five strains using Cactus [@1FgS53pXi].
+The *VCF graph* is mostly linear and highly dependent on the reference genome.
+In contrast, the *cactus graph* is structurally complex and relatively free of reference bias.
 
-First, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains.
-Figure {@fig:3}a shows the fraction of Illumina reads from the 12 strains that was mapped with a mapping quality above a certain threshold to the *cactus graph* and to the *VCF graph*.
-Generally, more reads were mapped to the *cactus graph* than to the *VCF graph* regardless of the chosen mapping quality threshold.
-Only for the reference strain *S.c. S288C*, the *VCF graph* exhibited slightly better mappability.
-This suggests that the improvement in mappability is not driven by the higher sequence content in the *cactus graph* alone (15.4 Mb compared to 12.4 Mb in the *VCF graph*).
-Instead, our measurements suggest that the genetic distance to the reference strain correlates with the better mapping on the *cactus graph* over the *VCF graph* (Pearson's product-moment correlation, p-value=1.415e-11).
-Consequently, the benefit of using the *cactus graph* is largest for strains in the *S. paradoxus* clade and smaller for reads from strains in the *S. cerevisiae* clade.
-We observed a similar trend when exploring the mapping identity of the short reads on the graphs (see Figure {@fig:3}b and [Supplementary Information](#supplementary-information)).
+First, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains (see [Supplementary Information](#mappability-comparison-between-yeast-graphs)).
+Generally, more reads mapped to the *cactus graph* with high identity (Figure {@fig:panel3}a) and high mapping quality (Figure {@fig:panel3}b) than to the *VCF graph*.
 
-Interestingly, our measurements did not show a substantial difference between strains included in the graph and excluded strains. The results suggest that two strains from each clade as well as the reference strain are sufficient to capture most of the genetic variation among all the strains. Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (see Figure {@fig:3}b). For a direct comparison, see Figure {@fig:panel5} which shows results of the same experiment on graphs generated from all 12 strains.
-
-Next, we compared the SV genotype performance of both graphs.
+Next, we compared the SV genotyping performance of both graphs.
 We mapped short reads from the 11 non-reference strains to both graphs and called variants for each strain using the vg toolkit's variant calling module (see [Methods](#toil-vg-call)).
-In the absence of a gold standard, we evaluated each callset based on the alignment of reads to a *sample graph* constructed from the callset (see [Methods](#calling-and-genotyping-of-svs)).
-If a given callset is correct, we expect that reads from the same sample will be mapped confidently and with high identity to the corresponding sample graph.
-Therefore, we compared the average mapping quality and percent identity of the short reads on each sample graph (see Figures {@fig:4}a and b).
-Similar to the results of our mapping analysis above, the *cactus graph* clearly outperformed the *VCF graph* for strains in the *S. paradoxus* clade and performed slightly better for strains in the *S. cerevisiae* clade.
-Again, our measurements did not show a large difference between strains included in the graph and those that were excluded. For a direct comparison, see Figure {@fig:panel6} which shows results of the same experiment on graphs generated from all 12 strains.
+There is no gold standard call set for these sample, so we used an indirect measure of SV calling accuracy.
+We evaluated each call set based on the alignment of reads to a *sample graph* constructed from the call set (see [Methods](#calling-and-genotyping-of-svs)).
+If a given call set is correct, we expect that reads from the same sample will be mapped with high identity and confidence to the corresponding sample graph.
+Therefore, we compared the average percent identity and mapping quality of the short reads on each sample graph (Figures {@fig:4}a and b).
+Similar to the mappability results, the *cactus graph* clearly outperformed the *VCF graph* for strains in the *S. paradoxus* clade and performed slightly better for strains in the *S. cerevisiae* clade.
+While the higher percent identity shows that the *cactus graph* represents the reads better (Figures {@fig:4}a), the higher mapping quality confirms that this did not come at the cost of added ambiguity or a more complex graph (Figures {@fig:4}b).
+Our results did not show a substantial difference between strains included in the graph and those that were excluded.
+This suggests that two strains from each clade as well as the reference strain are sufficient to capture most of the genetic variation among all the strains.
+For a direct comparison, see Figure {@fig:panel6} which shows results of the same experiment on graphs generated from all 12 strains.
+
+[//]: # (The figure mentioned in the previous sentence doesn't seem to be included here.)
 
 ![**SV genotyping comparison.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. 
 Subsequently, sample graphs were generated from the resulting SV callsets. 
-The short reads were again aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
-a) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
-b) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis). 
+The short reads were aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
+More accurate genotypes should result in reference graphs that have mappings with high identity and confidence for a greater proportion of the reads.
+a) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
+b) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
 Colors and shapes represent the 11 non-reference strains and two clades, respectively. 
-Transparency indicates whether the strain was included or excluded in the graphs.
+Transparency indicates whether the strain was used to construct the graphs.
 ](images/panel4.png){#fig:4}
 
 
@@ -731,20 +733,28 @@ b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
 ](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S12"}
 
+![**Mapping comparison.**
+Short reads from all 12 yeast strains were aligned to both graphs.
+The fraction of reads mapped to the cactus graph (y-axis) and the VCF graph (x-axis) are compared.
+a) Stratified by percent identity threshold.
+b) Stratified by mapping quality threshold.
+Colors and shapes represent the 12 strains and two clades, respectively.
+Transparency indicates whether the strain was included or excluded in the graphs.
+](images/panel3.png){#fig:panel3 tag="S13"}
 
 ![**Mapping comparison on graphs of all 12 strains.**
 Short reads from all 12 yeast strains were aligned to both graphs. The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* (x-axis) are compared.
-a) Stratified by mapping quality threshold.
-b) Stratified by percent identity threshold.
+a) Stratified by percent identity threshold.
+b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
-](images/panel5.png){#fig:panel5 tag="S13"}
+](images/panel5.png){#fig:panel5 tag="S14"}
 
 ![**SV genotyping comparison on graphs of all 12 strains.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. Subsequently, sample graphs were generated from the resulting SV callsets. The short reads were again aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
 a) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
 b) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis). 
 Colors and shapes represent the 11 non-reference strains and two clades, respectively.
-](images/panel6.png){#fig:panel6 tag="S14"}
+](images/panel6.png){#fig:panel6 tag="S15"}
 
 ### Supplementary Information
 
@@ -770,14 +780,22 @@ In situations where both breakpoints of the deletions were incorrect, only 18.6%
 The breakpoints of less than 20% of the inversions could be corrected.
 Across all SV types, the size of the variant didn't affect the ability to fine-tune the breakpoints through graph augmentation (Figure {@fig:simerror-bkpt}c).
 
-#### Mapping identity in genome graphs from 12 yeast strains
+#### Mappability comparison between yeast graphs
 
-Generally, more reads were mapped to the *cactus graph* than to the *VCF graph*.
-We observed a similar trend when exploring the mapping identity of the short reads on the graphs (see Figure {@fig:3}b).
-For strains in the *S. paradoxus* clade, the *cactus graph* resulted in substantially more mappings with high percent identity than the *VCF graph*.
-With strains in the *S. cerevisiae* clade, the difference was smaller, at least for a percent identity threshold up to 90%.
-When comparing read fractions with perfect identity (i.e. percent identity threshold = 100%), the *cactus graph* clearly outperforms the *VCF graph* on 11 out of 12 samples, the exception again being the reference strain *S.c. S288C*. One reason behind this is that the VCF graph only contains SVs but no SNPs or Indels. The cactus graph which is constructed directly from de novo assemblies consequently captures the genetic makeup of each strain more comprehensively and accurately.
+In order to elucidate whether the *cactus graph* represents the sequence diversity among the yeast strains better than the *VCF graph*, we mapped Illumina short reads to both graphs using `vg map`.
+Generally, more reads mapped to the *cactus graph* with high identity (Figure {@fig:panel3}a) and high mapping quality (Figure {@fig:panel3}b) than to the *VCF graph*.
+The *VCF graph* exhibited higher mappability only on the reference strain *S.c. S288C* with a marginal difference.
+The benefit of using the *cactus graph* is largest for strains in the *S. paradoxus* clade and smaller for strains in the *S. cerevisiae* clade.
+We found that the genetic distance to the reference strain (as estimated using Mash v2.1 [@mH9pzoIn]) correlated with the increase in confidently mapped reads (mapping quality >= 60) between the *cactus graph* and the *VCF graph* (Spearman's rank correlation, p-value=3.993e-06).
+These results suggest that the improvement in mappability is not driven by the higher sequence content in the *cactus graph* alone (15.4 Mb compared to 12.4 Mb in the *VCF graph*).
+Instead, an explanation could be the construction of the *VCF graph* from a comprehensive but still limited list of variants and the lack of SNPs and small Indels in this list.
+Consequently, substantially fewer reads mapped to the *VCF graph* with perfect identity (Figure {@fig:panel3}a, percent identity threshold = 100%) than to the *cactus graph*.
+The latter has the advantage of implicitly incorporating variants of all types and sizes from the de novo assemblies.
+As a consequence, the *cactus graph* captures the genetic makeup of each strain more comprehensively and enables more reads to be mapped.
 
+Interestingly, our measurements did not show a substantial difference between strains that were used to construct the graph and the other strains. 
+Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a). 
+For a direct comparison, see Figure {@fig:panel5} which shows results of the same experiment on graphs generated from all 12 strains.
 
 ## References {.page_break_before}
 
