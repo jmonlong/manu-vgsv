@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/339fa9952a8cabf4ec17b8a4b2ba68d94fbae6f8/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/e09784fb755cd74d64fc7f8c540657a69b36bb6e/))
 was automatically generated
-from [jmonlong/manu-vgsv@339fa99](https://github.com/jmonlong/manu-vgsv/tree/339fa9952a8cabf4ec17b8a4b2ba68d94fbae6f8)
+from [jmonlong/manu-vgsv@e09784f](https://github.com/jmonlong/manu-vgsv/tree/e09784fb755cd74d64fc7f8c540657a69b36bb6e)
 on May 10, 2019.
 </em></small>
 
@@ -348,33 +348,17 @@ This study also shows the benefit of starting directly from de novo assemblies r
 
 ## Methods
 
-### toil-vg
-
-toil-vg is a set of Python scripts for simplifying vg tasks such as graph construction, read mapping and SV genotyping.
-It uses the Toil workflow engine [@faeC2cx0] to seamlessly run pipelines locally, on clusters or on the cloud.
-All variation graph analysis in this report was done using toil-vg, with the exact commands available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
-The principal toil-vg commands used are described below.
-
-#### toil-vg construct
-
-toil-vg construct automates graph construction and indexing following the best practices put forth by the vg community.
-Graph construction is parallelized across different sequences from the reference FASTA, and different whole-genome indexes are created side by side when possible.
-Phasing information from the input VCF can be used when available to preserve haplotypes in the GCSA2 pruning step, as well as to extract haploid sequences to simulate from.
-
-#### toil-vg map
-
-toil-vg map splits the input reads into batches, maps each batch in parallel, then merges the result.
-
-#### toil-vg call
+### The vg call genotyping algorithm
 
 A simple though very general variant caller has been implemented as `vg call`.
+The algorithm uses read mappings to a genome graph as its source of signal.
 Here it is used to genotype structural variants already present in the graph, but the same algorithm can also be used for smaller variants such as SNPs, as well as making de-novo calls.
 The algorithm is as follows:
 
 1. The average read support for each node and edge, adjusted for mapping and base quality, is computed. 
-The graph can optionally be augmented to include new variation from the reads using a support cutoff.
+The graph can optionally be augmented to include new variation from the reads using a minimum support cutoff.
 1. The graph is then decomposed into snarls[@xJlNnKH2]. 
-Briefly, a snarl is a subgraph defined by two end nodes, where cutting the graph at these nodes disconnects the snarl from the rest of the graph.
+Briefly, a snarl is a subgraph defined by two end nodes, where cutting the graph at these nodes disconnects the subgraph from the rest of the graph.
 Snarls can be nested inside other snarls, and this nesting hierarchy forms a forest.
 As proposed in Paten et al.[@xJlNnKH2], we use the snarl decomposition as a structure for identifying variants in a graph.
 1. Root-level snarls from the decomposition are considered independently and in parallel. 
@@ -385,36 +369,57 @@ The following steps are performed on each root snarl.
     1. A genotype is determined using the relative support of the best paths, as well as the background read depth. The same logic is used for all types of variation, each of which can be expressed simply as a path in the graph.
     1. The VCF variants are derived from the paths.
 
+### toil-vg
+
+toil-vg is a set of Python scripts for simplifying vg tasks such as graph construction, read mapping and SV genotyping.
+It uses the Toil workflow engine [@faeC2cx0] to seamlessly run pipelines locally, on clusters, or on the cloud.
+All variation graph analysis in this report used toil-vg, with the exact commands available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
+The principal toil-vg commands used are described below.
+
+#### toil-vg construct
+
+toil-vg construct automates graph construction and indexing following the best practices put forth by the vg community.
+Graph construction is parallelized across different sequences from the reference FASTA, and different whole-genome indexes are created side by side when possible.
+Phasing information from the input VCF can be used when available to preserve haplotypes in the GCSA2 pruning step, as well as to extract haploid sequences to simulate from.
+
+#### toil-vg map
+
+toil-vg map splits the input reads into batches, maps each batch in parallel, and merges the result.
+
+#### toil-vg call
+
 Due to the high memory requirements of the current implementation of vg call, toil-vg call splits the input graph into 2.5Mb overlapping chunks along the reference path.
 Each chunk is called independently in parallel and the results are concatenated into the output VCF. 
 
 #### toil-vg sveval
 
+toil-vg seval evaluates the SV calls relative to a truth set.
 The variants are first normalized with `bcftools norm` (1.9) to ensure consistent representation between called variants and baseline variants[@LAG2q9WK].
 We then implemented an overlap-based strategy to compare SVs and compute evaluation metrics (sveval R package: [https://github.com/jmonlong/sveval](https://github.com/jmonlong/sveval)).
 
-For deletions and inversions, the affected regions in the reference genome are overlapped and matched between the two sets of SVs.
-First, we select pairs of SVs with at least 10% reciprocal overlap.
-Then for each variant we compute the proportion of its region that is covered by an overlapping variant in the other set.
+For deletions and inversions, we begin by computing the overlaps between the SVs in the call set and the truth set.
+For each variant we then compute the proportion of its region that is covered by a variant in the other set, considering only variants overlapping with at least 10% reciprocal overlap.
 If this coverage proportion is higher than 50%, the variant is considered *covered*.
-True positives are covered variants from the call set or the truth set.
-False positives are variants from the call set that are not covered (by the truth set).
-False negative are variants from the truth set that are not covered (by the call set).
+True positives are covered variants from the call set (when computing the precision) or the truth set (when computing the recall).
+Variants from the call set are considered false positives if they are not covered by the truth set.
+Conversely, variants from the truth set are considered false negatives if they are not covered by the call set.
 
 For insertions, we select pairs of insertions that are located no farther than 20 bp from each other.
 We then align the inserted sequences using a Smith-Waterman alignment.
 For each insertion we compute the proportion of its inserted sequence that aligns a matched variant in the other set.
-As for deletions/inversions, this coverage proportion is used to annotate variants as true positives, false positives and false negatives.
+If this proportion is at least 50% the insertions are considered covered.
+Covering relationships are used to define true positives, false positives, and false negatives the same way as for deletions and insertions.
 
 sveval accepts VCF files with symbolic or explicit representation of the SVs.
 If the explicit representation is used, multi-allelic variants are split and their sequences right-trimmed.
-When inversions are considered, the reverse-complement of the ALT sequence of variants larger than 10 bp is aligned to the REF sequence and classified as an inversion if more than 80% of the sequence aligns.
+When using the explicit representation and when the REF and ALT sequences are longer than 10 bp, the reverse-complement of the ALT sequence is aligned to the REF sequence to identify potential inversions.
+If more than 80% of the sequence aligns, it is classified as an inversion.
 
-We assess either the ability to predict the presence of an SV or its genotype.
+We assess both the ability to predict the presence of an SV as well as the full genotype.
 For the *presence* evaluation, both heterozygous and homozygous alternate SVs are compared jointly using the approach described above.
 To compute genotype-level metrics, the heterozygous and homozygous SVs are compared separately.
-Before splitting the variants by genotype, consecutive heterozygous variants are first stitched together if located at less that 20 bp from each other.
-Pairs of heterozygous variants with reciprocal overlap of at least 80% are also merged into a homozygous variant before splitting variants by genotype.
+Before splitting the variants by genotype, consecutive heterozygous variants are first merged if located at less that 20 bp from each other.
+Pairs of heterozygous variants with reciprocal overlap of at least 80% are also merged into a homozygous ALT variant before splitting variants by genotype.
 
 ### Other SV genotypers
 
@@ -432,7 +437,7 @@ Non-PASS variants were filtered prior to evaluation using `bcftools filter`.
 
 #### Delly (v0.7.9)
 
-The `delly call` command was run on the reads mapped by `bwa mem`, the reference genome FASTA file and the VCF containing the SVs to genotype in their explicit representation.
+The `delly call` command was run on the reads mapped by `bwa mem`, the reference genome FASTA file, and the VCF containing the SVs to genotype (converted to their explicit representations).
 
 #### SVTyper (v0.7.0)
 
@@ -449,8 +454,8 @@ The output VCF was converted back to explicit representation to facilitate varia
 ### Simulation experiment
 
 We simulated a synthetic genome with 1000 insertions, deletions and inversions.
-Each variant was separated from the next by a buffer region of 500 bp following the final variable base.
-The sizes of deletions and insertions followed the distribution of real SV sizes from the HGSVC catalog.
+Each variant was separated from the next by a buffer of at least 500 bp.
+The sizes of deletions and insertions followed the distribution of SV sizes from the HGSVC catalog.
 We used the same size distribution as deletions for inversions.
 A VCF file was produced for three simulated samples with genotypes chosen uniformly between homozygous reference, heterozygous, and homozygous alternate.
 
@@ -460,16 +465,7 @@ The locations and sequences of insertions were also modified, either shifting th
 
 Paired-end reads were simulated using `vg sim` on the graph that contained the true SVs.
 Different read depths were tested: 1x, 3x, 7x, 10x, 13x, 20x.
-We used real Illumina reads from NA12878 provided by the Genome in a Bottle consortium to model base qualities and sequencing errors.
-
-The different methods were tested using either the true VCF or the VCF that contained errors.
-For vg, a graph was constructed from the VCF file, indexed, then used to map simulated reads and call variants using toil-vg (see [toil-vg](#toil-vg)).
-BayesTyper was run directly on the simulated reads and using an input VCF with SVs only.
-In order to run the other methods, reads were mapped to the linear reference sequence using `bwa mem` and sorted using `samtools`.
-For Delly, insertions and deletions were first genotyped together using these mapped reads and the `delly call` command.
-Inversions were genotyped separately using a VCF that was formatted according to Delly's preference.
-SVTyper was run on the mapped reads and a VCF that was converted to symbolic variant representation.
-All commands used for this analysis are available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
+The base qualities and sequencing errors were trained to resemble real Illumina reads from NA12878 provided by the Genome in a Bottle Consortium.
 
 The genotypes called in each experiment (genotyping method/VCF with or without errors/sequencing depth) were compared to the true SV genotypes to compute the precision, recall and F1 score (see [toil-vg sveval](#toil-vg-sveval)).
 
@@ -478,16 +474,18 @@ The genotypes called in each experiment (genotyping method/VCF with or without e
 vg can call variants after augmenting the graph with the read alignments to discover new variants (see [toil-vg call](#toil-vg-call)).
 We tested if this approach could fine-tune the breakpoint location of SVs in the graph.
 We started with the graph that contained approximate SVs (1-10 bp errors in breakpoint location) and 20x simulated reads from the simulation experiment (see [Simulation experiment](#simulation-experiment)).
-The variants called after graph augmentation were compared with the true SVs and considered fine-tuned if the breakpoints matched exactly.
+The variants called after graph augmentation were compared with the true SVs.
+We considered fine-tuning correct if the breakpoints matched exactly.
 
 ### HGSVC Analysis
 
 Phased VCFs were obtained for the three Human Genome Structural Variation Consortium (HGSVC) samples from Chaisson et al.[@vQTymKCj] and combined with `bcftools merge`.
 A variation graph was created and indexed using the combined VCF and the HS38D1 reference with alt loci excluded.
-The phasing information was used to construct a GBWT index, from which the two haploid sequences from HG00514 were extracted.
-Illumina read pairs with 30x coverage were simulated from these sequences using vg, with an error model learned from real reads from the same sample.
-Still, these reads reflect the idealized situation where the breakpoints of the SVs being genotyped are exactly known a priori.
-The reads were mapped to the graph and the mappings used to genotype the SVs in the graph, which were finally compared back to the HG00514 genotypes from the HGSVC VCF.
+The phasing information was used to construct a GBWT index[@jj4JJlsg], from which the two haploid sequences from HG00514 were extracted as a graph.
+Illumina read pairs with 30x coverage were simulated from these sequences using vg sim, with an error model learned from real reads from the same sample.
+Still, these reads reflect an idealized situation where the breakpoints of the SVs being genotyped are exactly known a priori.
+The reads were mapped to the graph, and the mappings used to genotype the SVs in the graph. 
+Finally, the SV calls were compared back to the HG00514 genotypes from the HGSVC VCF.
 The process was repeated with the same reads on the linear reference, using bwa-mem for mapping and Delly, SVTyper and BayesTyper for SV genotyping.
 
 Illumina HiSeq 2500 paired end reads were downloaded from the EBI's ENA FTP site for the three samples, using Run Accessions ERR903030, ERR895347 and ERR894724 for HG00514, HG00733 and NA19240, respectively.
@@ -496,27 +494,28 @@ For BayesTyper the 3 samples were genotyped jointly.
 
 ### GIAB Analysis
 
-Version 0.6 of the Genome In A Bottle (GIAB) SV VCF for the Ashkenazim son (HG002) was obtained from the NCBI FTP site.
-Illumina reads downsampled to 50x coverage obtained as described in Garrison et al.[@10jxt15v0], were used to run the vg and linear SV genotyping pipelines described above though with GRCh37 instead of 38.
-For BayesTyper the input variant set was created by combining the GIAB SVs with SNV and indels from the same study.
-Variants without a determined genotype (14649 out of 74012), which correspond to putative technical artifacts and parental calls not present in HG002, were considered "false positives" as a proxy measure for precision.
-
+Version 0.6 of the Genome in a Bottle (GIAB) SV VCF for the Ashkenazim son (HG002) was obtained from the NCBI FTP site.
+Illumina reads were obtained as described in Garrison et al.[@10jxt15v0] and downsampled to 50x coverage.
+These reads were used as input for vg call and the other SV genotyping pipelines described above (though with GRCh37 instead of GRCh38).
+For BayesTyper, the input variant set was created by combining the GIAB SVs with SNV and indels from the same study.
+Variants without a determined genotype in the GIAB call set (14649 out of 74012) were considered "false positives" as a proxy measure for precision.
+These variants correspond to putative technical artifacts and parental calls not present in HG002.
 
 ### SMRT-SV2 Comparison (CHMPD and SVPOP)
 
-The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on our simulated, HGSVC or GIAB data.
-The authors shared their training and evaluation set, a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples (CHMPD), along with a negative control (NA19240). 
+The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on the simulated, HGSVC, or GIAB call sets.
+The authors shared their training and evaluation set: a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples (CHMPD), and a negative control (NA19240). 
 The high quality of the CHM assemblies makes this set an attractive alternative to using simulated reads.
 We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV2 genotyper with the "30x-4" model and min-call-depth 8 cutoff, and compared the two back to the original VCF.
 
-In an effort to extend this comparison to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV2 discovery VCF (SVPOP, which contains them in addition to 12 other samples) published by Audano et al.[@3NNFS6U2] using vg and SMRT-SV2 Genotyper.
+In an effort to extend this comparison from the training data to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV2 discovery VCF (SVPOP, which contains 12 additional samples in addition to the three from HGSVC) published by Audano et al.[@3NNFS6U2] using vg and SMRT-SV2 Genotyper.
 The discovery VCF does not contain genotypes so we did not distinguish between heterozygous and homozygous genotypes, looking at only the presence or absence of an alt allele for each variant.
 
 SMRT-SV2 produces some explicit *no-calls* predictions when the read coverage is too low to produce accurate genotypes.
 These no-calls are considered homozygous reference in the main accuracy evaluation.
 We also explored the performance of vg and SMRT-SV2 in different sets of regions (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}):
 
-1. Non-repeat regions, i.e. excluding segmental duplications and tandem repeats.
+1. Non-repeat regions, i.e. excluding segmental duplications and tandem repeats (using the respective tracks from the UCSC Genome Browser).
 1. Repeat regions defined as segmental duplications and tandem repeats.
 1. Regions where SMRT-SV2 could call variants.
 1. Regions where SMRT-SV2 produced no-calls.
@@ -524,7 +523,7 @@ We also explored the performance of vg and SMRT-SV2 in different sets of regions
 ### Yeast graph analysis
 
 For the analysis of graphs from de novo assemblies, we utilized publicly available PacBio-derived assemblies and Illumina short read sequencing datasets for 12 yeast strains from two related clades (Table {@tbl:strains}) [@7f5OKa5O].
-Five strains were selected (two from different subclades of each clade plus the reference *S.c. S288C*): *S.c. SK1*, *S.c. YPS128*, *S.p. CBS432*, *S.p. UFRJ50816*, and *S.c. S288C*.
+Five strains were selected for graph contruction (two from different subclades of each clade plus the reference *S.c. S288C*): *S.c. SK1*, *S.c. YPS128*, *S.p. CBS432*, *S.p. UFRJ50816*, and *S.c. S288C*.
 Two different genome graphs were constructed from the assemblies of the five selected strains.
 In the following, we describe the steps for the construction of both graphs and the calling of variants.
 More details and the precise commands used in our analyses can be found at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
@@ -549,18 +548,18 @@ Table: 12 yeast strains from two related clades were used in our analysis. Five 
 
 #### Construction of the *VCF graph*
 
-For the first graph (called the *VCF graph* throughout the paper), the default vg graph construction method was applied.
-It requires a linear reference genome and a VCF file of variants on that reference to build the graph.
-As reference genome, the PacBio assembly of the S.c. S288C strain was chosen because this strain was used for the S. cerevisiae genome reference assembly.
-To obtain variants three methods for SV detection from genome assemblies were combined: Assemblytics [@krO7WgVi] (commit df5361f), AsmVar (commit 5abd91a) [@oVaXIwl5] and paftools (version 2.14-r883) [@172cJaw4Q].
-All three methods were run to detect SVs between the PacBio assembly of reference strain S.c. S288C and the PacBio assemblies of each of the four other selected yeast strains.
-The union of variants detected by the three methods was produced (using bedtools [@1HWiAHnIw]) and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set.
+The first graph (called the *VCF graph* throughout the paper) was constructed by adding variants onto a linear reference. 
+This method requires one assembly to serve as a reference genome.
+The other assemblies must be converted to variant calls relative to this reference.
+The PacBio assembly of the S.c. S288C strain was chosen as the reference genome because this strain was used for the S. cerevisiae genome reference assembly.
+To obtain variants for the other assemblies, three methods for SV detection from genome assemblies were combined: Assemblytics [@krO7WgVi] (commit df5361f), AsmVar (commit 5abd91a) [@oVaXIwl5] and paftools (version 2.14-r883) [@172cJaw4Q].
+The union of variants detected by the three methods was produced (using bedtools [@1HWiAHnIw]), and variants with a reciprocal overlap of at least 50% were combined to avoid duplication in the union set.
 These union sets of variants for each of the four selected (and non-reference) strains were merged and another deduplication step was applied to combine variants with a reciprocal overlap of at least 90%.
-The resulting total set of variants in VCF format and the linear reference genome were used to build the *VCF graph* with `vg construct`.
+We then used vg construct to build the *VCF graph* with the total set of variants and the linear reference genome.
 
 #### Construction of the *cactus graph*
 
-For the second graph (called the *cactus graph* throughout the paper), an alternative graph construction methods directly from de novo genome assemblies was applied.
+The second graph (called the *cactus graph* throughout the paper) was constructed from a whole genome alignment between the assemblies.
 First, the repeat-masked PacBio-assemblies of the five selected strains were aligned with our Cactus tool [@1FgS53pXi].
 Cactus requires a phylogenetic tree of the strains which was estimated using Mash (version 2.1) [@mH9pzoIn] and PHYLIP (version 3.695) [@tIvRXd6o].
 Subsequently, the output file in HAL format was converted to a variant graph with hal2vg ([https://github.com/ComparativeGenomicsToolkit/hal2vg](https://github.com/ComparativeGenomicsToolkit/hal2vg)).
@@ -569,8 +568,8 @@ Subsequently, the output file in HAL format was converted to a variant graph wit
 
 Prior to variant calling, the Illumina short reads of all 12 yeast strains were mapped to both graphs using `vg map`.
 The fractions of reads mapped with specific properties were measured using `vg view` and the JSON processor `jq`.
-Then, `toil-vg call` (commit be8b6da) was used to analyze the mapped reads of each of the 11 non-reference strains and to call variants.
-Thus, a separate variant callset was obtained for each of the strains and both graphs.
+Then, `toil-vg call` (commit be8b6da) was used to call variants.
+Thus, a separate variant call set was obtained for each of the strains on both graphs.
 To evaluate the callsets, a sample graph (i.e. a graph representation of the callset) was generated for each callset using `vg construct` and `vg mod` on the reference assembly *S.c. S288C* and the callset.
 Subsequently, short reads from the respective strains were mapped to each sample graph using `vg map`.
 The resulting alignments were analyzed with `vg view` and `jq`.

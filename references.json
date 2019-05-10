@@ -3691,6 +3691,50 @@
   },
   {
     "type": "article-journal",
+    "id": "jj4JJlsg",
+    "categories": [
+      "Computer Science",
+      "000 Computer science, knowledge, general works"
+    ],
+    "language": "en",
+    "author": [
+      {
+        "family": "Sirén",
+        "given": "Jouni"
+      },
+      {
+        "family": "Garrison",
+        "given": "Erik"
+      },
+      {
+        "family": "Novak",
+        "given": "Adam M."
+      },
+      {
+        "family": "Paten",
+        "given": "Benedict"
+      },
+      {
+        "family": "Durbin",
+        "given": "Richard"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "abstract": "The variation graph toolkit (VG) represents genetic variation as a graph. Each path in the graph is a potential haplotype, though most paths are unlikely recombinations of true haplotypes. We augment the VG model with haplotype information to identify which paths are more likely to be correct. For this purpose, we develop a scalable implementation of the graph extension of the positional Burrows-Wheeler transform. We demonstrate the scalability of the new implementation by indexing the 1000 Genomes Project haplotypes. We also develop an algorithm for simplifying variation graphs for k-mer indexing without losing any k-mers in the haplotypes.",
+    "container-title": "Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany",
+    "DOI": "10.4230/lipics.wabi.2018.4",
+    "publisher": "Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany",
+    "title": "Haplotype-aware graph indexes",
+    "URL": "https://doi.org/gf2jss"
+  },
+  {
+    "type": "article-journal",
     "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
     "container-title": "Cladistics",
     "page": "164-166",
