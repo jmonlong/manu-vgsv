@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-09'
+date-meta: '2019-05-10'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/8f1036ab732e865340e23aa05b54d01ceefcadb0/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/339fa9952a8cabf4ec17b8a4b2ba68d94fbae6f8/))
 was automatically generated
-from [jmonlong/manu-vgsv@8f1036a](https://github.com/jmonlong/manu-vgsv/tree/8f1036ab732e865340e23aa05b54d01ceefcadb0)
-on May 9, 2019.
+from [jmonlong/manu-vgsv@339fa99](https://github.com/jmonlong/manu-vgsv/tree/339fa9952a8cabf4ec17b8a4b2ba68d94fbae6f8)
+on May 10, 2019.
 </em></small>
 
 ## Authors
@@ -283,8 +283,6 @@ While the higher percent identity shows that the *cactus graph* represents the r
 Our results did not show a substantial difference between strains included in the graph and those that were excluded.
 This suggests that two strains from each clade as well as the reference strain are sufficient to capture most of the genetic variation among all the strains.
 For a direct comparison, see Figure {@fig:panel6} which shows results of the same experiment on graphs generated from all 12 strains.
-
-[//]: # (The figure mentioned in the previous sentence doesn't seem to be included here.)
 
 ![**SV genotyping comparison.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. 
