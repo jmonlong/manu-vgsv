@@ -1567,6 +1567,87 @@
   },
   {
     "publisher": "Springer Nature",
+    "issue": "5",
+    "DOI": "10.1038/ng.3834",
+    "type": "article-journal",
+    "page": "692-699",
+    "source": "Crossref",
+    "title": "The impact of structural variation on human gene expression",
+    "volume": "49",
+    "author": [
+      {
+        "given": "Colby",
+        "family": "Chiang"
+      },
+      {},
+      {
+        "given": "Alexandra J",
+        "family": "Scott"
+      },
+      {
+        "given": "Joe R",
+        "family": "Davis"
+      },
+      {
+        "given": "Emily K",
+        "family": "Tsang"
+      },
+      {
+        "given": "Xin",
+        "family": "Li"
+      },
+      {
+        "given": "Yungil",
+        "family": "Kim"
+      },
+      {
+        "given": "Tarik",
+        "family": "Hadzic"
+      },
+      {
+        "given": "Farhan N",
+        "family": "Damani"
+      },
+      {
+        "given": "Liron",
+        "family": "Ganel"
+      },
+      {
+        "given": "Stephen B",
+        "family": "Montgomery"
+      },
+      {
+        "given": "Alexis",
+        "family": "Battle"
+      },
+      {
+        "given": "Donald F",
+        "family": "Conrad"
+      },
+      {
+        "given": "Ira M",
+        "family": "Hall"
+      }
+    ],
+    "container-title": "Nature Genetics",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          4,
+          3
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f9xvr6",
+    "container-title-short": "Nat Genet",
+    "PMCID": "PMC5406250",
+    "PMID": "28369037",
+    "id": "2gpKwL67"
+  },
+  {
+    "publisher": "Springer Nature",
     "issue": "6",
     "DOI": "10.1038/ng.3847",
     "type": "article-journal",
