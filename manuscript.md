@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/ada0d92f9940d0622a35363ae6c96d1591d331b0/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/83dd16427a36ac6363fe7e6f470c007616be5942/))
 was automatically generated
-from [jmonlong/manu-vgsv@ada0d92](https://github.com/jmonlong/manu-vgsv/tree/ada0d92f9940d0622a35363ae6c96d1591d331b0)
+from [jmonlong/manu-vgsv@83dd164](https://github.com/jmonlong/manu-vgsv/tree/83dd16427a36ac6363fe7e6f470c007616be5942)
 on May 13, 2019.
 </em></small>
 
@@ -300,50 +300,45 @@ Transparency indicates whether the strain was used to construct the graphs.
 ## Discussion
 
 <!-- Discuss why vg is doing better -->
-vg was the most accurate SV genotyper in our benchmarks, overall.
-These results show that variant calling benefits from variant-aware read mapping, a finding consistent with previous graph-based studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
-<!-- Other advantages: SV representation, unified variant calling. -->
-In addition to its variant-aware read mapping, vg offers additional advantages.
-Its unified framework calls and scores different variant types simultaneously.
-For variant interpretation in particular, a comprehensive and unified characterization of the genomic variation will be extremely valuable. 
-Variation graphs that contain known SNVs, indels and SVs could serve as a richer reference for large scale projects that use short-read sequencing.
-More and more large-scale projects are sequencing the genomes of thousands or hundreds of thousands of individuals and could benefit from such a framework, e.g. the Pancancer Analysis of Whole Genomes[@10Jid8Wql], the Genomics England initiative[@mWj2p7Xp], and the TOPMed consortium[@ir1O1h8n].
-In contrast to incorporating SVs into a linear pan-genome reference via alt contigs, the graph structure can represent SVs as succinctly as possible.
-Alt contigs often contain redundant sequence resulting in increased mapping ambiguity and involves custom pipelines and non-standard metadata formats linking the contigs back to the reference.
-These issues make the alt contigs difficult to use, maintain, and scale as SV catalogs continue to expand.
+Overall, vg was the most accurate SV genotyper in our benchmarks.
+These results show that variant calling benefits from variant-aware read mapping, a finding consistent with previous studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
+More and more large-scale projects are using low cost short-read technologies to sequence the genomes of thousands to hundreds of thousands of individuals (e.g. the Pancancer Analysis of Whole Genomes[@10Jid8Wql], the Genomics England initiative[@mWj2p7Xp], and the TOPMed consortium[@ir1O1h8n]).
+We believe pangenome graph-based approaches will improve both how efficiently SVs can be represented, and how accurately they can be genotyped with this type of data.
 
 <!-- Input data quality: "sequence-resolved", break-point fine-tuning. -->
-Our method requires near-breakpoint resolution in the variant library used to construct the graph.
-Simulations have shown that SV genotyping with vg is robust to errors of as much as 10 bp in breakpoint location.
-Variants with higher uncertainty in the breakpoint location, for example discovered through read coverage analysis, cannot be safely added to the graph.
-By being robust to some errors in the breakpoint location, vg was more accurate in real data compared to the other genome graph method tested, BayesTyper, which assumes sequence-resolved variants as input.
-Of note, vg is also capable of fine-tuning SV breakpoints using an augmentation step that modifies the graph based on the read alignment.
-While this augmentation approach was developed to discover novel SNVs and indels, simulations showed that it is capable of correcting erroneous SV breakpoints (Figure {@fig:simerror-bkpt} and Table {@tbl:simerror-bkpt}).
+A particular advantage of our method is that it does not require exact breakpoint resolution in the variant library.
+Our simulations showed that vg's SV genotyping algorithm is robust to errors of as much as 10 bp in breakpoint location.
+However, there is an upper limit.
+vg cannot accurately genotype variants with much higher uncertainty in the breakpoint location (like those discovered through read coverage analysis).
+Of note, vg is also capable of fine-tuning SV breakpoints by augmenting the graph with differences observed in read alignments.
+Simulations showed that this approach can usually correct small errors in SV breakpoints (Figure {@fig:simerror-bkpt} and Table {@tbl:simerror-bkpt}).
 
 <!-- Already superior but will only get better with new vg dev -->
-The vg toolkit is under active development.
-Read mapping is an area of constant improvement, in terms of both computational efficiency and accuracy.
-One technique under development is the application of haplotype information for the improvement of read mapping and variant calling. 
-We believe that this technique stands to benefit SV genotyping with vg, as haplotype information might enable inference at the scale of SVs when using short reads.
-
-In our benchmarks, other methods were superior in a handful datasets and situations, primarily when genotyping deletions.
-However, even in most of these cases, vg had the best accuracy when evaluating only the presence or absence of each variant call.
-This suggests that the performance shortfall can be attributed to the genotyping algorithm rather than the mapping pipeline.
-We hope to address these issues in a future release.
+vg uses a unified framework to call and score different variant types simultaneously.
+In this work, we only considered graphs containing certain types of SVs, but the same methods can be extended to a broader range of graphs.
+For example, we are interested in evaluating how genotyping SVs together with SNPs and small indels using a combined graph effects the accuracy of studying either alone.
+The same methods used for genotyping known variants in this work can also be extended to call novel variants by first augmenting the graph with edits from the mapped reads.
+This approach, which was used only in the breakpoint fine-tuning portion of this work, could be further used to study small variants around and nested within SVs.
+Novel SVs could be called by augmenting the graph with long-read mappings.
+vg is entirely open source, and there is a growing community of developers and users working together to constantly improve it.
+We expect this collaboration to continue to foster increases in the speed, accuracy and applicability of methods based on pan-genome graphs in the years ahead.
 
 <!-- Benefits of de novo assemblies -->
 Our results suggest that constructing a graph from de novo assembly alignment instead of a VCF leads to better SV genotyping.
-High quality de novo assemblies for human are becoming more and more common, for example from optimized mate-pair libraries[@pJAv1D8R] or long-read sequencing[@6KbgcueR].
-For an optimal representation of genomic variation, we expect the future graphs to include information from the alignment of numerous de novo assemblies.
-We are presently working on scaling our pipeline to human-sized genome assemblies.
-Aligning assembled contigs to existing variation graphs, like to ones created from SVs catalogs, is still experimental but could generate a genome graph augmented with both existing variant databases and new high-quality assemblies.
+High quality de novo assemblies for human are becoming more and more common due to improvements in technologies like optimized mate-pair libraries[@pJAv1D8R] and long-read sequencing[@6KbgcueR].
+We expect the future graphs to include information from the alignment of numerous de novo assemblies.
+We are presently working on scaling our assembly-based pipeline to human-sized genome assemblies.
+Another challenge is creating genome graphs that integrate assemblies with variant-based data resources.
+One possible approach is to progressively align assembled contigs into variation graphs constructed from variant libraries.
+Methods for doing so are still experimental.
+
 
 ## Conclusion
 
 In this study, the vg toolkit was compared to existing SV genotypers across several high-quality SV catalogs.
-We showed that its implementation of variation graphs lead to a better SV genotyping compared to methods that rely on read mapping to a linear reference genome or a variation graph approach that requires exact sequence-resolved variants.
-This work introduces a flexible strategy to integrate the growing number of SVs being discovered with higher resolution technologies into the unified framework of variation graphs.
-This study also shows the benefit of starting directly from de novo assemblies rather than variant catalogs to integrate SVs in genome graphs.
+We showed that its method of mapping reads to a variation graph leads to better SV genotyping compared to other state of the art methods.
+This work introduces a flexible strategy to integrate the growing number of SVs being discovered with higher resolution technologies into a unified framework of genome inference.
+This study also shows the benefit of directly utilizing de novo assemblies rather than variant catalogs to integrate SVs in genome graphs.
 
 
 ## Methods
