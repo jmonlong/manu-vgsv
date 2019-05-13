@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-10'
+date-meta: '2019-05-13'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/e09784fb755cd74d64fc7f8c540657a69b36bb6e/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/ada0d92f9940d0622a35363ae6c96d1591d331b0/))
 was automatically generated
-from [jmonlong/manu-vgsv@e09784f](https://github.com/jmonlong/manu-vgsv/tree/e09784fb755cd74d64fc7f8c540657a69b36bb6e)
-on May 10, 2019.
+from [jmonlong/manu-vgsv@ada0d92](https://github.com/jmonlong/manu-vgsv/tree/ada0d92f9940d0622a35363ae6c96d1591d331b0)
+on May 13, 2019.
 </em></small>
 
 ## Authors
@@ -149,12 +149,17 @@ In addition, we show that building graphs from the alignment of de novo assembli
 
 ### Structural variation in vg
 
-We used vg to implement a simple SV genotyping pipeline (Figure {@fig:vg-sv-cartoon}).
+We used vg to implement a simple SV genotyping pipeline.
 Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
 Sites of variation are then identified using the snarl decomposition as described in [@xJlNnKH2].
 For each site, the two most supported paths (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
-The pipeline is described in more detail in [Methods](#simulation-experiment).
+The pipeline is described in more detail in [Methods](#toil-vg).
 We rigorously evaluated the accuracy of our method on a variety of datasets, and the results are presented in the remainder of this section.
+
+![**Structural variation in vg.** 
+a) vg uses the read coverage over possible paths to genotype variants in a "bubble" (or snarl). The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in more details in [Methods](#toil-vg-call).
+b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
+](images/panel1.png){#fig:1}
 
 ### Simulated dataset
 
@@ -171,11 +176,6 @@ The dramatic drop for BayesTyper can be explained by its k-mer-based approach th
 In contrast, vg was only slightly affected by the presence of errors.
 For vg, the F1 scores for all SV types decreased no more than 0.07.
 Overall, these results show that vg is capable of genotyping SVs and is robust to breakpoint inaccuracies in the input VCF.
-
-![**Structural variation in vg.** 
-a) Adding large insertions, deletions and inversions in a variation graph. 
-b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
-](images/panel1.png){#fig:1}
 
 ### HGSVC dataset
 
@@ -699,27 +699,25 @@ In all cases, the errors affected 1-10 bp.
 
 ### Supplementary Figures
 
-![**Adding large insertions, deletions and inversions in a variation graph.**](images/VGSVcartoon.png){#fig:vg-sv-cartoon tag="S1"}
+![**Genotyping evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno tag="S1"}
 
-![**Genotyping evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno tag="S2"}
+![**Calling evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim.png){#fig:hgsvc-sim tag="S2"}
 
-![**Calling evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim.png){#fig:hgsvc-sim tag="S3"}
+![**Genotyping evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real-geno.png){#fig:hgsvc-real-geno tag="S3"}
 
-![**Genotyping evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real-geno.png){#fig:hgsvc-real-geno tag="S4"}
+![**Calling evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real.png){#fig:hgsvc-real tag="S4"}
 
-![**Calling evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real.png){#fig:hgsvc-real tag="S5"}
+![**Genotyping evaluation on the Genome in a Bottle dataset.** Predicted genotypes on HG002 were compared to the high-quality SVs from this same individual.](images/giab5-geno.png){#fig:giab-geno tag="S5"}
 
-![**Genotyping evaluation on the Genome in a Bottle dataset.** Predicted genotypes on HG002 were compared to the high-quality SVs from this same individual.](images/giab5-geno.png){#fig:giab-geno tag="S6"}
+![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S6"}
 
-![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S7"}
+![**Genotyping evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
 
-![**Genotyping evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd-geno.png){#fig:chmpd-geno tag="S8"}
+![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S8"}
 
-![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S9"}
+![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S9"}
 
-![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S10"}
-
-![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S11"}
+![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S10"}
 
 
 ![**Breakpoint fine-tuning using augmentation through "vg call".**
@@ -728,7 +726,7 @@ For insertions, the insertion location and sequence contained errors.
 a) Proportion of variant for which breakpoints could be fine-tuned. 
 b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
-](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S12"}
+](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S11"}
 
 ![**Mapping comparison.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -737,21 +735,21 @@ a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
 Transparency indicates whether the strain was included or excluded in the graphs.
-](images/panel3.png){#fig:panel3 tag="S13"}
+](images/panel3.png){#fig:panel3 tag="S12"}
 
 ![**Mapping comparison on graphs of all 12 strains.**
 Short reads from all 12 yeast strains were aligned to both graphs. The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* (x-axis) are compared.
 a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
-](images/panel5.png){#fig:panel5 tag="S14"}
+](images/panel5.png){#fig:panel5 tag="S13"}
 
 ![**SV genotyping comparison on graphs of all 12 strains.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. Subsequently, sample graphs were generated from the resulting SV callsets. The short reads were again aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
 a) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
 b) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis). 
 Colors and shapes represent the 11 non-reference strains and two clades, respectively.
-](images/panel6.png){#fig:panel6 tag="S15"}
+](images/panel6.png){#fig:panel6 tag="S14"}
 
 ### Supplementary Information
 
@@ -793,6 +791,7 @@ As a consequence, the *cactus graph* captures the genetic makeup of each strain 
 Interestingly, our measurements did not show a substantial difference between strains that were used to construct the graph and the other strains. 
 Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a). 
 For a direct comparison, see Figure {@fig:panel5} which shows results of the same experiment on graphs generated from all 12 strains.
+
 
 ## References {.page_break_before}
 
