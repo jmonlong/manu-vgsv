@@ -11,7 +11,10 @@ Quick "how to use":
 - E.g. citation: `[@doi:10.1038/nmeth.4366]` or `[@tag:vgnbt]` in with tag defined in `content/citation-tags.tsv`.
 - Update title/author infos in [content/metadata.yaml](content/metadata.yaml).
 - More in [`USAGE.md`](USAGE.md).
+- In-text comments using: `<!-- This is a comment -->` or `[//]: # (This is a comment)`.
 - Travis is setup to build HTML/PDF (see buttons above). Or [build locally](https://github.com/jmonlong/manu-vgsv#local-execution).
+
+[Repo with the code to reproduce the analysis](https://github.com/vgteam/sv-genotyping-paper)
 
 # Manubot documentation: automated scholarly manuscripts on GitHub
 
