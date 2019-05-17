@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-15'
+date-meta: '2019-05-17'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/9e46e79e60be3758d0475ca468dfac9b7e7ebf71/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/70c38f254c4f7baf6546adad6d99225452498cf1/))
 was automatically generated
-from [jmonlong/manu-vgsv@9e46e79](https://github.com/jmonlong/manu-vgsv/tree/9e46e79e60be3758d0475ca468dfac9b7e7ebf71)
-on May 15, 2019.
+from [jmonlong/manu-vgsv@70c38f2](https://github.com/jmonlong/manu-vgsv/tree/70c38f254c4f7baf6546adad6d99225452498cf1)
+on May 17, 2019.
 </em></small>
 
 ## Authors
@@ -107,7 +107,7 @@ This is important, as even though efforts to catalog SVs with other technologies
 Traditional SV genotypers start from reads that were mapped to a reference genome, extracting aberrant mapping that might support the presence of the SV of interest.
 State-of-art methods like SVTyper[@AltPnocw] and Delly[@nLvQCjXU] typically focus on split reads and paired reads mapped too close or too far from each other.
 These discordant reads are tallied and remapped to the reference sequence modified with the SV of interest in order to genotype deletions, insertions, duplications, inversions and translocations.
-SMRT-SV2 uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
+SMRT-SV v2 uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
 
 The catalog of known SVs in human is quickly expanding.
 Several large-scale projects have used short-read sequencing and extensive discovery pipelines on large cohorts, compiling catalogs with tens of thousands of SVs in humans[@qA6dWFP; @py6BC5kj].
@@ -139,7 +139,7 @@ In this work, we present a variation graph-based SV genotyping framework impleme
 We show that this method is capable of genotyping known deletions, insertions and inversions.
 This is true even when there is small errors in the location of the SVs breakpoints.
 Starting from SVs discovered in recent long-read sequencing studies[@3NNFS6U2;@vQTymKCj;@14neTdqfN;@16GvGhO20], we evaluated the genotyping accuracy using simulated and real Illumina reads. 
-We also compared vg's performance with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm] and SMRT-SV2[@3NNFS6U2].
+We also compared vg's performance with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm] and SMRT-SV v2[@3NNFS6U2].
 Across these three datasets that we tested, which range in size from 26k to 97k SVs, vg is the best performing SV genotyper on real short-read data for all SV types.
 In addition, we show that building graphs from the alignment of de novo assemblies leads to better genotyping performance.
 
@@ -232,21 +232,21 @@ As before, other methods produced lower F1 scores in most cases, although Delly 
 #### Audano, et al. [@3NNFS6U2]
 
 A recent study by Audano et al. generated catalog of 97,368 SVs using long-read sequencing across 15 individuals[@3NNFS6U2].
-These variants were then genotyped from short reads across 440 individuals using SMRT-SV2, a machine learning-based genotyper implemented for that study.
-SMRT-SV2 was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines.
+These variants were then genotyped from short reads across 440 individuals using SMRT-SV v2, a machine learning-based genotyper implemented for that study.
+SMRT-SV v2 was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines.
 We first called SVs in this dataset, using the same SV catalog and short read dataset.
-vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
+vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV v2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
 Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
 
-Compared to SMRT-SV2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (SVPOP in Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
-Of note, SMRT-SV2 produces *no-calls* in regions where the read coverage is too low, and we observed that its recall increased when filtering these regions out the input set.
-Interestingly, vg performed well even in regions where SMRT-SV2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
+Compared to SMRT-SV v2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (SVPOP in Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
+Of note, SMRT-SV v2 produces *no-calls* in regions where the read coverage is too low, and we observed that its recall increased when filtering these regions out the input set.
+Interestingly, vg performed well even in regions where SMRT-SV v2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
 Finally, Audano et al. identified 217 sequence-resolved inversions.
 vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table {@tbl:svpop}).
 Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.
 
 ![**Structural variants from Audano et al.[@3NNFS6U2]**.
-The pseudo-diploid genome built from two CHM cell lines and one negative control sample was originally used to train SMRT-SV2 in Audano et al.[@3NNFS6U2].
+The pseudo-diploid genome built from two CHM cell lines and one negative control sample was originally used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2].
 It contains 16,180 SVs.
 The SVPOP panel shows the combined results for the HG00514, HG00733, and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2].
 Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
@@ -441,9 +441,9 @@ The `delly call` command was run on the reads mapped by `bwa mem`, the reference
 The VCF containing deletions was converted to symbolic representation and passed to `svtyper` with the reads mapped by `bwa mem`.
 The output VCF was converted back to explicit representation using `bayesTyperTools convertAllele` to facilitate variant normalization before evaluation.
 
-#### SMRT-SV2 (v2.0.0 Feb 21 2019 commit adb13f2)
+#### SMRT-SV v2 (v2.0.0 Feb 21 2019 commit adb13f2)
 
-SMRT-SV2 was run with the "30x-4" model and min-call-depth 8 cutoff.
+SMRT-SV v2 was run with the "30x-4" model and min-call-depth 8 cutoff.
 It was run only on VCFs created by SMRT-SV, for which the required contig BAMs were available.
 The Illumina BAMs used where the same as the other methods described above.
 The output VCF was converted back to explicit representation to facilitate variant normalization later.
@@ -498,24 +498,24 @@ For BayesTyper, the input variant set was created by combining the GIAB SVs with
 Variants without a determined genotype in the GIAB call set (14649 out of 74012) were considered "false positives" as a proxy measure for precision.
 These variants correspond to putative technical artifacts and parental calls not present in HG002.
 
-### SMRT-SV2 Comparison (CHMPD and SVPOP)
+### SMRT-SV v2 Comparison (CHMPD and SVPOP)
 
-The SMRT-SV2 genotyper can only be used to genotype VCFs that were created by SMRT-SV2, and therefore could not be run on the simulated, HGSVC, or GIAB call sets.
+The SMRT-SV v2 genotyper can only be used to genotype sequence-resolved SVs present on contigs with known SV breakpoints, such as those created by SMRT-SV v2, and therefore could not be run on the simulated, HGSVC, or GIAB call sets.
 The authors shared their training and evaluation set: a pseudodiploid sample constructed from combining the haploid CHM1 and CHM13 samples (CHMPD), and a negative control (NA19240). 
 The high quality of the CHM assemblies makes this set an attractive alternative to using simulated reads.
-We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV2 genotyper with the "30x-4" model and min-call-depth 8 cutoff, and compared the two back to the original VCF.
+We used this two-sample pseudodiploid VCF along with the 30X read set to construct, map and genotype with vg, and also ran SMRT-SV v2 genotyper with the "30x-4" model and min-call-depth 8 cutoff, and compared the two back to the original VCF.
 
-In an effort to extend this comparison from the training data to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV2 discovery VCF (SVPOP, which contains 12 additional samples in addition to the three from HGSVC) published by Audano et al.[@3NNFS6U2] using vg and SMRT-SV2 Genotyper.
+In an effort to extend this comparison from the training data to a more realistic setting, we reran the three HGSVC samples against the SMRT-SV v2 discovery VCF (SVPOP, which contains 12 additional samples in addition to the three from HGSVC) published by Audano et al.[@3NNFS6U2] using vg and SMRT-SV v2 Genotyper.
 The discovery VCF does not contain genotypes so we did not distinguish between heterozygous and homozygous genotypes, looking at only the presence or absence of an alt allele for each variant.
 
-SMRT-SV2 produces some explicit *no-calls* predictions when the read coverage is too low to produce accurate genotypes.
+SMRT-SV v2 produces some explicit *no-calls* predictions when the read coverage is too low to produce accurate genotypes.
 These no-calls are considered homozygous reference in the main accuracy evaluation.
-We also explored the performance of vg and SMRT-SV2 in different sets of regions (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}):
+We also explored the performance of vg and SMRT-SV v2 in different sets of regions (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}):
 
 1. Non-repeat regions, i.e. excluding segmental duplications and tandem repeats (using the respective tracks from the UCSC Genome Browser).
 1. Repeat regions defined as segmental duplications and tandem repeats.
-1. Regions where SMRT-SV2 could call variants.
-1. Regions where SMRT-SV2 produced no-calls.
+1. Regions where SMRT-SV v2 could call variants.
+1. Regions where SMRT-SV v2 produced no-calls.
 
 ### Yeast graph analysis
 
@@ -618,7 +618,7 @@ Table: Genotyping evaluation on the Genome in a Bottle dataset. Precision, recal
 |          |            | DEL  |     0.688 |  0.500 | 0.579 |
 |          | non-repeat | INS  |     0.806 |  0.784 | 0.795 |
 |          |            | DEL  |     0.869 |  0.762 | 0.812 |
-| SMRT-SV2 | all        | INS  |     0.757 |  0.536 | 0.628 |
+| SMRT-SV  | all        | INS  |     0.757 |  0.536 | 0.628 |
 |          |            | DEL  |     0.848 |  0.630 | 0.723 |
 |          | non-repeat | INS  |     0.880 |  0.680 | 0.767 |
 |          |            | DEL  |     0.971 |  0.824 | 0.891 |
@@ -635,7 +635,7 @@ Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell li
 |          | non-repeat | INS  |  8051 |  3258 |  1817 |     0.712 |  0.816 | 0.760 |
 |          |            | DEL  |  3769 |   623 |   818 |     0.858 |  0.822 | 0.840 |
 |          |            | INV  |    19 |    12 |    75 |     0.613 |  0.202 | 0.304 |
-| SMRT-SV2 | all        | INS  | 16270 | 26031 | 25340 |     0.385 |  0.391 | 0.388 |
+| SMRT-SV  | all        | INS  | 16270 | 26031 | 25340 |     0.385 |  0.391 | 0.388 |
 |          |            | DEL  | 11793 | 10106 | 18177 |     0.539 |  0.393 | 0.455 |
 |          | non-repeat | INS  |  4483 |  4659 |  5385 |     0.490 |  0.454 | 0.472 |
 |          |            | DEL  |  2928 |   930 |  1659 |     0.759 |  0.638 | 0.693 |
@@ -660,7 +660,7 @@ Table: Calling evaluation on the SVPOP dataset. Combined results for the HG00514
 |          |                       | INV  |    8 |    8 |   52 |     0.500 |  0.133 | 0.210 |
 |          | not called in SMRT-SV | INS  | 4838 |  542 | 3678 |     0.899 |  0.568 | 0.696 |
 |          |                       | DEL  | 2034 |   26 | 3723 |     0.987 |  0.353 | 0.520 |
-| SMRT-SV2 | all                   | INS  | 5245 | 8563 | 8789 |     0.394 |  0.374 | 0.384 |
+| SMRT-SV  | all                   | INS  | 5245 | 8563 | 8789 |     0.394 |  0.374 | 0.384 |
 |          |                       | DEL  | 3741 | 3382 | 6166 |     0.533 |  0.378 | 0.442 |
 |          | repeat                | INS  | 3848 | 7125 | 7006 |     0.368 |  0.354 | 0.361 |
 |          |                       | DEL  | 1990 | 2832 | 4980 |     0.426 |  0.286 | 0.342 |
@@ -708,9 +708,9 @@ In all cases, the errors affected 1-10 bp.
 
 ![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S6"}
 
-![**Genotyping evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
+![**Genotyping evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
 
-![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S8"}
+![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S8"}
 
 ![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S9"}
 
