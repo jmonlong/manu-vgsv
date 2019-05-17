@@ -4,12 +4,12 @@ library(ggrepel)
 library(knitr)
 source('colors-functions.R')
 
-## HG00514 reads, but processed with 15-sample graph of SMRT-SV2 discovery data from Audano et. al 2019
+## HG00514 reads, but processed with 15-sample graph of SMRT-SV v2 discovery data from Audano et. al 2019
 ## There are no genotypes for this data, but there are a few inversions
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','smrtsv')
-methconv = c(vg='vg', smrtsv='SMRT-SV2')
+methconv = c(vg='vg', smrtsv='SMRT-SV v2')
 
 samples = c('HG00514', 'HG00733', 'NA19240')
 svpop.df = readEval4(methods, samples, prefix='data/svpop/svpop', eval='call')
@@ -73,7 +73,7 @@ eval.f1 %>% filter(!is.na(F1)) %>%
 
 ##
 ## Regional analysis analysis
-## Regions: all, repeats, non-repeats, called in SMRT-SV, not called in SMRT-SV
+## Regions: all, repeats, non-repeats, called in SMRT-SV v2, not called in SMRT-SV
 ##
 samples = c('HG00514')
 svpop.df = readEval4(methods, samples, prefix='data/svpop/svpop', eval='call',
@@ -81,7 +81,7 @@ svpop.df = readEval4(methods, samples, prefix='data/svpop/svpop', eval='call',
 svpop.df$method = factor(methconv[svpop.df$method], levels=names(pal.tools))
 
 svpop.df = svpop.df %>% filter(type!='Total') %>% arrange(qual)
-levels(svpop.df$region) = c('all','repeat', 'non-repeat','called in SMRT-SV','not called in SMRT-SV')
+levels(svpop.df$region) = c('all','repeat', 'non-repeat','called in SMRT-SV v2','not called in SMRT-SV v2')
 label.df = svpop.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/svpop-regions.pdf', 8, 5)
