@@ -4,7 +4,7 @@ incfiles := $(incfiles:%=../content/images/%)
 all: $(incfiles)
 
 png/%.png: pdf/%.pdf
-	pdftoppm -png $<  > $@
+	pdftoppm -r 300 -png $<  > $@
 
 ../content/images/%.png: png/%.png
 	cp $< $@

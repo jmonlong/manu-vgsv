@@ -51,3 +51,60 @@ readEval4 <- function(methods, samples, prefix, regions=c('all','nonrep'), eval=
   res
 }
 
+
+
+library(gridExtra)
+zoomgp = function(curve.df, labels.df, zoom.xy=.9, zoom.br=.02, heights=c(1,1.1), annot=FALSE){
+  zout = ggplot(curve.df, aes(x=recall, y=precision, colour=method))
+  if(annot){
+    zout = zout +
+      annotate('rect', xmin=zoom.xy, xmax=1, ymin=zoom.xy, ymax=1, alpha=0, colour='black',
+               linetype=2, size=.3)
+  }
+  zout = zout + 
+    geom_path(aes(linetype=region), size=1, alpha=.8) + 
+    ## geom_point(size=.8) +
+    ## geom_label_repel(aes(label=method), data=label.df) + 
+    geom_point(aes(shape=region), size=3, data=label.df) + 
+    theme_bw() +
+    facet_grid(.~type) +
+    theme(legend.position='bottom') +
+    labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
+    scale_x_continuous(breaks=seq(0,1,.2), limits=c(0,1)) + 
+    scale_y_continuous(breaks=seq(0,1,.2), limits=c(0,1)) +
+    scale_linetype_manual(values=c(3,1)) + 
+    scale_colour_manual(values=pal.tools) +
+    guides(colour=FALSE, linetype=FALSE, shape=FALSE)
+  if(annot){
+    ## One arrow
+    ## zout = zout + annotate('segment', x=zoom.xy+(1-zoom.xy)/2, xend=zoom.xy,
+    ##                        y=zoom.xy, yend=0, linetype=2,
+    ##                        arrow=arrow(length=unit(0.2,"cm")))
+    ## two lines
+    ## zout = zout +
+    ##   annotate('segment', x=zoom.xy, xend=0,
+    ##            y=zoom.xy, yend=.1, linetype=2) + 
+    ##   annotate('segment', x=1, xend=1,
+    ##            y=zoom.xy, yend=.1, linetype=2)
+  }
+  zin = ggplot(curve.df, aes(x=recall, y=precision, colour=method))
+  if(annot){
+    zin = zin +
+      annotate('rect', xmin=zoom.xy, xmax=1, ymin=zoom.xy, ymax=1, alpha=0, colour='black',
+               linetype=2, size=.3)
+  }
+  zin = zin + 
+    geom_path(aes(linetype=region), size=1, alpha=.8) + 
+    ## geom_point(size=.8) +
+    ## geom_label_repel(aes(label=method), data=label.df) + 
+    geom_point(aes(shape=region), size=3, data=label.df) + 
+    theme_bw() +
+    facet_grid(.~type) +
+    theme(legend.position='bottom') +
+    labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
+    scale_x_continuous(breaks=seq(0,1,zoom.br), limits=c(zoom.xy,1)) + 
+    scale_y_continuous(breaks=seq(0,1,zoom.br), limits=c(zoom.xy,1)) +
+    scale_linetype_manual(values=c(3,1)) + 
+    scale_colour_manual(values=pal.tools)
+  grid.arrange(zout, zin, ncol=1, nrow=2, heights=heights)
+}
