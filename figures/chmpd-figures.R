@@ -4,11 +4,11 @@ library(ggrepel)
 library(knitr)
 source('colors-functions.R')
 
-## CHM Pseudodiploid reads (SMRT-SV2 training data from Audano et. al 2019)
+## CHM Pseudodiploid reads (SMRT-SV v2 training data from Audano et. al 2019)
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','smrtsv')
-methconv = c(vg='vg', smrtsv='SMRT-SV2')
+methconv = c(vg='vg', smrtsv='SMRT-SV v2')
 
 samples = 'chmpd'
 chmpd.df = readEval4(methods, samples, prefix='data/chmpd/chmpd')
