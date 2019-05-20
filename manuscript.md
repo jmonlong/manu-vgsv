@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/46d4fd350375b91cc6c9ec1f446eca245c8605ce/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/548fa33d586d55b24565668d9806741568ede9f2/))
 was automatically generated
-from [jmonlong/manu-vgsv@46d4fd3](https://github.com/jmonlong/manu-vgsv/tree/46d4fd350375b91cc6c9ec1f446eca245c8605ce)
+from [jmonlong/manu-vgsv@548fa33](https://github.com/jmonlong/manu-vgsv/tree/548fa33d586d55b24565668d9806741568ede9f2)
 on May 20, 2019.
 </em></small>
 
@@ -137,6 +137,7 @@ BayesTyper first builds a set of graphs from known variants including SVs, then 
 SMRT-SV v2 uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
 These graph-based approaches showed clear advantages over standard methods that use only the linear reference.
 
+
 In this work, we present a SV genotyping framework based on the variation graph model and implemented in the vg toolkit.
 We show that this method is capable of genotyping known deletions, insertions and inversions, and that its performance is not inhibited by small errors in the specification of SV allele breakpoints.
 We evaluated the genotyping accuracy of our approach using simulated and real Illumina reads and a pangenome built from SVs discovered in recent long-read sequencing studies[@3NNFS6U2;@vQTymKCj;@14neTdqfN;@16GvGhO20], 
@@ -149,15 +150,15 @@ Finally, we demonstrate that a pangenome graph built from the alignment of _de n
 
 ### Structural variation in vg
 
-We used vg to implement a simple SV genotyping pipeline.
+We used vg to implement a straightforward SV genotyping pipeline.
 Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
-Sites of variation are then identified using the snarl decomposition as described in [@xJlNnKH2].
+Sites of variation are then identified using the snarl (aka "bubble") decomposition as described in [@xJlNnKH2], each resulting site being represented as a subgraph of the larger graph.
 For each site, we determine the two most supported paths (haplotypes), and use their relative support in the read evidence to produce a genotype at that site (Figure {@fig:1}a).
 We describe the pipeline in more detail in [Methods](#toil-vg).
 We rigorously evaluated the accuracy of our method on a variety of datasets, and present these results in the remainder of this section.
 
 ![**Structural variation in vg.** 
-a) vg uses the read coverage over possible paths to genotype variants in a "bubble" (or snarl). The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in more details in [Methods](#toil-vg-call).
+a) vg uses the read coverage over possible paths to genotype variants in a bubble or more complex snarl. The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in more details in [Methods](#toil-vg-call).
 b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
 ](images/panel1.png){#fig:1}
 
@@ -307,7 +308,7 @@ Transparency indicates whether the strain was used to construct the graphs.
 <!-- Discuss why vg is doing better -->
 Overall, vg was the most accurate SV genotyper in our benchmarks.
 These results show that variant calling benefits from variant-aware read mapping and graph based genotyping, a finding consistent with previous studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
-We took advantage of newly released datasets for our evaluation, which feature up to 3.7 times more variants than more widely-used GIAB benchmark.
+We took advantage of newly released datasets for our evaluation, which feature up to 3.7 times more variants than the more widely-used GIAB benchmark.
 More and more large-scale projects are using low cost short-read technologies to sequence the genomes of thousands to hundreds of thousands of individuals (e.g. the Pancancer Analysis of Whole Genomes[@10Jid8Wql], the Genomics England initiative[@mWj2p7Xp], and the TOPMed consortium[@ir1O1h8n]).
 We believe pangenome graph-based approaches will improve both how efficiently SVs can be represented, and how accurately they can be genotyped with this type of data.
 
