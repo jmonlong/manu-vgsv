@@ -18,3 +18,4 @@ simerror-bkpt-finetuning-vgcall.png
 svpop.png
 svpop-regions.png
 VGSVcartoon.png
+sveval-cartoon.png

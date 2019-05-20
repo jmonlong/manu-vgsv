@@ -6,7 +6,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper','bayestyper', 'smrtsv')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', smrtsv='SMRT-SV2')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', smrtsv='SMRT-SV v2')
 
 
 ## HGSVC Simulated reads from HG00514
