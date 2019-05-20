@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/72f4f82c5cf15756a5ffbc7c99d0e920c09bd1e9/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/798097ef96df6c355a8b8ac2fe9f8d94488ed7a3/))
 was automatically generated
-from [jmonlong/manu-vgsv@72f4f82](https://github.com/jmonlong/manu-vgsv/tree/72f4f82c5cf15756a5ffbc7c99d0e920c09bd1e9)
+from [jmonlong/manu-vgsv@798097e](https://github.com/jmonlong/manu-vgsv/tree/798097ef96df6c355a8b8ac2fe9f8d94488ed7a3)
 on May 20, 2019.
 </em></small>
 
@@ -597,7 +597,7 @@ The authors declare that they have no competing interests.
 
 > All sources of funding for the research reported should be declared. The role of the funding body in the design of the study and collection, analysis, and interpretation of data and in writing the manuscript should be declared.
 
-DH was supported by the International Max Planck Research School for Computational Biology and Scientific Computing doctoral program. JE was supported by the Jack Baskin and Peggy Downes-Baskin Fellowship.
+DH was supported by the International Max Planck Research School for Computational Biology and Scientific Computing doctoral program. JE was supported by the Jack Baskin and Peggy Downes-Baskin Fellowship. AMN was supported by the National Institutes of Health (5U41HG007234), the W.M. Keck Foundation (DT06172015) and the Simons Foundation (SFLIFE# 35190). 
 
 ### Authors' contributions
 
