@@ -11,6 +11,7 @@ methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper')
 samples = 'HG002'
 giab5.df = readEval4(methods, samples, prefix='data/giab/giab5')
 giab5.df$method = factor(methconv[giab5.df$method], levels=names(pal.tools))
+giab5.df$region = ifelse(giab5.df$region=='non-repeat', 'high-confidence', 'all')
 
 giab5.df = giab5.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
 label.df = giab5.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))

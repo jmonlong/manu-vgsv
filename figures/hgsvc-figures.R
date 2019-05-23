@@ -53,6 +53,25 @@ hgsvcsim.df %>% filter(eval=='geno') %>%
 dev.off()
 
 
+ps.df = read.table('data/merged-persize.tsv', as.is=TRUE, header=TRUE)
+ps.df$method = factor(methconv[ps.df$method], levels=names(pal.tools))
+ps.df = ps.df %>% filter(type!='INV', type!='Total')
+sizes = unique(ps.df$size)
+sizes = sizes[order(as.numeric(gsub('.*,(.*)]', '\\1', sizes)))]
+ps.df$size = factor(ps.df$size, levels=sizes)
+
+pdf('pdf/hgsvc-sim-geno-persize.pdf', 8, 4)
+ps.df %>% filter(eval=='geno', exp=='hgsvcsim') %>% 
+  ggplot(aes(x=size, y=F1, colour=method)) +
+  geom_line(aes(group=paste(region, method), linetype=region), size=1) + 
+  theme_bw() +
+  facet_grid(.~type) +
+  theme(legend.position='bottom') +
+  scale_linetype_manual(values=c(3,1)) + 
+  scale_colour_manual(values=pal.tools)
+dev.off()
+
+
 ## Real reads across three samples
 methods = c('vg','delly','svtyper','bayestyper')
 samples = c('HG00514', 'HG00733', 'NA19240')
