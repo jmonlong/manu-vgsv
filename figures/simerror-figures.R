@@ -28,7 +28,7 @@ eval.pr$recall = eval.pr$TP.baseline / (eval.pr$TP.baseline + eval.pr$FN)
 eval.pr$F1 = 2 * eval.pr$precision * eval.pr$recall / (eval.pr$precision + eval.pr$recall)
 eval.pr$F1 = ifelse(eval.pr$recall==0, 0, eval.pr$F1)
 
-eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) %>%
+eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='SVTyper')) %>%
   mutate(type = factor(type, levels=c('INS', 'DEL', 'INV')),
          method2=factor(method, levels=rev(levels(method))))
 
@@ -63,21 +63,23 @@ eval.pr$recall = eval.pr$TP.baseline / (eval.pr$TP.baseline + eval.pr$FN)
 eval.pr$F1 = 2 * eval.pr$precision * eval.pr$recall / (eval.pr$precision + eval.pr$recall)
 eval.pr$F1 = ifelse(eval.pr$recall==0, 0, eval.pr$F1)
 
-eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) %>%
+eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='SVTyper')) %>%
   mutate(type = factor(type, levels=c('INS', 'DEL', 'INV')),
          method2=factor(method, levels=rev(levels(method))))
 
 pdf('pdf/simerror-geno.pdf', 6, 4)
+
 eval.df %>% ungroup %>%
   mutate(graph=ifelse(graph=='truth', 'True SVs in VCF', 'Errors in VCF'),
          graph=factor(graph, levels=c('True SVs in VCF', 'Errors in VCF'))) %>% 
   ggplot(aes(x=factor(depth), y=F1, colour=method)) +
   geom_line(aes(group=method2), size=1, alpha=.8) +
   facet_grid(type~graph, scales='free') + theme_bw() +
-  labs(x='Depth', color='Method') +
+  labs(x='Depth', color='Method', y='Best F1') +
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
+
 dev.off()
 
 ## Drop due to errors
@@ -106,7 +108,7 @@ eval.pr$recall = eval.pr$TP.baseline / (eval.pr$TP.baseline + eval.pr$FN)
 eval.pr$F1 = 2 * eval.pr$precision * eval.pr$recall / (eval.pr$precision + eval.pr$recall)
 eval.pr$F1 = ifelse(eval.pr$recall==0, 0, eval.pr$F1)
 
-eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='svtyper')) %>%
+eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='SVTyper')) %>%
   mutate(type = factor(type, levels=c('INS', 'DEL', 'INV')),
          method2=factor(method, levels=rev(levels(method))))
 
@@ -117,7 +119,7 @@ eval.df %>% ungroup %>%
   ggplot(aes(x=factor(depth), y=F1, colour=method)) +
   geom_line(aes(group=method2), size=1, alpha=.8) +
   facet_grid(type~graph, scales='free') + theme_bw() +
-  labs(x='Depth', color='Method') +
+  labs(x='Depth', color='Method', y='Best F1') +
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
