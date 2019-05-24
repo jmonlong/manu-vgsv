@@ -16,28 +16,22 @@ hgsvcsim.df$method = factor(methconv[hgsvcsim.df$method], levels=names(pal.tools
 hgsvcsim.df = hgsvcsim.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
 label.df = hgsvcsim.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-## pdf('pdf/hgsvc-sim.pdf', 8, 4)
-## hgsvcsim.df %>% filter(eval=='call') %>% 
-##   ggplot(aes(x=recall, y=precision, colour=method)) +
-##   geom_path(aes(linetype=region), size=1, alpha=.8) + 
-##   ## geom_point(size=.8) +
-##   ## geom_label_repel(aes(label=method), data=label.df) + 
-##   geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
-##   theme_bw() +
-##   facet_grid(.~type) +
-##   theme(legend.position='bottom') +
-##   labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-##   ## scale_x_continuous(breaks=seq(0,1,.2), limits=c(.1,1)) + 
-##   ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.1,1)) +
-##   scale_linetype_manual(values=c(3,1)) + 
-##   scale_colour_manual(values=pal.tools)
-## dev.off()
-
-pdf('pdf/hgsvc-sim.pdf', 8, 8)
-zoomgp(subset(hgsvcsim.df, eval=='call'), subset(label.df, eval=='call'),
-       zoom.xy=.8, zoom.br=.05, annot=TRUE)
+pdf('pdf/hgsvc-sim.pdf', 8, 4)
+hgsvcsim.df %>% filter(eval=='call') %>% 
+  ggplot(aes(x=recall, y=precision, colour=method)) +
+  geom_path(aes(linetype=region), size=1, alpha=.8) + 
+  ## geom_point(size=.8) +
+  ## geom_label_repel(aes(label=method), data=label.df) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
+  theme_bw() +
+  facet_grid(.~type) +
+  theme(legend.position='bottom') +
+  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
+  ## scale_x_continuous(breaks=seq(0,1,.2), limits=c(.1,1)) + 
+  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.1,1)) +
+  scale_linetype_manual(values=c(3,1)) + 
+  scale_colour_manual(values=pal.tools)
 dev.off()
-
 
 pdf('pdf/hgsvc-sim-geno.pdf', 8, 4)
 hgsvcsim.df %>% filter(eval=='geno') %>% 
