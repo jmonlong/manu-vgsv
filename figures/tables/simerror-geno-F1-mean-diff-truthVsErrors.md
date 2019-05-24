@@ -6,7 +6,6 @@
 |BayesTyper |INS  |        0.422|       0.726|
 |BayesTyper |DEL  |        0.804|       0.975|
 |BayesTyper |INV  |        0.737|       0.984|
-|SVTyper    |INS  |        0.000|       0.000|
 |SVTyper    |DEL  |        0.122|       0.161|
 |SVTyper    |INV  |        0.062|       0.084|
 |Delly      |INS  |        0.489|       0.553|
