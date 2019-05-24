@@ -2,7 +2,6 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(knitr)
-## library(ggforce)
 source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
@@ -23,38 +22,14 @@ sim.pr.df = pr.df %>% filter(exp=='hgsvcsim')
 label.df = sim.pr.df %>% group_by(region, method, type, eval) %>%
   arrange(desc(F1)) %>% do(head(.,1))
 
-pdf('pdf/hgsvc-sim.pdf', 8, 4)
-sim.pr.df %>% filter(eval=='presence') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='presence')) + 
-  theme_bw() +
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
+pdf('pdf/hgsvc-sim.pdf', 8, 8)
+zoomgp(subset(sim.pr.df, eval=='presence'), subset(label.df, eval=='presence'),
+       zoom.xy=.8, zoom.br=.05, annot=TRUE)
 dev.off()
 
-pdf('pdf/hgsvc-sim-geno.pdf', 8, 4)
-sim.pr.df %>% filter(eval=='genotype') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='genotype')) + 
-  theme_bw() +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
+pdf('pdf/hgsvc-sim-geno.pdf', 8, 8)
+zoomgp(subset(sim.pr.df, eval=='genotype'), subset(label.df, eval=='genotype'),
+       zoom.xy=.7, zoom.br=.05, annot=TRUE)
 dev.off()
 
 ## Real reads across three samples
@@ -68,37 +43,13 @@ label.df = real.pr.df %>% group_by(region, method, type, eval) %>%
   arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/hgsvc-real.pdf', 8, 4)
-real.pr.df %>% filter(eval=='presence') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='presence')) + 
-  theme_bw() +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
+zoomgp(subset(real.pr.df, eval=='presence'), subset(label.df, eval=='presence'),
+       zoom.xy=.5, zoom.br=.1, annot=TRUE, zout.only=TRUE)
 dev.off()
 
 pdf('pdf/hgsvc-real-geno.pdf', 8, 4)
-real.pr.df %>% filter(eval=='genotype') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='genotype')) + 
-  theme_bw() +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
+zoomgp(subset(real.pr.df, eval=='genotype'), subset(label.df, eval=='genotype'),
+       zoom.xy=.5, zoom.br=.1, annot=TRUE, zout.only=TRUE)
 dev.off()
 
 ## Bar plots with best F1

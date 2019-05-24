@@ -21,44 +21,15 @@ pr.df = relabel(pr.df)
 
 label.df = pr.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
 
-pdf('pdf/chmpd.pdf', 8, 4)
-
-pr.df %>% filter(eval=='presence') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='presence')) + 
-  theme_bw() +
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
-
+pdf('pdf/chmpd.pdf', 8, 8)
+zoomgp(subset(pr.df, eval=='presence'), subset(label.df, eval=='presence'),
+       zoom.xy=.6, zoom.br=.1, annot=TRUE)
 dev.off()
 
 pdf('pdf/chmpd-geno.pdf', 8, 4)
-
-pr.df %>% filter(eval=='genotype') %>% 
-  ggplot(aes(x=recall, y=precision, colour=method)) +
-  geom_path(aes(linetype=region), size=1, alpha=.8) + 
-  ## geom_point(size=.8) +
-  ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='genotype')) + 
-  theme_bw() +
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
-  ## scale_x_continuous(breaks=seq(0,1,.2), limits=0:1) + 
-  ## scale_y_continuous(breaks=seq(0,1,.1), limits=c(.6,1)) +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
-
+zoomgp(subset(pr.df, eval=='genotype'), subset(label.df, eval=='genotype'),
+       zoom.xy=.5, zoom.br=.1, annot=TRUE, zout.only=TRUE)
 dev.off()
-
 
 
 ## Bar plots with best F1
