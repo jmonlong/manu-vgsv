@@ -2,27 +2,34 @@ library(ggplot2)
 library(dplyr)
 library(ggrepel)
 library(knitr)
+## library(ggforce)
 source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper','bayestyper')
 methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper')
 
-## Simulated reads from HG00514
-samples = 'HG00514'
-hgsvcsim.df = readEval4(methods, samples, prefix='data/hgsvc/hgsvcsim')
-hgsvcsim.df$method = factor(methconv[hgsvcsim.df$method], levels=names(pal.tools))
+## Read evaluation results
+pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
 
-hgsvcsim.df = hgsvcsim.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
-label.df = hgsvcsim.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
+## Keep HGSVC experiment only and polish data.frame
+pr.df = pr.df %>% filter(grepl('hgsvc', exp), type!='INV', type!='Total') %>%
+  arrange(qual)
+pr.df$method = factor(methconv[pr.df$method], levels=names(pal.tools))
+pr.df = relabel(pr.df)
+
+## Simulated reads from HG00514
+sim.pr.df = pr.df %>% filter(exp=='hgsvcsim')
+label.df = sim.pr.df %>% group_by(region, method, type, eval) %>%
+  arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/hgsvc-sim.pdf', 8, 4)
-hgsvcsim.df %>% filter(eval=='call') %>% 
+sim.pr.df %>% filter(eval=='presence') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='presence')) + 
   theme_bw() +
   facet_grid(.~type) +
   theme(legend.position='bottom') +
@@ -32,16 +39,14 @@ hgsvcsim.df %>% filter(eval=='call') %>%
   scale_linetype_manual(values=c(3,1)) + 
   scale_colour_manual(values=pal.tools)
 dev.off()
-
-library(ggforce)
 
 pdf('pdf/hgsvc-sim-geno.pdf', 8, 4)
-hgsvcsim.df %>% filter(eval=='geno') %>% 
+sim.pr.df %>% filter(eval=='genotype') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='geno')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='genotype')) + 
   theme_bw() +
   labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
@@ -52,50 +57,23 @@ hgsvcsim.df %>% filter(eval=='geno') %>%
   scale_colour_manual(values=pal.tools)
 dev.off()
 
-
-ps.df = read.table('data/merged-persize.tsv', as.is=TRUE, header=TRUE)
-ps.df$method = factor(methconv[ps.df$method], levels=names(pal.tools))
-ps.df = ps.df %>% filter(type!='INV', type!='Total')
-sizes = unique(ps.df$size)
-sizes = sizes[order(as.numeric(gsub('.*,(.*)]', '\\1', sizes)))]
-ps.df$size = factor(ps.df$size, levels=sizes)
-
-pdf('pdf/hgsvc-sim-geno-persize.pdf', 8, 4)
-ps.df %>% filter(eval=='geno', exp=='hgsvcsim') %>% 
-  ggplot(aes(x=size, y=F1, colour=method)) +
-  geom_line(aes(group=paste(region, method), linetype=region), size=1) + 
-  theme_bw() +
-  facet_grid(.~type) +
-  theme(legend.position='bottom') +
-  scale_linetype_manual(values=c(3,1)) + 
-  scale_colour_manual(values=pal.tools)
-dev.off()
-
-
 ## Real reads across three samples
-methods = c('vg','delly','svtyper','bayestyper')
-samples = c('HG00514', 'HG00733', 'NA19240')
-hgsvc.df = readEval4(methods, samples, prefix='data/hgsvc/hgsvc')
-hgsvc.df$method = factor(methconv[hgsvc.df$method], levels=names(pal.tools))
-
+real.pr.df = pr.df %>% filter(exp=='hgsvc')
+  
 ## Merge samples
-hgsvc.df = hgsvc.df %>% group_by(type, qual, method, region, eval) %>%
-  select(-sample) %>% summarize_all(sum)
-hgsvc.df$precision = hgsvc.df$TP.baseline / (hgsvc.df$TP.baseline + hgsvc.df$FP)
-hgsvc.df$recall = hgsvc.df$TP.baseline / (hgsvc.df$TP.baseline + hgsvc.df$FN)
-hgsvc.df$F1 = 2 * hgsvc.df$precision * hgsvc.df$recall / (hgsvc.df$precision + hgsvc.df$recall)
-hgsvc.df$F1 = ifelse(hgsvc.df$recall==0, 0, hgsvc.df$F1)
-
-hgsvc.df = hgsvc.df %>% filter(type!='INV', type!='Total') %>% arrange(qual)
-label.df = hgsvc.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))
+real.pr.df = real.pr.df %>% group_by(type, qual, method, region, eval) %>%
+  select(TP, TP.baseline, FN, FP) %>% summarize_all(sum)
+real.pr.df = prf(real.pr.df)
+label.df = real.pr.df %>% group_by(region, method, type, eval) %>%
+  arrange(desc(F1)) %>% do(head(.,1))
 
 pdf('pdf/hgsvc-real.pdf', 8, 4)
-hgsvc.df %>% filter(eval=='call') %>% 
+real.pr.df %>% filter(eval=='presence') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='call')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='presence')) + 
   theme_bw() +
   labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
@@ -107,12 +85,12 @@ hgsvc.df %>% filter(eval=='call') %>%
 dev.off()
 
 pdf('pdf/hgsvc-real-geno.pdf', 8, 4)
-hgsvc.df %>% filter(eval=='geno') %>% 
+real.pr.df %>% filter(eval=='genotype') %>% 
   ggplot(aes(x=recall, y=precision, colour=method)) +
   geom_path(aes(linetype=region), size=1, alpha=.8) + 
   ## geom_point(size=.8) +
   ## geom_label_repel(aes(label=method), data=label.df) + 
-  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='geno')) + 
+  geom_point(aes(shape=region), size=3, data=subset(label.df, eval=='genotype')) + 
   theme_bw() +
   labs(x='Recall', y='Precision', color='Method', shape='Genomic regions', linetype='Genomic regions') + 
   facet_grid(.~type) +
@@ -123,20 +101,11 @@ hgsvc.df %>% filter(eval=='geno') %>%
   scale_colour_manual(values=pal.tools)
 dev.off()
 
-
 ## Bar plots with best F1
 eval.f1 = rbind(
-  hgsvc.df %>% group_by(method, type, region, eval) %>% arrange(desc(F1)) %>% do(head(., 1)) %>% mutate(experiment='real reads'),
-  hgsvcsim.df %>% group_by(method, type, region, eval) %>% arrange(desc(F1)) %>% do(head(., 1)) %>% mutate(experiment='simulated reads')
+  real.pr.df %>% group_by(method, type, region, eval) %>% arrange(desc(F1)) %>% do(head(., 1)) %>% mutate(experiment='real reads'),
+  sim.pr.df %>% group_by(method, type, region, eval) %>% arrange(desc(F1)) %>% do(head(., 1)) %>% mutate(experiment='simulated reads')
 )
-
-eval.f1 = eval.f1 %>% ungroup %>%
-  mutate(F1=ifelse(is.infinite(F1), NA, F1),
-         eval=factor(eval, levels=c('call','geno'),
-                     labels=c('presence', 'genotype')),
-         ## method=factor(method, levels=names(pal.tools)),
-         experiment=factor(experiment, levels=c('simulated reads', 'real reads')))
-  
 
 pdf('pdf/hgsvc-best-f1.pdf', 8, 4)
 
