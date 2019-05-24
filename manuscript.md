@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-20'
+date-meta: '2019-05-24'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/798097ef96df6c355a8b8ac2fe9f8d94488ed7a3/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/b47b560e74f357458573ba138541214fc84790f4/))
 was automatically generated
-from [jmonlong/manu-vgsv@798097e](https://github.com/jmonlong/manu-vgsv/tree/798097ef96df6c355a8b8ac2fe9f8d94488ed7a3)
-on May 20, 2019.
+from [jmonlong/manu-vgsv@b47b560](https://github.com/jmonlong/manu-vgsv/tree/b47b560e74f357458573ba138541214fc84790f4)
+on May 24, 2019.
 </em></small>
 
 ## Authors
@@ -160,13 +160,14 @@ We rigorously evaluated the accuracy of our method on a variety of datasets, and
 ![**Structural variation in vg.** 
 a) vg uses the read coverage over possible paths to genotype variants in a bubble or more complex snarl. The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in more details in [Methods](#toil-vg-call).
 b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
+SVTyper cannot genotype insertions, hence the missing line in the top panels.
 ](images/panel1.png){#fig:1}
 
 ### Simulated dataset
 
 As a proof of concept, we simulated genomes and different types of SVs with a size distribution matching real SVs[@vQTymKCj].
 We compared vg against SVTyper, Delly, and BayesTyper across different levels of sequencing depth.
-We also added some errors at the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
+We also added some errors (1-10bp) to the location of the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
 The results are shown in Figure {@fig:1}b.
 
 When using the correct breakpoints, vg tied with Delly as the best genotyper for deletions, and with BayesTyper as the best genotyper for insertions.
@@ -206,7 +207,7 @@ SVTyper cannot genotype insertions, hence the missing bars in the top panels.
 
 We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment.
 Here, vg clearly outperformed other approaches (Figures {@fig:2} and {@fig:hgsvc-real-geno}).
-In non-repeat regions and across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods. 
+In non-repeat regions and across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods.
 For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2} and {@fig:hgsvc-real}).
 Figure {@fig:hgsvc-ex} shows examples of an exonic deletion and an exonic insertion that were correctly genotyped by vg but not by the other methods.
@@ -229,32 +230,32 @@ The vg read mappings show consistent coverage even over these SVs.
 #### Genome in a Bottle Consortium
 
 The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for an Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20].
-
 Dozens of SV callers operating on datasets from short, long, and linked reads were used to produce this set of SVs.
-We evaluated the SV genotyping methods on this sample as well using the GIAB VCF, which also contains parental calls (totalling 30,224 SVs).
+We evaluated the SV genotyping methods on this sample as well using the GIAB VCF, which also contains parental calls (HG003 and HG004), all totalling 30,224 SVs.
 vg performed similarly on this dataset as on the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
 As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotypes for deletions in non-repeat regions.
 
-#### Audano, et al. [@3NNFS6U2]
+#### SMRT-SV v2 catalog and training data [@3NNFS6U2]
 
-A recent study by Audano et al. generated a catalog of 97,368 SVs using long-read sequencing across 15 individuals[@3NNFS6U2].
-These variants were then genotyped from short reads across 440 individuals using SMRT-SV v2, a machine learning-based genotyper implemented for that study.
-SMRT-SV v2 was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines.
-We first called SVs in this dataset, using the same SV catalog and short read dataset.
+A recent study by Audano et al. generated a catalog of 97,368 SVs (referred as SVPOP below) using long-read sequencing across 15 individuals[@3NNFS6U2].
+These variants were then genotyped from short reads across 440 individuals using the SMRT-SV v2 genotyper, a machine learning-based tool implemented for that study.
+The SMRT-SV v2 genotyper was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines (CHM1 and CHM13) and a single negative control (NA19240).
+We first used vg to genotype the SVs in this two-sample training dataset using 30X coverage reads, and compared the results with the SMRT-SV v2 genotyper.
 vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV v2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
-Using publicly available Illumina reads, we then genotyped SVs in 3 of the 15 individuals that were used for discovery in Audano et al.[@3NNFS6U2].
+To compare vg and SMRT-SV v2, we then genotyped SVs from the entire SVPOP catalog with both methods, using the read data from the three HGSVC samples described above.
+Given that the the SVPOP catalog contains these three samples, we once again evaluated accuracy by using the long-read genotypes as a baseline of comparison.
 
 Compared to SMRT-SV v2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (SVPOP in Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
 Of note, SMRT-SV v2 produces *no-calls* in regions where the read coverage is too low, and we observed that its recall increased when filtering these regions out the input set.
 Interestingly, vg performed well even in regions where SMRT-SV v2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
-Audano et al. identified 217 sequence-resolved inversions, which we attempted to genotype.
+Audano et al. discovered 217 sequence-resolved inversions using long reads, which we attempted to genotype.
 vg correctly predicted the presence of around 14% of the inversions present in the three samples (Table {@tbl:svpop}).
 Inversions are often complex, harboring additional variation that makes their characterization and genotyping challenging.
 
-![**Structural variants from Audano et al.[@3NNFS6U2]**.
+![**Structural variants from SMRT-SV v2 [@3NNFS6U2]**.
 The pseudo-diploid genome built from two CHM cell lines and one negative control sample was originally used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2].
 It contains 16,180 SVs.
-The SVPOP panel shows the combined results for the HG00514, HG00733, and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al. [@3NNFS6U2].
+The SVPOP panel shows the combined results for the HG00514, HG00733, and NA19240 individuals, three of the 15 individuals used to generate the high-quality SV catalog in Audano et al. [@3NNFS6U2].
 Here, we report the maximum F1 score (y-axis) for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
 We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars).
 Genotype information is not available in the SVPOP catalog hence genotyping performance could not be evaluated.
@@ -271,7 +272,7 @@ To do so, we analyzed public sequencing datasets for 12 yeast strains from two r
 We compared genotyping results using two different types of genome graphs.
 The graphs were constructed using 5 of the 12 strains.
 *S.c. S288C* was used as the reference strain, and we selected two other strains from each of the two clades (see [Methods](#yeast-graph-analysis)).
-The first graph (called *VCF graph* below) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
+The first graph (called *VCF graph* below) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified from the other four assemblies by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
 The second graph (called *cactus graph* below) was derived from a multiple genome alignment of the five strains using Cactus [@1FgS53pXi].
 The *VCF graph* is mostly linear and highly dependent on the reference genome.
 In contrast, the *cactus graph* is structurally complex and relatively free of reference bias.
@@ -281,7 +282,7 @@ Generally, more reads mapped to the *cactus graph* with high identity (Figure {@
 
 Next, we compared the SV genotyping performance of both graphs.
 We mapped short reads from the 11 non-reference strains to both graphs and called variants for each strain using the vg toolkit's variant calling module (see [Methods](#toil-vg-call)).
-There is no gold standard call set for these sample, so we used an indirect measure of SV calling accuracy.
+There is no gold standard call set for these samples, so we used an indirect measure of SV calling accuracy.
 We evaluated each call set based on the alignment of reads to a *sample graph* constructed from the call set (see [Methods](#calling-and-genotyping-of-svs)).
 If a given call set is correct, we expect that reads from the same sample will be mapped with high identity and confidence to the corresponding sample graph.
 Therefore, we compared the average percent identity and mapping quality of the short reads on each sample graph (Figures {@fig:4}a and b).
