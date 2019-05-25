@@ -6,8 +6,8 @@ library(ggrepel)
 #Read mapping#
 ##############
 
-construct <- read_tsv("data/yeast.mapping.constructunion.all.tsv", col_names = c("mapq_gt0", "mapq_ge10", "mapq_ge20", "mapq_ge30", "mapq_ge40", "mapq_ge50", "mapq_ge60", "id_ge100", "id_ge90", "id_ge50", "all", "graph", "sample"))
-cactus <- read_tsv("data/yeast.mapping.cactus.all.tsv", col_names = c("mapq_gt0", "mapq_ge10", "mapq_ge20", "mapq_ge30", "mapq_ge40", "mapq_ge50", "mapq_ge60", "id_ge100", "id_ge90", "id_ge50", "all", "graph", "sample"))
+construct <- read_tsv("data/yeast/yeast.mapping.constructunion.all.tsv", col_names = c("mapq_gt0", "mapq_ge10", "mapq_ge20", "mapq_ge30", "mapq_ge40", "mapq_ge50", "mapq_ge60", "id_ge100", "id_ge90", "id_ge50", "all", "graph", "sample"))
+cactus <- read_tsv("data/yeast/yeast.mapping.cactus.all.tsv", col_names = c("mapq_gt0", "mapq_ge10", "mapq_ge20", "mapq_ge30", "mapq_ge40", "mapq_ge50", "mapq_ge60", "id_ge100", "id_ge90", "id_ge50", "all", "graph", "sample"))
 
 construct_new <- construct %>%
   gather("mapq_gt0", "mapq_ge10", "mapq_ge20", "mapq_ge30", "mapq_ge40", "mapq_ge50", "mapq_ge60", "id_ge100", "id_ge90", "id_ge50", key="filter", value="construct_number") %>%
@@ -82,16 +82,13 @@ dev.off()
 #SV genotyping#
 ###############
 
-identity <- read_tsv("data/constructunion.all.reads.identity.tsv", col_names = c("graph", "strain", "identity"))
-quality <- read_tsv("data/constructunion.all.reads.mapq.tsv", col_names = c("graph", "strain", "quality"))
-score <- read_tsv("data/constructunion.all.reads.score.tsv", col_names = c("graph", "strain", "score"))
+data <- read_tsv("data/yeast/all.strains.ids_and_mapqs.mean.tsv", col_names=c("strain", "cactus_id", "vcf_id", "linear_id", "cactus_mapq", "vcf_mapq", "linear_mapq"))
 
 # Mapping identity plot
 pdf('pdf/yeast-genotyping-identity-all.pdf', 6, 6)
-identity %>%
-  spread(graph, identity) %>%
+data %>%
   mutate(clade=ifelse(strain %in% c("UWOPS919171","UFRJ50816","YPS138","N44","CBS432"), 'paradoxus', 'cerevisiae')) %>%
-  ggplot(aes(construct, cactus, color=strain, shape=clade)) +
+  ggplot(aes(vcf_id, cactus_id, color=strain, shape=clade)) +
   geom_abline(intercept=0) +
   geom_point(size=4) +
   geom_label_repel(aes(label=strain),
@@ -102,7 +99,7 @@ identity %>%
   labs(color="Strain", shape="Clade",
        x="Average mapping identity of short reads on sample graph (from VCF graph)",
        y="Average mapping identity of short reads on sample graph (from cactus graph)") +
-  coord_cartesian(xlim=c(0.6,1), ylim=c(0.6,1)) +
+  coord_cartesian(xlim=c(0.4,0.9), ylim=c(0.4,0.9)) +
   theme_bw() +
   theme(legend.position=c(.99,.01), legend.justification=c(1, 0),
         legend.box.just='right',
@@ -112,10 +109,9 @@ dev.off()
 
 # Mapping quality plot
 pdf('pdf/yeast-genotyping-quality-all.pdf', 6, 6)
-quality %>%
-  spread(graph, quality) %>%
+data %>%
   mutate(clade=ifelse(strain %in% c("UWOPS919171","UFRJ50816","YPS138","N44","CBS432"), 'paradoxus', 'cerevisiae')) %>%
-  ggplot(aes(construct, cactus, color=strain, shape=clade)) +
+  ggplot(aes(vcf_mapq, cactus_mapq, color=strain, shape=clade)) +
   geom_abline(intercept=0) +
   geom_point(size=4) +
   geom_label_repel(aes(label=strain),
@@ -126,31 +122,7 @@ quality %>%
   labs(color="Strain", shape="Clade",
        x="Average mapping quality of short reads on sample graph (from VCF graph)",
        y="Average mapping quality of short reads on sample graph (from cactus graph)") +
-  coord_cartesian(xlim=c(42,55), ylim=c(42,55)) +
-  theme_bw() +
-  theme(legend.position=c(.99,.01), legend.justification=c(1, 0),
-        legend.box.just='right',
-        legend.background=element_rect(colour='black', size=.1)) +
-  guides(color=FALSE, shape=guide_legend(order=1, title.hjust=1))
-dev.off()
-
-# Mapping score plot
-pdf('pdf/yeast-genotyping-score-all.pdf', 8, 7)
-score %>%
-  spread(graph, score) %>%
-  mutate(clade=ifelse(strain %in% c("UWOPS919171","UFRJ50816","YPS138","N44","CBS432"), 'paradoxus', 'cerevisiae')) %>%
-  ggplot(aes(construct, cactus, color=strain, shape=clade)) +
-  geom_abline(intercept=0) +
-  geom_point(size=4) +
-  geom_label_repel(aes(label=strain),
-                   point.padding=.25, box.padding=.5,
-                   min.segment.length=Inf, size=3, seed=123,
-                   nudge_x=.4,
-                   alpha=1, label.size=.5) + 
-  labs(color="Strain", shape="Clade",
-       x="Average alignment score of short reads on sample graph (from VCF graph)",
-       y="Average alignment score of short reads on sample graph (from cactus graph)") +
-  coord_cartesian(xlim=c(90,150), ylim=c(90,150)) +
+  coord_cartesian(xlim=c(10,50), ylim=c(10,50)) +
   theme_bw() +
   theme(legend.position=c(.99,.01), legend.justification=c(1, 0),
         legend.box.just='right',
