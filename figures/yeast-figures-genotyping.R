@@ -22,7 +22,7 @@ total <- rbind(four, all) %>%
   mutate(diff_mapq = cactus_mapq - vcf_mapq)
 
 # Mapping identity plot
-pdf('pdf/yeast-genotyping-identity-SVregions.pdf', 6, 6)
+pdf('pdf/yeast-genotyping-identity-SVregions.pdf', 6, 4)
 total %>%
   ggplot(aes(x=strain, y=diff_id, fill=graph, alpha=ingraph)) +
   geom_col(position=position_dodge()) +
@@ -32,10 +32,11 @@ total %>%
        x="Yeast strain",
        y="Average delta in mapping identity") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        text=element_text(size=14))
 dev.off()
 
-pdf('pdf/yeast-genotyping-quality-SVregions.pdf', 6, 6)
+pdf('pdf/yeast-genotyping-quality-SVregions.pdf', 4, 4)
 total %>%
   ggplot(aes(x=strain, y=diff_mapq, fill=graph, alpha=ingraph)) +
   geom_col(position=position_dodge()) +
@@ -45,7 +46,9 @@ total %>%
        x="Yeast strain",
        y="Average delta in mapping quality") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  guides(fill=FALSE, alpha=FALSE) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        text=element_text(size=14))
 dev.off()
 
 mean(total[total$graph == "Five strains", ]$diff_id)
@@ -81,7 +84,7 @@ total <- rbind(four, all) %>%
   mutate(diff_mapq = cactus_mapq - vcf_mapq)
 
 # Mapping identity plot
-pdf('pdf/yeast-genotyping-identity-allregions.pdf', 6, 6)
+pdf('pdf/yeast-genotyping-identity-allregions.pdf', 6, 4)
 total %>%
   ggplot(aes(x=strain, y=diff_id, fill=graph, alpha=ingraph)) +
   geom_col(position=position_dodge()) +
@@ -91,10 +94,11 @@ total %>%
        x="Yeast strain",
        y="Average delta in mapping identity") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        text=element_text(size=14))
 dev.off()
 
-pdf('pdf/yeast-genotyping-quality-allregions.pdf', 6, 6)
+pdf('pdf/yeast-genotyping-quality-allregions.pdf', 4, 4)
 total %>%
   ggplot(aes(x=strain, y=diff_mapq, fill=graph, alpha=ingraph)) +
   geom_col(position=position_dodge()) +
@@ -104,5 +108,7 @@ total %>%
        x="Yeast strain",
        y="Average delta in mapping quality") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+  guides(fill=FALSE, alpha=FALSE) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        text=element_text(size=14))
 dev.off()
