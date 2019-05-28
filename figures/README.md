@@ -13,6 +13,7 @@ Rscript svpop-figures.R
 Rscript hgsvc-giab-svpop-chmpd-combined.R
 Rscript yeast-figures-all.R
 Rscript yeast-figures-four.R
+Rscript yeast-figures-genotyping.R
 
 ## Panels defined using LaTeX subfigures in panels.tex
 pdflatex panels.tex
