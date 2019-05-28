@@ -1,32 +1,30 @@
-|experiment      |method     |region     |type | precision| recall|    F1|
-|:---------------|:----------|:----------|:----|---------:|------:|-----:|
-|simulated reads |vg         |all        |INS  |     0.795|  0.796| 0.795|
-|simulated reads |vg         |all        |DEL  |     0.869|  0.771| 0.817|
-|simulated reads |vg         |non-repeat |INS  |     0.885|  0.883| 0.884|
-|simulated reads |vg         |non-repeat |DEL  |     0.971|  0.920| 0.945|
-|simulated reads |BayesTyper |all        |INS  |     0.910|  0.835| 0.871|
-|simulated reads |BayesTyper |all        |DEL  |     0.898|  0.806| 0.849|
-|simulated reads |BayesTyper |non-repeat |INS  |     0.935|  0.900| 0.917|
-|simulated reads |BayesTyper |non-repeat |DEL  |     0.981|  0.929| 0.954|
-|simulated reads |SVTyper    |all        |DEL  |     0.809|  0.328| 0.467|
-|simulated reads |SVTyper    |non-repeat |DEL  |     0.876|  0.754| 0.810|
-|simulated reads |Delly      |all        |INS  |     0.767|  0.093| 0.166|
-|simulated reads |Delly      |all        |DEL  |     0.696|  0.707| 0.701|
-|simulated reads |Delly      |non-repeat |INS  |     0.866|  0.225| 0.358|
-|simulated reads |Delly      |non-repeat |DEL  |     0.903|  0.846| 0.874|
-|real reads      |vg         |all        |INS  |     0.431|  0.541| 0.480|
-|real reads      |vg         |all        |DEL  |     0.650|  0.519| 0.577|
-|real reads      |vg         |non-repeat |INS  |     0.683|  0.726| 0.704|
-|real reads      |vg         |non-repeat |DEL  |     0.886|  0.708| 0.787|
-|real reads      |BayesTyper |all        |INS  |     0.601|  0.254| 0.357|
-|real reads      |BayesTyper |all        |DEL  |     0.627|  0.325| 0.428|
-|real reads      |BayesTyper |non-repeat |INS  |     0.747|  0.433| 0.549|
-|real reads      |BayesTyper |non-repeat |DEL  |     0.910|  0.381| 0.537|
-|real reads      |SVTyper    |all        |INS  |       NaN|  0.000| 0.000|
-|real reads      |SVTyper    |all        |DEL  |     0.661|  0.236| 0.348|
-|real reads      |SVTyper    |non-repeat |INS  |       NaN|  0.000| 0.000|
-|real reads      |SVTyper    |non-repeat |DEL  |     0.733|  0.551| 0.629|
-|real reads      |Delly      |all        |INS  |     0.516|  0.068| 0.120|
-|real reads      |Delly      |all        |DEL  |     0.550|  0.445| 0.492|
-|real reads      |Delly      |non-repeat |INS  |     0.621|  0.176| 0.275|
-|real reads      |Delly      |non-repeat |DEL  |     0.838|  0.547| 0.662|
+|eval     |experiment      |method     |region     |type | precision| recall|    F1|
+|:--------|:---------------|:----------|:----------|:----|---------:|------:|-----:|
+|genotype |real reads      |vg         |all        |INS  |     0.439|  0.541| 0.485|
+|genotype |real reads      |vg         |all        |DEL  |     0.640|  0.519| 0.574|
+|genotype |real reads      |vg         |non-repeat |INS  |     0.686|  0.726| 0.705|
+|genotype |real reads      |vg         |non-repeat |DEL  |     0.882|  0.710| 0.787|
+|genotype |real reads      |BayesTyper |all        |INS  |     0.602|  0.254| 0.358|
+|genotype |real reads      |BayesTyper |all        |DEL  |     0.626|  0.325| 0.428|
+|genotype |real reads      |BayesTyper |non-repeat |INS  |     0.747|  0.434| 0.549|
+|genotype |real reads      |BayesTyper |non-repeat |DEL  |     0.910|  0.381| 0.537|
+|genotype |real reads      |SVTyper    |all        |DEL  |     0.676|  0.236| 0.350|
+|genotype |real reads      |SVTyper    |non-repeat |DEL  |     0.766|  0.551| 0.641|
+|genotype |real reads      |Delly      |all        |INS  |     0.531|  0.068| 0.120|
+|genotype |real reads      |Delly      |all        |DEL  |     0.562|  0.445| 0.497|
+|genotype |real reads      |Delly      |non-repeat |INS  |     0.630|  0.176| 0.276|
+|genotype |real reads      |Delly      |non-repeat |DEL  |     0.852|  0.547| 0.666|
+|genotype |simulated reads |vg         |all        |INS  |     0.795|  0.796| 0.795|
+|genotype |simulated reads |vg         |all        |DEL  |     0.869|  0.771| 0.817|
+|genotype |simulated reads |vg         |non-repeat |INS  |     0.885|  0.883| 0.884|
+|genotype |simulated reads |vg         |non-repeat |DEL  |     0.971|  0.920| 0.945|
+|genotype |simulated reads |BayesTyper |all        |INS  |     0.910|  0.835| 0.871|
+|genotype |simulated reads |BayesTyper |all        |DEL  |     0.898|  0.806| 0.849|
+|genotype |simulated reads |BayesTyper |non-repeat |INS  |     0.935|  0.900| 0.917|
+|genotype |simulated reads |BayesTyper |non-repeat |DEL  |     0.981|  0.929| 0.954|
+|genotype |simulated reads |SVTyper    |all        |DEL  |     0.809|  0.328| 0.467|
+|genotype |simulated reads |SVTyper    |non-repeat |DEL  |     0.876|  0.754| 0.810|
+|genotype |simulated reads |Delly      |all        |INS  |     0.767|  0.093| 0.166|
+|genotype |simulated reads |Delly      |all        |DEL  |     0.696|  0.707| 0.701|
+|genotype |simulated reads |Delly      |non-repeat |INS  |     0.866|  0.225| 0.358|
+|genotype |simulated reads |Delly      |non-repeat |DEL  |     0.903|  0.846| 0.874|
