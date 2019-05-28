@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/245e94c96f5994b153c686612275ac2634d176a4/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/9c95608fc76b8d0dca05b04758b20cf84917d21c/))
 was automatically generated
-from [jmonlong/manu-vgsv@245e94c](https://github.com/jmonlong/manu-vgsv/tree/245e94c96f5994b153c686612275ac2634d176a4)
+from [jmonlong/manu-vgsv@9c95608](https://github.com/jmonlong/manu-vgsv/tree/9c95608fc76b8d0dca05b04758b20cf84917d21c)
 on May 28, 2019.
 </em></small>
 
@@ -401,7 +401,7 @@ Each chunk is called independently in parallel and the results are concatenated 
 
 #### toil-vg sveval
 
-toil-vg seval evaluates the SV calls relative to a truth set.
+toil-vg sveval evaluates the SV calls relative to a truth set.
 The variants are first normalized with `bcftools norm` (1.9) to ensure consistent representation between called variants and baseline variants[@LAG2q9WK].
 We then implemented an overlap-based strategy to compare SVs and compute evaluation metrics (sveval R package: [https://github.com/jmonlong/sveval](https://github.com/jmonlong/sveval)).
 Figure {@fig:sveval} shows an overview of the SV evaluation approach which is described below.
@@ -430,21 +430,30 @@ If more than 80% of the sequence aligns, it is classified as an inversion.
 We assess both the ability to predict the presence of an SV as well as the full genotype.
 For the *presence* evaluation, both heterozygous and homozygous alternate SVs are compared jointly using the approach described above.
 To compute genotype-level metrics, the heterozygous and homozygous SVs are compared separately.
-Before splitting the variants by genotype, consecutive heterozygous variants are first merged if located at less that 20 bp from each other.
-Pairs of heterozygous variants with reciprocal overlap of at least 80% are also merged into a homozygous ALT variant before splitting variants by genotype.
+Before splitting the variants by genotype, pairs of heterozygous variants with reciprocal overlap of at least 80% are merged into a homozygous ALT variant.
+To handle fragmented variants, consecutive heterozygous variants located at less that 20 bp from each other are first merged into larger heterozygous variants.
+
+Precision-recall curves are produced by successively filtering out variants of low-quality.
+By default the *QUAL* field in the VCF file is used as the quality information.
+If *QUAL* is missing (or contains only 0s), the genotype quality in the *GQ* field is used.
+
+The evaluation is performed using all variants or using only variants within high-confidence regions.
+In most analysis, the high-confidence regions are constructed by excluding segmental duplications and tandem repeats (using the respective tracks from the UCSC Genome Browser).
+For the GIAB analysis, we used the Tier 1 high-confidence regions provided by the GIAB consortium in version 0.6.
+
 
 ### Other SV genotypers
 
 #### BayesTyper (v1.5 beta 62888d6)
 
 Where not specified otherwise BayesTyper was run as follows.
-Raw reads were mapped to the reference genome using `bwa mem` (0.7.17).
-GATK[@NCr4QkOg] (3.8) and Platypus[@1DYmkalz4] (0.8.1.1) were run on the mapped reads to call SNVs and short indels (<50bp) needed by BayesTyper for correct genotyping.
+Raw reads were mapped to the reference genome using bwa mem (citation: https://arxiv.org/abs/1303.3997) (0.7.17).
+GATK haplotypecaller[@NCr4QkOg] (3.8) and Platypus[@1DYmkalz4] (0.8.1.1) with assembly enabled were run on the mapped reads to call SNVs and short indels (<50bp) needed by BayesTyper for correct genotyping.
 The VCFs with these variants were then normalised using `bcftools norm` (1.9) and combined with the SVs across samples using `bayesTyperTools combine` to produce the input candidate set. 
-k-mers in the raw reads were counted using `kmc` (3.1.1) with a k-mer size of 55. 
+k-mers in the raw reads were counted using kmc (citation: https://academic.oup.com/bioinformatics/article/33/17/2759/3796399) (3.1.1) with a k-mer size of 55. 
 A Bloom filter was constructed from these k-mers using `bayesTyperTools makeBloom`. 
 Finally, variants were clustered and genotyped using `bayestyper cluster` and `bayestyper genotype`, respectively, with default parameters except `--min-genotype-posterior 0`. 
-Non-PASS variants were filtered prior to evaluation using `bcftools filter`.
+Non-PASS variants and non-SVs (GATK and Platypus origin) were filtered prior to evaluation using `bcftools filter` and `filterAlleleCallsetOrigin`, respectively.
 
 
 #### Delly (v0.7.9)
@@ -506,12 +515,14 @@ We used BayesTyper to jointly genotype the 3 samples.
 
 ### GIAB Analysis
 
+
 We obtained version 0.5 of the Genome in a Bottle (GIAB) SV VCF for the Ashkenazim son (HG002) and his parents from the NCBI FTP site.
 We obtained Illumina reads as described in Garrison et al.[@10jxt15v0] and downsampled them to 50x coverage.
 We used these reads as input for `vg call` and the other SV genotyping pipelines described above (though with GRCh37 instead of GRCh38).
 For BayesTyper, we created the input variant set by combining the GIAB SVs with SNV and indels from the same study.
 Variants with reference allele or without a determined genotype for HG002 in the GIAB call set (10,569 out of 30,224) were considered "false positives" as a proxy measure for precision.
 These variants correspond to putative technical artifacts and parental calls not present in HG002.
+For the evaluation in high confidence regions, we used the Tier 1 high-confidence regions provided by the GIAB consortium in version 0.6.
 
 ### SMRT-SV v2 Comparison (CHMPD and SVPOP)
 
@@ -652,7 +663,11 @@ These authors contributed equally: Glenn Hickey, David Heller, Jean Monlong.
 |                 | Delly      | INS  | 0.516 (0.621) | 0.068 (0.176) | 0.12 (0.275)  |
 |                 |            | DEL  | 0.55 (0.838)  | 0.445 (0.547) | 0.492 (0.662) |
 
-Table: Genotyping evaluation on the HGSVC dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parentheses corresponds to the results in non-repeat regions. {#tbl:hgsvc tag="S1"}
+Table: Genotyping evaluation on the HGSVC dataset. 
+Precision, recall and F1 score for the call set with the best F1 score.
+The best F1 scores were achieved with no filtering in the vast majority of cases (see Figure {@fig:hgsvc-sim-geno} and {@fig:hgsvc-real-geno}).
+The numbers in parentheses corresponds to the results in non-repeat regions. 
+{#tbl:hgsvc tag="S1"}
 
 ---
 
@@ -666,7 +681,10 @@ Table: Genotyping evaluation on the HGSVC dataset. Precision, recall and F1 scor
 | Delly      | INS  | 0.822 (0.894) | 0.177 (0.268) | 0.291 (0.412) |
 |            | DEL  | 0.722 (0.822) | 0.645 (0.768) | 0.681 (0.794) |
 
-Table: Genotyping evaluation on the Genome in a Bottle dataset. Precision, recall and F1 score for the call set with the best F1 score. The numbers in parentheses corresponds to the results in non-repeat regions. {#tbl:giab tag="S2"}
+Table: Genotyping evaluation on the Genome in a Bottle dataset. 
+Precision, recall and F1 score for the call set with the best F1 score. 
+The best F1 scores were achieved with no filtering in the vast majority of cases (see Figure {@fig:giab-geno}).
+The numbers in parentheses corresponds to the results in non-repeat regions. {#tbl:giab tag="S2"}
 
 ---
 
@@ -699,7 +717,8 @@ Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell li
 |          | non-repeat | INS  |  4483 |  4659 |  5385 |     0.490 |  0.454 | 0.472 |
 |          |            | DEL  |  2928 |   930 |  1659 |     0.759 |  0.638 | 0.693 |
 
-Table: Calling evaluation on the SVPOP dataset. Combined results for the HG00514, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S4"}
+Table: Calling evaluation on the SVPOP dataset. 
+Combined results for the HG00514, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S4"}
 
 ---
 
@@ -829,7 +848,7 @@ The SV evaluation approach is described in more detail in the [Methods](#toil-vg
 
 A variation graph encodes DNA sequence in its nodes.
 Such graphs are bidirected, in that we distinguish between edges incident on the starts of nodes from those incident on their ends.
-A path in such a graph is an  ordered list of nodes where each is associated with an orientation.
+A path in such a graph is an ordered list of nodes where each is associated with an orientation.
 If a path walks from, for example, node A in the forward orientation to node B in the reverse orientation, then an edge must exist from the end of node A to the end of node B.
 Concatenating the sequences on each node in the path, taking the reverse complement when the node is visited in reverse orientation, produces a DNA sequence. 
 Accordingly, variation graphs are constructed so as to encode haplotype sequences as walks through the graph.
