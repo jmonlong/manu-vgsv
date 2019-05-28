@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/dc06adada54739cf7fd46d433966b34bf985806e/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/245e94c96f5994b153c686612275ac2634d176a4/))
 was automatically generated
-from [jmonlong/manu-vgsv@dc06ada](https://github.com/jmonlong/manu-vgsv/tree/dc06adada54739cf7fd46d433966b34bf985806e)
+from [jmonlong/manu-vgsv@245e94c](https://github.com/jmonlong/manu-vgsv/tree/245e94c96f5994b153c686612275ac2634d176a4)
 on May 28, 2019.
 </em></small>
 
@@ -189,40 +189,44 @@ Using short sequencing reads, the SVs were genotyped and compared with the genot
 
 First we compared the methods using simulated reads for HG00514.
 This represents the ideal situation where the SV catalog exactly matches the SVs supported by the reads.
-While vg outperformed Delly and SVTyper, BayesTyper showed the best F1 score and precision-recall trade-off (Figures {@fig:2} and {@fig:hgsvc-sim-geno}, Table {@tbl:hgsvc}).
+While vg outperformed Delly and SVTyper, BayesTyper showed the best F1 score and precision-recall trade-off (Figures {@fig:2}a and {@fig:hgsvc-sim-geno}, Table {@tbl:hgsvc}).
 When restricting the comparisons to regions not identified as tandem repeats or segmental duplications, the genotyping predictions were significantly better for all methods, with vg almost as good as BayesTyper on deletions (F1 of 0.944 vs 0.955).
-We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2} and {@fig:hgsvc-sim}).
+We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-sim}).
 Overall, both graph-based methods, vg and BayesTyper, outperformed the other two methods tested.
 
 ![**Structural variants from the HGSVC and Genome in a Bottle datasets**. 
 HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[@vQTymKCj].
 Reads were simulated from the HG00514 individual.
 Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested.
-GiaB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[@14neTdqfN;@16GvGhO20].
-Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
+GIAB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[@14neTdqfN;@16GvGhO20].
+a) Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
 We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars).
 Results are separated across panels by variant type: insertions and deletions.
 SVTyper cannot genotype insertions, hence the missing bars in the top panels.
-](images/hgsvc-giab-best-f1.png){#fig:2}
+b) Maximum F1 score for different size classes when evaluating on the presence of SVs across the whole genome.
+c) Size distribution of SVs in the HGSVC and GIAB catalogs.
+](images/panel2.png){#fig:2 width="90%"}
 
 We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment.
-Here, vg clearly outperformed other approaches (Figures {@fig:2} and {@fig:hgsvc-real-geno}).
+Here, vg clearly outperformed other approaches (Figures {@fig:2}a and {@fig:hgsvc-real-geno}).
 In non-repeat regions and across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods.
 For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692.
-We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2} and {@fig:hgsvc-real}).
-Figure {@fig:hgsvc-ex} shows examples of an exonic deletion and an exonic insertion that were correctly genotyped by vg but not by the other methods.
+We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-real}).
+In addition, vg's performance was stable across the spectrum of SV sizes (Figure {@fig:2}b-c).
+Figure {@fig:hgsvc-ex} shows an example of an exonic deletion that was correctly genotyped by vg but not by the other methods.
 
-![**Exonic SVs in the HGSVC dataset correctly genotyped by vg**. 
-Visualizations of the HGSVC graph as augmented by reads aligned by vg at two loci exonic loci harboring SVs.
-(A) 51 bp homozygous deletion in the last exon of the LONRF2 gene.
-(B) 114 bp homozygous insertion in a short tandem repeat region overlapping the first exon of the MED13L gene, a gene predicted to be loss of function intolerant.
-At bottom of each rendering, a horizontal black line represents the topologically sorted nodes of the graph.
+![**Exonic deletion in the HGSVC dataset correctly genotyped by vg**. 
+a) Visualization of the HGSVC graph as augmented by reads aligned by vg at a locus harboring a 51 bp homozygous deletion in the UTR region of the LONRF2 gene.
+At the bottom, a horizontal black line represents the topologically sorted nodes of the graph.
 Black rectangles represent edges found in the graph.
-Above this rendering of the topology, the reference path from GRCh38 is shown (either in green or blue).
+Above this rendering of the topology, the reference path from GRCh38 is shown (in green).
 Red and blue bars represent reads mapped to the graph.
 Thin lines in the reference path and read mappings highlight relative gaps (either insertions or deletions) against the full graph.
-The vg read mappings show consistent coverage even over these SVs.
-](images/panel7.png){#fig:hgsvc-ex}
+The vg read mappings show consistent coverage even over the deletion.
+b) Reads mapped to the linear genome reference GRCh38 using bwa in the same region.
+Reads contain soft-clipped sequences and short insertions near the deletion breakpoints.
+Part of the deleted region is also covered by several reads, potentially confusing traditional SV genotypers.
+](images/hgsvc-ex-del.png){#fig:hgsvc-ex  width="80%"}
 
 
 ### Other long-read datasets
@@ -751,9 +755,15 @@ In all cases, the errors affected 1-10 bp.
 
 ### Supplementary Figures
 
-![**Genotyping evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno tag="S1"}
+![**Genotyping evaluation on the HGSVC dataset using simulated reads.**
+Reads were simulated from the HG00514 individual.
+The bottom panel zooms on the part highlighted by a dotted rectangle.
+](images/hgsvc-sim-geno.png){#fig:hgsvc-sim-geno tag="S1"}
 
-![**Calling evaluation on the HGSVC dataset using simulated reads.**](images/hgsvc-sim.png){#fig:hgsvc-sim tag="S2"}
+![**Calling evaluation on the HGSVC dataset using simulated reads.**
+Reads were simulated from the HG00514 individual.
+The bottom panel zooms on the part highlighted by a dotted rectangle.
+](images/hgsvc-sim.png){#fig:hgsvc-sim tag="S2"}
 
 ![**Genotyping evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real-geno.png){#fig:hgsvc-real-geno tag="S3"}
 
@@ -763,7 +773,10 @@ In all cases, the errors affected 1-10 bp.
 
 ![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S6"}
 
-![**Genotyping evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
+![**Genotyping evaluation on the CHM pseudo-diploid dataset.** 
+The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]
+The bottom panel zooms on the part highlighted by a dotted rectangle.
+](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
 
 ![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S8"}
 
