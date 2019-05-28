@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-24'
+date-meta: '2019-05-28'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/b47b560e74f357458573ba138541214fc84790f4/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/dc06adada54739cf7fd46d433966b34bf985806e/))
 was automatically generated
-from [jmonlong/manu-vgsv@b47b560](https://github.com/jmonlong/manu-vgsv/tree/b47b560e74f357458573ba138541214fc84790f4)
-on May 24, 2019.
+from [jmonlong/manu-vgsv@dc06ada](https://github.com/jmonlong/manu-vgsv/tree/dc06adada54739cf7fd46d433966b34bf985806e)
+on May 28, 2019.
 </em></small>
 
 ## Authors
@@ -590,15 +590,24 @@ We analyzed the resulting alignments with `vg view` and `jq`.
 The commands used to run the analyses presented in this study are available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper) (ZENODO DOI WHEN READY).
 The datasets generated and/or analysed during the current study are also listed in this repository.
 
+The scripts to generate the manuscript, including figures and tables, are available at [github.com/jmonlong/manu-vgsv](https://github.com/jmonlong/manu-vgsv).
+
 ### Competing interests
 
 The authors declare that they have no competing interests.
 
 ### Funding
 
-> All sources of funding for the research reported should be declared. The role of the funding body in the design of the study and collection, analysis, and interpretation of data and in writing the manuscript should be declared.
+Research reported in this publication was supported by the National Human Genome Research Institute of the National Institutes of Health under Award Number U54HG007990 and U01HL137183. 
+This publication was supported by a Subagreement from European Molecular Biology Laboratory with funds provided by Agreement No. 2U41HG007234 from National Institute of Health, NHGRI. 
+Its contents are solely the responsibility of the authors and do not necessarily represent the official views of National Institute of Health, NHGRI or European Molecular Biology Laboratory.
+The research was made possible by the generous financial support of the W.M. Keck Foundation (DT06172015).
 
-DH was supported by the International Max Planck Research School for Computational Biology and Scientific Computing doctoral program. JE was supported by the Jack Baskin and Peggy Downes-Baskin Fellowship. AMN was supported by the National Institutes of Health (5U41HG007234), the W.M. Keck Foundation (DT06172015) and the Simons Foundation (SFLIFE# 35190). 
+DH was supported by the International Max Planck Research School for Computational Biology and Scientific Computing doctoral program. 
+JE was supported by the Jack Baskin and Peggy Downes-Baskin Fellowship. 
+AMN was supported by the National Institutes of Health (5U41HG007234), the W.M. Keck Foundation (DT06172015) and the Simons Foundation (SFLIFE# 35190). 
+JAS was supported by the Carlsberg Foundation (CF17-0881). 
+
 
 ### Authors' contributions
 

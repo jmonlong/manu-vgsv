@@ -1,5 +1,5 @@
 {
-  "date": "May 24, 2019",
+  "date": "May 28, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -149,7 +149,7 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "b47b560e74f357458573ba138541214fc84790f4"
+    "commit": "dc06adada54739cf7fd46d433966b34bf985806e"
   },
   "manuscript_stats": {
     "reference_counts": {
@@ -158,6 +158,6 @@
       "url": 4,
       "total": 40
     },
-    "word_count": 10414
+    "word_count": 10492
   }
 }
