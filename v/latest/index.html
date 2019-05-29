@@ -36,7 +36,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variants in pangenome graphs using the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/35852320569f679f1ded48e162a4b7f48a9cb158/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/35852320569f679f1ded48e162a4b7f48a9cb158">jmonlong/manu-vgsv@3585232</a> on May 29, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/e23bc46dcfdf27567e77ca3f074abd5f4d9a7264/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/e23bc46dcfdf27567e77ca3f074abd5f4d9a7264">jmonlong/manu-vgsv@e23bc46</a> on May 29, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p><a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> David Heller<sup>1,2,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jonas Andreas Sibbesen<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jouni Siren<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Jordan Eizenga<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Eric Dawson<sup>3</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Erik Garrison<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX"><img src="images/orcid.svg" alt="ORCID icon" width="11" height="11" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -265,7 +265,7 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <p>Prior to variant calling, we mapped the Illumina short reads of all 12 yeast strains to both graphs using <code>vg map</code>. We measured the fractions of reads mapped with specific properties using <code>vg view</code> and the JSON processor <code>jq</code>. Then, we applied <code>toil-vg call</code> (commit be8b6da) to call variants, obtaining a separate variant call set for each of the 11 non-reference strains on both graphs and for each of the two strain sets (in total 11 x 2 x 2 = 44 call sets). From the call sets, we removed variants smaller than 50 bp and variants with missing or homozygous reference genotypes. To evaluate the filtered call sets, we generated a sample graph (i.e. a graph representation of the call set) for each call set using <code>vg construct</code> and <code>vg mod</code> on the reference assembly <em>S.c. S288C</em> and the call set. Subsequently, we mapped short reads from the respective strains to each sample graph using <code>vg map</code>. We mapped the short reads also to an empty sample graph that was generated using <code>vg construct</code> as a graph representation of the linear reference genome. In an effort to restrict our analysis to SV regions, we removed reads that mapped equally well (i.e. with identical mapping quality and percent identity) to all three graphs (the two sample graphs and the empty sample graph) from the analysis. These filtered out reads most likely stem from portions of the strains’ genomes that are identical to the reference strain <em>S.c. S288C</em>. We analyzed the remaining alignments of reads from SV regions with <code>vg view</code> and <code>jq</code>.</p>
 <h2 id="declarations">Declarations</h2>
 <h3 id="availability-of-data-and-material">Availability of data and material</h3>
-<p>The commands used to run the analyses presented in this study are available at <a href="https://github.com/vgteam/sv-genotyping-paper">github.com/vgteam/sv-genotyping-paper</a> (ZENODO DOI WHEN READY). The datasets generated and/or analysed during the current study are also listed in this repository.</p>
+<p>The commands used to run the analyses presented in this study are available at <a href="https://github.com/vgteam/sv-genotyping-paper">github.com/vgteam/sv-genotyping-paper</a><span class="citation" data-cites="rXSPQWTb">[<a href="#ref-rXSPQWTb">41</a>]</span>. The datasets generated and/or analysed during the current study are also listed in this repository.</p>
 <p>The scripts to generate the manuscript, including figures and tables, are available at <a href="https://github.com/jmonlong/manu-vgsv">github.com/jmonlong/manu-vgsv</a>.</p>
 <h3 id="competing-interests">Competing interests</h3>
 <p>The authors declare that they have no competing interests.</p>
@@ -1368,6 +1368,12 @@ DOI: <a href="https://doi.org/10.1186/s13059-016-0997-x">10.1186/s13059-016-0997
 <p>40. <strong>PHYLIP - Phylogeny Inference Package (Version 3.2).</strong><br />
 Joel Felsenstein<br />
 <em>Cladistics</em> (1989)</p>
+</div>
+<div id="ref-rXSPQWTb">
+<p>41. <strong>vgteam/sv-genotyping-paper: Code repository for “Genotyping structural variants in pangenome graphs using the vg toolkit”</strong><br />
+Jean Monlong, Glenn Hickey, David Heller<br />
+<em>Zenodo</em> (2019-05-29) <a href="https://doi.org/gf29bv">https://doi.org/gf29bv</a><br />
+DOI: <a href="https://doi.org/10.5281/zenodo.3234891">10.5281/zenodo.3234891</a></p>
 </div>
 </div>
 <script>
