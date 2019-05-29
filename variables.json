@@ -4,7 +4,6 @@
     {
       "name": "Glenn Hickey",
       "initials": "GH",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
       "email": "glenn.hickey@gmail.com",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -18,7 +17,7 @@
     {
       "name": "David Heller",
       "initials": "DH",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-8346-9565",
       "email": "daheller@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA",
@@ -34,7 +33,7 @@
     {
       "name": "Jean Monlong",
       "initials": "JM",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0002-9737-5516",
       "email": "jmonlong@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -48,7 +47,7 @@
     {
       "name": "Jonas Andreas Sibbesen",
       "initials": "JAS",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0002-5528-0236",
       "email": "jsibbese@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -60,7 +59,7 @@
     {
       "name": "Jouni Siren",
       "initials": "JS",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-5828-4139",
       "email": "jltsiren@gmail.com",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -72,7 +71,7 @@
     {
       "name": "Jordan Eizenga",
       "initials": "JE",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-8345-8356",
       "email": "jeizenga@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -84,7 +83,7 @@
     {
       "name": "Eric Dawson",
       "initials": "ED",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-5448-1653",
       "email": "eric.t.dawson@gmail.com",
       "affiliations": [
         "Department of Genetics, University of Cambridge, Cambridge, UK"
@@ -96,7 +95,7 @@
     {
       "name": "Erik Garrison",
       "initials": "EG",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0003-3821-631X",
       "email": "ergarris@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -108,7 +107,7 @@
     {
       "name": "Adam Novak",
       "initials": "AN",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-5828-047X",
       "email": "anovak@soe.ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -120,7 +119,7 @@
     {
       "name": "Benedict Paten",
       "initials": "BP",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
+      "orcid": "0000-0001-8863-3539",
       "email": "bpaten@ucsc.edu",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
@@ -149,7 +148,7 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "e23bc46dcfdf27567e77ca3f074abd5f4d9a7264"
+    "commit": "9b31018fcacb80fdce7b3257e073a60ff51594ee"
   },
   "manuscript_stats": {
     "reference_counts": {
