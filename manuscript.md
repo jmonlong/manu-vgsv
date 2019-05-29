@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-28'
+date-meta: '2019-05-29'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/9c95608fc76b8d0dca05b04758b20cf84917d21c/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/fc5532c28b5a18a15cb26ac17c3f95eeb2368aac/))
 was automatically generated
-from [jmonlong/manu-vgsv@9c95608](https://github.com/jmonlong/manu-vgsv/tree/9c95608fc76b8d0dca05b04758b20cf84917d21c)
-on May 28, 2019.
+from [jmonlong/manu-vgsv@fc5532c](https://github.com/jmonlong/manu-vgsv/tree/fc5532c28b5a18a15cb26ac17c3f95eeb2368aac)
+on May 29, 2019.
 </em></small>
 
 ## Authors
@@ -273,38 +273,40 @@ Genome alignments from graph-based software such as Cactus [@1FgS53pXi] can cont
 We sought to establish if graphs built in this fashion provide advantages for SV genotyping.
 
 To do so, we analyzed public sequencing datasets for 12 yeast strains from two related clades (*S. cerevisiae* and *S. paradoxus*) [@7f5OKa5O].
-We compared genotyping results using two different types of genome graphs.
-The graphs were constructed using 5 of the 12 strains.
-*S.c. S288C* was used as the reference strain, and we selected two other strains from each of the two clades (see [Methods](#yeast-graph-analysis)).
-The first graph (called *VCF graph* below) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified from the other four assemblies by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
-The second graph (called *cactus graph* below) was derived from a multiple genome alignment of the five strains using Cactus [@1FgS53pXi].
+We distinguished two different strain sets, in order to assess how the completeness of the graph affects the results. 
+For the *all strains set*, all 12 strains were used, with *S.c. S288C* as the reference strain.
+For the *five strains set*, *S.c. S288C* was used as the reference strain, and we selected two other strains from each of the two clades (see [Methods](#yeast-graph-analysis)).
+We compared genotyping results from two different types of genome graphs.
+The first graph (*VCF graph*) was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified from the other assemblies in the respective strain set by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
+The second graph (*cactus graph*) was derived from a multiple genome alignment of the strains in the respective strain set using Cactus [@1FgS53pXi].
 The *VCF graph* is mostly linear and highly dependent on the reference genome.
 In contrast, the *cactus graph* is structurally complex and relatively free of reference bias.
 
 First, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains (see [Supplementary Information](#mappability-comparison-between-yeast-graphs)).
-Generally, more reads mapped to the *cactus graph* with high identity (Figure {@fig:panel3}a) and high mapping quality (Figure {@fig:panel3}b) than to the *VCF graph*.
+Generally, more reads mapped to the *cactus graph* with high identity (Figures {@fig:panel3}a and {@fig:panel5}a) and high mapping quality (Figures {@fig:panel3}b and {@fig:panel5}b) than to the *VCF graph*.
 
-Next, we compared the SV genotyping performance of both graphs.
+Next, we compared the SV genotyping performance of both graph types.
 We mapped short reads from the 11 non-reference strains to both graphs and called variants for each strain using the vg toolkit's variant calling module (see [Methods](#toil-vg-call)).
 There is no gold standard call set for these samples, so we used an indirect measure of SV calling accuracy.
-We evaluated each call set based on the alignment of reads to a *sample graph* constructed from the call set (see [Methods](#calling-and-genotyping-of-svs)).
+We evaluated each SV call set based on the alignment of reads to a *sample graph* constructed from the call set (see [Methods](#calling-and-genotyping-of-svs)).
 If a given call set is correct, we expect that reads from the same sample will be mapped with high identity and confidence to the corresponding sample graph.
-Therefore, we compared the average percent identity and mapping quality of the short reads on each sample graph (Figures {@fig:4}a and b).
-Similar to the mappability results, the *cactus graph* clearly outperformed the *VCF graph* for strains in the *S. paradoxus* clade and performed slightly better for strains in the *S. cerevisiae* clade.
-While the higher percent identity shows that the *cactus graph* represents the reads better (Figures {@fig:4}a), the higher mapping quality confirms that this did not come at the cost of added ambiguity or a more complex graph (Figures {@fig:4}b).
-Our results did not show a substantial difference between strains included in the graph and those that were excluded.
-This suggests that two strains from each clade as well as the reference strain are sufficient to capture most of the genetic variation among all the strains.
-For a direct comparison, see Figure {@fig:panel6} which shows results of the same experiment on graphs generated from all 12 strains.
+To specifically quantify mappability in SV regions we excluded reads that produced identical mapping quality and identity on both sample graphs and an empty sample graph containing the linear reference only (see [Methods](#calling-and-genotyping-of-svs) and Figure {@fig:panel6} for results from all reads).
+Then, we analyzed the average delta in mapping identity and mapping quality of the remaining short reads between both sample graphs (Figures {@fig:4}a and b).
+
+For most of the strains, we observed an improvement in mapping identity of the short reads on the *cactus sample graph* compared to the *VCF sample graph*.
+The mean improvement in mapping identity across the strains was 8.0% and 8.5% for the *all strains set* graphs and the *five strains set* graphs, respectively.
+Generally, the improvement in mapping identity was larger for strains in the *S. paradoxus* clade (mean of 13.7% and 13.3% for the two strain sets, respectively) than for strains in the *S. cerevisiae* clade (mean of 3.3% and 4.4%).
+While the higher mapping identity indicated that the *cactus graph* represents the reads better (Figure {@fig:4}a), the higher mapping quality confirmed that this did not come at the cost of added ambiguity or a more complex graph (Figure {@fig:4}b).
+For most strains, we observed an improvement in mapping quality of the short reads on the *cactus sample graph* compared to the *VCF sample graph* (mean improvement across the strains of 1.0 and 5.7 for the two strain sets, respectively).
 
 ![**SV genotyping comparison.**
-Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. 
+Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*. 
 Subsequently, sample graphs were generated from the resulting SV callsets. 
-The short reads were aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
-More accurate genotypes should result in reference graphs that have mappings with high identity and confidence for a greater proportion of the reads.
-a) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
-b) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
-Colors and shapes represent the 11 non-reference strains and two clades, respectively. 
-Transparency indicates whether the strain was used to construct the graphs.
+The short reads were aligned to the sample graphs and reads with identical mapping identity and quality across both sample graphs and an additional empty sample graph were removed from the analysis.
+The quality of the remaining divergent alignments was used to ascertain SV genotyping performance.
+The bars show the average delta in mapping identity (a) and in mapping quality (b) of divergent short reads aligned to the sample graphs derived from the *cactus graph* and the *VCF graph*.
+Positive values denote an improvement of the *cactus graph* over the *VCF graph*.
+Colors represent the two strain sets and transparency indicates whether the respective strain was part of the *five strains set*.
 ](images/panel4.png){#fig:4}
 
 
@@ -547,28 +549,31 @@ We also explored the performance of vg and SMRT-SV v2 in different sets of regio
 ### Yeast graph analysis
 
 For the analysis of graphs from *de novo* assemblies, we utilized publicly available PacBio-derived assemblies and Illumina short read sequencing datasets for 12 yeast strains from two related clades (Table {@tbl:strains}) [@7f5OKa5O].
-We selected five strains for graph contruction (two from different subclades of each clade plus the reference *S.c. S288C*): *S.c. SK1*, *S.c. YPS128*, *S.p. CBS432*, *S.p. UFRJ50816*, and *S.c. S288C*.
-We constructed two different genome graphs from the assemblies of the five selected strains.
+We constructed graphs from two different strain sets:
+For the *five strains set*, we selected five strains for graph contruction (*S.c. SK1*, *S.c. YPS128*, *S.p. CBS432*, *S.p. UFRJ50816* and *S.c. S288C*).
+We randomly selected two strains from different subclades of each clade as well as the reference strain *S.c. S288C*.
+For the *all strains set* in contrast, we utilized all twelve strains for graph contruction.
+We constructed two different types of genome graphs from the PacBio-derived assemblies of the five or twelve (depending on the strains set) selected strains.
 In this section, we describe the steps for the construction of both graphs and the calling of variants.
 More details and the precise commands used in our analyses can be found at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
 
 
-| Strain      | Clade         | Included in graph |
-|-------------|---------------|-------------------|
-| S288C       | S. cerevisiae | ✓                 |
-| SK1         | S. cerevisiae | ✓                 |
-| YPS128      | S. cerevisiae | ✓                 |
-| UWOPS034614 | S. cerevisiae |                   |
-| Y12         | S. cerevisiae |                   |
-| DBVPG6765   | S. cerevisiae |                   |
-| DBVPG6044   | S. cerevisiae |                   |
-| CBS432      | S. paradoxus  | ✓                 |
-| UFRJ50816   | S. paradoxus  | ✓                 |
-| N44         | S. paradoxus  |                   |
-| UWOPS919171 | S. paradoxus  |                   |
-| YPS138      | S. paradoxus  |                   |
+| Strain      | Clade         | Included in *five strains set* | Included in *all strains set* |
+|-------------|---------------|--------------------------------|--------------------------------|
+| S288C       | S. cerevisiae | ✓                              | ✓                              |
+| SK1         | S. cerevisiae | ✓                              | ✓                              |
+| YPS128      | S. cerevisiae | ✓                              | ✓                              |
+| UWOPS034614 | S. cerevisiae |                                | ✓                              |
+| Y12         | S. cerevisiae |                                | ✓                              |
+| DBVPG6765   | S. cerevisiae |                                | ✓                              |
+| DBVPG6044   | S. cerevisiae |                                | ✓                              |
+| CBS432      | S. paradoxus  | ✓                              | ✓                              |
+| UFRJ50816   | S. paradoxus  | ✓                              | ✓                              |
+| N44         | S. paradoxus  |                                | ✓                              |
+| UWOPS919171 | S. paradoxus  |                                | ✓                              |
+| YPS138      | S. paradoxus  |                                | ✓                              |
 
-Table: 12 yeast strains from two related clades were used in our analysis. Five strains were selected to be included in the graphs while the remaining seven were used for variant calling only. {#tbl:strains}
+Table: 12 yeast strains from two related clades were used in our analysis. Five strains were selected to be included in the *five strains set* and all strains were included in the *all strains set*. Graphs were constructed from strains in the respective strain set while all eleven non-reference strains were used for variant calling. {#tbl:strains}
 
 #### Construction of the *VCF graph*
 
@@ -577,14 +582,14 @@ This method requires one assembly to serve as a reference genome.
 The other assemblies must be converted to variant calls relative to this reference.
 The PacBio assembly of the S.c. S288C strain was chosen as the reference genome because this strain was used for the S. cerevisiae genome reference assembly.
 To obtain variants for the other assemblies, we combined three methods for SV detection from genome assemblies: Assemblytics [@krO7WgVi] (commit df5361f), AsmVar (commit 5abd91a) [@oVaXIwl5] and paftools (version 2.14-r883) [@172cJaw4Q].
-We constructed a union set of variants detected by the three methods (using bedtools [@1HWiAHnIw]), and combined variants with a reciprocal overlap of at least 50% to avoid duplication in the union set.
-We merged these union sets of variants for each of the four selected (and non-reference) strains, and we then applied another deduplication step to combine variants with a reciprocal overlap of at least 90%.
+We constructed a union set of SVs detected by the three methods (using bedtools [@1HWiAHnIw]), and combined variants with a reciprocal overlap of at least 50% to avoid duplication in the union set.
+We merged these union sets of variants for each of the other (non-reference) strains in the strain set, and we then applied another deduplication step to combine variants with a reciprocal overlap of at least 90%.
 We then used `vg construct` to build the *VCF graph* with the total set of variants and the linear reference genome.
 
 #### Construction of the *cactus graph*
 
 The second graph (called the *cactus graph* throughout the paper) was constructed from a whole genome alignment between the assemblies.
-First, the repeat-masked PacBio-assemblies of the five selected strains were aligned with our Cactus tool [@1FgS53pXi].
+First, the repeat-masked PacBio-assemblies of the strains in the strain set were aligned with our Cactus tool [@1FgS53pXi].
 Cactus requires a phylogenetic tree of the strains which was estimated using Mash (version 2.1) [@mH9pzoIn] and PHYLIP (version 3.695) [@tIvRXd6o].
 Subsequently, we converted the HAL format output file to a variation graph with hal2vg ([https://github.com/ComparativeGenomicsToolkit/hal2vg](https://github.com/ComparativeGenomicsToolkit/hal2vg)).
 
@@ -592,10 +597,15 @@ Subsequently, we converted the HAL format output file to a variation graph with 
 
 Prior to variant calling, we mapped the Illumina short reads of all 12 yeast strains to both graphs using `vg map`.
 We measured the fractions of reads mapped with specific properties using `vg view` and the JSON processor `jq`.
-Then, we applied `toil-vg call` (commit be8b6da) to call variants, obtaining a separate variant call set for each of the strains on both graphs.
-To evaluate the callsets, we generated a sample graph (i.e. a graph representation of the callset) for each callset using `vg construct` and `vg mod` on the reference assembly *S.c. S288C* and the callset.
+Then, we applied `toil-vg call` (commit be8b6da) to call variants, obtaining a separate variant call set for each of the 11 non-reference strains on both graphs and for each of the two strain sets (in total 11 x 2 x 2 = 44 call sets).
+From the call sets, we removed variants smaller than 50 bp and variants with missing or homozygous reference genotypes.
+To evaluate the filtered call sets, we generated a sample graph (i.e. a graph representation of the call set) for each call set using `vg construct` and `vg mod` on the reference assembly *S.c. S288C* and the call set.
 Subsequently, we mapped short reads from the respective strains to each sample graph using `vg map`.
-We analyzed the resulting alignments with `vg view` and `jq`.
+We mapped the short reads also to an empty sample graph that was generated using `vg construct` as a graph representation of the linear reference genome.
+In an effort to restrict our analysis to SV regions, we removed reads that mapped equally well (i.e. with identical mapping quality and percent identity) to all three graphs (the two sample graphs and the empty sample graph) from the analysis.
+These filtered out reads most likely stem from portions of the strains' genomes that are identical to the reference strain *S.c. S288C*.
+We analyzed the remaining alignments of reads from SV regions with `vg view` and `jq`.
+
 
 
 ## Declarations
@@ -811,7 +821,7 @@ b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
 ](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S11"}
 
-![**Mapping comparison.**
+![**Mapping comparison on graphs of the *five strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
 The fraction of reads mapped to the cactus graph (y-axis) and the VCF graph (x-axis) are compared.
 a) Stratified by percent identity threshold.
@@ -820,18 +830,23 @@ Colors and shapes represent the 12 strains and two clades, respectively.
 Transparency indicates whether the strain was included or excluded in the graphs.
 ](images/panel3.png){#fig:panel3 tag="S12"}
 
-![**Mapping comparison on graphs of all 12 strains.**
-Short reads from all 12 yeast strains were aligned to both graphs. The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* (x-axis) are compared.
+![**Mapping comparison on graphs of the *all strains set*.**
+Short reads from all 12 yeast strains were aligned to both graphs.
+The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* (x-axis) are compared.
 a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
 ](images/panel5.png){#fig:panel5 tag="S13"}
 
-![**SV genotyping comparison on graphs of all 12 strains.**
-Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in both graphs. Subsequently, sample graphs were generated from the resulting SV callsets. The short reads were again aligned to the sample graphs and the quality of the alignments was used to ascertain genotyping performance.
-a) Average mapping quality of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis).
-b) Average mapping identity of short reads aligned to the sample graphs derived from *cactus graph* (y-axis) and *VCF graph* (x-axis). 
-Colors and shapes represent the 11 non-reference strains and two clades, respectively.
+![**SV genotyping comparison using all reads.**
+Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*. 
+Subsequently, sample graphs were generated from the resulting SV callsets. 
+The short reads were aligned to the sample graphs and the quality of all alignments was used to ascertain SV genotyping performance.
+More accurate genotypes should result in sample graphs that have mappings with high identity and confidence for a greater proportion of the reads.
+a) Average delta in mapping identity of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
+b) Average delta in mapping quality of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
+Positive values denote an improvement of the *cactus graph* over the *VCF graph*.
+Colors represent the two strain sets and transparency indicates whether the respective strain was part of the *five strains set*.
 ](images/panel6.png){#fig:panel6 tag="S14"}
 
 ![**Overview of the SV evaluation by the *sveval* package**. 
@@ -867,19 +882,18 @@ Across all SV types, the size of the variant didn't affect the ability to fine-t
 #### Mappability comparison between yeast graphs
 
 In order to elucidate whether the *cactus graph* represents the sequence diversity among the yeast strains better than the *VCF graph*, we mapped Illumina short reads to both graphs using `vg map`.
-Generally, more reads mapped to the *cactus graph* with high identity (Figure {@fig:panel3}a) and high mapping quality (Figure {@fig:panel3}b) than to the *VCF graph*.
+Generally, more reads mapped to the *cactus graph* with high identity (Figures {@fig:panel3}a and {@fig:panel5}a) and high mapping quality (Figures {@fig:panel3}b and {@fig:panel5}b) than to the *VCF graph*.
 The *VCF graph* exhibited higher mappability only on the reference strain *S.c. S288C* with a marginal difference.
 The benefit of using the *cactus graph* is largest for strains in the *S. paradoxus* clade and smaller for strains in the *S. cerevisiae* clade.
 We found that the genetic distance to the reference strain (as estimated using Mash v2.1 [@mH9pzoIn]) correlated with the increase in confidently mapped reads (mapping quality >= 60) between the *cactus graph* and the *VCF graph* (Spearman's rank correlation, p-value=3.993e-06).
-These results suggest that the improvement in mappability is not driven by the higher sequence content in the *cactus graph* alone (15.4 Mb compared to 12.4 Mb in the *VCF graph*).
+These results suggest that the improvement in mappability is not driven by the higher sequence content in the *cactus graph* alone (16.8 / 15.4 Mb in the *cactus graph* compared to 12.6 / 12.4 Mb in the *VCF graph* for the *all strains set* and the *five strains set*, respectively).
 Instead, an explanation could be the construction of the *VCF graph* from a comprehensive but still limited list of variants and the lack of SNPs and small Indels in this list.
-Consequently, substantially fewer reads mapped to the *VCF graph* with perfect identity (Figure {@fig:panel3}a, percent identity threshold = 100%) than to the *cactus graph*.
-The latter has the advantage of implicitly incorporating variants of all types and sizes from the *de novo* assemblies.
+Consequently, substantially fewer reads mapped to the *VCF graph* with perfect identity (Figures {@fig:panel3}a and {@fig:panel5}a, percent identity threshold = 100%) than to the *cactus graph*.
+The *cactus graph* has the advantage of implicitly incorporating variants of all types and sizes from the *de novo* assemblies.
 As a consequence, the *cactus graph* captures the genetic makeup of each strain more comprehensively and enables more reads to be mapped.
 
-Interestingly, our measurements did not show a substantial difference between strains that were used to construct the graph and the other strains. 
-Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a). 
-For a direct comparison, see Figure {@fig:panel5} which shows results of the same experiment on graphs generated from all 12 strains.
+Interestingly, our measurements for the *five strains set* showed only small differences between the five strains that were used to construct the graph and the other seven strains (Figure {@fig:panel3}). 
+Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a).
 
 
 ## References {.page_break_before}
