@@ -16,7 +16,7 @@ keywords:
 - pangenome
 - variant genotyping
 lang: en-US
-title: Genotyping structural variation in variation graphs with the vg toolkit
+title: Genotyping structural variants in pangenome graphs using the vg toolkit
 ...
 
 
@@ -27,9 +27,9 @@ title: Genotyping structural variation in variation graphs with the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/ddbdefb6d5f876091e6ead2a68d50e2c9ab2eef1/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/35852320569f679f1ded48e162a4b7f48a9cb158/))
 was automatically generated
-from [jmonlong/manu-vgsv@ddbdefb](https://github.com/jmonlong/manu-vgsv/tree/ddbdefb6d5f876091e6ead2a68d50e2c9ab2eef1)
+from [jmonlong/manu-vgsv@3585232](https://github.com/jmonlong/manu-vgsv/tree/35852320569f679f1ded48e162a4b7f48a9cb158)
 on May 29, 2019.
 </em></small>
 
