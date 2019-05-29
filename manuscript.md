@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/35852320569f679f1ded48e162a4b7f48a9cb158/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/e23bc46dcfdf27567e77ca3f074abd5f4d9a7264/))
 was automatically generated
-from [jmonlong/manu-vgsv@3585232](https://github.com/jmonlong/manu-vgsv/tree/35852320569f679f1ded48e162a4b7f48a9cb158)
+from [jmonlong/manu-vgsv@e23bc46](https://github.com/jmonlong/manu-vgsv/tree/e23bc46dcfdf27567e77ca3f074abd5f4d9a7264)
 on May 29, 2019.
 </em></small>
 
@@ -612,7 +612,7 @@ We analyzed the remaining alignments of reads from SV regions with `vg view` and
 
 ### Availability of data and material
 
-The commands used to run the analyses presented in this study are available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper) (ZENODO DOI WHEN READY).
+The commands used to run the analyses presented in this study are available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper)[@rXSPQWTb].
 The datasets generated and/or analysed during the current study are also listed in this repository.
 
 The scripts to generate the manuscript, including figures and tables, are available at [github.com/jmonlong/manu-vgsv](https://github.com/jmonlong/manu-vgsv).

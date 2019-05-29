@@ -3815,6 +3815,38 @@
     "URL": "https://doi.org/gf2jss"
   },
   {
+    "type": "article",
+    "id": "rXSPQWTb",
+    "author": [
+      {
+        "family": "Monlong",
+        "given": "Jean"
+      },
+      {
+        "family": "Hickey",
+        "given": "Glenn"
+      },
+      {
+        "family": "Heller",
+        "given": "David"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          5,
+          29
+        ]
+      ]
+    },
+    "abstract": "This repository contains the commands and scripts used for Genotyping structural variants in pangenome graphs using the vg toolkit, 2019 (manuscript repo).",
+    "DOI": "10.5281/zenodo.3234891",
+    "publisher": "Zenodo",
+    "title": "vgteam/sv-genotyping-paper: Code repository for \"Genotyping structural variants in pangenome graphs using the vg toolkit\"",
+    "URL": "https://doi.org/gf29bv"
+  },
+  {
     "type": "article-journal",
     "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
     "container-title": "Cladistics",
