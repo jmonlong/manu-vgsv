@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-05-29'
+date-meta: '2019-06-03'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/9b31018fcacb80fdce7b3257e073a60ff51594ee/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/be17ff667686a0717fec21a8b1b76bae032b729d/))
 was automatically generated
-from [jmonlong/manu-vgsv@9b31018](https://github.com/jmonlong/manu-vgsv/tree/9b31018fcacb80fdce7b3257e073a60ff51594ee)
-on May 29, 2019.
+from [jmonlong/manu-vgsv@be17ff6](https://github.com/jmonlong/manu-vgsv/tree/be17ff667686a0717fec21a8b1b76bae032b729d)
+on June 3, 2019.
 </em></small>
 
 ## Authors
@@ -38,23 +38,23 @@ on May 29, 2019.
 
 
 Glenn Hickey<sup>1,☯</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-8346-9565)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-8346-9565)
 David Heller<sup>1,2,☯</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0002-9737-5516)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0002-9737-5516)
 Jean Monlong<sup>1,☯</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0002-5528-0236)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0002-5528-0236)
 Jonas Andreas Sibbesen<sup>1</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-5828-4139)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5828-4139)
 Jouni Siren<sup>1</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-8345-8356)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-8345-8356)
 Jordan Eizenga<sup>1</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-5448-1653)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5448-1653)
 Eric Dawson<sup>3</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0003-3821-631X)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0003-3821-631X)
 Erik Garrison<sup>1</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-5828-047X)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5828-047X)
 Adam Novak<sup>1</sup>,
-[![ORCID icon](images/orcid.svg){height="11px" width="11px"}](https://orcid.org/0000-0001-8863-3539)
+[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-8863-3539)
 Benedict Paten<sup>1,†</sup>
 
 <sup>☯</sup> --- These authors contributed equally to this work
