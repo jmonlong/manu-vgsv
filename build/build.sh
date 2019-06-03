@@ -15,7 +15,6 @@ manubot process \
 
 # pandoc settings
 CSL_PATH=build/assets/style.csl
-DOCX_PATH=build/assets/pandoc-reference.docx
 BIBLIOGRAPHY_PATH=output/references.json
 INPUT_PATH=output/manuscript.md
 
@@ -34,17 +33,29 @@ pandoc --verbose \
   --bibliography=$BIBLIOGRAPHY_PATH \
   --csl=$CSL_PATH \
   --metadata link-citations=true \
+  --include-after-body=build/themes/default.html \
+  --include-after-body=build/plugins/table-scroll.html \
+  --include-after-body=build/plugins/anchors.html \
+  --include-after-body=build/plugins/accordion.html \
+  --include-after-body=build/plugins/tooltips.html \
+  --include-after-body=build/plugins/jump-to-first.html \
+  --include-after-body=build/plugins/link-highlight.html \
+  --include-after-body=build/plugins/table-of-contents.html \
+  --include-after-body=build/plugins/lightbox.html \
   --mathjax \
-  --css=github-pandoc.css \
-  --include-in-header=build/assets/analytics.html \
-  --include-after-body=build/assets/anchors.html \
-  --include-after-body=build/assets/hypothesis.html \
+  --variable math="" \
+  --include-after-body=build/plugins/math.html \
+  --include-after-body=build/plugins/hypothesis.html \
+  --include-after-body=build/plugins/analytics.html \
   --output=output/manuscript.html \
   $INPUT_PATH
 
+# Return null if docker command is missing, otherwise return path to docker
+DOCKER_EXISTS=`command -v docker`
+
 # Create PDF output (unless BUILD_PDF environment variable equals "false")
-if [ "$BUILD_PDF" != "false" ]; then
-  echo "Exporting PDF manuscript"
+if [ "$BUILD_PDF" != "false" ] && [ -z "$DOCKER_EXISTS" ]; then
+  echo "Exporting PDF manuscript using WeasyPrint"
   if [ -L images ]; then rm images; fi  # if images is a symlink, remove it
   cp -r content/images .
   pandoc \
@@ -59,10 +70,27 @@ if [ "$BUILD_PDF" != "false" ]; then
     --csl=$CSL_PATH \
     --metadata link-citations=true \
     --webtex=https://latex.codecogs.com/svg.latex? \
-    --css=webpage/github-pandoc.css \
+    --include-after-body=build/themes/default.html \
     --output=output/manuscript.pdf \
     $INPUT_PATH
   rm -r images
+fi
+
+# Create PDF output (unless BUILD_PDF environment variable equals "false")
+if [ "$BUILD_PDF" != "false" ] && [ -n "$DOCKER_EXISTS" ]; then
+  echo "Exporting PDF manuscript using Docker + Athena"
+  if [ -d output/images ]; then rm -rf output/images; fi  # if images is a directory, remove it
+  cp -R -L content/images output/
+  docker run \
+    --rm \
+    --shm-size=1g \
+    --volume=`pwd`/output:/converted/ \
+    --security-opt=seccomp:unconfined \
+    arachnysdocker/athenapdf:2.16.0 \
+    athenapdf \
+    --delay=2000 \
+    manuscript.html manuscript.pdf
+  rm -rf output/images
 fi
 
 # Create DOCX output (if BUILD_DOCX environment variable equals "true")
@@ -77,7 +105,7 @@ if [ "$BUILD_DOCX" = "true" ]; then
     --bibliography=$BIBLIOGRAPHY_PATH \
     --csl=$CSL_PATH \
     --metadata link-citations=true \
-    --reference-doc=$DOCX_PATH \
+    --reference-doc=build/themes/default.docx \
     --resource-path=.:content \
     --output=output/manuscript.docx \
     $INPUT_PATH

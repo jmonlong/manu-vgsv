@@ -111,7 +111,13 @@ def checkout_existing_versions(args):
         # Addresses an odd behavior where git checkout stages v/* files that don't actually exist
         subprocess.run(['git', 'add', 'v'])
     else:
-        print(f'Checkout returned a nonzero exit status. See stderr:\n{process.stderr.decode()}')
+        stderr = process.stderr.decode()
+        print(f'Checkout returned a nonzero exit status. See stderr:\n{stderr.rstrip()}')
+        if 'pathspec' in stderr:
+            print(
+                'Manubot note: if there are no preexisting webpage versions (like for a newly created manuscript), '
+                'the pathspec error above is expected and can be safely ignored.'
+            )  # see https://github.com/manubot/rootstock/issues/183
 
 
 def create_version(args):
@@ -138,12 +144,6 @@ def create_version(args):
             src=src_path,
             dst=args.version_directory.joinpath(dst),
         )
-
-    # Copy webpage/github-pandoc.css to to webpage/v/version/github-pandoc.css
-    shutil.copy2(
-        src=args.webpage_directory.joinpath('github-pandoc.css'),
-        dst=args.version_directory.joinpath('github-pandoc.css'),
-    )
 
     # Create v/freeze to redirect to v/commit
     path = pathlib.Path('build/assets/redirect-template.html')
