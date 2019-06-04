@@ -6,11 +6,11 @@ author-meta:
 - Jonas Andreas Sibbesen
 - Jouni Siren
 - Jordan Eizenga
-- Eric Dawson
+- Eric T. Dawson
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-06-03'
+date-meta: '2019-06-04'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/be17ff667686a0717fec21a8b1b76bae032b729d/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/5a7986b804bbea4bccc6f13ab46fbb38beed95f9/))
 was automatically generated
-from [jmonlong/manu-vgsv@be17ff6](https://github.com/jmonlong/manu-vgsv/tree/be17ff667686a0717fec21a8b1b76bae032b729d)
-on June 3, 2019.
+from [jmonlong/manu-vgsv@5a7986b](https://github.com/jmonlong/manu-vgsv/tree/5a7986b804bbea4bccc6f13ab46fbb38beed95f9)
+on June 4, 2019.
 </em></small>
 
 ## Authors
@@ -49,7 +49,7 @@ Jouni Siren<sup>1</sup>,
 [![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-8345-8356)
 Jordan Eizenga<sup>1</sup>,
 [![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5448-1653)
-Eric Dawson<sup>3</sup>,
+Eric T. Dawson<sup>3,4</sup>,
 [![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0003-3821-631X)
 Erik Garrison<sup>1</sup>,
 [![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5828-047X)
@@ -66,6 +66,7 @@ Benedict Paten<sup>1,†</sup>
 1. UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
 2. Max Planck Institute for Molecular Genetics, Berlin, Germany
 3. Department of Genetics, University of Cambridge, Cambridge, UK
+4. Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA
 
 </small>
 

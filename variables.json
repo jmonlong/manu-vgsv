@@ -1,5 +1,5 @@
 {
-  "date": "June 3, 2019",
+  "date": "June 4, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -81,15 +81,17 @@
       ]
     },
     {
-      "name": "Eric Dawson",
-      "initials": "ED",
+      "name": "Eric T. Dawson",
+      "initials": "ETD",
       "orcid": "0000-0001-5448-1653",
       "email": "eric.t.dawson@gmail.com",
       "affiliations": [
-        "Department of Genetics, University of Cambridge, Cambridge, UK"
+        "Department of Genetics, University of Cambridge, Cambridge, UK",
+        "Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA"
       ],
       "affiliation_numbers": [
-        3
+        3,
+        4
       ]
     },
     {
@@ -142,13 +144,17 @@
     {
       "affiliation": "Department of Genetics, University of Cambridge, Cambridge, UK",
       "affiliation_number": 3
+    },
+    {
+      "affiliation": "Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA",
+      "affiliation_number": 4
     }
   ],
   "ci_source": {
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "be17ff667686a0717fec21a8b1b76bae032b729d"
+    "commit": "5a7986b804bbea4bccc6f13ab46fbb38beed95f9"
   },
   "manuscript_stats": {
     "reference_counts": {

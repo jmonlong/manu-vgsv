@@ -10,11 +10,11 @@
   <meta name="author" content="Jonas Andreas Sibbesen" />
   <meta name="author" content="Jouni Siren" />
   <meta name="author" content="Jordan Eizenga" />
-  <meta name="author" content="Eric Dawson" />
+  <meta name="author" content="Eric T. Dawson" />
   <meta name="author" content="Erik Garrison" />
   <meta name="author" content="Adam Novak" />
   <meta name="author" content="Benedict Paten" />
-  <meta name="dcterms.date" content="2019-06-03" />
+  <meta name="dcterms.date" content="2019-06-04" />
   <meta name="keywords" content="structural variation, pangenome, variant genotyping" />
   <title>Genotyping structural variants in pangenome graphs using the vg toolkit</title>
   <style>
@@ -31,15 +31,16 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variants in pangenome graphs using the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/be17ff667686a0717fec21a8b1b76bae032b729d/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/be17ff667686a0717fec21a8b1b76bae032b729d">jmonlong/manu-vgsv@be17ff6</a> on June 3, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/5a7986b804bbea4bccc6f13ab46fbb38beed95f9/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/5a7986b804bbea4bccc6f13ab46fbb38beed95f9">jmonlong/manu-vgsv@5a7986b</a> on June 4, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
-<p>Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/0000-0001-8346-9565"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> David Heller<sup>1,2,☯</sup>, <a href="https://orcid.org/0000-0002-9737-5516"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/0000-0002-5528-0236"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jonas Andreas Sibbesen<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-4139"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jouni Siren<sup>1</sup>, <a href="https://orcid.org/0000-0001-8345-8356"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jordan Eizenga<sup>1</sup>, <a href="https://orcid.org/0000-0001-5448-1653"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Eric Dawson<sup>3</sup>, <a href="https://orcid.org/0000-0003-3821-631X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Erik Garrison<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-047X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/0000-0001-8863-3539"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Benedict Paten<sup>1,†</sup></p>
+<p>Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/0000-0001-8346-9565"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> David Heller<sup>1,2,☯</sup>, <a href="https://orcid.org/0000-0002-9737-5516"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/0000-0002-5528-0236"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jonas Andreas Sibbesen<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-4139"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jouni Siren<sup>1</sup>, <a href="https://orcid.org/0000-0001-8345-8356"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jordan Eizenga<sup>1</sup>, <a href="https://orcid.org/0000-0001-5448-1653"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Eric T. Dawson<sup>3,4</sup>, <a href="https://orcid.org/0000-0003-3821-631X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Erik Garrison<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-047X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/0000-0001-8863-3539"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
 <p><sup>†</sup> — To whom correspondence should be addressed: bpaten@ucsc.edu <small></p>
 <ol type="1">
 <li>UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA</li>
 <li>Max Planck Institute for Molecular Genetics, Berlin, Germany</li>
 <li>Department of Genetics, University of Cambridge, Cambridge, UK</li>
+<li>Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA</li>
 </ol>
 <p></small></p>
 <h2 id="abstract" class="page_break_before">Abstract</h2>
