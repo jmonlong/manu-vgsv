@@ -5,7 +5,7 @@
     <title>Manubot</title>
     <id>http://www.zotero.org/styles/manubot</id>
     <link href="http://www.zotero.org/styles/manubot" rel="self"/>
-    <link href="https://github.com/greenelab/manubot-rootstock" rel="documentation"/>
+    <link href="https://github.com/manubot/rootstock" rel="documentation"/>
     <author>
       <name>Daniel Himmelstein</name>
       <email>daniel.himmelstein@gmail.com</email>
@@ -16,6 +16,11 @@
   <macro name="author">
     <names variable="author">
       <name initialize="false" initialize-with="" et-al-min="12" et-al-use-first="10" et-al-use-last="true"/>
+      <label form="long" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text macro="venue"/>
+      </substitute>
     </names>
   </macro>
   <macro name="venue">

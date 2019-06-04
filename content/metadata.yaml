@@ -1,5 +1,5 @@
 ---
-title: "Genotyping structural variation in variation graphs with the vg toolkit"
+title: "Genotyping structural variants in pangenome graphs using the vg toolkit"
 keywords:
   - structural variation
   - pangenome
@@ -9,7 +9,6 @@ author_info:
   -
     name: Glenn Hickey
     initials: GH
-    orcid: XXXX-XXXX-XXXX-XXXX
     email: glenn.hickey@gmail.com
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
@@ -18,7 +17,7 @@ author_info:
   -
     name: David Heller
     initials: DH
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0001-8346-9565
     email: daheller@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
@@ -28,7 +27,7 @@ author_info:
   -
     name: Jean Monlong
     initials: JM
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0002-9737-5516
     email: jmonlong@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
@@ -37,21 +36,21 @@ author_info:
   -
     name: Jonas Andreas Sibbesen
     initials: JAS
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0002-5528-0236
     email: jsibbese@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
     name: Jouni Siren
     initials: JS
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0001-5828-4139
     email: jltsiren@gmail.com
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
     name: Jordan Eizenga
     initials: JE
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0001-8345-8356
     email: jeizenga@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
@@ -66,21 +65,21 @@ author_info:
   -
     name: Erik Garrison
     initials: EG
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0003-3821-631X
     email: ergarris@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
     name: Adam Novak
     initials: AN
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0001-5828-047X
     email: anovak@soe.ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
     name: Benedict Paten
     initials: BP
-    orcid: XXXX-XXXX-XXXX-XXXX
+    orcid: 0000-0001-8863-3539
     email: bpaten@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
