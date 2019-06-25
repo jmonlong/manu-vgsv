@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-06-04'
+date-meta: '2019-06-25'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/5a7986b804bbea4bccc6f13ab46fbb38beed95f9/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/17fecd4482ac8c291685cf00e63ef86543e9e4ef/))
 was automatically generated
-from [jmonlong/manu-vgsv@5a7986b](https://github.com/jmonlong/manu-vgsv/tree/5a7986b804bbea4bccc6f13ab46fbb38beed95f9)
-on June 4, 2019.
+from [jmonlong/manu-vgsv@17fecd4](https://github.com/jmonlong/manu-vgsv/tree/17fecd4482ac8c291685cf00e63ef86543e9e4ef)
+on June 25, 2019.
 </em></small>
 
 ## Authors
@@ -141,7 +141,7 @@ These graph-based approaches showed clear advantages over standard methods that 
 
 In this work, we present a SV genotyping framework based on the variation graph model and implemented in the vg toolkit.
 We show that this method is capable of genotyping known deletions, insertions and inversions, and that its performance is not inhibited by small errors in the specification of SV allele breakpoints.
-We evaluated the genotyping accuracy of our approach using simulated and real Illumina reads and a pangenome built from SVs discovered in recent long-read sequencing studies[@3NNFS6U2;@vQTymKCj;@14neTdqfN;@16GvGhO20], 
+We evaluated the genotyping accuracy of our approach using simulated and real Illumina reads and a pangenome built from SVs discovered in recent long-read sequencing studies[@3NNFS6U2;@vQTymKCj;@RCzDkVqI;@16GvGhO20], 
 We also compared vg's performance with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm] and SMRT-SV v2[@3NNFS6U2].
 Across these three datasets that we tested, which range in size from 26k to 97k SVs, vg is the best performing SV genotyper on real short-read data for all SV types.
 Finally, we demonstrate that a pangenome graph built from the alignment of *de novo* assemblies of diverse _Saccharomyces cerevisiae_ strains improves SV genotyping performance.
@@ -199,7 +199,7 @@ Overall, both graph-based methods, vg and BayesTyper, outperformed the other two
 HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[@vQTymKCj].
 Reads were simulated from the HG00514 individual.
 Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested.
-GIAB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[@14neTdqfN;@16GvGhO20].
+GIAB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[@14neTdqfN;@16GvGhO20;@RCzDkVqI].
 a) Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). 
 We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars).
 Results are separated across panels by variant type: insertions and deletions.
@@ -234,7 +234,7 @@ Part of the deleted region is also covered by several reads, potentially confusi
 
 #### Genome in a Bottle Consortium
 
-The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for an Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20].
+The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for an Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20;@RCzDkVqI].
 Dozens of SV callers operating on datasets from short, long, and linked reads were used to produce this set of SVs.
 We evaluated the SV genotyping methods on this sample as well using the GIAB VCF, which also contains parental calls (HG003 and HG004), all totalling 30,224 SVs.
 vg performed similarly on this dataset as on the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
