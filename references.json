@@ -86,11 +86,12 @@
     },
     "URL": "https://doi.org/gfthvz",
     "container-title-short": "Cell",
+    "PMCID": "PMC6438697",
     "PMID": "30661756",
     "id": "3NNFS6U2"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "7536",
     "DOI": "10.1038/nature13907",
     "type": "article-journal",
@@ -178,7 +179,7 @@
     "id": "z91V6jjU"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "7571",
     "DOI": "10.1038/nature15394",
     "type": "article-journal",
@@ -523,7 +524,8 @@
       "date-parts": [
         [
           2015,
-          10
+          9,
+          30
         ]
       ]
     },
@@ -781,6 +783,7 @@
       }
     ],
     "container-title": "Nature",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -931,7 +934,7 @@
     "id": "faeC2cx0"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "4",
     "DOI": "10.1038/nbt.4060",
     "type": "article-journal",
@@ -1046,6 +1049,7 @@
       }
     ],
     "container-title": "Nature Biotechnology",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -1062,7 +1066,7 @@
     "id": "6KbgcueR"
   },
   {
-    "publisher": "Springer Nature America, Inc",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "9",
     "DOI": "10.1038/nbt.4227",
     "type": "article-journal",
@@ -1121,6 +1125,7 @@
       }
     ],
     "container-title": "Nature Biotechnology",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -1137,7 +1142,7 @@
     "id": "10jxt15v0"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "8",
     "DOI": "10.1038/ng.3021",
     "type": "article-journal",
@@ -1146,347 +1151,7 @@
     "title": "Whole-genome sequence variation, population structure and demographic history of the Dutch population",
     "volume": "46",
     "author": [
-      {
-        "given": "Laurent C",
-        "family": "Francioli"
-      },
-      {},
-      {
-        "given": "Androniki",
-        "family": "Menelaou"
-      },
-      {
-        "given": "Sara L",
-        "family": "Pulit"
-      },
-      {
-        "given": "Freerk",
-        "family": "van Dijk"
-      },
-      {
-        "given": "Pier Francesco",
-        "family": "Palamara"
-      },
-      {
-        "given": "Clara C",
-        "family": "Elbers"
-      },
-      {
-        "given": "Pieter B T",
-        "family": "Neerincx"
-      },
-      {
-        "given": "Kai",
-        "family": "Ye"
-      },
-      {
-        "given": "Victor",
-        "family": "Guryev"
-      },
-      {
-        "given": "Wigard P",
-        "family": "Kloosterman"
-      },
-      {
-        "given": "Patrick",
-        "family": "Deelen"
-      },
-      {
-        "given": "Abdel",
-        "family": "Abdellaoui"
-      },
-      {
-        "given": "Elisabeth M",
-        "family": "van Leeuwen"
-      },
-      {
-        "given": "Mannis",
-        "family": "van Oven"
-      },
-      {
-        "given": "Martijn",
-        "family": "Vermaat"
-      },
-      {
-        "given": "Mingkun",
-        "family": "Li"
-      },
-      {
-        "given": "Jeroen F J",
-        "family": "Laros"
-      },
-      {
-        "given": "Lennart C",
-        "family": "Karssen"
-      },
-      {
-        "given": "Alexandros",
-        "family": "Kanterakis"
-      },
-      {
-        "given": "Najaf",
-        "family": "Amin"
-      },
-      {
-        "given": "Jouke Jan",
-        "family": "Hottenga"
-      },
-      {
-        "given": "Eric-Wubbo",
-        "family": "Lameijer"
-      },
-      {
-        "given": "Mathijs",
-        "family": "Kattenberg"
-      },
-      {
-        "given": "Martijn",
-        "family": "Dijkstra"
-      },
-      {
-        "given": "Heorhiy",
-        "family": "Byelas"
-      },
-      {
-        "given": "Jessica",
-        "family": "van Setten"
-      },
-      {
-        "given": "Barbera D C",
-        "family": "van Schaik"
-      },
-      {
-        "given": "Jan",
-        "family": "Bot"
-      },
-      {
-        "given": "Isaäc J",
-        "family": "Nijman"
-      },
-      {
-        "given": "Ivo",
-        "family": "Renkens"
-      },
-      {
-        "given": "Tobias",
-        "family": "Marschall"
-      },
-      {
-        "given": "Alexander",
-        "family": "Schönhuth"
-      },
-      {
-        "given": "Jayne Y",
-        "family": "Hehir-Kwa"
-      },
-      {
-        "given": "Robert E",
-        "family": "Handsaker"
-      },
-      {
-        "given": "Paz",
-        "family": "Polak"
-      },
-      {
-        "given": "Mashaal",
-        "family": "Sohail"
-      },
-      {
-        "given": "Dana",
-        "family": "Vuzman"
-      },
-      {
-        "given": "Fereydoun",
-        "family": "Hormozdiari"
-      },
-      {
-        "given": "David",
-        "family": "van Enckevort"
-      },
-      {
-        "given": "Hailiang",
-        "family": "Mei"
-      },
-      {
-        "given": "Vyacheslav",
-        "family": "Koval"
-      },
-      {
-        "given": "Matthijs H",
-        "family": "Moed"
-      },
-      {
-        "given": "K Joeri",
-        "family": "van der Velde"
-      },
-      {
-        "given": "Fernando",
-        "family": "Rivadeneira"
-      },
-      {
-        "given": "Karol",
-        "family": "Estrada"
-      },
-      {
-        "given": "Carolina",
-        "family": "Medina-Gomez"
-      },
-      {
-        "given": "Aaron",
-        "family": "Isaacs"
-      },
-      {
-        "given": "Steven A",
-        "family": "McCarroll"
-      },
-      {
-        "given": "Marian",
-        "family": "Beekman"
-      },
-      {
-        "given": "Anton J M",
-        "family": "de Craen"
-      },
-      {
-        "given": "H Eka D",
-        "family": "Suchiman"
-      },
-      {
-        "given": "Albert",
-        "family": "Hofman"
-      },
-      {
-        "given": "Ben",
-        "family": "Oostra"
-      },
-      {
-        "given": "André G",
-        "family": "Uitterlinden"
-      },
-      {
-        "given": "Gonneke",
-        "family": "Willemsen"
-      },
-      {
-        "given": "LifeLines Cohort",
-        "family": "Study"
-      },
-      {
-        "given": "Mathieu",
-        "family": "Platteel"
-      },
-      {
-        "given": "Jan H",
-        "family": "Veldink"
-      },
-      {
-        "given": "Leonard H",
-        "family": "van den Berg"
-      },
-      {
-        "given": "Steven J",
-        "family": "Pitts"
-      },
-      {
-        "given": "Shobha",
-        "family": "Potluri"
-      },
-      {
-        "given": "Purnima",
-        "family": "Sundar"
-      },
-      {
-        "given": "David R",
-        "family": "Cox"
-      },
-      {
-        "given": "Shamil R",
-        "family": "Sunyaev"
-      },
-      {
-        "given": "Johan T den",
-        "family": "Dunnen"
-      },
-      {
-        "given": "Mark",
-        "family": "Stoneking"
-      },
-      {
-        "given": "Peter",
-        "family": "de Knijff"
-      },
-      {
-        "given": "Manfred",
-        "family": "Kayser"
-      },
-      {
-        "given": "Qibin",
-        "family": "Li"
-      },
-      {
-        "given": "Yingrui",
-        "family": "Li"
-      },
-      {
-        "given": "Yuanping",
-        "family": "Du"
-      },
-      {
-        "given": "Ruoyan",
-        "family": "Chen"
-      },
-      {
-        "given": "Hongzhi",
-        "family": "Cao"
-      },
-      {
-        "given": "Ning",
-        "family": "Li"
-      },
-      {
-        "given": "Sujie",
-        "family": "Cao"
-      },
-      {
-        "given": "Jun",
-        "family": "Wang"
-      },
-      {
-        "given": "Jasper A",
-        "family": "Bovenberg"
-      },
-      {
-        "given": "Itsik",
-        "family": "Pe'er"
-      },
-      {
-        "given": "P Eline",
-        "family": "Slagboom"
-      },
-      {
-        "given": "Cornelia M",
-        "family": "van Duijn"
-      },
-      {
-        "given": "Dorret I",
-        "family": "Boomsma"
-      },
-      {
-        "given": "Gert-Jan B",
-        "family": "van Ommen"
-      },
-      {
-        "given": "Paul I W",
-        "family": "de Bakker"
-      },
-      {
-        "given": "Morris A",
-        "family": "Swertz"
-      },
-      {
-        "given": "Cisca",
-        "family": "Wijmenga"
-      }
+      {}
     ],
     "container-title": "Nature Genetics",
     "language": "en",
@@ -1647,7 +1312,7 @@
     "id": "2gpKwL67"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "6",
     "DOI": "10.1038/ng.3847",
     "type": "article-journal",
@@ -1710,6 +1375,7 @@
       }
     ],
     "container-title": "Nature Genetics",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -1797,6 +1463,7 @@
       }
     ],
     "container-title": "Nature Genetics",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -1812,7 +1479,7 @@
     "id": "ohTIiqfV"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "5",
     "DOI": "10.1038/ng.806",
     "type": "article-journal",
@@ -1912,7 +1579,7 @@
     "id": "NCr4QkOg"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "10",
     "DOI": "10.1038/nmeth.3505",
     "type": "article-journal",
@@ -1976,7 +1643,7 @@
     "id": "AltPnocw"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "12",
     "DOI": "10.1038/nmeth.4035",
     "type": "article-journal",
@@ -2072,7 +1739,7 @@
     "id": "Pu6SY37C"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "9",
     "DOI": "10.1038/nmeth.4366",
     "type": "article-journal",
@@ -2123,6 +1790,7 @@
       }
     ],
     "container-title": "Nature Methods",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -2133,13 +1801,13 @@
       ]
     },
     "URL": "https://doi.org/gbnhwk",
-    "container-title-short": "Nat Meth",
+    "container-title-short": "Nat Methods",
     "PMCID": "PMC5578891",
     "PMID": "28714986",
     "id": "121OWcTA4"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "2",
     "DOI": "10.1038/nrg3373",
     "type": "article-journal",
@@ -2171,7 +1839,8 @@
       "date-parts": [
         [
           2013,
-          2
+          1,
+          18
         ]
       ]
     },
@@ -2276,7 +1945,7 @@
     "id": "PRx3qEIm"
   },
   {
-    "publisher": "Springer Nature America, Inc",
+    "publisher": "Springer Science and Business Media LLC",
     "issue": "7",
     "DOI": "10.1038/s41588-018-0145-5",
     "type": "article-journal",
@@ -2317,10 +1986,13 @@
   },
   {
     "publisher": "Springer Nature",
+    "issue": "2",
     "DOI": "10.1038/s41588-018-0316-4",
     "type": "article-journal",
+    "page": "354-362",
     "source": "Crossref",
     "title": "Fast and accurate genomic analyses using genome graphs",
+    "volume": "51",
     "author": [
       {
         "given": "Goran",
@@ -2440,10 +2112,10 @@
     "id": "11Jy8B61m"
   },
   {
-    "publisher": "Springer Nature",
+    "publisher": "Springer Science and Business Media LLC",
+    "issue": "1",
     "DOI": "10.1038/sdata.2016.25",
     "type": "article-journal",
-    "page": "160025",
     "source": "Crossref",
     "title": "Extensive sequencing of seven human genomes to characterize benchmark reference materials",
     "volume": "3",
@@ -2662,6 +2334,7 @@
       }
     ],
     "container-title": "Scientific Data",
+    "language": "en",
     "issued": {
       "date-parts": [
         [
@@ -2672,7 +2345,7 @@
       ]
     },
     "URL": "https://doi.org/f84nqc",
-    "container-title-short": "Sci. Data",
+    "container-title-short": "Sci Data",
     "PMCID": "PMC4896128",
     "PMID": "27271295",
     "id": "14neTdqfN"
@@ -2890,14 +2563,14 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:p>There is increasing recognition that a single, monoploid reference genome is a poor universal reference structure for human genetics, because it represents only a tiny fraction of human variation. Adding this missing variation results in a structure that can be described as a mathematical graph: a genome graph. We demonstrate that, in comparison to the existing reference genome (GRCh38), genome graphs can substantially improve the fractions of reads that map uniquely and perfectly. Furthermore, we show that this fundamental simplification of read mapping transforms the variant calling problem from one in which many non-reference variants must be discovered de-novo to one in which the vast majority of variants are simply re-identified within the graph. Using standard benchmarks as well as a novel reference-free evaluation, we show that a simplistic variant calling procedure on a genome graph can already call variants at least as well as, and in many cases better than, a state-of-the-art method on the linear human reference genome. We anticipate that graph-based references will supplant linear references in humans and in other applications where cohorts of sequenced individuals are available.</jats:p>",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>There is increasing recognition that a single, monoploid reference genome is a poor universal reference structure for human genetics, because it represents only a tiny fraction of human variation. Adding this missing variation results in a structure that can be described as a mathematical graph: a genome graph. We demonstrate that, in comparison to the existing reference genome (GRCh38), genome graphs can substantially improve the fractions of reads that map uniquely and perfectly. Furthermore, we show that this fundamental simplification of read mapping transforms the variant calling problem from one in which many non-reference variants must be discovered de-novo to one in which the vast majority of variants are simply re-identified within the graph. Using standard benchmarks as well as a novel reference-free evaluation, we show that a simplistic variant calling procedure on a genome graph can already call variants at least as well as, and in many cases better than, a state-of-the-art method on the linear human reference genome. We anticipate that graph-based references will supplant linear references in humans and in other applications where cohorts of sequenced individuals are available.</jats:p>",
     "DOI": "10.1101/101378",
     "type": "manuscript",
     "source": "Crossref",
     "title": "Genome Graphs",
     "author": [
       {
-        "given": "Adam M",
+        "given": "Adam M.",
         "family": "Novak"
       },
       {
@@ -2953,7 +2626,7 @@
         "family": "Li"
       },
       {
-        "given": "Michael F",
+        "given": "Michael F.",
         "family": "Lin"
       },
       {
@@ -3007,7 +2680,7 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent-child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome - most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
+    "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent–child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome—most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
     "DOI": "10.1101/193144",
     "type": "manuscript",
     "source": "Crossref",
@@ -3174,8 +2847,8 @@
         "family": "Guryev"
       },
       {
-        "given": "William",
-        "family": "Haynes Heaton"
+        "given": "William Haynes",
+        "family": "Heaton"
       },
       {
         "given": "Jonas",
@@ -3263,7 +2936,7 @@
       },
       {
         "given": "Adrian",
-        "family": "Stutz"
+        "family": "Stütz"
       },
       {
         "given": "Diana C.J.",
@@ -3408,14 +3081,14 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:p>Benchmark small variant calls from the Genome in a Bottle Consortium (GIAB) for the CEPH/HapMap genome NA12878 (HG001) have been used extensively for developing, optimizing, and demonstrating performance of sequencing and bioinformatics methods.  Here, we develop a reproducible, cloud-based pipeline to integrate multiple sequencing datasets and form benchmark calls, enabling application to arbitrary human genomes. We use these reproducible methods to form high-confidence calls with respect to GRCh37 and GRCh38 for HG001 and 4 additional broadly-consented genomes from the Personal Genome Project that are available as NIST Reference Materials. These new genomes' broad, open consent with few restrictions on availability of samples and data is enabling a uniquely diverse array of applications.  Our new methods produce 17% more high-confidence SNPs, 176% more indels, and 12% larger regions than our previously published calls.  To demonstrate that these calls can be used for accurate benchmarking, we compare other high-quality callsets to ours (e.g., Illumina Platinum Genomes), and we demonstrate that the majority of discordant calls are errors in the other callsets, We also highlight challenges in interpreting performance metrics when benchmarking against imperfect high-confidence calls. We show that benchmarking tools from the Global Alliance for Genomics and Health can be used with our calls to stratify performance metrics by variant type and genome context and elucidate strengths and weaknesses of a method.</jats:p>",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Benchmark small variant calls from the Genome in a Bottle Consortium (GIAB) for the CEPH/HapMap genome NA12878 (HG001) have been used extensively for developing, optimizing, and demonstrating performance of sequencing and bioinformatics methods. Here, we develop a reproducible, cloud-based pipeline to integrate multiple sequencing datasets and form benchmark calls, enabling application to arbitrary human genomes. We use these reproducible methods to form high-confidence calls with respect to GRCh37 and GRCh38 for HG001 and 4 additional broadly-consented genomes from the Personal Genome Project that are available as NIST Reference Materials. These new genomes’ broad, open consent with few restrictions on availability of samples and data is enabling a uniquely diverse array of applications. Our new methods produce 17% more high-confidence SNPs, 176% more indels, and 12% larger regions than our previously published calls. To demonstrate that these calls can be used for accurate benchmarking, we compare other high-quality callsets to ours (e.g., Illumina Platinum Genomes), and we demonstrate that the majority of discordant calls are errors in the other callsets, We also highlight challenges in interpreting performance metrics when benchmarking against imperfect high-confidence calls. We show that benchmarking tools from the Global Alliance for Genomics and Health can be used with our calls to stratify performance metrics by variant type and genome context and elucidate strengths and weaknesses of a method.</jats:p>",
     "DOI": "10.1101/281006",
     "type": "manuscript",
     "source": "Crossref",
     "title": "Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials",
     "author": [
       {
-        "given": "Justin",
+        "given": "Justin M.",
         "family": "Zook"
       },
       {
@@ -3431,7 +3104,7 @@
         "family": "Heaton"
       },
       {
-        "given": "Sean A",
+        "given": "Sean A.",
         "family": "Irvine"
       },
       {
@@ -3443,11 +3116,11 @@
         "family": "Truty"
       },
       {
-        "given": "Cory Y",
+        "given": "Cory Y.",
         "family": "McLean"
       },
       {
-        "given": "Francisco M",
+        "given": "Francisco M.",
         "family": "De La Vega"
       },
       {
@@ -3461,8 +3134,7 @@
       {
         "given": "Marc",
         "family": "Salit"
-      },
-      {}
+      }
     ],
     "issued": {
       "date-parts": [
@@ -3478,7 +3150,7 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>Abstract</jats:title><jats:p>New technologies and analysis methods are enabling genomic structural variants (SVs) to be detected with ever-increasing accuracy, resolution, and comprehensiveness. Translating these methods to routine research and clinical practice requires robust benchmark sets. We developed the first benchmark set for identification of both false negative and false positive germline SVs, which complements recent efforts emphasizing increasingly comprehensive characterization of SVs. To create this benchmark for a broadly consented son in a Personal Genome Project trio with broadly available cells and DNA, the Genome in a Bottle (GIAB) Consortium integrated 19 sequence-resolved variant calling methods, both alignment- and <jats:italic>de novo</jats:italic> assembly-based, from short-, linked-, and long-read sequencing, as well as optical and electronic mapping. The final benchmark set contains 12745 isolated, sequence-resolved insertion and deletion calls ≥50 base pairs (bp) discovered by at least 2 technologies or 5 callsets, genotyped as heterozygous or homozygous variants by long reads. The Tier 1 benchmark regions, for which any extra calls are putative false positives, cover 2.66 Gbp and 9641 SVs supported by at least one diploid assembly. Support for SVs was assessed using <jats:italic>svviz</jats:italic> with short-, linked-, and long-read sequence data. In general, there was strong support from multiple technologies for the benchmark SVs, with 90 % of the Tier 1 SVs having support in reads from more than one technology. The Mendelian genotype error rate was 0.3 %, and genotype concordance with manual curation was &gt;98.7 %. We demonstrate the utility of the benchmark set by showing it reliably identifies both false negatives and false positives in high-quality SV callsets from short-, linked-, and long-read sequencing and optical mapping. GIAB is working towards a new version of the benchmark set that will use new technologies and methods such as PacBio Circular Consensus Sequencing and ultralong Oxford Nanopore sequencing to expand to more challenging genome regions and include more challenging SVs such as inversions. We are also developing a robust integration process to make calls on GRCh37 and GRCh38 for all seven GIAB samples.</jats:p>",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>New technologies and analysis methods are enabling genomic structural variants (SVs) to be detected with ever-increasing accuracy, resolution, and comprehensiveness. Translating these methods to routine research and clinical practice requires robust benchmark sets. We developed the first benchmark set for identification of both false negative and false positive germline SVs, which complements recent efforts emphasizing increasingly comprehensive characterization of SVs. To create this benchmark for a broadly consented son in a Personal Genome Project trio with broadly available cells and DNA, the Genome in a Bottle (GIAB) Consortium integrated 19 sequence-resolved variant calling methods, both alignment- and <jats:italic>de novo</jats:italic> assembly-based, from short-, linked-, and long-read sequencing, as well as optical and electronic mapping. The final benchmark set contains 12745 isolated, sequence-resolved insertion and deletion calls ≥50 base pairs (bp) discovered by at least 2 technologies or 5 callsets, genotyped as heterozygous or homozygous variants by long reads. The Tier 1 benchmark regions, for which any extra calls are putative false positives, cover 2.66 Gbp and 9641 SVs supported by at least one diploid assembly. Support for SVs was assessed using <jats:italic>svviz</jats:italic> with short-, linked-, and long-read sequence data. In general, there was strong support from multiple technologies for the benchmark SVs, with 90 % of the Tier 1 SVs having support in reads from more than one technology. The Mendelian genotype error rate was 0.3 %, and genotype concordance with manual curation was &gt;98.7 %. We demonstrate the utility of the benchmark set by showing it reliably identifies both false negatives and false positives in high-quality SV callsets from short-, linked-, and long-read sequencing and optical mapping.</jats:p>",
     "DOI": "10.1101/664623",
     "type": "manuscript",
     "source": "Crossref",
@@ -4034,7 +3706,8 @@
     "DOI": "10.4230/lipics.wabi.2018.4",
     "publisher": "Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany",
     "title": "Haplotype-aware graph indexes",
-    "URL": "https://doi.org/gf2jss"
+    "URL": "https://doi.org/gf2jss",
+    "version": "1.0"
   },
   {
     "type": "article",
@@ -4066,7 +3739,8 @@
     "DOI": "10.5281/zenodo.3234891",
     "publisher": "Zenodo",
     "title": "vgteam/sv-genotyping-paper: Code repository for \"Genotyping structural variants in pangenome graphs using the vg toolkit\"",
-    "URL": "https://doi.org/gf29bv"
+    "URL": "https://doi.org/gf29bv",
+    "version": "v1"
   },
   {
     "type": "article-journal",

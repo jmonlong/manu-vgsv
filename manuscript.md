@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-06-25'
+date-meta: '2019-09-13'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/17fecd4482ac8c291685cf00e63ef86543e9e4ef/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/a6adb10e2888bb0f3c6c7b8826c2c48484538759/))
 was automatically generated
-from [jmonlong/manu-vgsv@17fecd4](https://github.com/jmonlong/manu-vgsv/tree/17fecd4482ac8c291685cf00e63ef86543e9e4ef)
-on June 25, 2019.
+from [jmonlong/manu-vgsv@a6adb10](https://github.com/jmonlong/manu-vgsv/tree/a6adb10e2888bb0f3c6c7b8826c2c48484538759)
+on September 13, 2019.
 </em></small>
 
 ## Authors
