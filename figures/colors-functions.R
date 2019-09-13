@@ -1,7 +1,8 @@
 ## Color palette
 library(RColorBrewer)
-tools = c('vg', 'BayesTyper', 'SVTyper', 'Delly', 'SMRT-SV v2')
-pal.tools = brewer.pal(length(tools), 'Set1')
+tools = c('vg', 'BayesTyper', 'SVTyper', 'Delly', 'SMRT-SV v2', 'Paragraph')
+pal.tools = brewer.pal(9, 'Set1')[-6]
+pal.tools = pal.tools[1:length(tools)]
 names(pal.tools) = tools
 
 ## Relabels columns and set an order

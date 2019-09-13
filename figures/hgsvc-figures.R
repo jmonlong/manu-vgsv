@@ -6,7 +6,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','delly','svtyper','bayestyper')
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper')
+methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', paragraph='Paragraph')
 
 ## Read evaluation results
 pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
