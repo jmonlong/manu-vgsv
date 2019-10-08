@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-07'
+date-meta: '2019-10-08'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/2fa5187e65b82fb560187f4e97d02dfdad6c2806/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/faf97bd0345e8d9739e039d1ba109454af48ac14/))
 was automatically generated
-from [jmonlong/manu-vgsv@2fa5187](https://github.com/jmonlong/manu-vgsv/tree/2fa5187e65b82fb560187f4e97d02dfdad6c2806)
-on October 7, 2019.
+from [jmonlong/manu-vgsv@faf97bd](https://github.com/jmonlong/manu-vgsv/tree/faf97bd0345e8d9739e039d1ba109454af48ac14)
+on October 8, 2019.
 </em></small>
 
 ## Authors
@@ -83,7 +83,7 @@ We then benchmark vg against state-of-the-art SV genotypers using three high-qua
 We find that vg systematically produces the best genotype predictions in all datasets.
 In addition, we use assemblies from 12 yeast strains to show that graphs constructed directly from aligned *de novo* assemblies can improve genotyping compared to graphs built from intermediate SV catalogs in the VCF format.
 Our results demonstrate the power of variation graphs for SV genotyping.
-Beyond single nucleotide variants and short insertions/deletions, the vg toolkit now incorporates SVs in its unified variant calling framework and provides a natural solution to integrate high-quality SV catalogs and assemblies.
+Beyond single nucleotide variants and short insertions/deletions, the vg toolkit now incorporates SVs in its unified variant calling and genotyping framework and provides a natural solution to integrate high-quality SV catalogs and assemblies.
 
 
 
@@ -107,9 +107,9 @@ Moreover, SVs often lie in repeat-rich regions, which further frustrate read map
 Short reads can be more effectively used to genotype known SVs.
 This is important, as even though efforts to catalog SVs with other technologies have been highly successful, their cost currently prohibits their use in large-scale studies that require hundreds or thousands of samples such as disease association studies.
 Traditional SV genotypers start from reads that were mapped to a reference genome, extracting aberrant mapping that might support the presence of the SV of interest.
-State-of-art methods like SVTyper[@AltPnocw] and Delly[@nLvQCjXU] typically focus on split reads and paired reads mapped too close or too far from each other.
+Current methods such as SVTyper[@AltPnocw] and Delly[@nLvQCjXU] typically focus on split reads and paired reads mapped too close or too far from each other.
 These discordant reads are tallied and remapped to the reference sequence modified with the SV of interest in order to genotype deletions, insertions, duplications, inversions and translocations.
-SMRT-SV v2 uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
+SMRT-SV v2 Genotyper (henceforth referred to as SMRT-SV v2) uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
 
 The catalog of known SVs in human is quickly expanding.
 Several large-scale projects have used short-read sequencing and extensive discovery pipelines on large cohorts, compiling catalogs with tens of thousands of SVs in humans[@qA6dWFP; @py6BC5kj], using split read and discordant pair based methods like SVTyper[@AltPnocw] and Delly[@nLvQCjXU] to find SVs using short read sequencing.
@@ -124,7 +124,7 @@ In addition, it is unclear how to scale this approach as SV catalogs grow.
 
 Pangenomic graph reference representations offer an attractive approach for storing genetic variation of all types[@Qa8mx6Ll]. 
 These graphical data structures can seamlessly represent both SVs and point mutations using the same semantics.
-Moreover, including known variants in the reference makes both read mapping and variant calling variant-aware.
+Moreover, including known variants in the reference makes read mapping, variant calling and genotyping variant-aware.
 This leads to benefits in terms of accuracy and sensitivity[@10jxt15v0; @DuODeStx; @11Jy8B61m].
 The coherency of this model allows different variant types to be called and scored simultaneously in a unified framework.
 
@@ -153,14 +153,18 @@ Finally, we demonstrate that a pangenome graph built from the alignment of *de n
 
 We used vg to implement a straightforward SV genotyping pipeline.
 Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
-Sites of variation are then identified using the snarl (aka "bubble") decomposition as described in [@xJlNnKH2], each resulting site being represented as a subgraph of the larger graph.
-For each site, we determine the two most supported paths (haplotypes), and use their relative support in the read evidence to produce a genotype at that site (Figure {@fig:1}a).
-We describe the pipeline in more detail in [Methods](#toil-vg).
+Sites of variation within the graph are then identified using the snarl decomposition as described in [@xJlNnKH2].
+<span style="color:red">
+These sites correspond to intervals along the reference paths (ex. contigs or chromosomes), which are embedded in the graph.
+They also contain nodes and edges deviating from the reference path, which represent variation at the site.
+For each site, the two most supported paths between its interval (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
+</span>
+The pipeline is described in detail in [Methods](#simulation-experiment).
 We rigorously evaluated the accuracy of our method on a variety of datasets, and present these results in the remainder of this section.
 
 ![**Structural variation in vg.** 
 a) vg uses the read coverage over possible paths to genotype variants in a bubble or more complex snarl. The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in more details in [Methods](#toil-vg-call).
-b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the y-axis shows the maximum F1 across different minimum quality thresholds.
+b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the x-axis is the simulated read depth and the y-axis shows the maximum F1 across different minimum quality thresholds.
 SVTyper cannot genotype insertions, hence the missing line in the top panels.
 ](images/panel1.png){#fig:1}
 
@@ -243,7 +247,7 @@ As before, other methods produced lower F1 scores in most cases, although Delly 
 #### SMRT-SV v2 catalog and training data [@3NNFS6U2]
 
 A recent study by Audano et al. generated a catalog of 97,368 SVs (referred as SVPOP below) using long-read sequencing across 15 individuals[@3NNFS6U2].
-These variants were then genotyped from short reads across 440 individuals using the SMRT-SV v2 genotyper, a machine learning-based tool implemented for that study.
+These variants were then genotyped from short reads across 440 individuals using the SMRT-SV v2, a machine learning-based tool implemented for that study.
 The SMRT-SV v2 genotyper was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines (CHM1 and CHM13) and a single negative control (NA19240).
 We first used vg to genotype the SVs in this two-sample training dataset using 30X coverage reads, and compared the results with the SMRT-SV v2 genotyper.
 vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV v2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
@@ -320,7 +324,7 @@ Colors represent the two strain sets and transparency indicates whether the resp
 
 <!-- Discuss why vg is doing better -->
 Overall, vg was the most accurate SV genotyper in our benchmarks.
-These results show that variant calling benefits from variant-aware read mapping and graph based genotyping, a finding consistent with previous studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
+These results show that SV genotyping benefits from variant-aware read mapping and graph based genotyping, a finding consistent with previous studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
 We took advantage of newly released datasets for our evaluation, which feature up to 3.7 times more variants than the more widely-used GIAB benchmark.
 More and more large-scale projects are using low cost short-read technologies to sequence the genomes of thousands to hundreds of thousands of individuals (e.g. the Pancancer Analysis of Whole Genomes[@10Jid8Wql], the Genomics England initiative[@mWj2p7Xp], and the TOPMed consortium[@ir1O1h8n]).
 We believe pangenome graph-based approaches will improve both how efficiently SVs can be represented, and how accurately they can be genotyped with this type of data.
@@ -356,55 +360,78 @@ We showed that its method of mapping reads to a variation graph leads to better 
 This work introduces a flexible strategy to integrate the growing number of SVs being discovered with higher resolution technologies into a unified framework for genome inference.
 Our work on whole genome alignment graphs shows the benefit of directly utilizing *de novo* assemblies rather than variant catalogs to integrate SVs in genome graphs.
 We expect this latter approach to increase in significance as the reduction in long read sequencing costs drives the creation of numerous new *de novo* assemblies.
-We envision a future in which the lines between variant calling, alignment, and assembly are blurred by rapid changes in sequencing technology.
+We envision a future in which the lines between variant calling, genotyping, alignment, and assembly are blurred by rapid changes in sequencing technology.
 Fully graph based approaches, like the one we present here, will be of great utility in this new phase of genome inference.
 
 
 ## Methods
 
-### The vg call genotyping algorithm
+<span style="color:red">
 
+### SV Genotyping Algorithm
 
-In `vg call`, we implemented a simple variant caller capable of operating on any kind of variation that can be represented in variation graphs.
-The algorithm uses a genome graph as a structuring prior, and consumes read mappings to the graph to drive the inference of the true genomic state at each locus.
-Here, we apply `vg call` to genotype structural variants already present in the graph, but the same algorithm can also be used for smaller variants such as SNPs, as well as making de-novo calls.
-The algorithm,  illustrated in Figure {@fig:1}a, proceeds through three main phases:
+The input to the SV genotyping algorithm is an indexed variation graph in `xg` format along with a (single-sample) read alignment in `GAM` format.
+If the graph was constructed from a VCF, as was the case for the human-genome graphs discussed in this paper, this VCF can also be input to the caller.
+The first step is to compute a compressed coverage index from the alignment using this command, `vg pack <graph.xg> <alignment.gam> -Q 5 -o graph.pack`.
+This index stores the number of reads with mapping quality at least 5 mapped to each edge and each base of each node on the graph.
+Computing the coverage can be done in a single scan through the reads and, in practice, tends to be an order of magnitude faster than sorting the reads.
 
-1. We compute the average read support for each node and edge, adjusted for mapping and base quality.
-The graph can optionally be augmented to include new variation from the reads using a minimum support cutoff.
-1. We then decomposed the graph into snarls[@xJlNnKH2]. 
-Briefly, a snarl is a subgraph defined by two end nodes, where cutting the graph at these nodes disconnects the subgraph from the rest of the graph.
-Snarls can be nested inside other snarls, and this nesting hierarchy forms a forest.
-As proposed in Paten et al.[@xJlNnKH2], we use the snarl decomposition as a structure for identifying variants in a graph.
-1. In parallel, we independently consider root-level snarls from the decomposition.
-Only snarls whose two ends lie on a reference (i.e. chromosome) path are considered as the VCF format used for output requires definite reference positions. 
-For each root snarl, we:
-    1. Compute a set of paths between the snarl boundary nodes using a heuristic search that enumerates paths until all nodes and edges in the snarl are contained in at least one path.
-    1. Rank these paths according to their average support from the reads.
-    1. Determine a genotype using the relative support of the best paths, as well as the background read depth. The same logic is used for all types of variation, each of which can be expressed simply as a path in the graph.
-    1. Project variants in the graph into VCF format.
+Variation graphs, as represented in vg, are bidrected.
+In a bidrected graph, every node can be thought of having two distinct *sides*.
+See, for example, the left and right sides of each rectangle in Figure {@fig:vg-sv-cartoon}.
+If *x* is the side of a given node *A*, then we use the notation *x'* to denote the other side of *A*.
+A snarl is defined by a pair of sides, *x* and *y*, that satisfy the following criteria:
+1. Removing all edges incident to *x'* and *y'* disconnects the graph, creating a connected component *X* that contains *x* and *y*.
+2. There is no side *z* in *X* such that *{x,z}* satisfies the above criteria.  Likewise for *y*.
+
+Snarls can be computed in linear time using a cactus graph decomposition [@xJlNnKH2].
+They can be computed once for a given graph using `vg snarls`, or on the fly with `vg call`.
+
+Once the snarls have been identified, the SV genotyping algorithm proceeds as follows.
+For every snarl in the graph such that both its end nodes lie on a reference path (such as a chromosome) and that it is not contained in another snarl, the following steps are performed.
+
+1. All VCF variants, *v1, v2, ..., vk* that are contained within the snarl are looked up using information embedded during graph construction.  Let *|vi|* be the number of alleles in the *ith* VCF variant.  Then there are *|v1|*x*|v2|*...x*|vk|* possible haplotypes through the snarl.  If this number is too high (>500k), then alleles with average support of less than 1 are filtered out.
+2. For each possible haplotype, a bidrected path through the snarl (from *x* to *y*) is computed that corresponds to it.  Annotation information from the VCF that was embedded in the graph during construction is used for this.
+3. For each haplotype path, its average support (over bases and edges) is computed using the compressed coverage index, and the two most-supported paths are selected (ties are broken arbitrarily).
+4. If the most supported path exceeds the minimum support threshold (default 1), and has more than *B* (default 6) times the support of the next most supported path, the site is called homozygous for the allele associated with the most supported path.
+5. Else if the second most supported path exceeds the minimum support threshold (default 1), then the site is deemed heterozygous with an allele from each of the top two paths.
+6. Given the genotype computed above, it is trivial to map back from the chosen paths to the VCF alleles in order to produce the final output
+
+The command to do the above is `vg call <graph.xg> -k <graph.pack> -v variants.vcf.gz`
+If the graph was not constructed from a VCF, then a similar algorithm is used except the traversals are computed heuristically searching through the graph.
+This is enabled by not using the `-v` option in the above command.
+
+</span>
+
 
 ### toil-vg
 
 toil-vg is a set of Python scripts for simplifying vg tasks such as graph construction, read mapping and SV genotyping.
-It uses the Toil workflow engine [@faeC2cx0] to seamlessly run pipelines locally, on clusters, or on the cloud.
-All variation graph analyses in this report used toil-vg, with the exact commands available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
+Much of the analysis in this report was done using toil-vg, with the exact commands available at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
+toil-vg  uses the Toil workflow engine [@faeC2cx0] to seamlessly run pipelines locally, on clusters or on the cloud.
+Graph indexing, and mapping in particular are computationally expensive (though work is underway to address this) and well-suited to distribution on the cloid.
 The principal toil-vg commands used are described below.
 
 #### toil-vg construct
 
 toil-vg construct automates graph construction and indexing following the best practices put forth by the vg community.
-It parallelizes graph construction across different sequences from the reference FASTA, and creates different whole-genome indexes side by side when possible.
-When available, toil-vg construct can use phasing information from the input VCF to preserve haplotypes in the GCSA2 pruning step, as well as to extract haploid sequences to simulate from.
+Graph construction is parallelized across different sequences from the reference FASTA, and different whole-genome indexes are created side by side when possible.
+The graph is automatically annotated with paths corresponding to the different alleles in the input VCF.
+The indexes created are the following:
+* xg index: This is a compressed version of the graph that allows fast node, edge and path lookups
+* gcsa2 index: This is a substring index used only for read mapping
+* gbwt index: This is an index of all the haplotypes in the VCF as implied by phasing infromation.  When available, it is used to help ensure that haplotype information is preserved when constructing the gcsa2 index
+* snarls index: The snarls represent sites of varition in the graph and are used for genotyping and variant calling.
 
 #### toil-vg map
 
-toil-vg map splits the input reads into batches, maps each batch in parallel, and merges the result.
+toil-vg map splits the input reads into batches, maps each batch in parallel, then merges the result.
 
 #### toil-vg call
 
-Due to the high memory requirements of the current implementation of vg call, toil-vg call splits the input graph into 2.5Mb overlapping chunks along the reference path.
-Each chunk is called independently in parallel and the results are concatenated into the output VCF. 
+toil-vg call splits the input graph by chromosome and calls each one individually.
+`vg call` has been recently updated so that this subdivision is largely unecessary: the entire graph can be easily called at once.
+Still, toil-vg can be used to farm this task out to a single cloud node if desired. 
 
 #### toil-vg sveval
 
@@ -899,6 +926,26 @@ As a consequence, the *cactus graph* captures the genetic makeup of each strain 
 
 Interestingly, our measurements for the *five strains set* showed only small differences between the five strains that were used to construct the graph and the other seven strains (Figure {@fig:panel3}). 
 Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a).
+
+#### Running time comparison between different tools for HG00514 as genotyped on the HGSVC dataset
+
+Tool | Wall Time (m) | Cores | Nodes | Max Memory (G)
+--- | --- | ---|  --- | ---
+vg construction | 49 | 8 | 1 i3.8xlarge | 0.4
+xg index | 13 | 8 | 1 i3.8xlarge | 48
+snarls index  | 23 | 1 | 50 i3.8xlarge | 17  
+gcsa2 index | 792 | 16 | 1 i3.8xlarge | 45
+genotyping (pack + call) | 97 | 10 | 1 i3.4xlarge | 63
+mapping | 177 | 32 | 50 r3.8xlarge | 32
+
+Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset. 
+{#tbl:timing tag="S7"}
+
+SMRT-SV2 required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the "SVPOP" VCF.
+These numbers are not directly comparable to the above table because 1) they apply to the "SVPOP" rather than "HGSVC" dataset (upon which we were unable to run SMRT-SV2) and 2) we were unable to install SMRT-SV2 on AWS nodes and ran it on an older, shared server at UCSC instead.
+
+Note: toil-vg reserves 200G memory by default for `vg snarls`.  For this graph, about an order of magnitude less was required.  It could have been run on 10 cores on 5 nodes instead.
+
 
 
 ## References {.page_break_before}
