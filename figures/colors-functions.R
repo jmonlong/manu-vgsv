@@ -1,6 +1,6 @@
 ## Color palette
 library(RColorBrewer)
-tools = c('vg', 'BayesTyper', 'SVTyper', 'Delly', 'SMRT-SV v2', 'Paragraph')
+tools = c('vg', 'Paragraph', 'BayesTyper', 'SVTyper', 'Delly', 'SMRT-SV v2')
 pal.tools = brewer.pal(9, 'Set1')[-6]
 pal.tools = pal.tools[1:length(tools)]
 names(pal.tools) = tools
@@ -112,6 +112,7 @@ zoomgp <- function(curve.df, labels.df, zoom.xy=.9, zoom.br=.02,
     scale_x_continuous(breaks=seq(0,1,zoom.br), limits=c(zoom.xy,1)) + 
     scale_y_continuous(breaks=seq(0,1,zoom.br), limits=c(zoom.xy,1)) +
     scale_linetype_manual(values=c(3,1)) + 
-    scale_colour_manual(values=pal.tools)
+    scale_colour_manual(values=pal.tools) +
+    guides(color=guide_legend(ncol=4))
   grid.arrange(zout, zin, ncol=1, nrow=2, heights=heights)
 }

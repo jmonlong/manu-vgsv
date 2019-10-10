@@ -8,15 +8,16 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','smrtsv')
-methconv = c(vg='vg', smrtsv='SMRT-SV v2')
+methconv = c(vg='vg', smrtsv='SMRT-SV v2', paragraph='Paragraph')
 
 ## Read evaluation results
 pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
 
 ## Keep CHMPD experiment only and polish data.frame
-pr.df = pr.df %>% filter(grepl('chmpd', exp), type!='INV', type!='Total') %>%
-  arrange(qual)
 pr.df$method = factor(methconv[pr.df$method], levels=names(pal.tools))
+pr.df = pr.df %>% filter(grepl('chmpd', exp), type!='INV', min.cov==.5,
+                         type!='Total', !is.na(method)) %>%
+  arrange(qual)
 pr.df = relabel(pr.df)
 
 label.df = pr.df %>% group_by(region, method, type, eval) %>% arrange(desc(F1)) %>% do(head(.,1))

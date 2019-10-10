@@ -5,16 +5,16 @@ library(knitr)
 source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
-methods = c('vg','delly','svtyper','bayestyper')
 methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', paragraph='Paragraph')
 
 ## Read evaluation results
 pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
 
 ## Keep HGSVC experiment only and polish data.frame
-pr.df = pr.df %>% filter(grepl('hgsvc', exp), type!='INV', type!='Total') %>%
-  arrange(qual)
 pr.df$method = factor(methconv[pr.df$method], levels=names(pal.tools))
+pr.df = pr.df %>% filter(grepl('hgsvc', exp), type!='INV', type!='Total',
+                         !is.na(method), min.cov==.5) %>%
+  arrange(qual)
 pr.df = relabel(pr.df)
 
 ## Simulated reads from HG00514

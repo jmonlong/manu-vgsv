@@ -7,8 +7,7 @@ library(gridExtra)
 
 source('colors-functions.R')
 
-methods.rename = c('toilvg-symb'='vg', 'svtyper'='SVTyper', 'delly'='Delly', 'bayestyper'='BayesTyper')
-
+methods.rename = c('vg'='vg', 'svtyper'='SVTyper', 'delly'='Delly', 'bayestyper'='BayesTyper', 'paragraph'='Paragraph')
 
 ##
 ## Calling evaluation
@@ -33,6 +32,7 @@ eval.df = eval.pr %>% filter(type!='Total', !(type=='INS' & method=='SVTyper')) 
          method2=factor(method, levels=rev(levels(method))))
 
 pdf('pdf/simerror.pdf', 6, 4)
+
 eval.df %>% ungroup %>%
   mutate(graph=ifelse(graph=='truth', 'True SVs in VCF', 'Errors in VCF'),
          graph=factor(graph, levels=c('True SVs in VCF', 'Errors in VCF'))) %>% 
@@ -43,6 +43,7 @@ eval.df %>% ungroup %>%
   theme(legend.position='right') + 
   scale_y_continuous(limits=0:1) +
   scale_colour_manual(values=pal.tools)
+
 dev.off()
 
 ##
