@@ -6,6 +6,10 @@ builddocx: content/00.front-matter.md content/02.introduction.md content/04.disc
 	echo "Run 'conda activate manubot' first."
 	BUILD_DOCX=true sh build/build.sh
 
+buildsupp:
+	cp -r content/00.front-matter.md content/06.suppmaterial.md content/90.back-matter.md content/citation-tags.tsv content/images content/manual-references.json suppcontent/
+	sh build/suppbuild.sh
+
 update-sup-tags: content/06.suppmaterial.md
 	python updateTagsS.py content/06.suppmaterial.md > temp.md
 	mv temp.md content/06.suppmaterial.md
