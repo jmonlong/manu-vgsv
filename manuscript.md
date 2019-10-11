@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/db2acb87b91ade98f9b344ac6118e43b34a49c01/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/6be145e1c88ee20cb9b46cde9d0d4d18e5616fc5/))
 was automatically generated
-from [jmonlong/manu-vgsv@db2acb8](https://github.com/jmonlong/manu-vgsv/tree/db2acb87b91ade98f9b344ac6118e43b34a49c01)
+from [jmonlong/manu-vgsv@6be145e](https://github.com/jmonlong/manu-vgsv/tree/6be145e1c88ee20cb9b46cde9d0d4d18e5616fc5)
 on October 11, 2019.
 </em></small>
 
@@ -508,7 +508,7 @@ It was run only on VCFs created by SMRT-SV, for which the required contig BAMs w
 The Illumina BAMs used where the same as the other methods described above.
 The output VCF was converted back to explicit representation to facilitate variant normalization later.
 
-Running times for the different tools are shown in Table {@tbl:running}.
+Running times for the different tools are shown in Table {@tbl:timing}.
 
 ### Simulation experiment
 
@@ -949,7 +949,6 @@ Only the number of alignments with perfect identity is substantially lower for t
 | \ \ \ \ \ \ **Delly**                | 69            | 1     | 1 i3.8xlarge  | 69             |
 | \ \ \ \ \ \ **SVTyper**              | 477           | 1     | 1 i3.8xlarge  | 0.7            |
 | \ \ \ \ \ \ **Paragraph**            | 76            | 32    | 1 i3.8xlarge  | 5.9            |
-
 
 Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset.
 {#tbl:timing tag="S7"}
