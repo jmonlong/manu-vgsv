@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-08'
+date-meta: '2019-10-11'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/faf97bd0345e8d9739e039d1ba109454af48ac14/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/db2acb87b91ade98f9b344ac6118e43b34a49c01/))
 was automatically generated
-from [jmonlong/manu-vgsv@faf97bd](https://github.com/jmonlong/manu-vgsv/tree/faf97bd0345e8d9739e039d1ba109454af48ac14)
-on October 8, 2019.
+from [jmonlong/manu-vgsv@db2acb8](https://github.com/jmonlong/manu-vgsv/tree/db2acb87b91ade98f9b344ac6118e43b34a49c01)
+on October 11, 2019.
 </em></small>
 
 ## Authors
@@ -154,11 +154,9 @@ Finally, we demonstrate that a pangenome graph built from the alignment of *de n
 We used vg to implement a straightforward SV genotyping pipeline.
 Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
 Sites of variation within the graph are then identified using the snarl decomposition as described in [@xJlNnKH2].
-<span style="color:red">
 These sites correspond to intervals along the reference paths (ex. contigs or chromosomes), which are embedded in the graph.
 They also contain nodes and edges deviating from the reference path, which represent variation at the site.
 For each site, the two most supported paths between its interval (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
-</span>
 The pipeline is described in detail in [Methods](#simulation-experiment).
 We rigorously evaluated the accuracy of our method on a variety of datasets, and present these results in the remainder of this section.
 
@@ -272,7 +270,7 @@ Genotype information is not available in the SVPOP catalog hence genotyping perf
 
 ### Graphs from alignment of *de novo* assemblies
 
-We can construct variation graphs directly from whole genome alignments <span style="color:red">(WGA)</span> of multiple *de novo* assemblies[@10jxt15v0].
+We can construct variation graphs directly from whole genome alignments (WGA) of multiple *de novo* assemblies[@10jxt15v0].
 This bypasses the need for generating an explicit variant catalog relative to a linear reference, which could be a source of error due to the reference bias inherent in read mapping and variant calling.
 Genome alignments from graph-based software such as Cactus [@1FgS53pXi] can contain complex structural variation that is extremely difficult to represent, let alone call, outside of a graph, but which is nevertheless representative of the actual genomic variation between the aligned assemblies.
 We sought to establish if graphs built in this fashion provide advantages for SV genotyping.
@@ -281,36 +279,36 @@ To do so, we analyzed public sequencing datasets for 12 yeast strains from two r
 We distinguished two different strain sets, in order to assess how the completeness of the graph affects the results. 
 For the *all strains set*, all 12 strains were used, with *S.c. S288C* as the reference strain.
 For the *five strains set*, *S.c. S288C* was used as the reference strain, and we selected two other strains from each of the two clades (see [Methods](#yeast-graph-analysis)).
-We compared genotyping results from <span style="color:red">a WGA-derived graph (*cactus graph*) with results from a VCF-derived graph (*VCF graph*)</span>~~two different types of genome graphs~~.
-The ~~first graph (~~*VCF graph* ~~)~~ was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified from the other assemblies in the respective strain set by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
-The ~~second graph (~~*cactus graph* ~~)~~ was derived from a multiple genome alignment of the strains in the respective strain set using Cactus [@1FgS53pXi].
+We compared genotyping results from a WGA-derived graph (*cactus graph*) with results from a VCF-derived graph (*VCF graph*).
+The *VCF graph* was created from the linear reference genome of the *S.c. S288C* strain and a set of SVs relative to this reference strain in VCF format identified from the other assemblies in the respective strain set by three methods: Assemblytics [@krO7WgVi], AsmVar [@oVaXIwl5] and paftools [@172cJaw4Q].
+The *cactus graph* was derived from a multiple genome alignment of the strains in the respective strain set using Cactus [@1FgS53pXi].
 The *VCF graph* is mostly linear and highly dependent on the reference genome.
 In contrast, the *cactus graph* is structurally complex and relatively free of reference bias.
 
 First, we tested our hypothesis that the *cactus graph* has higher mappability due to its better representation of sequence diversity among the yeast strains (see [Supplementary Information](#mappability-comparison-between-yeast-graphs)).
 Generally, more reads mapped to the *cactus graph* with high identity (Figures {@fig:panel3}a and {@fig:panel5}a) and high mapping quality (Figures {@fig:panel3}b and {@fig:panel5}b) than to the *VCF graph*.
-<span style="color:red">On average, 88%, 79%, and 68% of reads mapped to the *all strain cactus graph* with an identity of at least 50%, 90%, and 100%, respectively, compared to only 77%, 57%, and 23% of reads on the *all strain VCF graph*.
-Similarly, 88% of reads mapped to the *all strain cactus graph* with a mapping quality of at least 30 compared to only 80% of reads on the *all strain VCF graph*.</span>
+On average, 88%, 79%, and 68% of reads mapped to the *all strain cactus graph* with an identity of at least 50%, 90%, and 100%, respectively, compared to only 77%, 57%, and 23% of reads on the *all strain VCF graph*.
+Similarly, 88% of reads mapped to the *all strain cactus graph* with a mapping quality of at least 30 compared to only 80% of reads on the *all strain VCF graph*.
 
 Next, we compared the SV genotyping performance of both graph types.
-We mapped short reads from the 11 non-reference strains to both graphs and <span style="color:red">genotyped</span>~~called~~ variants for each strain using the vg toolkit's variant calling module (see [Methods](#toil-vg-call)).
-There is no gold standard <span style="color:red">available</span>~~call set~~ for these samples <span style="color:red">to compare against which renders an evaluation using recall, precision and F1 score impossible.</span>
-<span style="color:red">Therefore,</span> ~~so~~ we used an indirect measure of SV <span style="color:red">genotyping</span>~~calling~~ accuracy.
-We evaluated each SV <span style="color:red">genotype</span>~~call~~ set based on the alignment of reads to a *sample graph* constructed from the <span style="color:red">genotype</span>~~call~~ set (see [Methods](#calling-and-genotyping-of-svs)).
-<span style="color:red">Conceptually, the sample graph represents the sample's diploid genome by starting out from the reference genome and augmenting it with the genotype results.</span>
-If a given <span style="color:red">genotype</span>~~call~~ set is correct, we expect that reads from the same sample will be mapped with high identity and confidence to the corresponding sample graph.
+We mapped short reads from the 11 non-reference strains to both graphs and genotyped variants for each strain using the vg toolkit's variant calling module (see [Methods](#toil-vg-call)).
+There is no gold standard available for these samples to compare against which renders an evaluation using recall, precision and F1 score impossible.
+Therefore, we used an indirect measure of SV genotyping accuracy.
+We evaluated each SV genotype set based on the alignment of reads to a *sample graph* constructed from the genotype set (see [Methods](#calling-and-genotyping-of-svs)).
+Conceptually, the sample graph represents the sample's diploid genome by starting out from the reference genome and augmenting it with the genotype results.
+If a given genotype set is correct, we expect that reads from the same sample will be mapped with high identity and confidence to the corresponding sample graph.
 To specifically quantify mappability in SV regions we excluded reads that produced identical mapping quality and identity on both sample graphs and an empty sample graph containing the linear reference only (see [Methods](#calling-and-genotyping-of-svs) and Figure {@fig:panel6} for results from all reads).
 Then, we analyzed the average delta in mapping identity and mapping quality of the remaining short reads between both sample graphs (Figures {@fig:4}a and b).
 
 For most of the strains, we observed an improvement in mapping identity of the short reads on the *cactus sample graph* compared to the *VCF sample graph*.
-The mean improvement in mapping identity across the strains <span style="color:red">(for reads differing in mapping identity)</span> was 8.0% and 8.5% for the *all strains set* graphs and the *five strains set* graphs, respectively.
+The mean improvement in mapping identity across the strains (for reads differing in mapping identity) was 8.0% and 8.5% for the *all strains set* graphs and the *five strains set* graphs, respectively.
 Generally, the improvement in mapping identity was larger for strains in the *S. paradoxus* clade (mean of 13.7% and 13.3% for the two strain sets, respectively) than for strains in the *S. cerevisiae* clade (mean of 3.3% and 4.4%).
 While the higher mapping identity indicated that the *cactus graph* represents the reads better (Figure {@fig:4}a), the higher mapping quality confirmed that this did not come at the cost of added ambiguity or a more complex graph (Figure {@fig:4}b).
 For most strains, we observed an improvement in mapping quality of the short reads on the *cactus sample graph* compared to the *VCF sample graph* (mean improvement across the strains of 1.0 and 5.7 for the two strain sets, respectively).
 
 ![**SV genotyping comparison.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*. 
-Subsequently, sample graphs were generated from the resulting SV <span style="color:red">genotype</span>~~call~~ sets. 
+Subsequently, sample graphs were generated from the resulting SV genotype sets. 
 The short reads were aligned to the sample graphs and reads with identical mapping identity and quality across both sample graphs and an additional empty sample graph were removed from the analysis.
 The quality of the remaining divergent alignments was used to ascertain SV genotyping performance.
 The bars show the average delta in mapping identity (a) and in mapping quality (b) of divergent short reads aligned to the sample graphs derived from the *cactus graph* and the *VCF graph*.
@@ -366,8 +364,6 @@ Fully graph based approaches, like the one we present here, will be of great uti
 
 ## Methods
 
-<span style="color:red">
-
 ### SV Genotyping Algorithm
 
 The input to the SV genotyping algorithm is an indexed variation graph in `xg` format along with a (single-sample) read alignment in `GAM` format.
@@ -376,8 +372,8 @@ The first step is to compute a compressed coverage index from the alignment usin
 This index stores the number of reads with mapping quality at least 5 mapped to each edge and each base of each node on the graph.
 Computing the coverage can be done in a single scan through the reads and, in practice, tends to be an order of magnitude faster than sorting the reads.
 
-Variation graphs, as represented in vg, are bidrected.
-In a bidrected graph, every node can be thought of having two distinct *sides*.
+Variation graphs, as represented in vg, are bidirected.
+In a bidirected graph, every node can be thought of having two distinct *sides*.
 See, for example, the left and right sides of each rectangle in Figure {@fig:vg-sv-cartoon}.
 If *x* is the side of a given node *A*, then we use the notation *x'* to denote the other side of *A*.
 A snarl is defined by a pair of sides, *x* and *y*, that satisfy the following criteria:
@@ -401,9 +397,6 @@ The command to do the above is `vg call <graph.xg> -k <graph.pack> -v variants.v
 If the graph was not constructed from a VCF, then a similar algorithm is used except the traversals are computed heuristically searching through the graph.
 This is enabled by not using the `-v` option in the above command.
 
-</span>
-
-
 ### toil-vg
 
 toil-vg is a set of Python scripts for simplifying vg tasks such as graph construction, read mapping and SV genotyping.
@@ -418,10 +411,11 @@ toil-vg construct automates graph construction and indexing following the best p
 Graph construction is parallelized across different sequences from the reference FASTA, and different whole-genome indexes are created side by side when possible.
 The graph is automatically annotated with paths corresponding to the different alleles in the input VCF.
 The indexes created are the following:
-* xg index: This is a compressed version of the graph that allows fast node, edge and path lookups
-* gcsa2 index: This is a substring index used only for read mapping
-* gbwt index: This is an index of all the haplotypes in the VCF as implied by phasing infromation.  When available, it is used to help ensure that haplotype information is preserved when constructing the gcsa2 index
-* snarls index: The snarls represent sites of varition in the graph and are used for genotyping and variant calling.
+
+- xg index: This is a compressed version of the graph that allows fast node, edge and path lookups
+- gcsa2 index: This is a substring index used only for read mapping
+- gbwt index: This is an index of all the haplotypes in the VCF as implied by phasing infromation.  When available, it is used to help ensure that haplotype information is preserved when constructing the gcsa2 index
+- snarls index: The snarls represent sites of varition in the graph and are used for genotyping and variant calling.
 
 #### toil-vg map
 
@@ -452,6 +446,8 @@ We then align the inserted sequences using a Smith-Waterman alignment.
 For each insertion we compute the proportion of its inserted sequence that aligns a matched variant in the other set.
 If this proportion is at least 50% the insertions are considered covered.
 Covering relationships are used to define TPs, FPs, and FNs the same way as for deletions and inversions.
+
+The results shown in this study used a minimum of 50% coverage to match variants but we also replicated the results using 90% minimum coverage and observed similar results (see Figure {@fig:eval-stringent}). 
 
 The coverage statistics are computed using any variant larger than 1 bp but a minimum size is required for a variant to be counted as TP, FP, or FN.
 In this work, we used the default minimum SV size of 50 bp.
@@ -499,12 +495,20 @@ The `delly call` command was run on the reads mapped by `bwa mem`, the reference
 The VCF containing deletions was converted to symbolic representation and passed to `svtyper` with the reads mapped by `bwa mem`.
 The output VCF was converted back to explicit representation using `bayesTyperTools convertAllele` to facilitate variant normalization before evaluation.
 
+#### Paragraph (v2.3)
+
+Paragraph was run using default parameters using the `multigrmpy.py` script, taking the input VCF and reads mapped by `bwa mem` as inputs.
+We used the genotype estimates in the `genotypes.vcf.gz` output file.
+In order for Paragraph to run, we added padding sequence to problematic variants in the input VCFs of the GIAB and SVPOP catalogs.
+
 #### SMRT-SV v2 (v2.0.0 Feb 21 2019 commit adb13f2)
 
 SMRT-SV v2 was run with the "30x-4" model and min-call-depth 8 cutoff.
 It was run only on VCFs created by SMRT-SV, for which the required contig BAMs were available.
 The Illumina BAMs used where the same as the other methods described above.
 The output VCF was converted back to explicit representation to facilitate variant normalization later.
+
+Running times for the different tools are shown in Table {@tbl:running}.
 
 ### Simulation experiment
 
@@ -586,7 +590,7 @@ For the *five strains set*, we selected five strains for graph contruction (*S.c
 We randomly selected two strains from different subclades of each clade as well as the reference strain *S.c. S288C*.
 For the *all strains set* in contrast, we utilized all twelve strains for graph contruction.
 We constructed two different types of genome graphs from the PacBio-derived assemblies of the five or twelve (depending on the strains set) selected strains.
-In this section, we describe the steps for the construction of both graphs and the <span style="color:red">genotyping</span>~~calling~~ of variants.
+In this section, we describe the steps for the construction of both graphs and the genotyping of variants.
 More details and the precise commands used in our analyses can be found at [github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
 
 
@@ -605,7 +609,7 @@ More details and the precise commands used in our analyses can be found at [gith
 | UWOPS919171 | S. paradoxus  |                                | ✓                              |
 | YPS138      | S. paradoxus  |                                | ✓                              |
 
-Table: 12 yeast strains from two related clades were used in our analysis. Five strains were selected to be included in the *five strains set* and all strains were included in the *all strains set*. Graphs were constructed from strains in the respective strain set while all eleven non-reference strains were used for <span style="color:red">genotyping</span>~~variant calling~~. {#tbl:strains}
+Table: 12 yeast strains from two related clades were used in our analysis. Five strains were selected to be included in the *five strains set* and all strains were included in the *all strains set*. Graphs were constructed from strains in the respective strain set while all eleven non-reference strains were used for genotyping. {#tbl:strains}
 
 #### Construction of the *VCF graph*
 
@@ -625,13 +629,13 @@ First, the repeat-masked PacBio-assemblies of the strains in the strain set were
 Cactus requires a phylogenetic tree of the strains which was estimated using Mash (version 2.1) [@mH9pzoIn] and PHYLIP (version 3.695) [@tIvRXd6o].
 Subsequently, we converted the HAL format output file to a variation graph with hal2vg ([https://github.com/ComparativeGenomicsToolkit/hal2vg](https://github.com/ComparativeGenomicsToolkit/hal2vg)).
 
-#### ~~Calling and~~ Genotyping of SVs
+#### Genotyping of SVs
 
-Prior to <span style="color:red">genotyping</span>~~variant calling~~, we mapped the Illumina short reads of all 12 yeast strains to both graphs using `vg map`.
+Prior to genotyping, we mapped the Illumina short reads of all 12 yeast strains to both graphs using `vg map`.
 We measured the fractions of reads mapped with specific properties using `vg view` and the JSON processor `jq`.
-Then, we applied `toil-vg call` (commit be8b6da) to <span style="color:red">genotype</span>~~call~~ variants, obtaining a separate <span style="color:red">genotype</span>~~variant call~~ set for each of the 11 non-reference strains on both graphs and for each of the two strain sets (in total 11 x 2 x 2 = 44 <span style="color:red">genotype</span>~~call~~ sets).
-From the <span style="color:red">genotype</span>~~call~~ sets, we removed variants smaller than 50 bp and variants with missing or homozygous reference genotypes.
-To evaluate the filtered <span style="color:red">genotype</span>~~call~~ sets, we generated a sample graph (i.e. a graph representation of the <span style="color:red">genotype</span>~~call~~ set) for each <span style="color:red">genotype</span>~~call~~ set using `vg construct` and `vg mod` on the reference assembly *S.c. S288C* and the <span style="color:red">genotype</span>~~call~~ set.
+Then, we applied `toil-vg call` (commit be8b6da) to genotype variants, obtaining a separate genotype set for each of the 11 non-reference strains on both graphs and for each of the two strain sets (in total 11 x 2 x 2 = 44 genotype sets).
+From the genotype sets, we removed variants smaller than 50 bp and variants with missing or homozygous reference genotypes.
+To evaluate the filtered genotype sets, we generated a sample graph (i.e. a graph representation of the genotype set) for each genotype set using `vg construct` and `vg mod` on the reference assembly *S.c. S288C* and the genotype set.
 Subsequently, we mapped short reads from the respective strains to each sample graph using `vg map`.
 We mapped the short reads also to an empty sample graph that was generated using `vg construct` as a graph representation of the linear reference genome.
 In an effort to restrict our analysis to SV regions, we removed reads that mapped equally well (i.e. with identical mapping quality and percent identity) to all three graphs (the two sample graphs and the empty sample graph) from the analysis.
@@ -705,10 +709,10 @@ These authors contributed equally: Glenn Hickey, David Heller, Jean Monlong.
 |                 | Delly      | INS  | 0.516 (0.621) | 0.068 (0.176) | 0.12 (0.275)  |
 |                 |            | DEL  | 0.55 (0.838)  | 0.445 (0.547) | 0.492 (0.662) |
 
-Table: Genotyping evaluation on the HGSVC dataset. 
+Table: Genotyping evaluation on the HGSVC dataset.
 Precision, recall and F1 score for the call set with the best F1 score.
 The best F1 scores were achieved with no filtering in the vast majority of cases (see Figure {@fig:hgsvc-sim-geno} and {@fig:hgsvc-real-geno}).
-The numbers in parentheses corresponds to the results in non-repeat regions. 
+The numbers in parentheses corresponds to the results in non-repeat regions.
 {#tbl:hgsvc tag="S1"}
 
 ---
@@ -723,8 +727,8 @@ The numbers in parentheses corresponds to the results in non-repeat regions.
 | Delly      | INS  | 0.822 (0.894) | 0.177 (0.268) | 0.291 (0.412) |
 |            | DEL  | 0.722 (0.822) | 0.645 (0.768) | 0.681 (0.794) |
 
-Table: Genotyping evaluation on the Genome in a Bottle dataset. 
-Precision, recall and F1 score for the call set with the best F1 score. 
+Table: Genotyping evaluation on the Genome in a Bottle dataset.
+Precision, recall and F1 score for the call set with the best F1 score.
 The best F1 scores were achieved with no filtering in the vast majority of cases (see Figure {@fig:giab-geno}).
 The numbers in parentheses corresponds to the results in non-repeat regions. {#tbl:giab tag="S2"}
 
@@ -759,7 +763,7 @@ Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell li
 |          | non-repeat | INS  |  4483 |  4659 |  5385 |     0.490 |  0.454 | 0.472 |
 |          |            | DEL  |  2928 |   930 |  1659 |     0.759 |  0.638 | 0.693 |
 
-Table: Calling evaluation on the SVPOP dataset. 
+Table: Calling evaluation on the SVPOP dataset.
 Combined results for the HG00514, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S4"}
 
 ---
@@ -808,13 +812,13 @@ Table: Calling evaluation on the SVPOP dataset in different sets of regions for 
 |         | both ends    | incorrect  |     950 |      0.992 |        556.274 |           5.624 |
 |         |              | fine-tuned |       8 |      0.008 |        200.000 |           1.375 |
 
-Table: Breakpoint fine-tuning using graph augmentation from the read alignment. 
-For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. 
+Table: Breakpoint fine-tuning using graph augmentation from the read alignment.
+For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF.
 For insertions, the insertion location and sequence contained errors.
 In all cases, the errors affected 1-10 bp.
 {#tbl:simerror-bkpt tag="S6"}
 
-### Supplementary Figures
+### Supplementary Figures {.page_break_before}
 
 ![**Genotyping evaluation on the HGSVC dataset using simulated reads.**
 Reads were simulated from the HG00514 individual.
@@ -834,7 +838,7 @@ The bottom panel zooms on the part highlighted by a dotted rectangle.
 
 ![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S6"}
 
-![**Genotyping evaluation on the CHM pseudo-diploid dataset.** 
+![**Genotyping evaluation on the CHM pseudo-diploid dataset.**
 The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]
 The bottom panel zooms on the part highlighted by a dotted rectangle.
 ](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
@@ -845,13 +849,15 @@ The bottom panel zooms on the part highlighted by a dotted rectangle.
 
 ![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S10"}
 
+![**Benchmark summary when using a more stringent matching criterion**. At least 90% coverage was necessary to consider a variant matched, instead of the 50% minimum coverage used in other figures.](images/hgsvc-giab-chmpd-svpop-best-f1-mincov90.png){#fig:eval-stringent tag="S11"}
+
 ![**Breakpoint fine-tuning using augmentation through "vg call".**
-For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF. 
+For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF.
 For insertions, the insertion location and sequence contained errors.
-a) Proportion of variant for which breakpoints could be fine-tuned. 
+a) Proportion of variant for which breakpoints could be fine-tuned.
 b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
-](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S11"}
+](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S12"}
 
 ![**Mapping comparison on graphs of the *five strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -860,7 +866,7 @@ a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
 Transparency indicates whether the strain was included or excluded in the graphs.
-](images/panel3.png){#fig:panel3 tag="S12"}
+](images/panel3.png){#fig:panel3 tag="S13"}
 
 ![**Mapping comparison on graphs of the *all strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -868,28 +874,28 @@ The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* 
 a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
-](images/panel5.png){#fig:panel5 tag="S13"}
+](images/panel5.png){#fig:panel5 tag="S14"}
 
 ![**SV genotyping comparison using all reads.**
-Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*. 
-Subsequently, sample graphs were generated from the resulting SV callsets. 
+Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*.
+Subsequently, sample graphs were generated from the resulting SV callsets.
 The short reads were aligned to the sample graphs and the quality of all alignments was used to ascertain SV genotyping performance.
 More accurate genotypes should result in sample graphs that have mappings with high identity and confidence for a greater proportion of the reads.
 a) Average delta in mapping identity of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
 b) Average delta in mapping quality of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
 Positive values denote an improvement of the *cactus graph* over the *VCF graph*.
 Colors represent the two strain sets and transparency indicates whether the respective strain was part of the *five strains set*.
-](images/panel6.png){#fig:panel6 tag="S14"}
+](images/panel6.png){#fig:panel6 tag="S15"}
 
-![**Overview of the SV evaluation by the *sveval* package**. 
+![**Overview of the SV evaluation by the *sveval* package**.
 For deletions and inversions, we compute the proportion of a variant that is covered by variants in the other set, considering only variants overlapping with at least 10% reciprocal overlap.
 A variant is considered true positive if this coverage proportion is higher than 50% and false-positive or false-negative otherwise.
 A similar approach is used for insertions, although they are first clustered into pairs located less than 20 bp from each other.
 Then their inserted sequences are aligned to derive the coverage statistics.
 The SV evaluation approach is described in more detail in the [Methods](#toil-vg-sveval).
-](images/sveval-cartoon.png){#fig:sveval tag="S15"}
+](images/sveval-cartoon.png){#fig:sveval tag="S16"}
 
-### Supplementary Information
+### Supplementary Information  {.page_break_before}
 
 #### Variation graph and structural variation
 
@@ -897,7 +903,7 @@ A variation graph encodes DNA sequence in its nodes.
 Such graphs are bidirected, in that we distinguish between edges incident on the starts of nodes from those incident on their ends.
 A path in such a graph is an ordered list of nodes where each is associated with an orientation.
 If a path walks from, for example, node A in the forward orientation to node B in the reverse orientation, then an edge must exist from the end of node A to the end of node B.
-Concatenating the sequences on each node in the path, taking the reverse complement when the node is visited in reverse orientation, produces a DNA sequence. 
+Concatenating the sequences on each node in the path, taking the reverse complement when the node is visited in reverse orientation, produces a DNA sequence.
 Accordingly, variation graphs are constructed so as to encode haplotype sequences as walks through the graph.
 Variation between sequences shows up as bubbles in the graph [@xJlNnKH2].
 
@@ -924,25 +930,35 @@ Consequently, substantially fewer reads mapped to the *VCF graph* with perfect i
 The *cactus graph* has the advantage of implicitly incorporating variants of all types and sizes from the *de novo* assemblies.
 As a consequence, the *cactus graph* captures the genetic makeup of each strain more comprehensively and enables more reads to be mapped.
 
-Interestingly, our measurements for the *five strains set* showed only small differences between the five strains that were used to construct the graph and the other seven strains (Figure {@fig:panel3}). 
+Interestingly, our measurements for the *five strains set* showed only small differences between the five strains that were used to construct the graph and the other seven strains (Figure {@fig:panel3}).
 Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Figure {@fig:panel3}a).
 
 #### Running time comparison between different tools for HG00514 as genotyped on the HGSVC dataset
 
-Tool | Wall Time (m) | Cores | Nodes | Max Memory (G)
---- | --- | ---|  --- | ---
-vg construction | 49 | 8 | 1 i3.8xlarge | 0.4
-xg index | 13 | 8 | 1 i3.8xlarge | 48
-snarls index  | 23 | 1 | 50 i3.8xlarge | 17  
-gcsa2 index | 792 | 16 | 1 i3.8xlarge | 45
-genotyping (pack + call) | 97 | 10 | 1 i3.4xlarge | 63
-mapping | 177 | 32 | 50 r3.8xlarge | 32
+| Tool                                 | Wall Time (m) | Cores | Nodes         | Max Memory (G) |
+| ---                                  | ---           | ---   | ---           | ---            |
+| **vg**                               |               |       |               |                |
+| \ \ \ \ \ \ vg construction          | 49            | 8     | 1 i3.8xlarge  | 0.4            |
+| \ \ \ \ \ \ xg index                 | 13            | 8     | 1 i3.8xlarge  | 48             |
+| \ \ \ \ \ \ snarls index             | 23            | 1     | 50 i3.8xlarge | 17             |
+| \ \ \ \ \ \ gcsa2 index              | 792           | 16    | 1 i3.8xlarge  | 45             |
+| \ \ \ \ \ \ mapping                  | 177           | 32    | 50 r3.8xlarge | 32             |
+| \ \ \ \ \ \ genotyping (pack + call) | 97            | 10    | 1 i3.4xlarge  | 63             |
+| **BayesTyper**                       | 94            | 24    | 1 i3.8xlarge  | 119            |
+| **bwa mem**                          | 240           | 32    | 1 i3.8xlarge  | 14             |
+| \ \ \ \ \ \ **Delly**                | 69            | 1     | 1 i3.8xlarge  | 69             |
+| \ \ \ \ \ \ **SVTyper**              | 477           | 1     | 1 i3.8xlarge  | 0.7            |
+| \ \ \ \ \ \ **Paragraph**            | 76            | 32    | 1 i3.8xlarge  | 5.9            |
 
-Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset. 
+
+Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset.
 {#tbl:timing tag="S7"}
 
 SMRT-SV2 required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the "SVPOP" VCF.
 These numbers are not directly comparable to the above table because 1) they apply to the "SVPOP" rather than "HGSVC" dataset (upon which we were unable to run SMRT-SV2) and 2) we were unable to install SMRT-SV2 on AWS nodes and ran it on an older, shared server at UCSC instead.
+
+Delly, SVTyper and Paragraph start from a set of aligned reads, hence we also show the running time for read alignment with `bwa mem`.
+For BayesTyper, the numbers include both khmer counting with KMC and genotyping.
 
 Note: toil-vg reserves 200G memory by default for `vg snarls`.  For this graph, about an order of magnitude less was required.  It could have been run on 10 cores on 5 nodes instead.
 
