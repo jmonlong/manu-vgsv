@@ -18,3 +18,4 @@ svpop.png
 svpop-regions.png
 VGSVcartoon.png
 sveval-cartoon.png
+hgsvc-giab-chmpd-svpop-best-f1-mincov90.png

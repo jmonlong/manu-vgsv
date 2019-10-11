@@ -27,7 +27,7 @@ pdf('pdf/hgsvc-giab-chmpd-svpop-best-f1.pdf', 8, 4)
 eval.f1 %>% 
   ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
-  facet_grid(type~exp, scales='free', space='free') +
+  facet_grid(type~experiment, scales='free', space='free') +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() + ylim(0,1) + 
@@ -203,7 +203,7 @@ pdf('pdf/hgsvc-giab-chmpd-svpop-best-f1-mincov90.pdf', 8, 4)
 eval.f1 %>% 
   ggplot(aes(x=region, y=F1, fill=method, alpha=eval, group=method)) +
   geom_bar(stat='identity', position=position_dodge()) +
-  facet_grid(type~exp, scales='free', space='free') +
+  facet_grid(type~experiment, scales='free', space='free') +
   scale_fill_manual(values=pal.tools) + 
   scale_alpha_manual(name='SV evaluation', values=c(.5,1)) + 
   theme_bw() + ylim(0,1) + 
