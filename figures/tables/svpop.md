@@ -1,12 +1,18 @@
 |eval     |method     |region     |type | TP.baseline|    FP|    FN| precision| recall|    F1|
 |:--------|:----------|:----------|:----|-----------:|-----:|-----:|---------:|------:|-----:|
-|presence |vg         |all        |INS  |       25835| 22056| 15775|     0.541|  0.621| 0.578|
-|presence |vg         |all        |DEL  |       14545|  6824| 15425|     0.675|  0.485| 0.565|
-|presence |vg         |all        |INV  |          27|    26|   173|     0.509|  0.135| 0.213|
-|presence |vg         |non-repeat |INS  |        8051|  3260|  1817|     0.710|  0.816| 0.760|
-|presence |vg         |non-repeat |DEL  |        3769|   623|   818|     0.853|  0.822| 0.837|
-|presence |vg         |non-repeat |INV  |          19|    12|    75|     0.613|  0.202| 0.304|
-|presence |SMRT-SV v2 |all        |INS  |       16272| 26054| 25338|     0.396|  0.391| 0.394|
-|presence |SMRT-SV v2 |all        |DEL  |       11794| 10115| 18176|     0.542|  0.394| 0.456|
-|presence |SMRT-SV v2 |non-repeat |INS  |        4483|  4661|  5385|     0.493|  0.454| 0.473|
-|presence |SMRT-SV v2 |non-repeat |DEL  |        2928|   930|  1659|     0.754|  0.638| 0.691|
+|presence |vg         |all        |INS  |       23430| 18414| 18181|     0.564|  0.563| 0.564|
+|presence |vg         |all        |DEL  |       14717|  7033| 15254|     0.677|  0.491| 0.569|
+|presence |vg         |all        |INV  |          41|    16|   159|     0.719|  0.205| 0.319|
+|presence |vg         |non-repeat |INS  |        8078|  3303|  1761|     0.709|  0.821| 0.761|
+|presence |vg         |non-repeat |DEL  |        6585|  1033|  1040|     0.862|  0.864| 0.863|
+|presence |vg         |non-repeat |INV  |          37|    15|    90|     0.712|  0.291| 0.413|
+|presence |Paragraph  |all        |INS  |       24342| 25618| 17269|     0.493|  0.585| 0.535|
+|presence |Paragraph  |all        |DEL  |       16986| 13376| 12985|     0.571|  0.567| 0.569|
+|presence |Paragraph  |all        |INV  |          47|    24|   153|     0.662|  0.235| 0.347|
+|presence |Paragraph  |non-repeat |INS  |        7843|  3270|  1996|     0.706|  0.797| 0.749|
+|presence |Paragraph  |non-repeat |DEL  |        6523|  1000|  1102|     0.866|  0.856| 0.860|
+|presence |Paragraph  |non-repeat |INV  |          39|    12|    88|     0.765|  0.307| 0.438|
+|presence |SMRT-SV v2 |all        |INS  |       16297| 26006| 25314|     0.397|  0.392| 0.394|
+|presence |SMRT-SV v2 |all        |DEL  |       11797| 10054| 18174|     0.544|  0.394| 0.457|
+|presence |SMRT-SV v2 |non-repeat |INS  |        4475|  4645|  5364|     0.493|  0.455| 0.473|
+|presence |SMRT-SV v2 |non-repeat |DEL  |        4986|  1322|  2639|     0.788|  0.654| 0.715|
