@@ -17,7 +17,7 @@ manubot process \
 CSL_PATH=build/assets/vancouver.csl
 # CSL_PATH=build/assets/style.csl
 BIBLIOGRAPHY_PATH=output/references.json
-INPUT_PATH=output/manuscript.md
+INPUT_PATH=output/suppmat.md
 
 # Make output directory
 mkdir -p output
@@ -48,7 +48,7 @@ pandoc --verbose \
   --include-after-body=build/plugins/math.html \
   --include-after-body=build/plugins/hypothesis.html \
   --include-after-body=build/plugins/analytics.html \
-  --output=output/manuscript.html \
+  --output=output/suppmat.html \
   $INPUT_PATH
 
 # Return null if docker command is missing, otherwise return path to docker
@@ -72,7 +72,7 @@ if [ "$BUILD_PDF" != "false" ] && [ -z "$DOCKER_EXISTS" ]; then
     --metadata link-citations=true \
     --webtex=https://latex.codecogs.com/svg.latex? \
     --include-after-body=build/themes/default.html \
-    --output=output/manuscript.pdf \
+    --output=output/suppmat.pdf \
     $INPUT_PATH
   rm -r images
 fi
@@ -90,7 +90,7 @@ if [ "$BUILD_PDF" != "false" ] && [ -n "$DOCKER_EXISTS" ]; then
     arachnysdocker/athenapdf:2.16.0 \
     athenapdf \
     --delay=2000 \
-    manuscript.html manuscript.pdf
+    suppmat.html suppmat.pdf
   rm -rf output/images
 fi
 
@@ -108,7 +108,7 @@ if [ "$BUILD_DOCX" = "true" ]; then
     --metadata link-citations=true \
     --reference-doc=build/themes/default.docx \
     --resource-path=.:content \
-    --output=output/manuscript.docx \
+    --output=output/suppmat.docx \
     $INPUT_PATH
 fi
 
