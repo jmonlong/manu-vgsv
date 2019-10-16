@@ -3150,6 +3150,71 @@
   },
   {
     "publisher": "Cold Spring Harbor Laboratory",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Accurate detection and genotyping of structural variations (SVs) from short-read data is a long-standing area of development in genomics research and clinical sequencing pipelines. We introduce Paragraph, an accurate genotyper that models SVs using sequence graphs and SV annotations. We demonstrate the accuracy of Paragraph on whole-genome sequence data from three samples using long read SV calls as the truth set, and then apply Paragraph at scale to a cohort of 100 short-read sequenced samples of diverse ancestry. Our analysis shows that Paragraph has better accuracy than other existing genotypers and can be applied to population-scale studies.</jats:p>",
+    "DOI": "10.1101/635011",
+    "type": "manuscript",
+    "source": "Crossref",
+    "title": "Paragraph: A graph-based structural variant genotyper for short-read sequence data",
+    "author": [
+      {
+        "given": "Sai",
+        "family": "Chen"
+      },
+      {
+        "given": "Peter",
+        "family": "Krusche"
+      },
+      {
+        "given": "Egor",
+        "family": "Dolzhenko"
+      },
+      {
+        "given": "Rachel M.",
+        "family": "Sherman"
+      },
+      {
+        "given": "Roman",
+        "family": "Petrovski"
+      },
+      {
+        "given": "Felix",
+        "family": "Schlesinger"
+      },
+      {
+        "given": "Melanie",
+        "family": "Kirsche"
+      },
+      {
+        "given": "David R.",
+        "family": "Bentley"
+      },
+      {
+        "given": "Michael C.",
+        "family": "Schatz"
+      },
+      {
+        "given": "Fritz J.",
+        "family": "Sedlazeck"
+      },
+      {
+        "given": "Michael A.",
+        "family": "Eberle"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          5,
+          10
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gf9sdp",
+    "id": "zjxFCnET"
+  },
+  {
+    "publisher": "Cold Spring Harbor Laboratory",
     "abstract": "<jats:title>Abstract</jats:title><jats:p>New technologies and analysis methods are enabling genomic structural variants (SVs) to be detected with ever-increasing accuracy, resolution, and comprehensiveness. Translating these methods to routine research and clinical practice requires robust benchmark sets. We developed the first benchmark set for identification of both false negative and false positive germline SVs, which complements recent efforts emphasizing increasingly comprehensive characterization of SVs. To create this benchmark for a broadly consented son in a Personal Genome Project trio with broadly available cells and DNA, the Genome in a Bottle (GIAB) Consortium integrated 19 sequence-resolved variant calling methods, both alignment- and <jats:italic>de novo</jats:italic> assembly-based, from short-, linked-, and long-read sequencing, as well as optical and electronic mapping. The final benchmark set contains 12745 isolated, sequence-resolved insertion and deletion calls ≥50 base pairs (bp) discovered by at least 2 technologies or 5 callsets, genotyped as heterozygous or homozygous variants by long reads. The Tier 1 benchmark regions, for which any extra calls are putative false positives, cover 2.66 Gbp and 9641 SVs supported by at least one diploid assembly. Support for SVs was assessed using <jats:italic>svviz</jats:italic> with short-, linked-, and long-read sequence data. In general, there was strong support from multiple technologies for the benchmark SVs, with 90 % of the Tier 1 SVs having support in reads from more than one technology. The Mendelian genotype error rate was 0.3 %, and genotype concordance with manual curation was &gt;98.7 %. We demonstrate the utility of the benchmark set by showing it reliably identifies both false negatives and false positives in high-quality SV callsets from short-, linked-, and long-read sequencing and optical mapping.</jats:p>",
     "DOI": "10.1101/664623",
     "type": "manuscript",

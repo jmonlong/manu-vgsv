@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-11'
+date-meta: '2019-10-16'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/6be145e1c88ee20cb9b46cde9d0d4d18e5616fc5/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/c42f04a9baef74bad29efeedf1e359970e3d286a/))
 was automatically generated
-from [jmonlong/manu-vgsv@6be145e](https://github.com/jmonlong/manu-vgsv/tree/6be145e1c88ee20cb9b46cde9d0d4d18e5616fc5)
-on October 11, 2019.
+from [jmonlong/manu-vgsv@c42f04a](https://github.com/jmonlong/manu-vgsv/tree/c42f04a9baef74bad29efeedf1e359970e3d286a)
+on October 16, 2019.
 </em></small>
 
 ## Authors
@@ -135,6 +135,8 @@ In addition, vg can build graphs both from variant catalogs in the VCF format an
 Other tools have used genome graphs or pangenomes to genotype variants.
 GraphTyper realigns mapped reads to a graph built from known SNVs and short indels using a sliding-window approach[@ohTIiqfV].
 BayesTyper first builds a set of graphs from known variants including SVs, then genotypes variants by comparing the distribution of k-mers in the sequencing reads with the k-mers of haplotype candidate paths in the graph[@14Uxmwbxm].
+Paragraph builds a graph for each breakpoint of known variants [@zjxFCnET], then for each breakpoint, it pulls out all nearby reads from the linear alignment and re-aligns them to the graph.
+Genotypes are computed using the read coverage from the pair of breakpoint graphs corresponding to each SV.
 SMRT-SV v2 uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
 These graph-based approaches showed clear advantages over standard methods that use only the linear reference.
 
@@ -142,8 +144,8 @@ These graph-based approaches showed clear advantages over standard methods that 
 In this work, we present a SV genotyping framework based on the variation graph model and implemented in the vg toolkit.
 We show that this method is capable of genotyping known deletions, insertions and inversions, and that its performance is not inhibited by small errors in the specification of SV allele breakpoints.
 We evaluated the genotyping accuracy of our approach using simulated and real Illumina reads and a pangenome built from SVs discovered in recent long-read sequencing studies[@3NNFS6U2;@vQTymKCj;@RCzDkVqI;@16GvGhO20], 
-We also compared vg's performance with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm] and SMRT-SV v2[@3NNFS6U2].
-Across these three datasets that we tested, which range in size from 26k to 97k SVs, vg is the best performing SV genotyper on real short-read data for all SV types.
+We also compared vg's performance with state-of-the-art SV genotypers: SVTyper[@AltPnocw], Delly[@nLvQCjXU], BayesTyper[@14Uxmwbxm], Paragraph[@zjxFCnET] and SMRT-SV v2[@3NNFS6U2].
+Across the datasets we tested, which range in size from 26k to 97k SVs, vg is the best performing SV genotyper on real short-read data for all SV types in the majority of cases.
 Finally, we demonstrate that a pangenome graph built from the alignment of *de novo* assemblies of diverse _Saccharomyces cerevisiae_ strains improves SV genotyping performance.
 
 
@@ -154,7 +156,7 @@ Finally, we demonstrate that a pangenome graph built from the alignment of *de n
 We used vg to implement a straightforward SV genotyping pipeline.
 Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
 Sites of variation within the graph are then identified using the snarl decomposition as described in [@xJlNnKH2].
-These sites correspond to intervals along the reference paths (ex. contigs or chromosomes), which are embedded in the graph.
+These sites correspond to intervals along the reference paths (ex. contigs or chromosomes) which are embedded in the graph.
 They also contain nodes and edges deviating from the reference path, which represent variation at the site.
 For each site, the two most supported paths between its interval (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
 The pipeline is described in detail in [Methods](#simulation-experiment).
@@ -169,22 +171,18 @@ SVTyper cannot genotype insertions, hence the missing line in the top panels.
 ### Simulated dataset
 
 As a proof of concept, we simulated genomes and different types of SVs with a size distribution matching real SVs[@vQTymKCj].
-We compared vg against SVTyper, Delly, and BayesTyper across different levels of sequencing depth.
+We compared vg against Paragraph, SVTyper, Delly, and BayesTyper across different levels of sequencing depth.
 We also added some errors (1-10bp) to the location of the breakpoints to investigate their effect on genotyping accuracy (see [Methods](#simulation-experiment)).
 The results are shown in Figure {@fig:1}b.
 
-When using the correct breakpoints, vg tied with Delly as the best genotyper for deletions, and with BayesTyper as the best genotyper for insertions.
-For inversions, vg was the second best genotyper after BayesTyper.
-The differences between the methods were the most visible at lower sequencing depth. 
-In the presence of 1-10 bp errors in the breakpoint locations, the performance of Delly and BayesTyper dropped significantly (Figure {@fig:1}b).
+When using the correct breakpoints, most methods performed similarly, with differences only becoming visible at very low sequencing depths.
+Only vg and Paragraph maintained their performance in the presence of 1-10 bp errors in the breakpoint locations. 
 The dramatic drop for BayesTyper can be explained by its k-mer-based approach that requires precise breakpoints.
-In contrast, vg was only slightly affected by the presence of errors.
-For vg, the F1 scores for all SV types decreased no more than 0.07.
 Overall, these results show that vg is capable of genotyping SVs and is robust to breakpoint inaccuracies in the input VCF.
 
 ### HGSVC dataset
 
-72,485 structural variants from The Human Genome Structural Variation Consortium (HGSVC) were used to benchmark the genotyping performance of vg against the three other SV genotyping methods.
+72,485 structural variants from The Human Genome Structural Variation Consortium (HGSVC) were used to benchmark the genotyping performance of vg against the four other SV genotyping methods.
 This high-quality SV catalog was generated from three samples using a consensus from different sequencing, phasing, and variant calling technologies[@vQTymKCj]. 
 The three individual samples represent different human populations: Han Chinese (HG00514), Puerto-Rican (HG00733), and Yoruban Nigerian (NA19240).
 We used these SVs to construct a graph with vg and as input for the other genotypers.
@@ -192,10 +190,9 @@ Using short sequencing reads, the SVs were genotyped and compared with the genot
 
 First we compared the methods using simulated reads for HG00514.
 This represents the ideal situation where the SV catalog exactly matches the SVs supported by the reads.
-While vg outperformed Delly and SVTyper, BayesTyper showed the best F1 score and precision-recall trade-off (Figures {@fig:2}a and {@fig:hgsvc-sim-geno}, Table {@tbl:hgsvc}).
-When restricting the comparisons to regions not identified as tandem repeats or segmental duplications, the genotyping predictions were significantly better for all methods, with vg almost as good as BayesTyper on deletions (F1 of 0.944 vs 0.955).
+BayesTyper and vg showed the best F1 score and precision-recall trade-offs (Figures {@fig:2}a and {@fig:hgsvc-sim-geno}, Table {@tbl:hgsvc}), outperforming the other methods by a clear margin.
+When restricting the comparisons to regions not identified as tandem repeats or segmental duplications, the genotyping predictions were significantly better for all methods.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-sim}).
-Overall, both graph-based methods, vg and BayesTyper, outperformed the other two methods tested.
 
 ![**Structural variants from the HGSVC and Genome in a Bottle datasets**. 
 HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[@vQTymKCj].
@@ -212,8 +209,8 @@ c) Size distribution of SVs in the HGSVC and GIAB catalogs.
 
 We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment.
 Here, vg clearly outperformed other approaches (Figures {@fig:2}a and {@fig:hgsvc-real-geno}).
-In non-repeat regions and across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods.
-For example, for deletions in non-repeat regions, the F1 score for vg was 0.801 while the second best method, Delly, had a F1 score of 0.692.
+In non-repeat regions and insertions across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods.
+For example, for deletions in non-repeat regions, the F1 score for vg was ???? while the second best method, Paragraph, had a F1 score of ????.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-real}).
 In addition, vg's performance was stable across the spectrum of SV sizes (Figure {@fig:2}b-c).
 Figure {@fig:hgsvc-ex} shows an example of an exonic deletion that was correctly genotyped by vg but not by the other methods.
@@ -239,8 +236,8 @@ Part of the deleted region is also covered by several reads, potentially confusi
 The Genome in a Bottle (GiaB) consortium is currently producing a high-quality SV catalog for an Ashkenazim individual (HG002)[@14neTdqfN;@16GvGhO20;@RCzDkVqI].
 Dozens of SV callers operating on datasets from short, long, and linked reads were used to produce this set of SVs.
 We evaluated the SV genotyping methods on this sample as well using the GIAB VCF, which also contains parental calls (HG003 and HG004), all totalling 30,224 SVs.
-vg performed similarly on this dataset as on the HGSVC dataset, with a F1 score of 0.75 for both insertions and deletions in non-repeat regions (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
-As before, other methods produced lower F1 scores in most cases, although Delly and BayesTyper predicted better genotypes for deletions in non-repeat regions.
+Relative to the HGSVC dataset, vg performed similarly but Paragraph saw a large boost in accuracy and was the most accurate method across all metrics.  (Figures {@fig:2}, {@fig:giab-geno} and {@fig:giab}, and Table {@tbl:giab}).
+As before, the remaining methods produced lower F1 scores.
 
 #### SMRT-SV v2 catalog and training data [@3NNFS6U2]
 
@@ -248,11 +245,13 @@ A recent study by Audano et al. generated a catalog of 97,368 SVs (referred as S
 These variants were then genotyped from short reads across 440 individuals using the SMRT-SV v2, a machine learning-based tool implemented for that study.
 The SMRT-SV v2 genotyper was trained on a pseudo-diploid genome constructed from high quality assemblies of two haploid cell lines (CHM1 and CHM13) and a single negative control (NA19240).
 We first used vg to genotype the SVs in this two-sample training dataset using 30X coverage reads, and compared the results with the SMRT-SV v2 genotyper.
-vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV v2 produced better genotypes for deletions (see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
-To compare vg and SMRT-SV v2, we then genotyped SVs from the entire SVPOP catalog with both methods, using the read data from the three HGSVC samples described above.
-Given that the the SVPOP catalog contains these three samples, we once again evaluated accuracy by using the long-read genotypes as a baseline of comparison.
+vg was systematically better at predicting the presence of an SV for both SV types, but SMRT-SV v2 produced slightly better genotypes for deletions in the whole genome(see Figures {@fig:chmpd-svpop}, {@fig:chmpd-geno} and {@fig:chmpd}, and Table {@tbl:chmpd}). 
+To compare vg and SMRT-SV v2 on a largere dataset, we then genotyped SVs from the entire SVPOP catalog with both methods, using the read data from the three HGSVC samples described above.
+Given that the the SVPOP catalog contains these three samples, we once again evaluated accuracy by using the long-read genotypes as a baseline.
+Paragraph was included as an additional point of comparison. 
 
 Compared to SMRT-SV v2, vg had a better precision-recall curve and a higher F1 for both insertions and deletions (SVPOP in Figures {@fig:chmpd-svpop} and {@fig:svpop}, and Table {@tbl:svpop}).
+Paragraph's performance was virtually identical to vg's.
 Of note, SMRT-SV v2 produces *no-calls* in regions where the read coverage is too low, and we observed that its recall increased when filtering these regions out the input set.
 Interestingly, vg performed well even in regions where SMRT-SV v2 produced *no-calls* (Figure {@fig:svpop-regions} and Table {@tbl:svpop-regions}).
 Audano et al. discovered 217 sequence-resolved inversions using long reads, which we attempted to genotype.
@@ -323,9 +322,18 @@ Colors represent the two strain sets and transparency indicates whether the resp
 <!-- Discuss why vg is doing better -->
 Overall, vg was the most accurate SV genotyper in our benchmarks.
 These results show that SV genotyping benefits from variant-aware read mapping and graph based genotyping, a finding consistent with previous studies[@10jxt15v0; @DuODeStx; @11Jy8B61m; @ohTIiqfV; @14Uxmwbxm].
+Paragraph, another graph-based genotyper which was released as we were submitting this work, was very competitive with vg and showed the best overall accuracy on the GIAB dataset.
+In addition to being featured prominently in Paragraph's devleopment and evaluation, the GIAB dataset we used was a different coverage (50X) than the other 30X datasets we used.
+Our simulation results show that Paragraph is slightly more robust than vg with respect to differences in coverages and perhaps this is a factor in the difference in performance.
+In the future, we would like to better model the expected read depth in the vg genotyper as it currently does not exploit this information.
+In contrast, vg is much more accurate than Paragraph on the HGSVC dataset and we speculate that this is due to the higher number of overlapping variants.
+Using the snarl decomposition, vg can genotype arbitrary combinations of SVs simultaneously, whereas Paragraph operates one at a time.
+
+
 We took advantage of newly released datasets for our evaluation, which feature up to 3.7 times more variants than the more widely-used GIAB benchmark.
 More and more large-scale projects are using low cost short-read technologies to sequence the genomes of thousands to hundreds of thousands of individuals (e.g. the Pancancer Analysis of Whole Genomes[@10Jid8Wql], the Genomics England initiative[@mWj2p7Xp], and the TOPMed consortium[@ir1O1h8n]).
 We believe pangenome graph-based approaches will improve both how efficiently SVs can be represented, and how accurately they can be genotyped with this type of data.
+
 
 <!-- Input data quality: "sequence-resolved", break-point fine-tuning. -->
 A particular advantage of our method is that it does not require exact breakpoint resolution in the variant library.
@@ -943,7 +951,7 @@ Only the number of alignments with perfect identity is substantially lower for t
 | \ \ \ \ \ \ snarls index             | 23            | 1     | 50 i3.8xlarge | 17             |
 | \ \ \ \ \ \ gcsa2 index              | 792           | 16    | 1 i3.8xlarge  | 45             |
 | \ \ \ \ \ \ mapping                  | 177           | 32    | 50 r3.8xlarge | 32             |
-| \ \ \ \ \ \ genotyping (pack + call) | 97            | 10    | 1 i3.4xlarge  | 63             |
+| \ \ \ \ \ \ genotyping (pack + call) | 56            | 10    | 1 i3.4xlarge  | 63             |
 | **BayesTyper**                       | 94            | 24    | 1 i3.8xlarge  | 119            |
 | **bwa mem**                          | 240           | 32    | 1 i3.8xlarge  | 14             |
 | \ \ \ \ \ \ **Delly**                | 69            | 1     | 1 i3.8xlarge  | 69             |
