@@ -21,6 +21,26 @@
 },
 {
   "type": "webpage",
+  "standard_citation": "url:rmsk",
+  "URL": "http://www.repeatmasker.org",
+  "author": [
+    {
+      "given": "AFA",
+      "family": "Smit"
+    },
+    {
+      "given": "R",
+      "family": "Hubley"
+    },
+    {
+      "given": "P",
+      "family": "Green"
+    }
+  ],
+  "title": "RepeatMasker Open-4.0."
+},
+{
+  "type": "webpage",
   "standard_citation": "url:bcftools",
   "URL": "https://samtools.github.io/bcftools/",
   "title": "Bcftools 1.9"
