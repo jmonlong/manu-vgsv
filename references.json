@@ -3851,5 +3851,25 @@
     "URL": "https://www.nhlbiwgs.org/",
     "title": "Whole Genome Sequencing in the NHLBI Trans-Omics for Precision Medicine (TOPMed). ",
     "id": "ir1O1h8n"
+  },
+  {
+    "type": "webpage",
+    "URL": "http://www.repeatmasker.org",
+    "author": [
+      {
+        "given": "AFA",
+        "family": "Smit"
+      },
+      {
+        "given": "R",
+        "family": "Hubley"
+      },
+      {
+        "given": "P",
+        "family": "Green"
+      }
+    ],
+    "title": "RepeatMasker Open-4.0.",
+    "id": "169vFQzOa"
   }
 ]

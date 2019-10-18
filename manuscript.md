@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-16'
+date-meta: '2019-10-18'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/c42f04a9baef74bad29efeedf1e359970e3d286a/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64/))
 was automatically generated
-from [jmonlong/manu-vgsv@c42f04a](https://github.com/jmonlong/manu-vgsv/tree/c42f04a9baef74bad29efeedf1e359970e3d286a)
-on October 16, 2019.
+from [jmonlong/manu-vgsv@ad0fc92](https://github.com/jmonlong/manu-vgsv/tree/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64)
+on October 18, 2019.
 </em></small>
 
 ## Authors
@@ -213,6 +213,8 @@ In non-repeat regions and insertions across the whole genome, the F1 scores and 
 For example, for deletions in non-repeat regions, the F1 score for vg was ???? while the second best method, Paragraph, had a F1 score of ????.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-real}).
 In addition, vg's performance was stable across the spectrum of SV sizes (Figure {@fig:2}b-c).
+By annotating the repeat content of the deleted/inserted sequence we further evaluated vg's performance across repeat classes. 
+As expected, simple repeat variation was more challenging to genotype than transposable element polymorphisms (Figure {@fig:eval-rmsk}). 
 Figure {@fig:hgsvc-ex} shows an example of an exonic deletion that was correctly genotyped by vg but not by the other methods.
 
 ![**Exonic deletion in the HGSVC dataset correctly genotyped by vg**. 
@@ -479,6 +481,9 @@ The evaluation is performed using all variants or using only variants within hig
 In most analysis, the high-confidence regions are constructed by excluding segmental duplications and tandem repeats (using the respective tracks from the UCSC Genome Browser).
 For the GIAB analysis, we used the Tier 1 high-confidence regions provided by the GIAB consortium in version 0.6.
 
+The inserted/deleted sequence was also annotated using RepeatMasker[@169vFQzOa].
+SVs were separated by repeat family if the annotated repeat element covered more than 80% of the sequence.
+We recomputed precision and recall in the most frequent repeat families. 
 
 ### Other SV genotypers
 
@@ -842,22 +847,25 @@ The bottom panel zooms on the part highlighted by a dotted rectangle.
 
 ![**Calling evaluation on the HGSVC dataset using real reads.** Combined results across the HG00514, HG00733 and NA19240.](images/hgsvc-real.png){#fig:hgsvc-real tag="S4"}
 
-![**Genotyping evaluation on the Genome in a Bottle dataset.** Predicted genotypes on HG002 were compared to the high-quality SVs from this same individual.](images/giab5-geno.png){#fig:giab-geno tag="S5"}
+![**Evaluation across different repeat profiles**. The deleted/inserted sequence was annotated wit RepeatMasker (color). The precision and recall was recomputed on each of the most frequent repeat families.](images/rmsk-hgsvc-vg-HG00514-call-geno.png){#fig:eval-rmsk tag="S5"}
 
-![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S6"}
+
+![**Genotyping evaluation on the Genome in a Bottle dataset.** Predicted genotypes on HG002 were compared to the high-quality SVs from this same individual.](images/giab5-geno.png){#fig:giab-geno tag="S6"}
+
+![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S7"}
 
 ![**Genotyping evaluation on the CHM pseudo-diploid dataset.**
 The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]
 The bottom panel zooms on the part highlighted by a dotted rectangle.
-](images/chmpd-geno.png){#fig:chmpd-geno tag="S7"}
+](images/chmpd-geno.png){#fig:chmpd-geno tag="S8"}
 
-![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S8"}
+![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S9"}
 
-![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S9"}
+![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S10"}
 
-![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S10"}
+![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S11"}
 
-![**Benchmark summary when using a more stringent matching criterion**. At least 90% coverage was necessary to consider a variant matched, instead of the 50% minimum coverage used in other figures.](images/hgsvc-giab-chmpd-svpop-best-f1-mincov90.png){#fig:eval-stringent tag="S11"}
+![**Benchmark summary when using a more stringent matching criterion**. At least 90% coverage was necessary to consider a variant matched, instead of the 50% minimum coverage used in other figures.](images/hgsvc-giab-chmpd-svpop-best-f1-mincov90.png){#fig:eval-stringent tag="S12"}
 
 ![**Breakpoint fine-tuning using augmentation through "vg call".**
 For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF.
@@ -865,7 +873,7 @@ For insertions, the insertion location and sequence contained errors.
 a) Proportion of variant for which breakpoints could be fine-tuned.
 b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
-](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S12"}
+](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S13"}
 
 ![**Mapping comparison on graphs of the *five strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -874,7 +882,7 @@ a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
 Transparency indicates whether the strain was included or excluded in the graphs.
-](images/panel3.png){#fig:panel3 tag="S13"}
+](images/panel3.png){#fig:panel3 tag="S14"}
 
 ![**Mapping comparison on graphs of the *all strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -882,7 +890,7 @@ The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* 
 a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
-](images/panel5.png){#fig:panel5 tag="S14"}
+](images/panel5.png){#fig:panel5 tag="S15"}
 
 ![**SV genotyping comparison using all reads.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*.
@@ -893,7 +901,7 @@ a) Average delta in mapping identity of all short reads aligned to the sample gr
 b) Average delta in mapping quality of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
 Positive values denote an improvement of the *cactus graph* over the *VCF graph*.
 Colors represent the two strain sets and transparency indicates whether the respective strain was part of the *five strains set*.
-](images/panel6.png){#fig:panel6 tag="S15"}
+](images/panel6.png){#fig:panel6 tag="S16"}
 
 ![**Overview of the SV evaluation by the *sveval* package**.
 For deletions and inversions, we compute the proportion of a variant that is covered by variants in the other set, considering only variants overlapping with at least 10% reciprocal overlap.
@@ -901,7 +909,7 @@ A variant is considered true positive if this coverage proportion is higher than
 A similar approach is used for insertions, although they are first clustered into pairs located less than 20 bp from each other.
 Then their inserted sequences are aligned to derive the coverage statistics.
 The SV evaluation approach is described in more detail in the [Methods](#toil-vg-sveval).
-](images/sveval-cartoon.png){#fig:sveval tag="S16"}
+](images/sveval-cartoon.png){#fig:sveval tag="S17"}
 
 ### Supplementary Information  {.page_break_before}
 
