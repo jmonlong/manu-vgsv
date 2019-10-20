@@ -8,7 +8,7 @@ source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
 methods = c('vg','smrtsv')
-methconv = c(vg='vg', smrtsv='SMRT-SV v2', paragraph='Paragraph')
+methconv = c(vg='vg', smrtsv='SMRT-SV v2 Genotyper', paragraph='Paragraph')
 
 ## Read evaluation results
 pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)

@@ -1,8 +1,13 @@
 [![HTML Manuscript](https://img.shields.io/badge/manuscript-HTML-blue.svg)](https://jmonlong.github.io/manu-vgsv/)
 [![PDF Manuscript](https://img.shields.io/badge/manuscript-PDF-blue.svg)](https://jmonlong.github.io/manu-vgsv/manuscript.pdf)
 [![Build Status](https://travis-ci.com/jmonlong/manu-vgsv.svg?token=iYnJ9rfnqyHqrADLdak8&branch=master)](https://travis-ci.com/jmonlong/manu-vgsv)
+[![bioRxiv preprint](https://img.shields.io/badge/preprint-bioRxiv-blue)](https://www.biorxiv.org/content/10.1101/654566v1)
 
 # VG-SV manuscript
+
+This is the repo for the manuscript on SV genotyping using [vg](https://github.com/vgteam/vg).
+The code to reproduce the analysis is available at [https://github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
+Preprint versions are available on [bioRxiv](https://www.biorxiv.org/content/10.1101/654566v1).
 
 Quick "how to use":
 
@@ -13,8 +18,7 @@ Quick "how to use":
 - More in [`USAGE.md`](USAGE.md).
 - In-text comments using: `<!-- This is a comment -->` or `[//]: # (This is a comment)`.
 - Travis is setup to build HTML/PDF (see buttons above). Or [build locally](https://github.com/jmonlong/manu-vgsv#local-execution).
-
-[Repo with the code to reproduce the analysis](https://github.com/vgteam/sv-genotyping-paper)
+- A few more utilities in the [Makefile](Makefile).
 
 # Manubot documentation: automated scholarly manuscripts on GitHub
 

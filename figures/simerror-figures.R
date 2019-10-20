@@ -7,7 +7,7 @@ library(gridExtra)
 
 source('colors-functions.R')
 
-methods.rename = c('vg'='vg', 'svtyper'='SVTyper', 'delly'='Delly', 'bayestyper'='BayesTyper', 'paragraph'='Paragraph')
+methods.rename = c('vg'='vg', 'svtyper'='SVTyper', 'delly'='Delly Genotyper', 'bayestyper'='BayesTyper', 'paragraph'='Paragraph')
 
 ##
 ## Calling evaluation
@@ -152,18 +152,18 @@ ggp.l$prop = ggplot(df, aes(x=etype, fill=correct.bkpt)) + geom_bar(position='fi
   ylab('Variant proportion') + xlab('Error type') + ggtitle('a)')
 
 ggp.l$error = df %>% mutate(type.etype=paste(type, etype)) %>% 
-  ggplot(aes(x=error, fill=correct.bkpt)) + geom_histogram(binwidth=1) +
+  ggplot(aes(x=error, fill=correct.bkpt)) + geom_histogram(position='fill', binwidth=1) +
   theme_bw() + facet_wrap(~type.etype, scales='free') +
   scale_fill_brewer(name='Breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
-  ylab('Variant') + ggtitle('b)') +
+  ylab('Variant proportion') + ggtitle('b)') +
   xlab('Error (bp)') + scale_x_continuous(breaks=seq(0,20,2)) +
   guides(fill=FALSE)
 
 ggp.l$size = df %>% mutate(type.etype=paste(type, etype)) %>% 
-  ggplot(aes(x=size, fill=correct.bkpt)) + geom_histogram() +
+  ggplot(aes(x=size, fill=correct.bkpt)) + geom_histogram(position='fill') +
   theme_bw() + facet_wrap(~type.etype, scales='free') +
   scale_fill_brewer(name='Breakpoint', palette='Set1', labels=c('incorrect', 'fine-tuned')) +
-  scale_x_log10() + xlab('Size (bp)') + ylab('Variant') + ggtitle('c)') + 
+  scale_x_log10() + xlab('Size (bp)') + ylab('Variant proportion') + ggtitle('c)') + 
   guides(fill=FALSE)
 
 

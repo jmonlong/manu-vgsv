@@ -5,7 +5,7 @@ library(knitr)
 source('colors-functions.R')
 
 ## Method names and renaming vector to fit color palette
-methconv = c(vg='vg', delly='Delly', bayestyper='BayesTyper', svtyper='SVTyper', paragraph='Paragraph', smrtsv='SMRT-SV v2')
+methconv = c(vg='vg', delly='Delly Genotyper', bayestyper='BayesTyper', svtyper='SVTyper', paragraph='Paragraph', smrtsv='SMRT-SV v2 Genotyper')
 
 ## Read evaluation results
 pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
