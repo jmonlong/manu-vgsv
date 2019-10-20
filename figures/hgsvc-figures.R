@@ -74,7 +74,9 @@ eval.f1 %>%
 dev.off()
 
 eval.f1 %>% filter(eval=='genotype', !is.na(F1)) %>%
+  ungroup %>% 
   select(experiment, method, region, type, precision, recall, F1) %>%
-  arrange(experiment, method, region) %>%
+  tableAllRep %>% 
+  arrange(experiment, method) %>%
   kable(digits=3) %>%
   cat(file='tables/hgsvc-geno-precision-recall-F1.md', sep='\n')

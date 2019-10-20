@@ -46,10 +46,11 @@ label.df %>%
 dev.off()
 
 label.df %>% filter(!is.na(F1)) %>%
+  ungroup %>% 
   select(method, region, type, TP.baseline, FP, FN, precision, recall, F1) %>%
-  arrange(method, region) %>%
+  arrange(method, region, type) %>%
   kable(digits=3) %>%
-  cat(file='tables/svpop.md', sep='\n')
+    cat(file='tables/svpop.md', sep='\n')
 
 
 ##
@@ -78,6 +79,7 @@ dev.off()
 
 ## Bar plots with best F1
 label.df %>% filter(!is.na(F1)) %>%
+  ungroup %>% 
   select(method, region, type, TP.baseline, FP, FN, precision, recall, F1) %>%
   arrange(method, region, type) %>%
   kable(digits=3) %>%
