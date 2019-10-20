@@ -1,6 +1,6 @@
 ## Color palette
 library(RColorBrewer)
-tools = c('vg', 'Paragraph', 'BayesTyper', 'SVTyper', 'Delly', 'SMRT-SV v2')
+tools = c('vg', 'Paragraph', 'BayesTyper', 'SVTyper', 'Delly Genotyper', 'SMRT-SV v2 Genotyper')
 pal.tools = brewer.pal(9, 'Set1')[-6]
 pal.tools = pal.tools[1:length(tools)]
 names(pal.tools) = tools
@@ -13,8 +13,8 @@ relabel <- function(df, nonrep=c('nonrep', 'hc')){
   }
   ## Region
   if('region' %in% colnames(df)){
-    reg.l = c('all','repeat', 'non-repeat', 'called in SMRT-SV v2',
-              'not called in SMRT-SV v2')
+    reg.l = c('all','repeat', 'non-repeat', 'called in SMRT-SV v2 Genotyper',
+              'not called in SMRT-SV v2 Genotyper')
     if(nonrep[1] == 'nonrep'){
       reg.l[3] = 'non-repeat'
     } else if(nonrep[1] == 'hc'){
