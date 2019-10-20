@@ -45,7 +45,9 @@ label.df %>%
 dev.off()
 
 label.df %>% filter(eval=='genotype', !is.na(F1)) %>%
+  ungroup %>% 
   select(method, region, type, precision, recall, F1) %>%
-  arrange(method, region) %>%
+  tableAllRep %>% 
+  arrange(method, type) %>%
   kable(digits=3) %>%
   cat(file='tables/giab-geno-precision-recall-F1.md', sep='\n')
