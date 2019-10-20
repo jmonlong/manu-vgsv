@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-18'
+date-meta: '2019-10-20'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/0440a9bd01e6cce55cbd7ac1035077ea5a5a129b/))
 was automatically generated
-from [jmonlong/manu-vgsv@ad0fc92](https://github.com/jmonlong/manu-vgsv/tree/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64)
-on October 18, 2019.
+from [jmonlong/manu-vgsv@0440a9b](https://github.com/jmonlong/manu-vgsv/tree/0440a9bd01e6cce55cbd7ac1035077ea5a5a129b)
+on October 20, 2019.
 </em></small>
 
 ## Authors
@@ -210,12 +210,12 @@ c) Size distribution of SVs in the HGSVC and GIAB catalogs.
 We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment.
 Here, vg clearly outperformed other approaches (Figures {@fig:2}a and {@fig:hgsvc-real-geno}).
 In non-repeat regions and insertions across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods.
-For example, for deletions in non-repeat regions, the F1 score for vg was ???? while the second best method, Paragraph, had a F1 score of ????.
+For example, for deletions in non-repeat regions, the F1 score for vg was 0.824 while the second best method, Paragraph, had a F1 score of 0.717.
 We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures {@fig:2}a and {@fig:hgsvc-real}).
 In addition, vg's performance was stable across the spectrum of SV sizes (Figure {@fig:2}b-c).
 By annotating the repeat content of the deleted/inserted sequence we further evaluated vg's performance across repeat classes. 
 As expected, simple repeat variation was more challenging to genotype than transposable element polymorphisms (Figure {@fig:eval-rmsk}). 
-Figure {@fig:hgsvc-ex} shows an example of an exonic deletion that was correctly genotyped by vg but not by the other methods.
+Figure {@fig:hgsvc-ex} shows an example of an exonic deletion that was correctly genotyped by vg but not by BayesTyper, SVTyper or Delly.
 
 ![**Exonic deletion in the HGSVC dataset correctly genotyped by vg**. 
 a) Visualization of the HGSVC graph as augmented by reads aligned by vg at a locus harboring a 51 bp homozygous deletion in the UTR region of the LONRF2 gene.
@@ -384,7 +384,7 @@ Computing the coverage can be done in a single scan through the reads and, in pr
 
 Variation graphs, as represented in vg, are bidirected.
 In a bidirected graph, every node can be thought of having two distinct *sides*.
-See, for example, the left and right sides of each rectangle in Figure {@fig:vg-sv-cartoon}.
+See, for example, the left and right sides of each rectangle in Figure {@fig:1}a.
 If *x* is the side of a given node *A*, then we use the notation *x'* to denote the other side of *A*.
 A snarl is defined by a pair of sides, *x* and *y*, that satisfy the following criteria:
 1. Removing all edges incident to *x'* and *y'* disconnects the graph, creating a connected component *X* that contains *x* and *y*.
@@ -707,20 +707,24 @@ These authors contributed equally: Glenn Hickey, David Heller, Jean Monlong.
 
 | Experiment      | Method     | Type | Precision     | Recall        | F1            |
 |:----------------|:-----------|:-----|:--------------|:--------------|:--------------|
-| Simulated reads | vg         | INS  | 0.795 (0.885) | 0.796 (0.883) | 0.795 (0.884) |
-|                 |            | DEL  | 0.869 (0.971) | 0.771 (0.92)  | 0.817 (0.945) |
-|                 | BayesTyper | INS  | 0.91 (0.935)  | 0.835 (0.9)   | 0.871 (0.917) |
-|                 |            | DEL  | 0.898 (0.981) | 0.806 (0.929) | 0.849 (0.954) |
-|                 | SVTyper    | DEL  | 0.809 (0.876) | 0.328 (0.754) | 0.467 (0.81)  |
-|                 | Delly      | INS  | 0.767 (0.866) | 0.093 (0.225) | 0.166 (0.358) |
-|                 |            | DEL  | 0.696 (0.903) | 0.707 (0.846) | 0.701 (0.874) |
-| Real reads      | vg         | INS  | 0.431 (0.683) | 0.541 (0.726) | 0.48 (0.704)  |
-|                 |            | DEL  | 0.65 (0.886)  | 0.519 (0.708) | 0.577 (0.787) |
-|                 | BayesTyper | INS  | 0.601 (0.747) | 0.254 (0.433) | 0.357 (0.549) |
-|                 |            | DEL  | 0.627 (0.91)  | 0.325 (0.381) | 0.428 (0.537) |
-|                 | SVTyper    | DEL  | 0.661 (0.733) | 0.236 (0.551) | 0.348 (0.629) |
-|                 | Delly      | INS  | 0.516 (0.621) | 0.068 (0.176) | 0.12 (0.275)  |
-|                 |            | DEL  | 0.55 (0.838)  | 0.445 (0.547) | 0.492 (0.662) |
+| Simulated reads | vg         | INS  | 0.863 (0.918) | 0.841 (0.911) | 0.852 (0.914) |
+|                 |            | DEL  | 0.85 (0.961)  | 0.796 (0.959) | 0.822 (0.96)  |
+|                 | Paragraph  | INS  | 0.581 (0.831) | 0.749 (0.804) | 0.654 (0.818) |
+|                 |            | DEL  | 0.707 (0.853) | 0.73 (0.811)  | 0.718 (0.832) |
+|                 | BayesTyper | INS  | 0.915 (0.944) | 0.839 (0.907) | 0.876 (0.925) |
+|                 |            | DEL  | 0.894 (0.983) | 0.804 (0.932) | 0.847 (0.957) |
+|                 | SVTyper    | DEL  | 0.811 (0.844) | 0.328 (0.74)  | 0.467 (0.788) |
+|                 | Delly      | INS  | 0.757 (0.857) | 0.094 (0.225) | 0.167 (0.356) |
+|                 |            | DEL  | 0.681 (0.88)  | 0.684 (0.823) | 0.682 (0.851) |
+| Real reads      | vg         | INS  | 0.5 (0.714)   | 0.492 (0.712) | 0.496 (0.713) |
+|                 |            | DEL  | 0.629 (0.864) | 0.519 (0.787) | 0.569 (0.824) |
+|                 | Paragraph  | INS  | 0.404 (0.638) | 0.555 (0.595) | 0.468 (0.616) |
+|                 |            | DEL  | 0.595 (0.787) | 0.554 (0.659) | 0.574 (0.717) |
+|                 | BayesTyper | INS  | 0.599 (0.757) | 0.253 (0.436) | 0.356 (0.553) |
+|                 |            | DEL  | 0.625 (0.909) | 0.324 (0.471) | 0.427 (0.62)  |
+|                 | SVTyper    | DEL  | 0.69 (0.728)  | 0.242 (0.59)  | 0.358 (0.652) |
+|                 | Delly      | INS  | 0.524 (0.632) | 0.068 (0.175) | 0.12 (0.274)  |
+|                 |            | DEL  | 0.556 (0.834) | 0.429 (0.596) | 0.484 (0.695) |
 
 Table: Genotyping evaluation on the HGSVC dataset.
 Precision, recall and F1 score for the call set with the best F1 score.
@@ -732,13 +736,15 @@ The numbers in parentheses corresponds to the results in non-repeat regions.
 
 | Method     | Type | Precision     | Recall        | F1            |
 |:-----------|:-----|:--------------|:--------------|:--------------|
-| vg         | INS  | 0.658 (0.774) | 0.646 (0.735) | 0.652 (0.754) |
-|            | DEL  | 0.68 (0.768)  | 0.643 (0.735) | 0.661 (0.751) |
-| BayesTyper | INS  | 0.776 (0.879) | 0.286 (0.379) | 0.418 (0.53)  |
-|            | DEL  | 0.808 (0.886) | 0.512 (0.696) | 0.627 (0.779) |
-| SVTyper    | DEL  | 0.742 (0.818) | 0.342 (0.496) | 0.468 (0.618) |
-| Delly      | INS  | 0.822 (0.894) | 0.177 (0.268) | 0.291 (0.412) |
-|            | DEL  | 0.722 (0.822) | 0.645 (0.768) | 0.681 (0.794) |
+| vg         | INS  | 0.649 (0.776) | 0.618 (0.73)  | 0.633 (0.752) |
+|            | DEL  | 0.696 (0.807) | 0.691 (0.795) | 0.694 (0.801) |
+| Paragraph  | INS  | 0.699 (0.827) | 0.673 (0.768) | 0.686 (0.796) |
+|            | DEL  | 0.75 (0.9)    | 0.726 (0.815) | 0.737 (0.855) |
+| BayesTyper | INS  | 0.777 (0.879) | 0.285 (0.379) | 0.417 (0.53)  |
+|            | DEL  | 0.807 (0.884) | 0.514 (0.694) | 0.628 (0.778) |
+| SVTyper    | DEL  | 0.743 (0.817) | 0.341 (0.496) | 0.467 (0.618) |
+| Delly      | INS  | 0.804 (0.888) | 0.178 (0.269) | 0.292 (0.413) |
+|            | DEL  | 0.721 (0.821) | 0.644 (0.766) | 0.68 (0.793)  |
 
 Table: Genotyping evaluation on the Genome in a Bottle dataset.
 Precision, recall and F1 score for the call set with the best F1 score.
@@ -747,66 +753,68 @@ The numbers in parentheses corresponds to the results in non-repeat regions. {#t
 
 ---
 
+| Method  | Type | Precision     | Recall        | F1            |
+|:--------|:-----|:--------------|:--------------|:--------------|
+| vg      | INS  | 0.783 (0.907) | 0.773 (0.895) | 0.778 (0.901) |
+|         | DEL  | 0.787 (0.962) | 0.635 (0.901) | 0.703 (0.93)  |
+| SMRT-SV | INS  | 0.819 (0.934) | 0.582 (0.712) | 0.681 (0.808) |
+|         | DEL  | 0.848 (0.973) | 0.63 (0.839)  | 0.723 (0.901) |
 
-| Method   | Region     | Type | Precision | Recall |    F1 |
-|:---------|:-----------|:-----|----------:|-------:|------:|
-| vg       | all        | INS  |     0.665 |  0.661 | 0.663 |
-|          |            | DEL  |     0.688 |  0.500 | 0.579 |
-|          | non-repeat | INS  |     0.806 |  0.784 | 0.795 |
-|          |            | DEL  |     0.869 |  0.762 | 0.812 |
-| SMRT-SV  | all        | INS  |     0.757 |  0.536 | 0.628 |
-|          |            | DEL  |     0.848 |  0.630 | 0.723 |
-|          | non-repeat | INS  |     0.880 |  0.680 | 0.767 |
-|          |            | DEL  |     0.971 |  0.824 | 0.891 |
-
-Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.[@3NNFS6U2]. {#tbl:chmpd tag="S3"}
+Table: Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.[@3NNFS6U2].
+The numbers in parentheses corresponds to the results in non-repeat regions. {#tbl:chmpd tag="S3"}
 
 ---
 
-| Method   | Region     | Type |    TP |    FP |    FN | Precision | Recall |    F1 |
-|:---------|:-----------|:-----|------:|------:|------:|----------:|-------:|------:|
-| vg       | all        | INS  | 25838 | 22042 | 15772 |     0.540 |  0.621 | 0.577 |
-|          |            | DEL  | 14545 |  6824 | 15425 |     0.681 |  0.485 | 0.567 |
-|          |            | INV  |    27 |    26 |   173 |     0.509 |  0.135 | 0.213 |
-|          | non-repeat | INS  |  8051 |  3258 |  1817 |     0.712 |  0.816 | 0.760 |
-|          |            | DEL  |  3769 |   623 |   818 |     0.858 |  0.822 | 0.840 |
-|          |            | INV  |    19 |    12 |    75 |     0.613 |  0.202 | 0.304 |
-| SMRT-SV  | all        | INS  | 16270 | 26031 | 25340 |     0.385 |  0.391 | 0.388 |
-|          |            | DEL  | 11793 | 10106 | 18177 |     0.539 |  0.393 | 0.455 |
-|          | non-repeat | INS  |  4483 |  4659 |  5385 |     0.490 |  0.454 | 0.472 |
-|          |            | DEL  |  2928 |   930 |  1659 |     0.759 |  0.638 | 0.693 |
+| Method    | Region     | Type |    TP |    FP |    FN | Precision | Recall |    F1 |
+|:----------|:-----------|:-----|------:|------:|------:|----------:|-------:|------:|
+| vg        | all        | INS  | 23430 | 18414 | 18181 |     0.564 |  0.563 | 0.564 |
+|           |            | DEL  | 14717 |  7033 | 15254 |     0.677 |  0.491 | 0.569 |
+|           |            | INV  |    41 |    16 |   159 |     0.719 |  0.205 | 0.319 |
+|           | non-repeat | INS  |  8078 |  3303 |  1761 |     0.709 |  0.821 | 0.761 |
+|           |            | DEL  |  6585 |  1033 |  1040 |     0.862 |  0.864 | 0.863 |
+|           |            | INV  |    37 |    15 |    90 |     0.712 |  0.291 | 0.413 |
+| Paragraph | all        | INS  | 24342 | 25618 | 17269 |     0.493 |  0.585 | 0.535 |
+|           |            | DEL  | 16986 | 13376 | 12985 |     0.571 |  0.567 | 0.569 |
+|           |            | INV  |    47 |    24 |   153 |     0.662 |  0.235 | 0.347 |
+|           | non-repeat | INS  |  7843 |  3270 |  1996 |     0.706 |  0.797 | 0.749 |
+|           |            | DEL  |  6523 |  1000 |  1102 |     0.866 |  0.856 | 0.860 |
+|           |            | INV  |    39 |    12 |    88 |     0.765 |  0.307 | 0.438 |
+| SMRT-SV   | all        | INS  | 16297 | 26006 | 25314 |     0.397 |  0.392 | 0.394 |
+|           |            | DEL  | 11797 | 10054 | 18174 |     0.544 |  0.394 | 0.457 |
+|           | non-repeat | INS  |  4475 |  4645 |  5364 |     0.493 |  0.455 | 0.473 |
+|           |            | DEL  |  4986 |  1322 |  2639 |     0.788 |  0.654 | 0.715 |
 
 Table: Calling evaluation on the SVPOP dataset.
 Combined results for the HG00514, HG00733 and NA19240 individuals, 3 of the 15 individuals used to generate the high-quality SV catalog in Audano et al.[@3NNFS6U2]. {#tbl:svpop tag="S4"}
 
 ---
 
-| Method   | Region                | Type |   TP |   FP |   FN | Precision | Recall |    F1 |
-|:---------|:----------------------|:-----|-----:|-----:|-----:|----------:|-------:|------:|
-| vg       | all                   | INS  | 8618 | 7237 | 5416 |     0.546 |  0.614 | 0.578 |
-|          |                       | DEL  | 4762 | 2048 | 5145 |     0.696 |  0.481 | 0.569 |
-|          |                       | INV  |   11 |    8 |   54 |     0.579 |  0.169 | 0.262 |
-|          | repeat                | INS  | 6176 | 6923 | 4678 |     0.475 |  0.569 | 0.518 |
-|          |                       | DEL  | 2428 | 1701 | 4542 |     0.584 |  0.348 | 0.436 |
-|          |                       | INV  |    1 |    1 |    6 |     0.500 |  0.143 | 0.222 |
-|          | non-repeat            | INS  | 2677 |  987 |  514 |     0.731 |  0.839 | 0.781 |
-|          |                       | DEL  | 1180 |  176 |  321 |     0.869 |  0.786 | 0.825 |
-|          |                       | INV  |    7 |    4 |   20 |     0.636 |  0.259 | 0.368 |
-|          | called in SMRT-SV     | INS  | 3410 | 3789 | 2108 |     0.478 |  0.618 | 0.539 |
-|          |                       | DEL  | 2544 | 1092 | 1518 |     0.699 |  0.626 | 0.661 |
-|          |                       | INV  |    8 |    8 |   52 |     0.500 |  0.133 | 0.210 |
-|          | not called in SMRT-SV | INS  | 4838 |  542 | 3678 |     0.899 |  0.568 | 0.696 |
-|          |                       | DEL  | 2034 |   26 | 3723 |     0.987 |  0.353 | 0.520 |
-| SMRT-SV  | all                   | INS  | 5245 | 8563 | 8789 |     0.394 |  0.374 | 0.384 |
-|          |                       | DEL  | 3741 | 3382 | 6166 |     0.533 |  0.378 | 0.442 |
-|          | repeat                | INS  | 3848 | 7125 | 7006 |     0.368 |  0.354 | 0.361 |
-|          |                       | DEL  | 1990 | 2832 | 4980 |     0.426 |  0.286 | 0.342 |
-|          | non-repeat            | INS  | 1396 | 1468 | 1795 |     0.493 |  0.438 | 0.464 |
-|          |                       | DEL  |  901 |  308 |  600 |     0.745 |  0.600 | 0.665 |
-|          | called in SMRT-SV     | INS  | 4343 | 5595 | 1175 |     0.445 |  0.787 | 0.569 |
-|          |                       | DEL  | 3227 | 2451 |  835 |     0.573 |  0.794 | 0.666 |
-|          | not called in SMRT-SV | INS  |  116 |  109 | 8400 |     0.551 |  0.014 | 0.026 |
-|          |                       | DEL  |  206 |   16 | 5551 |     0.911 |  0.036 | 0.069 |
+| Method  | Region                | Type |   TP |   FP |   FN | Precision | Recall |    F1 |
+|:--------|:----------------------|:-----|-----:|-----:|-----:|----------:|-------:|------:|
+| vg      | all                   | INS  | 7764 | 6109 | 6270 |     0.567 |  0.553 | 0.560 |
+|         |                       | DEL  | 4841 | 2260 | 5066 |     0.684 |  0.489 | 0.570 |
+|         |                       | INV  |   16 |    6 |   49 |     0.727 |  0.246 | 0.368 |
+|         | repeat                | INS  | 5091 | 5150 | 5766 |     0.507 |  0.469 | 0.487 |
+|         |                       | DEL  | 2684 | 1922 | 4648 |     0.590 |  0.366 | 0.452 |
+|         |                       | INV  |    1 |    0 |    9 |     1.000 |  0.100 | 0.182 |
+|         | non-repeat            | INS  | 2662 |  979 |  521 |     0.732 |  0.836 | 0.781 |
+|         |                       | DEL  | 2085 |  322 |  388 |     0.865 |  0.843 | 0.854 |
+|         |                       | INV  |   14 |    6 |   26 |     0.700 |  0.350 | 0.467 |
+|         | called in SMRT-SV     | INS  | 3682 | 4752 | 1836 |     0.444 |  0.667 | 0.534 |
+|         |                       | DEL  | 2769 | 1779 | 1356 |     0.609 |  0.671 | 0.639 |
+|         |                       | INV  |   16 |    6 |   49 |     0.727 |  0.246 | 0.368 |
+|         | not called in SMRT-SV | INS  | 3867 |  291 | 4649 |     0.931 |  0.454 | 0.610 |
+|         |                       | DEL  | 1976 |  102 | 3797 |     0.952 |  0.342 | 0.503 |
+| SMRT-SV | all                   | INS  | 5254 | 8562 | 8780 |     0.394 |  0.374 | 0.384 |
+|         |                       | DEL  | 3743 | 3367 | 6164 |     0.535 |  0.378 | 0.443 |
+|         | repeat                | INS  | 3858 | 7119 | 6999 |     0.368 |  0.355 | 0.362 |
+|         |                       | DEL  | 2141 | 2906 | 5191 |     0.438 |  0.292 | 0.350 |
+|         | non-repeat            | INS  | 1394 | 1464 | 1789 |     0.493 |  0.438 | 0.464 |
+|         |                       | DEL  | 1550 |  443 |  923 |     0.778 |  0.627 | 0.694 |
+|         | called in SMRT-SV     | INS  | 4360 | 5619 | 1158 |     0.445 |  0.790 | 0.570 |
+|         |                       | DEL  | 3272 | 2554 |  853 |     0.568 |  0.793 | 0.662 |
+|         | not called in SMRT-SV | INS  |  111 |  101 | 8405 |     0.549 |  0.013 | 0.025 |
+|         |                       | DEL  |  211 |   50 | 5562 |     0.792 |  0.036 | 0.070 |
 
 Table: Calling evaluation on the SVPOP dataset in different sets of regions for the HG5014 individual. {#tbl:svpop-regions tag="S5"}
 
@@ -855,11 +863,11 @@ The bottom panel zooms on the part highlighted by a dotted rectangle.
 ![**Calling evaluation on the Genome in a Bottle dataset.** Calls on HG002 were compared to the high-quality SVs from this same individual.](images/giab5.png){#fig:giab tag="S7"}
 
 ![**Genotyping evaluation on the CHM pseudo-diploid dataset.**
-The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]
+The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.[@3NNFS6U2]
 The bottom panel zooms on the part highlighted by a dotted rectangle.
 ](images/chmpd-geno.png){#fig:chmpd-geno tag="S8"}
 
-![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S9"}
+![**Calling evaluation on the CHM pseudo-diploid dataset.** The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.[@3NNFS6U2]](images/chmpd.png){#fig:chmpd tag="S9"}
 
 ![**Calling evaluation on the SVPOP dataset.** Combined results across the HG00514, HG00733 and NA19240.](images/svpop.png){#fig:svpop tag="S10"}
 
@@ -969,8 +977,8 @@ Only the number of alignments with perfect identity is substantially lower for t
 Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset.
 {#tbl:timing tag="S7"}
 
-SMRT-SV2 required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the "SVPOP" VCF.
-These numbers are not directly comparable to the above table because 1) they apply to the "SVPOP" rather than "HGSVC" dataset (upon which we were unable to run SMRT-SV2) and 2) we were unable to install SMRT-SV2 on AWS nodes and ran it on an older, shared server at UCSC instead.
+SMRT-SV required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the "SVPOP" VCF.
+These numbers are not directly comparable to the above table because 1) they apply to the "SVPOP" rather than "HGSVC" dataset (upon which we were unable to run SMRT-SV) and 2) we were unable to install SMRT-SV on AWS nodes and ran it on an older, shared server at UCSC instead.
 
 Delly, SVTyper and Paragraph start from a set of aligned reads, hence we also show the running time for read alignment with `bwa mem`.
 For BayesTyper, the numbers include both khmer counting with KMC and genotyping.
