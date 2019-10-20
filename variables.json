@@ -154,15 +154,16 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "0440a9bd01e6cce55cbd7ac1035077ea5a5a129b"
+    "commit": "e39e278f8cfc119520e5771a3c21ba90f0919f29"
   },
   "manuscript_stats": {
     "reference_counts": {
-      "doi": 38,
+      "arxiv": 1,
+      "doi": 39,
       "raw": 1,
       "url": 5,
-      "total": 44
+      "total": 46
     },
-    "word_count": 12677
+    "word_count": 12899
   }
 }

@@ -1,5 +1,30 @@
 [
   {
+    "number": "1303.3997v2",
+    "version": "2",
+    "URL": "https://arxiv.org/abs/1303.3997v2",
+    "title": "Aligning sequence reads, clone sequences and assembly contigs with\n  BWA-MEM",
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          3,
+          16
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "Heng Li"
+      }
+    ],
+    "container-title": "arXiv",
+    "publisher": "arXiv",
+    "abstract": "Summary: BWA-MEM is a new alignment algorithm for aligning sequence reads or\nlong query sequences against a large reference genome such as human. It\nautomatically chooses between local and end-to-end alignments, supports\npaired-end reads and performs chimeric alignment. The algorithm is robust to\nsequencing errors and applicable to a wide range of sequence lengths from 70bp\nto a few megabases. For mapping 100bp sequences, BWA-MEM shows better\nperformance than several state-of-art read aligners to date.\n  Availability and implementation: BWA-MEM is implemented as a component of\nBWA, which is available at http://github.com/lh3/bwa.\n  Contact: hengli@broadinstitute.org",
+    "type": "report",
+    "id": "gmH6YDca"
+  },
+  {
     "publisher": "Elsevier BV",
     "issue": "3",
     "DOI": "10.1016/j.cell.2018.12.019",
@@ -2523,6 +2548,50 @@
     "PMCID": "PMC6191160",
     "PMID": "27318204",
     "id": "krO7WgVi"
+  },
+  {
+    "publisher": "Oxford University Press (OUP)",
+    "issue": "17",
+    "DOI": "10.1093/bioinformatics/btx304",
+    "type": "article-journal",
+    "page": "2759-2761",
+    "source": "Crossref",
+    "title": "KMC 3: counting and manipulating k-mer statistics",
+    "volume": "33",
+    "author": [
+      {
+        "given": "Marek",
+        "family": "Kokot"
+      },
+      {
+        "given": "Maciej",
+        "family": "Długosz"
+      },
+      {
+        "given": "Sebastian",
+        "family": "Deorowicz"
+      }
+    ],
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "editor": [
+      {
+        "given": "Bonnie",
+        "family": "Berger"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          5,
+          4
+        ]
+      ]
+    },
+    "URL": "https://doi.org/f96gjp",
+    "PMID": "28472236",
+    "id": "3czfa4O1"
   },
   {
     "publisher": "Oxford University Press (OUP)",

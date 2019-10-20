@@ -1,4 +1,5 @@
 string	citation	standard_citation	citation_id
+@arxiv:1303.3997	arxiv:1303.3997	arxiv:1303.3997	gmH6YDca
 @tag:audano2019	doi:10.1016/j.cell.2018.12.019	doi:10.1016/j.cell.2018.12.019	3NNFS6U2
 @tag:chaissonCHM	doi:10.1038/nature13907	doi:10.1038/nature13907	z91V6jjU
 @tag:kgp2015	doi:10.1038/nature15394	doi:10.1038/nature15394	qA6dWFP
@@ -24,6 +25,7 @@ string	citation	standard_citation	citation_id
 @doi:10.1093/bioinformatics/btq033	doi:10.1093/bioinformatics/btq033	doi:10.1093/bioinformatics/btq033	1HWiAHnIw
 @tag:delly	doi:10.1093/bioinformatics/bts378	doi:10.1093/bioinformatics/bts378	nLvQCjXU
 @doi:10.1093/bioinformatics/btw369	doi:10.1093/bioinformatics/btw369	doi:10.1093/bioinformatics/btw369	krO7WgVi
+@doi:10.1093/bioinformatics/btx304	doi:10.1093/bioinformatics/btx304	doi:10.1093/bioinformatics/btx304	3czfa4O1
 @doi:10.1093/bioinformatics/bty191	doi:10.1093/bioinformatics/bty191	doi:10.1093/bioinformatics/bty191	172cJaw4Q
 @tag:bakeoff	doi:10.1101/101378	doi:10.1101/101378	DuODeStx
 @tag:hgsvc	doi:10.1101/193144	doi:10.1101/193144	vQTymKCj
