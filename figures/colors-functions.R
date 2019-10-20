@@ -116,3 +116,27 @@ zoomgp <- function(curve.df, labels.df, zoom.xy=.9, zoom.br=.02,
     guides(color=guide_legend(ncol=4))
   grid.arrange(zout, zin, ncol=1, nrow=2, heights=heights)
 }
+
+library(tidyr)
+library(dplyr)
+## Make a table with precision/recall/f1 in the form: X (Y)
+## with X the number across the genome, and Y in non-repeat regions.
+tableAllRep <-function(df, digits=3){
+  if(any('non-repeat' == df$region)){
+    nrn = 'non-repeat'
+  }
+  if(any('high-confidence' == df$region)){
+    nrn = 'high-confidence'
+  }
+  df %>% ungroup %>%
+    mutate(region=factor(region, levels=c('all', nrn), labels=c('all', 'nonrep')),
+           precision=round(precision, digits), recall=round(recall, digits),
+           F1=round(F1, digits)) %>% 
+    pivot_wider(values_from=c('precision', 'recall', 'F1'), names_from='region') %>%
+    mutate(precision=paste0(precision_all, ' (', precision_nonrep, ')'),
+           recall=paste0(recall_all, ' (', recall_nonrep, ')'),
+           F1=paste0(F1_all, ' (', F1_nonrep, ')')) %>%
+    select(-precision_all, -precision_nonrep,
+           -recall_all, -recall_nonrep,
+           -F1_all, -F1_nonrep)
+}

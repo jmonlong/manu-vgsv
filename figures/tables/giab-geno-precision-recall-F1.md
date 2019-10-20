@@ -1,20 +1,11 @@
-|eval     |method     |region          |type | precision| recall|    F1|
-|:--------|:----------|:---------------|:----|---------:|------:|-----:|
-|genotype |vg         |all             |INS  |     0.649|  0.618| 0.633|
-|genotype |vg         |all             |DEL  |     0.696|  0.691| 0.694|
-|genotype |vg         |high-confidence |INS  |     0.776|  0.730| 0.752|
-|genotype |vg         |high-confidence |DEL  |     0.807|  0.795| 0.801|
-|genotype |Paragraph  |all             |INS  |     0.699|  0.673| 0.686|
-|genotype |Paragraph  |all             |DEL  |     0.750|  0.726| 0.737|
-|genotype |Paragraph  |high-confidence |INS  |     0.827|  0.768| 0.796|
-|genotype |Paragraph  |high-confidence |DEL  |     0.900|  0.815| 0.855|
-|genotype |BayesTyper |all             |INS  |     0.777|  0.285| 0.417|
-|genotype |BayesTyper |all             |DEL  |     0.807|  0.514| 0.628|
-|genotype |BayesTyper |high-confidence |INS  |     0.879|  0.379| 0.530|
-|genotype |BayesTyper |high-confidence |DEL  |     0.884|  0.694| 0.778|
-|genotype |SVTyper    |all             |DEL  |     0.743|  0.341| 0.467|
-|genotype |SVTyper    |high-confidence |DEL  |     0.817|  0.496| 0.618|
-|genotype |Delly      |all             |INS  |     0.804|  0.178| 0.292|
-|genotype |Delly      |all             |DEL  |     0.721|  0.644| 0.680|
-|genotype |Delly      |high-confidence |INS  |     0.888|  0.269| 0.413|
-|genotype |Delly      |high-confidence |DEL  |     0.821|  0.766| 0.793|
+|method     |type |precision     |recall        |F1            |
+|:----------|:----|:-------------|:-------------|:-------------|
+|vg         |INS  |0.649 (0.776) |0.618 (0.73)  |0.633 (0.752) |
+|vg         |DEL  |0.696 (0.807) |0.691 (0.795) |0.694 (0.801) |
+|Paragraph  |INS  |0.699 (0.827) |0.673 (0.768) |0.686 (0.796) |
+|Paragraph  |DEL  |0.75 (0.9)    |0.726 (0.815) |0.737 (0.855) |
+|BayesTyper |INS  |0.777 (0.879) |0.285 (0.379) |0.417 (0.53)  |
+|BayesTyper |DEL  |0.807 (0.884) |0.514 (0.694) |0.628 (0.778) |
+|SVTyper    |DEL  |0.743 (0.817) |0.341 (0.496) |0.467 (0.618) |
+|Delly      |INS  |0.804 (0.888) |0.178 (0.269) |0.292 (0.413) |
+|Delly      |DEL  |0.721 (0.821) |0.644 (0.766) |0.68 (0.793)  |
