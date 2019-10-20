@@ -14,7 +14,7 @@
   <meta name="author" content="Erik Garrison" />
   <meta name="author" content="Adam Novak" />
   <meta name="author" content="Benedict Paten" />
-  <meta name="dcterms.date" content="2019-10-18" />
+  <meta name="dcterms.date" content="2019-10-20" />
   <meta name="keywords" content="structural variation, pangenome, variant genotyping" />
   <title>Genotyping structural variants in pangenome graphs using the vg toolkit</title>
   <style>
@@ -31,7 +31,7 @@
 <header id="title-block-header">
 <h1 class="title">Genotyping structural variants in pangenome graphs using the vg toolkit</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/ad0fc92f43e672d5779e8e59a68a0fbe8f413e64">jmonlong/manu-vgsv@ad0fc92</a> on October 18, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://jmonlong.github.io/manu-vgsv/v/0440a9bd01e6cce55cbd7ac1035077ea5a5a129b/">permalink</a>) was automatically generated from <a href="https://github.com/jmonlong/manu-vgsv/tree/0440a9bd01e6cce55cbd7ac1035077ea5a5a129b">jmonlong/manu-vgsv@0440a9b</a> on October 20, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <p>Glenn Hickey<sup>1,☯</sup>, <a href="https://orcid.org/0000-0001-8346-9565"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> David Heller<sup>1,2,☯</sup>, <a href="https://orcid.org/0000-0002-9737-5516"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jean Monlong<sup>1,☯</sup>, <a href="https://orcid.org/0000-0002-5528-0236"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jonas Andreas Sibbesen<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-4139"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jouni Siren<sup>1</sup>, <a href="https://orcid.org/0000-0001-8345-8356"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Jordan Eizenga<sup>1</sup>, <a href="https://orcid.org/0000-0001-5448-1653"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Eric T. Dawson<sup>3,4</sup>, <a href="https://orcid.org/0000-0003-3821-631X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Erik Garrison<sup>1</sup>, <a href="https://orcid.org/0000-0001-5828-047X"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Adam Novak<sup>1</sup>, <a href="https://orcid.org/0000-0001-8863-3539"><img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /></a> Benedict Paten<sup>1,†</sup></p>
 <p><sup>☯</sup> — These authors contributed equally to this work</p>
@@ -70,7 +70,7 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <figure>
 <img src="images/panel2.png" alt="Figure 2: Structural variants from the HGSVC and Genome in a Bottle datasets. HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.[21]. Reads were simulated from the HG00514 individual. Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested. GIAB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium[22,23,25]. a) Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars). Results are separated across panels by variant type: insertions and deletions. SVTyper cannot genotype insertions, hence the missing bars in the top panels. b) Maximum F1 score for different size classes when evaluating on the presence of SVs across the whole genome. c) Size distribution of SVs in the HGSVC and GIAB catalogs." id="fig:2" style="width:90.0%" /><figcaption><span>Figure 2:</span> <strong>Structural variants from the HGSVC and Genome in a Bottle datasets</strong>. HGSVC: Simulated and real reads were used to genotype SVs and compared with the high-quality calls from Chaisson et al.<span class="citation" data-cites="vQTymKCj">[<a href="#ref-vQTymKCj">21</a>]</span>. Reads were simulated from the HG00514 individual. Using real reads, the three HG00514, HG00733, and NA19240 individuals were tested. GIAB: Real reads from the HG002 individual were used to genotype SVs and compared with the high-quality calls from the Genome in a Bottle consortium<span class="citation" data-cites="14neTdqfN 16GvGhO20 RCzDkVqI">[<a href="#ref-RCzDkVqI">22</a>,<a href="#ref-16GvGhO20">23</a>,<a href="#ref-14neTdqfN">25</a>]</span>. a) Maximum F1 score for each method (color), across the whole genome or focusing on non-repeat regions (x-axis). We evaluated the ability to predict the presence of an SV (transparent bars) and the exact genotype (solid bars). Results are separated across panels by variant type: insertions and deletions. SVTyper cannot genotype insertions, hence the missing bars in the top panels. b) Maximum F1 score for different size classes when evaluating on the presence of SVs across the whole genome. c) Size distribution of SVs in the HGSVC and GIAB catalogs.</figcaption>
 </figure>
-<p>We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment. Here, vg clearly outperformed other approaches (Figures <a href="#fig:2">2</a>a and <a href="#fig:hgsvc-real-geno">S3</a>). In non-repeat regions and insertions across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods. For example, for deletions in non-repeat regions, the F1 score for vg was ???? while the second best method, Paragraph, had a F1 score of ????. We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures <a href="#fig:2">2</a>a and <a href="#fig:hgsvc-real">S4</a>). In addition, vg’s performance was stable across the spectrum of SV sizes (Figure <a href="#fig:2">2</a>b-c). By annotating the repeat content of the deleted/inserted sequence we further evaluated vg’s performance across repeat classes. As expected, simple repeat variation was more challenging to genotype than transposable element polymorphisms (Figure <a href="#fig:eval-rmsk">S5</a>). Figure <a href="#fig:hgsvc-ex">3</a> shows an example of an exonic deletion that was correctly genotyped by vg but not by the other methods.</p>
+<p>We then repeated the analysis using real Illumina reads from the three HGSVC samples to benchmark the methods on a more realistic experiment. Here, vg clearly outperformed other approaches (Figures <a href="#fig:2">2</a>a and <a href="#fig:hgsvc-real-geno">S3</a>). In non-repeat regions and insertions across the whole genome, the F1 scores and precision-recall AUC were higher for vg compared to other methods. For example, for deletions in non-repeat regions, the F1 score for vg was 0.824 while the second best method, Paragraph, had a F1 score of 0.717. We observed similar results when evaluating the presence of an SV call instead of the exact genotype (Figures <a href="#fig:2">2</a>a and <a href="#fig:hgsvc-real">S4</a>). In addition, vg’s performance was stable across the spectrum of SV sizes (Figure <a href="#fig:2">2</a>b-c). By annotating the repeat content of the deleted/inserted sequence we further evaluated vg’s performance across repeat classes. As expected, simple repeat variation was more challenging to genotype than transposable element polymorphisms (Figure <a href="#fig:eval-rmsk">S5</a>). Figure <a href="#fig:hgsvc-ex">3</a> shows an example of an exonic deletion that was correctly genotyped by vg but not by BayesTyper, SVTyper or Delly.</p>
 <figure>
 <img src="images/hgsvc-ex-del.png" alt="Figure 3: Exonic deletion in the HGSVC dataset correctly genotyped by vg. a) Visualization of the HGSVC graph as augmented by reads aligned by vg at a locus harboring a 51 bp homozygous deletion in the UTR region of the LONRF2 gene. At the bottom, a horizontal black line represents the topologically sorted nodes of the graph. Black rectangles represent edges found in the graph. Above this rendering of the topology, the reference path from GRCh38 is shown (in green). Red and blue bars represent reads mapped to the graph. Thin lines in the reference path and read mappings highlight relative gaps (either insertions or deletions) against the full graph. The vg read mappings show consistent coverage even over the deletion. b) Reads mapped to the linear genome reference GRCh38 using bwa in the same region. Reads contain soft-clipped sequences and short insertions near the deletion breakpoints. Part of the deleted region is also covered by several reads, potentially confusing traditional SV genotypers." id="fig:hgsvc-ex" style="width:80.0%" /><figcaption><span>Figure 3:</span> <strong>Exonic deletion in the HGSVC dataset correctly genotyped by vg</strong>. a) Visualization of the HGSVC graph as augmented by reads aligned by vg at a locus harboring a 51 bp homozygous deletion in the UTR region of the LONRF2 gene. At the bottom, a horizontal black line represents the topologically sorted nodes of the graph. Black rectangles represent edges found in the graph. Above this rendering of the topology, the reference path from GRCh38 is shown (in green). Red and blue bars represent reads mapped to the graph. Thin lines in the reference path and read mappings highlight relative gaps (either insertions or deletions) against the full graph. The vg read mappings show consistent coverage even over the deletion. b) Reads mapped to the linear genome reference GRCh38 using bwa in the same region. Reads contain soft-clipped sequences and short insertions near the deletion breakpoints. Part of the deleted region is also covered by several reads, potentially confusing traditional SV genotypers.</figcaption>
 </figure>
@@ -107,7 +107,7 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <h2 id="methods">Methods</h2>
 <h3 id="sv-genotyping-algorithm">SV Genotyping Algorithm</h3>
 <p>The input to the SV genotyping algorithm is an indexed variation graph in <code>xg</code> format along with a (single-sample) read alignment in <code>GAM</code> format. If the graph was constructed from a VCF, as was the case for the human-genome graphs discussed in this paper, this VCF can also be input to the caller. The first step is to compute a compressed coverage index from the alignment using this command, <code>vg pack &lt;graph.xg&gt; &lt;alignment.gam&gt; -Q 5 -o graph.pack</code>. This index stores the number of reads with mapping quality at least 5 mapped to each edge and each base of each node on the graph. Computing the coverage can be done in a single scan through the reads and, in practice, tends to be an order of magnitude faster than sorting the reads.</p>
-<p>Variation graphs, as represented in vg, are bidirected. In a bidirected graph, every node can be thought of having two distinct <em>sides</em>. See, for example, the left and right sides of each rectangle in Figure {<span class="citation" data-cites="fig:vg-sv-cartoon">[<span class="citeproc-not-found" data-reference-id="fig:vg-sv-cartoon"><strong>???</strong></span>]</span>}. If <em>x</em> is the side of a given node <em>A</em>, then we use the notation <em>x’</em> to denote the other side of <em>A</em>. A snarl is defined by a pair of sides, <em>x</em> and <em>y</em>, that satisfy the following criteria: 1. Removing all edges incident to <em>x’</em> and <em>y’</em> disconnects the graph, creating a connected component <em>X</em> that contains <em>x</em> and <em>y</em>. 2. There is no side <em>z</em> in <em>X</em> such that <em>{x,z}</em> satisfies the above criteria. Likewise for <em>y</em>.</p>
+<p>Variation graphs, as represented in vg, are bidirected. In a bidirected graph, every node can be thought of having two distinct <em>sides</em>. See, for example, the left and right sides of each rectangle in Figure <a href="#fig:1">1</a>a. If <em>x</em> is the side of a given node <em>A</em>, then we use the notation <em>x’</em> to denote the other side of <em>A</em>. A snarl is defined by a pair of sides, <em>x</em> and <em>y</em>, that satisfy the following criteria: 1. Removing all edges incident to <em>x’</em> and <em>y’</em> disconnects the graph, creating a connected component <em>X</em> that contains <em>x</em> and <em>y</em>. 2. There is no side <em>z</em> in <em>X</em> such that <em>{x,z}</em> satisfies the above criteria. Likewise for <em>y</em>.</p>
 <p>Snarls can be computed in linear time using a cactus graph decomposition <span class="citation" data-cites="xJlNnKH2">[<a href="#ref-xJlNnKH2">24</a>]</span>. They can be computed once for a given graph using <code>vg snarls</code>, or on the fly with <code>vg call</code>.</p>
 <p>Once the snarls have been identified, the SV genotyping algorithm proceeds as follows. For every snarl in the graph such that both its end nodes lie on a reference path (such as a chromosome) and that it is not contained in another snarl, the following steps are performed.</p>
 <ol type="1">
@@ -307,113 +307,145 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <td style="text-align: left;">Simulated reads</td>
 <td style="text-align: left;">vg</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.795 (0.885)</td>
-<td style="text-align: left;">0.796 (0.883)</td>
-<td style="text-align: left;">0.795 (0.884)</td>
+<td style="text-align: left;">0.863 (0.918)</td>
+<td style="text-align: left;">0.841 (0.911)</td>
+<td style="text-align: left;">0.852 (0.914)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.869 (0.971)</td>
-<td style="text-align: left;">0.771 (0.92)</td>
-<td style="text-align: left;">0.817 (0.945)</td>
+<td style="text-align: left;">0.85 (0.961)</td>
+<td style="text-align: left;">0.796 (0.959)</td>
+<td style="text-align: left;">0.822 (0.96)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.581 (0.831)</td>
+<td style="text-align: left;">0.749 (0.804)</td>
+<td style="text-align: left;">0.654 (0.818)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.707 (0.853)</td>
+<td style="text-align: left;">0.73 (0.811)</td>
+<td style="text-align: left;">0.718 (0.832)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">BayesTyper</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.91 (0.935)</td>
-<td style="text-align: left;">0.835 (0.9)</td>
-<td style="text-align: left;">0.871 (0.917)</td>
+<td style="text-align: left;">0.915 (0.944)</td>
+<td style="text-align: left;">0.839 (0.907)</td>
+<td style="text-align: left;">0.876 (0.925)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.898 (0.981)</td>
-<td style="text-align: left;">0.806 (0.929)</td>
-<td style="text-align: left;">0.849 (0.954)</td>
+<td style="text-align: left;">0.894 (0.983)</td>
+<td style="text-align: left;">0.804 (0.932)</td>
+<td style="text-align: left;">0.847 (0.957)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">SVTyper</td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.809 (0.876)</td>
-<td style="text-align: left;">0.328 (0.754)</td>
-<td style="text-align: left;">0.467 (0.81)</td>
+<td style="text-align: left;">0.811 (0.844)</td>
+<td style="text-align: left;">0.328 (0.74)</td>
+<td style="text-align: left;">0.467 (0.788)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Delly</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.767 (0.866)</td>
-<td style="text-align: left;">0.093 (0.225)</td>
-<td style="text-align: left;">0.166 (0.358)</td>
+<td style="text-align: left;">0.757 (0.857)</td>
+<td style="text-align: left;">0.094 (0.225)</td>
+<td style="text-align: left;">0.167 (0.356)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.696 (0.903)</td>
-<td style="text-align: left;">0.707 (0.846)</td>
-<td style="text-align: left;">0.701 (0.874)</td>
+<td style="text-align: left;">0.681 (0.88)</td>
+<td style="text-align: left;">0.684 (0.823)</td>
+<td style="text-align: left;">0.682 (0.851)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Real reads</td>
 <td style="text-align: left;">vg</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.431 (0.683)</td>
-<td style="text-align: left;">0.541 (0.726)</td>
-<td style="text-align: left;">0.48 (0.704)</td>
+<td style="text-align: left;">0.5 (0.714)</td>
+<td style="text-align: left;">0.492 (0.712)</td>
+<td style="text-align: left;">0.496 (0.713)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.65 (0.886)</td>
-<td style="text-align: left;">0.519 (0.708)</td>
-<td style="text-align: left;">0.577 (0.787)</td>
+<td style="text-align: left;">0.629 (0.864)</td>
+<td style="text-align: left;">0.519 (0.787)</td>
+<td style="text-align: left;">0.569 (0.824)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.404 (0.638)</td>
+<td style="text-align: left;">0.555 (0.595)</td>
+<td style="text-align: left;">0.468 (0.616)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.595 (0.787)</td>
+<td style="text-align: left;">0.554 (0.659)</td>
+<td style="text-align: left;">0.574 (0.717)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">BayesTyper</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.601 (0.747)</td>
-<td style="text-align: left;">0.254 (0.433)</td>
-<td style="text-align: left;">0.357 (0.549)</td>
+<td style="text-align: left;">0.599 (0.757)</td>
+<td style="text-align: left;">0.253 (0.436)</td>
+<td style="text-align: left;">0.356 (0.553)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.627 (0.91)</td>
-<td style="text-align: left;">0.325 (0.381)</td>
-<td style="text-align: left;">0.428 (0.537)</td>
+<td style="text-align: left;">0.625 (0.909)</td>
+<td style="text-align: left;">0.324 (0.471)</td>
+<td style="text-align: left;">0.427 (0.62)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">SVTyper</td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.661 (0.733)</td>
-<td style="text-align: left;">0.236 (0.551)</td>
-<td style="text-align: left;">0.348 (0.629)</td>
+<td style="text-align: left;">0.69 (0.728)</td>
+<td style="text-align: left;">0.242 (0.59)</td>
+<td style="text-align: left;">0.358 (0.652)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Delly</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.516 (0.621)</td>
-<td style="text-align: left;">0.068 (0.176)</td>
-<td style="text-align: left;">0.12 (0.275)</td>
+<td style="text-align: left;">0.524 (0.632)</td>
+<td style="text-align: left;">0.068 (0.175)</td>
+<td style="text-align: left;">0.12 (0.274)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.55 (0.838)</td>
-<td style="text-align: left;">0.445 (0.547)</td>
-<td style="text-align: left;">0.492 (0.662)</td>
+<td style="text-align: left;">0.556 (0.834)</td>
+<td style="text-align: left;">0.429 (0.596)</td>
+<td style="text-align: left;">0.484 (0.695)</td>
 </tr>
 </tbody>
 </table>
@@ -434,132 +466,109 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <tr class="odd">
 <td style="text-align: left;">vg</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.658 (0.774)</td>
-<td style="text-align: left;">0.646 (0.735)</td>
-<td style="text-align: left;">0.652 (0.754)</td>
+<td style="text-align: left;">0.649 (0.776)</td>
+<td style="text-align: left;">0.618 (0.73)</td>
+<td style="text-align: left;">0.633 (0.752)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.68 (0.768)</td>
-<td style="text-align: left;">0.643 (0.735)</td>
-<td style="text-align: left;">0.661 (0.751)</td>
+<td style="text-align: left;">0.696 (0.807)</td>
+<td style="text-align: left;">0.691 (0.795)</td>
+<td style="text-align: left;">0.694 (0.801)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: left;">0.699 (0.827)</td>
+<td style="text-align: left;">0.673 (0.768)</td>
+<td style="text-align: left;">0.686 (0.796)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: left;">0.75 (0.9)</td>
+<td style="text-align: left;">0.726 (0.815)</td>
+<td style="text-align: left;">0.737 (0.855)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">BayesTyper</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.776 (0.879)</td>
-<td style="text-align: left;">0.286 (0.379)</td>
-<td style="text-align: left;">0.418 (0.53)</td>
+<td style="text-align: left;">0.777 (0.879)</td>
+<td style="text-align: left;">0.285 (0.379)</td>
+<td style="text-align: left;">0.417 (0.53)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.808 (0.886)</td>
-<td style="text-align: left;">0.512 (0.696)</td>
-<td style="text-align: left;">0.627 (0.779)</td>
+<td style="text-align: left;">0.807 (0.884)</td>
+<td style="text-align: left;">0.514 (0.694)</td>
+<td style="text-align: left;">0.628 (0.778)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SVTyper</td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.742 (0.818)</td>
-<td style="text-align: left;">0.342 (0.496)</td>
-<td style="text-align: left;">0.468 (0.618)</td>
+<td style="text-align: left;">0.743 (0.817)</td>
+<td style="text-align: left;">0.341 (0.496)</td>
+<td style="text-align: left;">0.467 (0.618)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Delly</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: left;">0.822 (0.894)</td>
-<td style="text-align: left;">0.177 (0.268)</td>
-<td style="text-align: left;">0.291 (0.412)</td>
+<td style="text-align: left;">0.804 (0.888)</td>
+<td style="text-align: left;">0.178 (0.269)</td>
+<td style="text-align: left;">0.292 (0.413)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: left;">0.722 (0.822)</td>
-<td style="text-align: left;">0.645 (0.768)</td>
-<td style="text-align: left;">0.681 (0.794)</td>
+<td style="text-align: left;">0.721 (0.821)</td>
+<td style="text-align: left;">0.644 (0.766)</td>
+<td style="text-align: left;">0.68 (0.793)</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <a name="tbl:chmpd"></a>
 <table>
-<caption><span>Table S3:</span> Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span>. </caption>
+<caption><span>Table S3:</span> Genotyping evaluation on the pseudo-diploid genome built from CHM cell lines in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span>. The numbers in parentheses corresponds to the results in non-repeat regions. </caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Method</th>
-<th style="text-align: left;">Region</th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: right;">Precision</th>
-<th style="text-align: right;">Recall</th>
-<th style="text-align: right;">F1</th>
+<th style="text-align: left;">Precision</th>
+<th style="text-align: left;">Recall</th>
+<th style="text-align: left;">F1</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">vg</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.665</td>
-<td style="text-align: right;">0.661</td>
-<td style="text-align: right;">0.663</td>
+<td style="text-align: left;">0.783 (0.907)</td>
+<td style="text-align: left;">0.773 (0.895)</td>
+<td style="text-align: left;">0.778 (0.901)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.688</td>
-<td style="text-align: right;">0.500</td>
-<td style="text-align: right;">0.579</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.806</td>
-<td style="text-align: right;">0.784</td>
-<td style="text-align: right;">0.795</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.869</td>
-<td style="text-align: right;">0.762</td>
-<td style="text-align: right;">0.812</td>
+<td style="text-align: left;">0.787 (0.962)</td>
+<td style="text-align: left;">0.635 (0.901)</td>
+<td style="text-align: left;">0.703 (0.93)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SMRT-SV</td>
-<td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.757</td>
-<td style="text-align: right;">0.536</td>
-<td style="text-align: right;">0.628</td>
+<td style="text-align: left;">0.819 (0.934)</td>
+<td style="text-align: left;">0.582 (0.712)</td>
+<td style="text-align: left;">0.681 (0.808)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.848</td>
-<td style="text-align: right;">0.630</td>
-<td style="text-align: right;">0.723</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">non-repeat</td>
-<td style="text-align: left;">INS</td>
-<td style="text-align: right;">0.880</td>
-<td style="text-align: right;">0.680</td>
-<td style="text-align: right;">0.767</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">DEL</td>
-<td style="text-align: right;">0.971</td>
-<td style="text-align: right;">0.824</td>
-<td style="text-align: right;">0.891</td>
+<td style="text-align: left;">0.848 (0.973)</td>
+<td style="text-align: left;">0.63 (0.839)</td>
+<td style="text-align: left;">0.723 (0.901)</td>
 </tr>
 </tbody>
 </table>
@@ -585,111 +594,177 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <td style="text-align: left;">vg</td>
 <td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">25838</td>
-<td style="text-align: right;">22042</td>
-<td style="text-align: right;">15772</td>
-<td style="text-align: right;">0.540</td>
-<td style="text-align: right;">0.621</td>
-<td style="text-align: right;">0.577</td>
+<td style="text-align: right;">23430</td>
+<td style="text-align: right;">18414</td>
+<td style="text-align: right;">18181</td>
+<td style="text-align: right;">0.564</td>
+<td style="text-align: right;">0.563</td>
+<td style="text-align: right;">0.564</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">14545</td>
-<td style="text-align: right;">6824</td>
-<td style="text-align: right;">15425</td>
-<td style="text-align: right;">0.681</td>
-<td style="text-align: right;">0.485</td>
-<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">14717</td>
+<td style="text-align: right;">7033</td>
+<td style="text-align: right;">15254</td>
+<td style="text-align: right;">0.677</td>
+<td style="text-align: right;">0.491</td>
+<td style="text-align: right;">0.569</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">173</td>
-<td style="text-align: right;">0.509</td>
-<td style="text-align: right;">0.135</td>
-<td style="text-align: right;">0.213</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">159</td>
+<td style="text-align: right;">0.719</td>
+<td style="text-align: right;">0.205</td>
+<td style="text-align: right;">0.319</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">8051</td>
-<td style="text-align: right;">3258</td>
-<td style="text-align: right;">1817</td>
-<td style="text-align: right;">0.712</td>
-<td style="text-align: right;">0.816</td>
-<td style="text-align: right;">0.760</td>
+<td style="text-align: right;">8078</td>
+<td style="text-align: right;">3303</td>
+<td style="text-align: right;">1761</td>
+<td style="text-align: right;">0.709</td>
+<td style="text-align: right;">0.821</td>
+<td style="text-align: right;">0.761</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">3769</td>
-<td style="text-align: right;">623</td>
-<td style="text-align: right;">818</td>
-<td style="text-align: right;">0.858</td>
-<td style="text-align: right;">0.822</td>
-<td style="text-align: right;">0.840</td>
+<td style="text-align: right;">6585</td>
+<td style="text-align: right;">1033</td>
+<td style="text-align: right;">1040</td>
+<td style="text-align: right;">0.862</td>
+<td style="text-align: right;">0.864</td>
+<td style="text-align: right;">0.863</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">19</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0.712</td>
+<td style="text-align: right;">0.291</td>
+<td style="text-align: right;">0.413</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Paragraph</td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">24342</td>
+<td style="text-align: right;">25618</td>
+<td style="text-align: right;">17269</td>
+<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.585</td>
+<td style="text-align: right;">0.535</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">16986</td>
+<td style="text-align: right;">13376</td>
+<td style="text-align: right;">12985</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">0.569</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">0.662</td>
+<td style="text-align: right;">0.235</td>
+<td style="text-align: right;">0.347</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">non-repeat</td>
+<td style="text-align: left;">INS</td>
+<td style="text-align: right;">7843</td>
+<td style="text-align: right;">3270</td>
+<td style="text-align: right;">1996</td>
+<td style="text-align: right;">0.706</td>
+<td style="text-align: right;">0.797</td>
+<td style="text-align: right;">0.749</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DEL</td>
+<td style="text-align: right;">6523</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1102</td>
+<td style="text-align: right;">0.866</td>
+<td style="text-align: right;">0.856</td>
+<td style="text-align: right;">0.860</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INV</td>
+<td style="text-align: right;">39</td>
 <td style="text-align: right;">12</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">0.613</td>
-<td style="text-align: right;">0.202</td>
-<td style="text-align: right;">0.304</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">0.765</td>
+<td style="text-align: right;">0.307</td>
+<td style="text-align: right;">0.438</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SMRT-SV</td>
 <td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">16270</td>
-<td style="text-align: right;">26031</td>
-<td style="text-align: right;">25340</td>
-<td style="text-align: right;">0.385</td>
-<td style="text-align: right;">0.391</td>
-<td style="text-align: right;">0.388</td>
+<td style="text-align: right;">16297</td>
+<td style="text-align: right;">26006</td>
+<td style="text-align: right;">25314</td>
+<td style="text-align: right;">0.397</td>
+<td style="text-align: right;">0.392</td>
+<td style="text-align: right;">0.394</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">11793</td>
-<td style="text-align: right;">10106</td>
-<td style="text-align: right;">18177</td>
-<td style="text-align: right;">0.539</td>
-<td style="text-align: right;">0.393</td>
-<td style="text-align: right;">0.455</td>
+<td style="text-align: right;">11797</td>
+<td style="text-align: right;">10054</td>
+<td style="text-align: right;">18174</td>
+<td style="text-align: right;">0.544</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: right;">0.457</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">4483</td>
-<td style="text-align: right;">4659</td>
-<td style="text-align: right;">5385</td>
-<td style="text-align: right;">0.490</td>
-<td style="text-align: right;">0.454</td>
-<td style="text-align: right;">0.472</td>
+<td style="text-align: right;">4475</td>
+<td style="text-align: right;">4645</td>
+<td style="text-align: right;">5364</td>
+<td style="text-align: right;">0.493</td>
+<td style="text-align: right;">0.455</td>
+<td style="text-align: right;">0.473</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">2928</td>
-<td style="text-align: right;">930</td>
-<td style="text-align: right;">1659</td>
-<td style="text-align: right;">0.759</td>
-<td style="text-align: right;">0.638</td>
-<td style="text-align: right;">0.693</td>
+<td style="text-align: right;">4986</td>
+<td style="text-align: right;">1322</td>
+<td style="text-align: right;">2639</td>
+<td style="text-align: right;">0.788</td>
+<td style="text-align: right;">0.654</td>
+<td style="text-align: right;">0.715</td>
 </tr>
 </tbody>
 </table>
@@ -715,163 +790,163 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <td style="text-align: left;">vg</td>
 <td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">8618</td>
-<td style="text-align: right;">7237</td>
-<td style="text-align: right;">5416</td>
-<td style="text-align: right;">0.546</td>
-<td style="text-align: right;">0.614</td>
-<td style="text-align: right;">0.578</td>
+<td style="text-align: right;">7764</td>
+<td style="text-align: right;">6109</td>
+<td style="text-align: right;">6270</td>
+<td style="text-align: right;">0.567</td>
+<td style="text-align: right;">0.553</td>
+<td style="text-align: right;">0.560</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">4762</td>
-<td style="text-align: right;">2048</td>
-<td style="text-align: right;">5145</td>
-<td style="text-align: right;">0.696</td>
-<td style="text-align: right;">0.481</td>
-<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">4841</td>
+<td style="text-align: right;">2260</td>
+<td style="text-align: right;">5066</td>
+<td style="text-align: right;">0.684</td>
+<td style="text-align: right;">0.489</td>
+<td style="text-align: right;">0.570</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">0.579</td>
-<td style="text-align: right;">0.169</td>
-<td style="text-align: right;">0.262</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0.727</td>
+<td style="text-align: right;">0.246</td>
+<td style="text-align: right;">0.368</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">6176</td>
-<td style="text-align: right;">6923</td>
-<td style="text-align: right;">4678</td>
-<td style="text-align: right;">0.475</td>
-<td style="text-align: right;">0.569</td>
-<td style="text-align: right;">0.518</td>
+<td style="text-align: right;">5091</td>
+<td style="text-align: right;">5150</td>
+<td style="text-align: right;">5766</td>
+<td style="text-align: right;">0.507</td>
+<td style="text-align: right;">0.469</td>
+<td style="text-align: right;">0.487</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">2428</td>
-<td style="text-align: right;">1701</td>
-<td style="text-align: right;">4542</td>
-<td style="text-align: right;">0.584</td>
-<td style="text-align: right;">0.348</td>
-<td style="text-align: right;">0.436</td>
+<td style="text-align: right;">2684</td>
+<td style="text-align: right;">1922</td>
+<td style="text-align: right;">4648</td>
+<td style="text-align: right;">0.590</td>
+<td style="text-align: right;">0.366</td>
+<td style="text-align: right;">0.452</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0.500</td>
-<td style="text-align: right;">0.143</td>
-<td style="text-align: right;">0.222</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.182</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">2677</td>
-<td style="text-align: right;">987</td>
-<td style="text-align: right;">514</td>
-<td style="text-align: right;">0.731</td>
-<td style="text-align: right;">0.839</td>
+<td style="text-align: right;">2662</td>
+<td style="text-align: right;">979</td>
+<td style="text-align: right;">521</td>
+<td style="text-align: right;">0.732</td>
+<td style="text-align: right;">0.836</td>
 <td style="text-align: right;">0.781</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">1180</td>
-<td style="text-align: right;">176</td>
-<td style="text-align: right;">321</td>
-<td style="text-align: right;">0.869</td>
-<td style="text-align: right;">0.786</td>
-<td style="text-align: right;">0.825</td>
+<td style="text-align: right;">2085</td>
+<td style="text-align: right;">322</td>
+<td style="text-align: right;">388</td>
+<td style="text-align: right;">0.865</td>
+<td style="text-align: right;">0.843</td>
+<td style="text-align: right;">0.854</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">0.636</td>
-<td style="text-align: right;">0.259</td>
-<td style="text-align: right;">0.368</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.700</td>
+<td style="text-align: right;">0.350</td>
+<td style="text-align: right;">0.467</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">called in SMRT-SV</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">3410</td>
-<td style="text-align: right;">3789</td>
-<td style="text-align: right;">2108</td>
-<td style="text-align: right;">0.478</td>
-<td style="text-align: right;">0.618</td>
-<td style="text-align: right;">0.539</td>
+<td style="text-align: right;">3682</td>
+<td style="text-align: right;">4752</td>
+<td style="text-align: right;">1836</td>
+<td style="text-align: right;">0.444</td>
+<td style="text-align: right;">0.667</td>
+<td style="text-align: right;">0.534</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">2544</td>
-<td style="text-align: right;">1092</td>
-<td style="text-align: right;">1518</td>
-<td style="text-align: right;">0.699</td>
-<td style="text-align: right;">0.626</td>
-<td style="text-align: right;">0.661</td>
+<td style="text-align: right;">2769</td>
+<td style="text-align: right;">1779</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.609</td>
+<td style="text-align: right;">0.671</td>
+<td style="text-align: right;">0.639</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">INV</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">0.500</td>
-<td style="text-align: right;">0.133</td>
-<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0.727</td>
+<td style="text-align: right;">0.246</td>
+<td style="text-align: right;">0.368</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">not called in SMRT-SV</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">4838</td>
-<td style="text-align: right;">542</td>
-<td style="text-align: right;">3678</td>
-<td style="text-align: right;">0.899</td>
-<td style="text-align: right;">0.568</td>
-<td style="text-align: right;">0.696</td>
+<td style="text-align: right;">3867</td>
+<td style="text-align: right;">291</td>
+<td style="text-align: right;">4649</td>
+<td style="text-align: right;">0.931</td>
+<td style="text-align: right;">0.454</td>
+<td style="text-align: right;">0.610</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">2034</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">3723</td>
-<td style="text-align: right;">0.987</td>
-<td style="text-align: right;">0.353</td>
-<td style="text-align: right;">0.520</td>
+<td style="text-align: right;">1976</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">3797</td>
+<td style="text-align: right;">0.952</td>
+<td style="text-align: right;">0.342</td>
+<td style="text-align: right;">0.503</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">SMRT-SV</td>
 <td style="text-align: left;">all</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">5245</td>
-<td style="text-align: right;">8563</td>
-<td style="text-align: right;">8789</td>
+<td style="text-align: right;">5254</td>
+<td style="text-align: right;">8562</td>
+<td style="text-align: right;">8780</td>
 <td style="text-align: right;">0.394</td>
 <td style="text-align: right;">0.374</td>
 <td style="text-align: right;">0.384</td>
@@ -880,42 +955,42 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">3741</td>
-<td style="text-align: right;">3382</td>
-<td style="text-align: right;">6166</td>
-<td style="text-align: right;">0.533</td>
+<td style="text-align: right;">3743</td>
+<td style="text-align: right;">3367</td>
+<td style="text-align: right;">6164</td>
+<td style="text-align: right;">0.535</td>
 <td style="text-align: right;">0.378</td>
-<td style="text-align: right;">0.442</td>
+<td style="text-align: right;">0.443</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">3848</td>
-<td style="text-align: right;">7125</td>
-<td style="text-align: right;">7006</td>
+<td style="text-align: right;">3858</td>
+<td style="text-align: right;">7119</td>
+<td style="text-align: right;">6999</td>
 <td style="text-align: right;">0.368</td>
-<td style="text-align: right;">0.354</td>
-<td style="text-align: right;">0.361</td>
+<td style="text-align: right;">0.355</td>
+<td style="text-align: right;">0.362</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">1990</td>
-<td style="text-align: right;">2832</td>
-<td style="text-align: right;">4980</td>
-<td style="text-align: right;">0.426</td>
-<td style="text-align: right;">0.286</td>
-<td style="text-align: right;">0.342</td>
+<td style="text-align: right;">2141</td>
+<td style="text-align: right;">2906</td>
+<td style="text-align: right;">5191</td>
+<td style="text-align: right;">0.438</td>
+<td style="text-align: right;">0.292</td>
+<td style="text-align: right;">0.350</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">non-repeat</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">1396</td>
-<td style="text-align: right;">1468</td>
-<td style="text-align: right;">1795</td>
+<td style="text-align: right;">1394</td>
+<td style="text-align: right;">1464</td>
+<td style="text-align: right;">1789</td>
 <td style="text-align: right;">0.493</td>
 <td style="text-align: right;">0.438</td>
 <td style="text-align: right;">0.464</td>
@@ -924,56 +999,56 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">901</td>
-<td style="text-align: right;">308</td>
-<td style="text-align: right;">600</td>
-<td style="text-align: right;">0.745</td>
-<td style="text-align: right;">0.600</td>
-<td style="text-align: right;">0.665</td>
+<td style="text-align: right;">1550</td>
+<td style="text-align: right;">443</td>
+<td style="text-align: right;">923</td>
+<td style="text-align: right;">0.778</td>
+<td style="text-align: right;">0.627</td>
+<td style="text-align: right;">0.694</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">called in SMRT-SV</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">4343</td>
-<td style="text-align: right;">5595</td>
-<td style="text-align: right;">1175</td>
+<td style="text-align: right;">4360</td>
+<td style="text-align: right;">5619</td>
+<td style="text-align: right;">1158</td>
 <td style="text-align: right;">0.445</td>
-<td style="text-align: right;">0.787</td>
-<td style="text-align: right;">0.569</td>
+<td style="text-align: right;">0.790</td>
+<td style="text-align: right;">0.570</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">3227</td>
-<td style="text-align: right;">2451</td>
-<td style="text-align: right;">835</td>
-<td style="text-align: right;">0.573</td>
-<td style="text-align: right;">0.794</td>
-<td style="text-align: right;">0.666</td>
+<td style="text-align: right;">3272</td>
+<td style="text-align: right;">2554</td>
+<td style="text-align: right;">853</td>
+<td style="text-align: right;">0.568</td>
+<td style="text-align: right;">0.793</td>
+<td style="text-align: right;">0.662</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">not called in SMRT-SV</td>
 <td style="text-align: left;">INS</td>
-<td style="text-align: right;">116</td>
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">8400</td>
-<td style="text-align: right;">0.551</td>
-<td style="text-align: right;">0.014</td>
-<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">8405</td>
+<td style="text-align: right;">0.549</td>
+<td style="text-align: right;">0.013</td>
+<td style="text-align: right;">0.025</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">DEL</td>
-<td style="text-align: right;">206</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">5551</td>
-<td style="text-align: right;">0.911</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">5562</td>
+<td style="text-align: right;">0.792</td>
 <td style="text-align: right;">0.036</td>
-<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">0.070</td>
 </tr>
 </tbody>
 </table>
@@ -1117,10 +1192,10 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 <img src="images/giab5.png" alt="Figure S7: Calling evaluation on the Genome in a Bottle dataset. Calls on HG002 were compared to the high-quality SVs from this same individual." id="fig:giab" data-tag="S7" /><figcaption><span>Figure S7:</span> <strong>Calling evaluation on the Genome in a Bottle dataset.</strong> Calls on HG002 were compared to the high-quality SVs from this same individual.</figcaption>
 </figure>
 <figure>
-<img src="images/chmpd-geno.png" alt="Figure S8: Genotyping evaluation on the CHM pseudo-diploid dataset. The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[5] The bottom panel zooms on the part highlighted by a dotted rectangle." id="fig:chmpd-geno" data-tag="S8" /><figcaption><span>Figure S8:</span> <strong>Genotyping evaluation on the CHM pseudo-diploid dataset.</strong> The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span> The bottom panel zooms on the part highlighted by a dotted rectangle.</figcaption>
+<img src="images/chmpd-geno.png" alt="Figure S8: Genotyping evaluation on the CHM pseudo-diploid dataset. The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.[5] The bottom panel zooms on the part highlighted by a dotted rectangle." id="fig:chmpd-geno" data-tag="S8" /><figcaption><span>Figure S8:</span> <strong>Genotyping evaluation on the CHM pseudo-diploid dataset.</strong> The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span> The bottom panel zooms on the part highlighted by a dotted rectangle.</figcaption>
 </figure>
 <figure>
-<img src="images/chmpd.png" alt="Figure S9: Calling evaluation on the CHM pseudo-diploid dataset. The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.[5]" id="fig:chmpd" data-tag="S9" /><figcaption><span>Figure S9:</span> <strong>Calling evaluation on the CHM pseudo-diploid dataset.</strong> The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV v2 in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span></figcaption>
+<img src="images/chmpd.png" alt="Figure S9: Calling evaluation on the CHM pseudo-diploid dataset. The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.[5]" id="fig:chmpd" data-tag="S9" /><figcaption><span>Figure S9:</span> <strong>Calling evaluation on the CHM pseudo-diploid dataset.</strong> The pseudo-diploid genome was built from CHM cell lines and used to train SMRT-SV in Audano et al.<span class="citation" data-cites="3NNFS6U2">[<a href="#ref-3NNFS6U2">5</a>]</span></figcaption>
 </figure>
 <figure>
 <img src="images/svpop.png" alt="Figure S10: Calling evaluation on the SVPOP dataset. Combined results across the HG00514, HG00733 and NA19240." id="fig:svpop" data-tag="S10" /><figcaption><span>Figure S10:</span> <strong>Calling evaluation on the SVPOP dataset.</strong> Combined results across the HG00514, HG00733 and NA19240.</figcaption>
@@ -1254,7 +1329,7 @@ Due to their greater size, SVs often have a larger impact on phenotype than smal
 </tr>
 </tbody>
 </table>
-<p>SMRT-SV2 required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the “SVPOP” VCF. These numbers are not directly comparable to the above table because 1) they apply to the “SVPOP” rather than “HGSVC” dataset (upon which we were unable to run SMRT-SV2) and 2) we were unable to install SMRT-SV2 on AWS nodes and ran it on an older, shared server at UCSC instead.</p>
+<p>SMRT-SV required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the “SVPOP” VCF. These numbers are not directly comparable to the above table because 1) they apply to the “SVPOP” rather than “HGSVC” dataset (upon which we were unable to run SMRT-SV) and 2) we were unable to install SMRT-SV on AWS nodes and ran it on an older, shared server at UCSC instead.</p>
 <p>Delly, SVTyper and Paragraph start from a set of aligned reads, hence we also show the running time for read alignment with <code>bwa mem</code>. For BayesTyper, the numbers include both khmer counting with KMC and genotyping.</p>
 <p>Note: toil-vg reserves 200G memory by default for <code>vg snarls</code>. For this graph, about an order of magnitude less was required. It could have been run on 10 cores on 5 nodes instead.</p>
 <h2 id="references" class="page_break_before">References</h2>
