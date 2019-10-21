@@ -254,3 +254,32 @@ ps.df %>% filter(eval=='genotype', type!='INV', min.cov==.9) %>% ungroup %>%
   scale_colour_manual(values=pal.tools)
 
 dev.off()
+
+##
+## Compare TPs to guess is 1-to-1 or 1-to-many
+pr.df = read.table('data/human-merged-prcurve.tsv', as.is=TRUE, header=TRUE)
+pr.df$method = factor(methconv[pr.df$method], levels=names(pal.tools))
+pr.df = pr.df %>% filter(type!='INV', type!='Total', min.cov==0.5, !is.na(method),
+                         region%in%c('all', 'nonrep')) %>% arrange(qual)
+pr.df = relabel(pr.df)
+pr.df = pr.df %>% group_by(exp, experiment, type, qual, method, region, eval) %>%
+  select(TP, TP.baseline, FN, FP) %>% summarize_all(sum)
+pr.df = prf(pr.df)
+eval.f1 = pr.df %>% group_by(exp, experiment, method, type, region, eval) %>%
+  arrange(desc(F1)) %>% do(head(., 1))
+
+pdf('pdf/hgsvc-giab-chmpd-presence-TPcomp.pdf', 9, 6)
+eval.f1 %>% filter(region=='all', eval=='presence', exp!='hgsvcsim') %>%
+  mutate(TP.call.truth.ratio=TP/TP.baseline) %>%
+  ggplot(aes(x=method, y=TP.call.truth.ratio, shape=type, color=experiment)) + 
+  geom_hline(yintercept=1, linetype=2) +
+  geom_point(size=3, position=position_dodge(.5)) + theme_bw() +
+  coord_flip() +
+  scale_color_brewer(palette='Set1') + 
+  ylab('average number of genotyped calls per truth call')
+dev.off()
+
+eval.f1 %>% filter(region=='all', qual==0, eval=='presence') %>%
+  group_by(method) %>% summarize(TP=sum(TP), TP.baseline=sum(TP.baseline)) %>% 
+  mutate(TP.call.truth.ratio=TP/TP.baseline) %>% kable
+  

@@ -20,3 +20,4 @@ VGSVcartoon.png
 sveval-cartoon.png
 hgsvc-giab-chmpd-svpop-best-f1-mincov90.png
 rmsk-hgsvc-vg-HG00514-call-geno.png
+hgsvc-giab-chmpd-presence-TPcomp.png
