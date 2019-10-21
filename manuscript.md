@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/de80154cadde416d94c4124da5b832489791c429/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/1575127a2d8359ab6d8ef21f77b198671b0aa963/))
 was automatically generated
-from [jmonlong/manu-vgsv@de80154](https://github.com/jmonlong/manu-vgsv/tree/de80154cadde416d94c4124da5b832489791c429)
+from [jmonlong/manu-vgsv@1575127](https://github.com/jmonlong/manu-vgsv/tree/1575127a2d8359ab6d8ef21f77b198671b0aa963)
 on October 21, 2019.
 </em></small>
 
@@ -106,7 +106,7 @@ Indeed, SVs have long been associated with developmental disorders, cancer and o
 
 Despite their importance, SVs remain much more poorly studied than their smaller mutational counterparts.
 This discrepancy stems from technological limitations.
-Short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost, however, it is poorly suited for discovering SVs.
+Short read sequencing has provided the basis of most modern genome sequencing studies due to its high base-level accuracy and relatively low cost, but is poorly suited for discovering SVs.
 The central obstacle is in mapping short reads to the human reference genome.
 It is generally difficult or impossible to unambiguously map a short read if the sample whose genome is being analyzed differs substantially from the reference at the read's location.
 The large size of SVs virtually guarantees that short reads derived from them will not map to the linear reference genome.
@@ -167,13 +167,13 @@ Reads are mapped to the graph and used to compute the read support for each node
 Sites of variation within the graph are then identified using the snarl decomposition as described in [@xJlNnKH2].
 These sites correspond to intervals along the reference paths (ex. contigs or chromosomes) which are embedded in the graph.
 They also contain nodes and edges deviating from the reference path, which represent variation at the site.
-For each site, the two most supported paths between its interval (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
+For each site, the two most supported paths spanning its interval (haplotypes) are determined, and their relative supports used to produce a genotype at that site (Figure {@fig:1}a).
 The pipeline is described in detail in [Methods](#simulation-experiment).
 We rigorously evaluated the accuracy of our method on a variety of datasets, and present these results in the remainder of this section.
 
 ![**Structural variation in vg.** 
-a) vg uses the read coverage over possible paths to genotype variants in a bubble or more complex snarl. The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in detail in [Methods](#sv-genotyping-algorithm).
-b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for four SV calling methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the x-axis is the simulated read depth and the y-axis shows the maximum F1 across different minimum quality thresholds.
+a) vg uses the read coverage over possible paths to genotype variants in a snarl. The cartoon depicts the case of an heterozygous insertion and an homozygous deletion. The algorithm is described in detail in [Methods](#sv-genotyping-algorithm).
+b) Simulation experiment. Each subplot shows a comparison of genotyping accuracy for five methods. Results are separated between types of variation (insertions, deletions, and inversions). The experiments were also repeated with small random errors introduced to the VCF to simulate breakpoint uncertainty. For each experiment, the x-axis is the simulated read depth and the y-axis shows the maximum F1 across different minimum quality thresholds.
 SVTyper cannot genotype insertions, hence the missing line in the top panels.
 ](images/panel1.png){#fig:1}
 
@@ -455,8 +455,8 @@ Still, toil-vg can be used to farm this task out to a single cloud node if desir
 toil-vg sveval evaluates the SV calls relative to a truth set.
 Matching SV calls is non-trivial because two SV callsets often differs slightly around the breakpoints. 
 Even for a genotyping experiment, the same input SVs can have equivalent but different representations. 
-Furthermore, SV catalogs often contains very similar SVs that could be potentially duplicates of the same true variant.
-To make sure that SVs are matched properly when comparing genotyped SVs and the truth set, we use an approach that overlaps variants and align allelic sequences if necessary.
+Furthermore, SV catalogs often contain very similar SVs that could be potentially duplicates of the same true variant.
+To make sure that SVs are matched properly when comparing genotyped SVs and the truth set, we use an approach that overlaps variants and aligns allelic sequences if necessary.
 It was implemented in the sveval R package ([https://github.com/jmonlong/sveval](https://github.com/jmonlong/sveval)).
 Figure {@fig:sveval} shows an overview of the SV evaluation approach which is described below.
 Of note, the variants are first normalized with `bcftools norm` (1.9) to ensure consistent representation between called variants and baseline variants[@LAG2q9WK].
@@ -579,7 +579,7 @@ Illumina read pairs with 30x coverage were simulated from these sequences using 
 These simulated reads reflect an idealized situation where the breakpoints of the SVs being genotyped are exactly known *a priori*.
 The reads were mapped to the graph, and the mappings used to genotype the SVs in the graph. 
 Finally, the SV calls were compared back to the HG00514 genotypes from the HGSVC VCF.
-We repeated the process with the same reads on the linear reference, using `bwa mem`[@gmH6YDca] for mapping and Delly Genotyper, SVTyper and BayesTyper for SV genotyping.
+We repeated the process with the same reads on the linear reference, using `bwa mem`[@gmH6YDca] for mapping and Delly Genotyper, SVTyper, Paragraph and BayesTyper for SV genotyping.
 
 We downloaded Illumina HiSeq 2500 paired end reads from the EBI's ENA FTP site for the three samples, using Run Accessions ERR903030, ERR895347 and ERR894724 for HG00514, HG00733 and NA19240, respectively.
 We ran the graph and linear mapping and genotyping pipelines exactly as for the simulation, and aggregated the comparison results across the three samples.
