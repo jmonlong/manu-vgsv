@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam Novak
 - Benedict Paten
-date-meta: '2019-10-20'
+date-meta: '2019-10-21'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/e39e278f8cfc119520e5771a3c21ba90f0919f29/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/ccb4810e682dc2e69121a6668362cb97b5cd09b1/))
 was automatically generated
-from [jmonlong/manu-vgsv@e39e278](https://github.com/jmonlong/manu-vgsv/tree/e39e278f8cfc119520e5771a3c21ba90f0919f29)
-on October 20, 2019.
+from [jmonlong/manu-vgsv@ccb4810](https://github.com/jmonlong/manu-vgsv/tree/ccb4810e682dc2e69121a6668362cb97b5cd09b1)
+on October 21, 2019.
 </em></small>
 
 ## Authors
@@ -164,7 +164,7 @@ Finally, we demonstrate that a pangenome graph built from the alignment of *de n
 ### Structural variation in vg
 
 We used vg to implement a straightforward SV genotyping pipeline.
-Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#supplementary-information) for a description of the graph formalism).
+Reads are mapped to the graph and used to compute the read support for each node and edge (see [Supplementary Information](#variation-graph-and-structural-variation) for a description of the graph formalism).
 Sites of variation within the graph are then identified using the snarl decomposition as described in [@xJlNnKH2].
 These sites correspond to intervals along the reference paths (ex. contigs or chromosomes) which are embedded in the graph.
 They also contain nodes and edges deviating from the reference path, which represent variation at the site.
@@ -475,6 +475,8 @@ For each insertion we compute the proportion of its inserted sequence that align
 If this proportion is at least 50% the insertions are considered covered.
 Covering relationships are used to define TPs, FPs, and FNs the same way as for deletions and inversions.
 
+While matching SVs using this approach deals with fragmented variants and non-exact matches, a genotyped variant tended to match to only one variant from the truth set (Figure {@fig:eval-matchtp}).
+Methods like Paragraph, Delly Genotyper or SVTyper showed signs of over-genotyping in catalogs that might contain duplicates because they genotype each variant independently rather than following a path-centric approach like vg (see [Methods](#sv-genotyping-algorithm)), 
 The results shown in this study used a minimum of 50% coverage to match variants but we also replicated the results using 90% minimum coverage and observed similar results (see Figure {@fig:eval-stringent}). 
 
 The coverage statistics are computed using any variant larger than 1 bp but a minimum size is required for a variant to be counted as TP, FP, or FN.
@@ -895,7 +897,9 @@ The bottom panel zooms on the part highlighted by a dotted rectangle.
 
 ![**Evaluation across different sets of regions in HG00514 (SVPOP dataset)**. Calling evaluation.](images/svpop-regions.png){#fig:svpop-regions tag="S11"}
 
-![**Benchmark summary when using a more stringent matching criterion**. At least 90% coverage was necessary to consider a variant matched, instead of the 50% minimum coverage used in other figures.](images/hgsvc-giab-chmpd-svpop-best-f1-mincov90.png){#fig:eval-stringent tag="S12"}
+![**Average number of genotyped variants overlapping one variant from the truth set**. .](images/hgsvc-giab-chmpd-presence-TPcomp.png){#fig:eval-matchtp tag="S12"}
+
+![**Benchmark summary when using a more stringent matching criterion**. At least 90% coverage was necessary to consider a variant matched, instead of the 50% minimum coverage used in other figures.](images/hgsvc-giab-chmpd-svpop-best-f1-mincov90.png){#fig:eval-stringent tag="S13"}
 
 ![**Breakpoint fine-tuning using augmentation through "vg call".**
 For deletions and inversions, either one or both breakpoints were shifted to introduce errors in the input VCF.
@@ -903,7 +907,7 @@ For insertions, the insertion location and sequence contained errors.
 a) Proportion of variant for which breakpoints could be fine-tuned.
 b) Distribution of the amount of errors that could be corrected or not.
 c) Distribution of the size of the variants whose breakpoints could be fine-tuned or not.
-](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S13"}
+](images/simerror-bkpt-finetuning-vgcall.png){#fig:simerror-bkpt tag="S14"}
 
 ![**Mapping comparison on graphs of the *five strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -912,7 +916,7 @@ a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
 Transparency indicates whether the strain was included or excluded in the graphs.
-](images/panel3.png){#fig:panel3 tag="S14"}
+](images/panel3.png){#fig:panel3 tag="S15"}
 
 ![**Mapping comparison on graphs of the *all strains set*.**
 Short reads from all 12 yeast strains were aligned to both graphs.
@@ -920,7 +924,7 @@ The fraction of reads mapped to the *cactus graph* (y-axis) and the *VCF graph* 
 a) Stratified by percent identity threshold.
 b) Stratified by mapping quality threshold.
 Colors and shapes represent the 12 strains and two clades, respectively.
-](images/panel5.png){#fig:panel5 tag="S15"}
+](images/panel5.png){#fig:panel5 tag="S16"}
 
 ![**SV genotyping comparison using all reads.**
 Short reads from all 11 non-reference yeast strains were used to genotype SVs contained in the *cactus graph* and the *VCF graph*.
@@ -931,7 +935,7 @@ a) Average delta in mapping identity of all short reads aligned to the sample gr
 b) Average delta in mapping quality of all short reads aligned to the sample graphs derived from *cactus graph* and *VCF graph*.
 Positive values denote an improvement of the *cactus graph* over the *VCF graph*.
 Colors represent the two strain sets and transparency indicates whether the respective strain was part of the *five strains set*.
-](images/panel6.png){#fig:panel6 tag="S16"}
+](images/panel6.png){#fig:panel6 tag="S17"}
 
 ![**Overview of the SV evaluation by the *sveval* package**.
 For deletions and inversions, we compute the proportion of a variant that is covered by variants in the other set, considering only variants overlapping with at least 10% reciprocal overlap.
@@ -939,10 +943,22 @@ A variant is considered true positive if this coverage proportion is higher than
 A similar approach is used for insertions, although they are first clustered into pairs located less than 20 bp from each other.
 Then their inserted sequences are aligned to derive the coverage statistics.
 The SV evaluation approach is described in more detail in the [Methods](#toil-vg-sveval).
-](images/sveval-cartoon.png){#fig:sveval tag="S17"}
+](images/sveval-cartoon.png){#fig:sveval tag="S18"}
 
 ### Supplementary Information  {.page_break_before}
 <!-- Careful, we link to this title. If you change it, search and update links -->
+
+#### Variation graph and structural variation
+<!-- Careful, we link to this title. If you change it, search and update links -->
+
+A variation graph encodes DNA sequence in its nodes.
+Such graphs are bidirected, in that we distinguish between edges incident on the starts of nodes from those incident on their ends.
+A path in such a graph is an ordered list of nodes where each is associated with an orientation.
+If a path walks from, for example, node A in the forward orientation to node B in the reverse orientation, then an edge must exist from the end of node A to the end of node B.
+Concatenating the sequences on each node in the path, taking the reverse complement when the node is visited in reverse orientation, produces a DNA sequence.
+Accordingly, variation graphs are constructed so as to encode haplotype sequences as walks through the graph.
+Variation between sequences shows up as bubbles in the graph [@xJlNnKH2].
+
 
 #### Breakpoint fine-tuning
 
