@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/ccb4810e682dc2e69121a6668362cb97b5cd09b1/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/de80154cadde416d94c4124da5b832489791c429/))
 was automatically generated
-from [jmonlong/manu-vgsv@ccb4810](https://github.com/jmonlong/manu-vgsv/tree/ccb4810e682dc2e69121a6668362cb97b5cd09b1)
+from [jmonlong/manu-vgsv@de80154](https://github.com/jmonlong/manu-vgsv/tree/de80154cadde416d94c4124da5b832489791c429)
 on October 21, 2019.
 </em></small>
 
@@ -147,7 +147,6 @@ GraphTyper realigns mapped reads to a graph built from known SNVs and short inde
 BayesTyper first builds a set of graphs from known variants including SVs, then genotypes variants by comparing the distribution of k-mers in the sequencing reads with the k-mers of haplotype candidate paths in the graph[@14Uxmwbxm].
 Paragraph builds a graph for each breakpoint of known variants [@zjxFCnET], then, for each breakpoint, it pulls out all nearby reads from the linear alignment and re-aligns them to the graph.
 Genotypes are computed using the read coverage from the pair of breakpoint graphs corresponding to each SV.
-SMRT-SV v2 Genotyper uses a different approach: the reference genome is augmented with SV-containing sequences as alternate contigs and the resulting mappings are evaluated with a machine learning model trained for this purpose[@3NNFS6U2].
 These graph-based approaches showed clear advantages over standard methods that use only the linear reference.
 
 
@@ -475,8 +474,8 @@ For each insertion we compute the proportion of its inserted sequence that align
 If this proportion is at least 50% the insertions are considered covered.
 Covering relationships are used to define TPs, FPs, and FNs the same way as for deletions and inversions.
 
-While matching SVs using this approach deals with fragmented variants and non-exact matches, a genotyped variant tended to match to only one variant from the truth set (Figure {@fig:eval-matchtp}).
-Methods like Paragraph, Delly Genotyper or SVTyper showed signs of over-genotyping in catalogs that might contain duplicates because they genotype each variant independently rather than following a path-centric approach like vg (see [Methods](#sv-genotyping-algorithm)), 
+Although matching SVs using this approach deals with fragmented variants and non-exact matches, a genotyped variant matched to only one variant from the truth set in most cases (Figure {@fig:eval-matchtp}).
+Methods like Paragraph, Delly Genotyper or SVTyper showed signs of over-genotyping in catalogs that might contain duplicates because they genotype each variant independently rather than following a path-centric approach like vg (see [Methods](#sv-genotyping-algorithm)). 
 The results shown in this study used a minimum of 50% coverage to match variants but we also replicated the results using 90% minimum coverage and observed similar results (see Figure {@fig:eval-stringent}). 
 
 The coverage statistics are computed using any variant larger than 1 bp but a minimum size is required for a variant to be counted as TP, FP, or FN.
