@@ -13,7 +13,7 @@ Quick "how to use":
 
 - Write content in the Markdown files in the `content` folder.
 - Write one-sentence per line (to get cleaner git diffs).
-- E.g. citation: `[@doi:10.1038/nmeth.4366]` or `[@tag:vgnbt]` in with tag defined in `content/citation-tags.tsv`. If it's a preprint from bioRxiv or it has a consortium name as an author it's safer to use `[url:https://doi.org/10.1038/ng.3834]`.
+- E.g. citation: `[@doi:10.1038/nmeth.4366]` or `[@tag:vgnbt]` in with tag defined in `content/citation-tags.tsv`. If it's a preprint from bioRxiv or it has a consortium name as an author it's safer to use `[@url:https://doi.org/10.1038/ng.3834]`.
 - Update title/author infos in [content/metadata.yaml](content/metadata.yaml).
 - More in [`USAGE.md`](USAGE.md).
 - In-text comments using: `<!-- This is a comment -->` or `[//]: # (This is a comment)`.
