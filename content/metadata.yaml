@@ -34,14 +34,14 @@ author_info:
     funders: Grant XXXXXXXX
     symbol_str: "☯"
   -
-    name: Jonas Andreas Sibbesen
+    name: Jonas A. Sibbesen
     initials: JAS
     orcid: 0000-0002-5528-0236
     email: jsibbese@ucsc.edu
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
-    name: Jouni Siren
+    name: Jouni Sirén
     initials: JS
     orcid: 0000-0001-5828-4139
     email: jltsiren@gmail.com
@@ -70,8 +70,8 @@ author_info:
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
-    name: Adam Novak
-    initials: AN
+    name: Adam M. Novak
+    initials: AMN
     orcid: 0000-0001-5828-047X
     email: anovak@soe.ucsc.edu
     affiliations:
