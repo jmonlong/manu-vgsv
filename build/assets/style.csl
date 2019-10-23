@@ -63,7 +63,7 @@
           <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
           <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
         </date>
-        <text variable="URL"/>
+        <!-- <text variable="URL"/> -->
       </group>
       <group display="block" delimiter=" · ">
         <text variable="DOI" text-case="lowercase" prefix="DOI: "/>
