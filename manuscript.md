@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/6c86394bbb5bd084e84082fe2d0069d71608d3cf/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/de0011f6dcaf69fdf1bd4204c8441d46f8333497/))
 was automatically generated
-from [jmonlong/manu-vgsv@6c86394](https://github.com/jmonlong/manu-vgsv/tree/6c86394bbb5bd084e84082fe2d0069d71608d3cf)
+from [jmonlong/manu-vgsv@de0011f](https://github.com/jmonlong/manu-vgsv/tree/de0011f6dcaf69fdf1bd4204c8441d46f8333497)
 on October 23, 2019.
 </em></small>
 
