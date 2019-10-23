@@ -1,5 +1,5 @@
 {
-  "date": "October 22, 2019",
+  "date": "October 23, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "name": "Jonas Andreas Sibbesen",
+      "name": "Jonas A. Sibbesen",
       "initials": "JAS",
       "orcid": "0000-0002-5528-0236",
       "email": "jsibbese@ucsc.edu",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "name": "Jouni Siren",
+      "name": "Jouni Sir\u00e9n",
       "initials": "JS",
       "orcid": "0000-0001-5828-4139",
       "email": "jltsiren@gmail.com",
@@ -107,8 +107,8 @@
       ]
     },
     {
-      "name": "Adam Novak",
-      "initials": "AN",
+      "name": "Adam M. Novak",
+      "initials": "AMN",
       "orcid": "0000-0001-5828-047X",
       "email": "anovak@soe.ucsc.edu",
       "affiliations": [
@@ -154,16 +154,16 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "c11d87c1549c7d64e3bf2c6d53443475c5f70368"
+    "commit": "c85a6937fc2ce5b36f2fbf55f346478dd7732807"
   },
   "manuscript_stats": {
     "reference_counts": {
       "arxiv": 1,
-      "doi": 39,
-      "raw": 1,
-      "url": 5,
+      "doi": 36,
+      "raw": 2,
+      "url": 7,
       "total": 46
     },
-    "word_count": 13098
+    "word_count": 13315
   }
 }

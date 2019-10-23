@@ -204,7 +204,7 @@
     "id": "z91V6jjU"
   },
   {
-    "publisher": "Springer Science and Business Media LLC",
+    "publisher": "Springer Nature",
     "issue": "7571",
     "DOI": "10.1038/nature15394",
     "type": "article-journal",
@@ -217,7 +217,6 @@
         "given": "Peter H.",
         "family": "Sudmant"
       },
-      {},
       {
         "given": "Tobias",
         "family": "Rausch"
@@ -511,6 +510,9 @@
         "family": "McCarroll"
       },
       {
+        "given": "The 1000 Genomes Project Consortium"
+      },
+      {
         "given": "Ryan E.",
         "family": "Mills"
       },
@@ -549,8 +551,7 @@
       "date-parts": [
         [
           2015,
-          9,
-          30
+          10
         ]
       ]
     },
@@ -1167,7 +1168,7 @@
     "id": "10jxt15v0"
   },
   {
-    "publisher": "Springer Science and Business Media LLC",
+    "publisher": "Springer Nature",
     "issue": "8",
     "DOI": "10.1038/ng.3021",
     "type": "article-journal",
@@ -1176,7 +1177,349 @@
     "title": "Whole-genome sequence variation, population structure and demographic history of the Dutch population",
     "volume": "46",
     "author": [
-      {}
+      {
+        "given": "Laurent C",
+        "family": "Francioli"
+      },
+      {
+        "given": "Androniki",
+        "family": "Menelaou"
+      },
+      {
+        "given": "Sara L",
+        "family": "Pulit"
+      },
+      {
+        "given": "Freerk",
+        "family": "van Dijk"
+      },
+      {
+        "given": "Pier Francesco",
+        "family": "Palamara"
+      },
+      {
+        "given": "Clara C",
+        "family": "Elbers"
+      },
+      {
+        "given": "Pieter B T",
+        "family": "Neerincx"
+      },
+      {
+        "given": "Kai",
+        "family": "Ye"
+      },
+      {
+        "given": "Victor",
+        "family": "Guryev"
+      },
+      {
+        "given": "Wigard P",
+        "family": "Kloosterman"
+      },
+      {
+        "given": "Patrick",
+        "family": "Deelen"
+      },
+      {
+        "given": "Abdel",
+        "family": "Abdellaoui"
+      },
+      {
+        "given": "Elisabeth M",
+        "family": "van Leeuwen"
+      },
+      {
+        "given": "Mannis",
+        "family": "van Oven"
+      },
+      {
+        "given": "Martijn",
+        "family": "Vermaat"
+      },
+      {
+        "given": "Mingkun",
+        "family": "Li"
+      },
+      {
+        "given": "Jeroen F J",
+        "family": "Laros"
+      },
+      {
+        "given": "Lennart C",
+        "family": "Karssen"
+      },
+      {
+        "given": "Alexandros",
+        "family": "Kanterakis"
+      },
+      {
+        "given": "Najaf",
+        "family": "Amin"
+      },
+      {
+        "given": "Jouke Jan",
+        "family": "Hottenga"
+      },
+      {
+        "given": "Eric-Wubbo",
+        "family": "Lameijer"
+      },
+      {
+        "given": "Mathijs",
+        "family": "Kattenberg"
+      },
+      {
+        "given": "Martijn",
+        "family": "Dijkstra"
+      },
+      {
+        "given": "Heorhiy",
+        "family": "Byelas"
+      },
+      {
+        "given": "Jessica",
+        "family": "van Setten"
+      },
+      {
+        "given": "Barbera D C",
+        "family": "van Schaik"
+      },
+      {
+        "given": "Jan",
+        "family": "Bot"
+      },
+      {
+        "given": "Isaäc J",
+        "family": "Nijman"
+      },
+      {
+        "given": "Ivo",
+        "family": "Renkens"
+      },
+      {
+        "given": "Tobias",
+        "family": "Marschall"
+      },
+      {
+        "given": "Alexander",
+        "family": "Schönhuth"
+      },
+      {
+        "given": "Jayne Y",
+        "family": "Hehir-Kwa"
+      },
+      {
+        "given": "Robert E",
+        "family": "Handsaker"
+      },
+      {
+        "given": "Paz",
+        "family": "Polak"
+      },
+      {
+        "given": "Mashaal",
+        "family": "Sohail"
+      },
+      {
+        "given": "Dana",
+        "family": "Vuzman"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "David",
+        "family": "van Enckevort"
+      },
+      {
+        "given": "Hailiang",
+        "family": "Mei"
+      },
+      {
+        "given": "Vyacheslav",
+        "family": "Koval"
+      },
+      {
+        "given": "Matthijs H",
+        "family": "Moed"
+      },
+      {
+        "given": "K Joeri",
+        "family": "van der Velde"
+      },
+      {
+        "given": "Fernando",
+        "family": "Rivadeneira"
+      },
+      {
+        "given": "Karol",
+        "family": "Estrada"
+      },
+      {
+        "given": "Carolina",
+        "family": "Medina-Gomez"
+      },
+      {
+        "given": "Aaron",
+        "family": "Isaacs"
+      },
+      {
+        "given": "Steven A",
+        "family": "McCarroll"
+      },
+      {
+        "given": "Marian",
+        "family": "Beekman"
+      },
+      {
+        "given": "Anton J M",
+        "family": "de Craen"
+      },
+      {
+        "given": "H Eka D",
+        "family": "Suchiman"
+      },
+      {
+        "given": "Albert",
+        "family": "Hofman"
+      },
+      {
+        "given": "Ben",
+        "family": "Oostra"
+      },
+      {
+        "given": "André G",
+        "family": "Uitterlinden"
+      },
+      {
+        "given": "Gonneke",
+        "family": "Willemsen"
+      },
+      {
+        "given": "LifeLines Cohort",
+        "family": "Study"
+      },
+      {
+        "given": "Mathieu",
+        "family": "Platteel"
+      },
+      {
+        "given": "Jan H",
+        "family": "Veldink"
+      },
+      {
+        "given": "Leonard H",
+        "family": "van den Berg"
+      },
+      {
+        "given": "Steven J",
+        "family": "Pitts"
+      },
+      {
+        "given": "Shobha",
+        "family": "Potluri"
+      },
+      {
+        "given": "Purnima",
+        "family": "Sundar"
+      },
+      {
+        "given": "David R",
+        "family": "Cox"
+      },
+      {
+        "given": "Shamil R",
+        "family": "Sunyaev"
+      },
+      {
+        "given": "Johan T den",
+        "family": "Dunnen"
+      },
+      {
+        "given": "Mark",
+        "family": "Stoneking"
+      },
+      {
+        "given": "Peter",
+        "family": "de Knijff"
+      },
+      {
+        "given": "Manfred",
+        "family": "Kayser"
+      },
+      {
+        "given": "Qibin",
+        "family": "Li"
+      },
+      {
+        "given": "Yingrui",
+        "family": "Li"
+      },
+      {
+        "given": "Yuanping",
+        "family": "Du"
+      },
+      {
+        "given": "Ruoyan",
+        "family": "Chen"
+      },
+      {
+        "given": "Hongzhi",
+        "family": "Cao"
+      },
+      {
+        "given": "Ning",
+        "family": "Li"
+      },
+      {
+        "given": "Sujie",
+        "family": "Cao"
+      },
+      {
+        "given": "Jun",
+        "family": "Wang"
+      },
+      {
+        "given": "Jasper A",
+        "family": "Bovenberg"
+      },
+      {
+        "given": "Itsik",
+        "family": "Pe'er"
+      },
+      {
+        "given": "P Eline",
+        "family": "Slagboom"
+      },
+      {
+        "given": "Cornelia M",
+        "family": "van Duijn"
+      },
+      {
+        "given": "Dorret I",
+        "family": "Boomsma"
+      },
+      {
+        "given": "Gert-Jan B",
+        "family": "van Ommen"
+      },
+      {
+        "given": "Paul I W",
+        "family": "de Bakker"
+      },
+      {
+        "given": "Morris A",
+        "family": "Swertz"
+      },
+      {
+        "given": "Cisca",
+        "family": "Wijmenga"
+      },
+      {
+        "given": "The Genome of the Netherlands Consortium"
+      }
     ],
     "container-title": "Nature Genetics",
     "language": "en",
@@ -1195,7 +1538,7 @@
     "id": "py6BC5kj"
   },
   {
-    "publisher": "Springer Science and Business Media LLC",
+    "publisher": "Springer Nature",
     "issue": "8",
     "DOI": "10.1038/ng.3036",
     "type": "article-journal",
@@ -1224,6 +1567,9 @@
       {
         "given": "Stephen R F",
         "family": "Twigg"
+      },
+      {
+        "given": "WGS500 Consortium"
       },
       {
         "given": "Andrew O M",
@@ -1269,7 +1615,6 @@
         "given": "Colby",
         "family": "Chiang"
       },
-      {},
       {
         "given": "Alexandra J",
         "family": "Scott"
@@ -1301,6 +1646,9 @@
       {
         "given": "Liron",
         "family": "Ganel"
+      },
+      {
+        "given": " GTEx Consortium"
       },
       {
         "given": "Stephen B",
@@ -1970,44 +2318,503 @@
     "id": "PRx3qEIm"
   },
   {
-    "publisher": "Springer Science and Business Media LLC",
-    "issue": "7",
-    "DOI": "10.1038/s41588-018-0145-5",
+    "publisher": "Springer Nature",
+    "issue": "1",
+    "DOI": "10.1038/s41467-018-08148-z",
     "type": "article-journal",
-    "page": "1054-1059",
     "source": "Crossref",
-    "title": "Accurate genotyping across variant classes and lengths using variant graphs",
-    "volume": "50",
+    "title": "Multi-platform discovery of haplotype-resolved structural variation in human genomes",
+    "volume": "10",
     "author": [
       {
-        "given": "Jonas Andreas",
-        "family": "Sibbesen"
-      },
-      {},
-      {
-        "given": "Lasse",
-        "family": "Maretty"
+        "given": "Mark J. P.",
+        "family": "Chaisson"
       },
       {
-        "given": "Anders",
-        "family": "Krogh"
+        "given": "Ashley D.",
+        "family": "Sanders"
+      },
+      {
+        "given": "Xuefang",
+        "family": "Zhao"
+      },
+      {
+        "given": "Ankit",
+        "family": "Malhotra"
+      },
+      {
+        "given": "David",
+        "family": "Porubsky"
+      },
+      {
+        "given": "Tobias",
+        "family": "Rausch"
+      },
+      {
+        "given": "Eugene J.",
+        "family": "Gardner"
+      },
+      {
+        "given": "Oscar L.",
+        "family": "Rodriguez"
+      },
+      {
+        "given": "Li",
+        "family": "Guo"
+      },
+      {
+        "given": "Ryan L.",
+        "family": "Collins"
+      },
+      {
+        "given": "Xian",
+        "family": "Fan"
+      },
+      {
+        "given": "Jia",
+        "family": "Wen"
+      },
+      {
+        "given": "Robert E.",
+        "family": "Handsaker"
+      },
+      {
+        "given": "Susan",
+        "family": "Fairley"
+      },
+      {
+        "given": "Zev N.",
+        "family": "Kronenberg"
+      },
+      {
+        "given": "Xiangmeng",
+        "family": "Kong"
+      },
+      {
+        "given": "Fereydoun",
+        "family": "Hormozdiari"
+      },
+      {
+        "given": "Dillon",
+        "family": "Lee"
+      },
+      {
+        "given": "Aaron M.",
+        "family": "Wenger"
+      },
+      {
+        "given": "Alex R.",
+        "family": "Hastie"
+      },
+      {
+        "given": "Danny",
+        "family": "Antaki"
+      },
+      {
+        "given": "Thomas",
+        "family": "Anantharaman"
+      },
+      {
+        "given": "Peter A.",
+        "family": "Audano"
+      },
+      {
+        "given": "Harrison",
+        "family": "Brand"
+      },
+      {
+        "given": "Stuart",
+        "family": "Cantsilieris"
+      },
+      {
+        "given": "Han",
+        "family": "Cao"
+      },
+      {
+        "given": "Eliza",
+        "family": "Cerveira"
+      },
+      {
+        "given": "Chong",
+        "family": "Chen"
+      },
+      {
+        "given": "Xintong",
+        "family": "Chen"
+      },
+      {
+        "given": "Chen-Shan",
+        "family": "Chin"
+      },
+      {
+        "given": "Zechen",
+        "family": "Chong"
+      },
+      {
+        "given": "Nelson T.",
+        "family": "Chuang"
+      },
+      {
+        "given": "Christine C.",
+        "family": "Lambert"
+      },
+      {
+        "given": "Deanna M.",
+        "family": "Church"
+      },
+      {
+        "given": "Laura",
+        "family": "Clarke"
+      },
+      {
+        "given": "Andrew",
+        "family": "Farrell"
+      },
+      {
+        "given": "Joey",
+        "family": "Flores"
+      },
+      {
+        "given": "Timur",
+        "family": "Galeev"
+      },
+      {
+        "given": "David U.",
+        "family": "Gorkin"
+      },
+      {
+        "given": "Madhusudan",
+        "family": "Gujral"
+      },
+      {
+        "given": "Victor",
+        "family": "Guryev"
+      },
+      {
+        "given": "William Haynes",
+        "family": "Heaton"
+      },
+      {
+        "given": "Jonas",
+        "family": "Korlach"
+      },
+      {
+        "given": "Sushant",
+        "family": "Kumar"
+      },
+      {
+        "given": "Jee Young",
+        "family": "Kwon"
+      },
+      {
+        "given": "Ernest T.",
+        "family": "Lam"
+      },
+      {
+        "given": "Jong Eun",
+        "family": "Lee"
+      },
+      {
+        "given": "Joyce",
+        "family": "Lee"
+      },
+      {
+        "given": "Wan-Ping",
+        "family": "Lee"
+      },
+      {
+        "given": "Sau Peng",
+        "family": "Lee"
+      },
+      {
+        "given": "Shantao",
+        "family": "Li"
+      },
+      {
+        "given": "Patrick",
+        "family": "Marks"
+      },
+      {
+        "given": "Karine",
+        "family": "Viaud-Martinez"
+      },
+      {
+        "given": "Sascha",
+        "family": "Meiers"
+      },
+      {
+        "given": "Katherine M.",
+        "family": "Munson"
+      },
+      {
+        "given": "Fabio C. P.",
+        "family": "Navarro"
+      },
+      {
+        "given": "Bradley J.",
+        "family": "Nelson"
+      },
+      {
+        "given": "Conor",
+        "family": "Nodzak"
+      },
+      {
+        "given": "Amina",
+        "family": "Noor"
+      },
+      {
+        "given": "Sofia",
+        "family": "Kyriazopoulou-Panagiotopoulou"
+      },
+      {
+        "given": "Andy W. C.",
+        "family": "Pang"
+      },
+      {
+        "given": "Yunjiang",
+        "family": "Qiu"
+      },
+      {
+        "given": "Gabriel",
+        "family": "Rosanio"
+      },
+      {
+        "given": "Mallory",
+        "family": "Ryan"
+      },
+      {
+        "given": "Adrian",
+        "family": "Stütz"
+      },
+      {
+        "given": "Diana C. J.",
+        "family": "Spierings"
+      },
+      {
+        "given": "Alistair",
+        "family": "Ward"
+      },
+      {
+        "given": "AnneMarie E.",
+        "family": "Welch"
+      },
+      {
+        "given": "Ming",
+        "family": "Xiao"
+      },
+      {
+        "given": "Wei",
+        "family": "Xu"
+      },
+      {
+        "given": "Chengsheng",
+        "family": "Zhang"
+      },
+      {
+        "given": "Qihui",
+        "family": "Zhu"
+      },
+      {
+        "given": "Xiangqun",
+        "family": "Zheng-Bradley"
+      },
+      {
+        "given": "Ernesto",
+        "family": "Lowy"
+      },
+      {
+        "given": "Sergei",
+        "family": "Yakneen"
+      },
+      {
+        "given": "Steven",
+        "family": "McCarroll"
+      },
+      {
+        "given": "Goo",
+        "family": "Jun"
+      },
+      {
+        "given": "Li",
+        "family": "Ding"
+      },
+      {
+        "given": "Chong Lek",
+        "family": "Koh"
+      },
+      {
+        "given": "Bing",
+        "family": "Ren"
+      },
+      {
+        "given": "Paul",
+        "family": "Flicek"
+      },
+      {
+        "given": "Ken",
+        "family": "Chen"
+      },
+      {
+        "given": "Mark B.",
+        "family": "Gerstein"
+      },
+      {
+        "given": "Pui-Yan",
+        "family": "Kwok"
+      },
+      {
+        "given": "Peter M.",
+        "family": "Lansdorp"
+      },
+      {
+        "given": "Gabor T.",
+        "family": "Marth"
+      },
+      {
+        "given": "Jonathan",
+        "family": "Sebat"
+      },
+      {
+        "given": "Xinghua",
+        "family": "Shi"
+      },
+      {
+        "given": "Ali",
+        "family": "Bashir"
+      },
+      {
+        "given": "Kai",
+        "family": "Ye"
+      },
+      {
+        "given": "Scott E.",
+        "family": "Devine"
+      },
+      {
+        "given": "Michael E.",
+        "family": "Talkowski"
+      },
+      {
+        "given": "Ryan E.",
+        "family": "Mills"
+      },
+      {
+        "given": "Tobias",
+        "family": "Marschall"
+      },
+      {
+        "given": "Jan O.",
+        "family": "Korbel"
+      },
+      {
+        "given": "Evan E.",
+        "family": "Eichler"
+      },
+      {
+        "given": "Charles",
+        "family": "Lee"
       }
     ],
-    "container-title": "Nature Genetics",
+    "container-title": "Nature Communications",
     "language": "en",
     "issued": {
       "date-parts": [
         [
-          2018,
-          6,
-          18
+          2019,
+          4,
+          16
         ]
       ]
     },
-    "URL": "https://doi.org/gdndnz",
-    "container-title-short": "Nat Genet",
-    "PMID": "29915429",
-    "id": "14Uxmwbxm"
+    "URL": "https://doi.org/ggbmgs",
+    "container-title-short": "Nat Commun",
+    "PMCID": "PMC6467913",
+    "PMID": "30992455",
+    "id": "BFiZbuad"
+  },
+  {
+    "publisher": "Springer Science and Business Media LLC",
+    "issue": "5",
+    "DOI": "10.1038/s41587-019-0074-6",
+    "type": "article-journal",
+    "page": "561-566",
+    "source": "Crossref",
+    "title": "An open resource for accurately benchmarking small variant and reference calls",
+    "volume": "37",
+    "author": [
+      {
+        "given": "Justin M.",
+        "family": "Zook"
+      },
+      {
+        "given": "Jennifer",
+        "family": "McDaniel"
+      },
+      {
+        "given": "Nathan D.",
+        "family": "Olson"
+      },
+      {
+        "given": "Justin",
+        "family": "Wagner"
+      },
+      {
+        "given": "Hemang",
+        "family": "Parikh"
+      },
+      {
+        "given": "Haynes",
+        "family": "Heaton"
+      },
+      {
+        "given": "Sean A.",
+        "family": "Irvine"
+      },
+      {
+        "given": "Len",
+        "family": "Trigg"
+      },
+      {
+        "given": "Rebecca",
+        "family": "Truty"
+      },
+      {
+        "given": "Cory Y.",
+        "family": "McLean"
+      },
+      {
+        "given": "Francisco M.",
+        "family": "De La Vega"
+      },
+      {
+        "given": "Chunlin",
+        "family": "Xiao"
+      },
+      {
+        "given": "Stephen",
+        "family": "Sherry"
+      },
+      {
+        "given": "Marc",
+        "family": "Salit"
+      }
+    ],
+    "container-title": "Nature Biotechnology",
+    "language": "en",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          1
+        ]
+      ]
+    },
+    "URL": "https://doi.org/gfxsf9",
+    "container-title-short": "Nat Biotechnol",
+    "PMCID": "PMC6500473",
+    "PMID": "30936564",
+    "id": "HMkwSeGy"
   },
   {
     "publisher": "Springer Nature",
@@ -2631,659 +3438,57 @@
     "id": "172cJaw4Q"
   },
   {
-    "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>Abstract</jats:title><jats:p>There is increasing recognition that a single, monoploid reference genome is a poor universal reference structure for human genetics, because it represents only a tiny fraction of human variation. Adding this missing variation results in a structure that can be described as a mathematical graph: a genome graph. We demonstrate that, in comparison to the existing reference genome (GRCh38), genome graphs can substantially improve the fractions of reads that map uniquely and perfectly. Furthermore, we show that this fundamental simplification of read mapping transforms the variant calling problem from one in which many non-reference variants must be discovered de-novo to one in which the vast majority of variants are simply re-identified within the graph. Using standard benchmarks as well as a novel reference-free evaluation, we show that a simplistic variant calling procedure on a genome graph can already call variants at least as well as, and in many cases better than, a state-of-the-art method on the linear human reference genome. We anticipate that graph-based references will supplant linear references in humans and in other applications where cohorts of sequenced individuals are available.</jats:p>",
-    "DOI": "10.1101/101378",
-    "type": "manuscript",
+    "publisher": "Oxford University Press (OUP)",
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:sec>\n                  <jats:title>Motivation</jats:title>\n                  <jats:p>The variation graph toolkit (VG) represents genetic variation as a graph. Although each path in the graph is a potential haplotype, most paths are non-biological, unlikely recombinations of true haplotypes.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Results</jats:title>\n                  <jats:p>We augment the VG model with haplotype information to identify which paths are more likely to exist in nature. For this purpose, we develop a scalable implementation of the graph extension of the positional Burrows–Wheeler transform. We demonstrate the scalability of the new implementation by building a whole-genome index of the 5008 haplotypes of the 1000 Genomes Project, and an index of all 108 070 Trans-Omics for Precision Medicine Freeze 5 chromosome 17 haplotypes. We also develop an algorithm for simplifying variation graphs for k-mer indexing without losing any k-mers in the haplotypes.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Availability and implementation</jats:title>\n                  <jats:p>Our software is available at https://github.com/vgteam/vg, https://github.com/jltsiren/gbwt and https://github.com/jltsiren/gcsa2.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Supplementary information</jats:title>\n                  <jats:p>Supplementary data are available at Bioinformatics online.</jats:p>\n               </jats:sec>",
+    "DOI": "10.1093/bioinformatics/btz575",
+    "type": "article-journal",
     "source": "Crossref",
-    "title": "Genome Graphs",
+    "title": "Haplotype-aware graph indexes",
     "author": [
       {
-        "given": "Adam M.",
-        "family": "Novak"
-      },
-      {
-        "given": "Glenn",
-        "family": "Hickey"
+        "given": "Jouni",
+        "family": "Sirén"
       },
       {
         "given": "Erik",
         "family": "Garrison"
       },
       {
-        "given": "Sean",
-        "family": "Blum"
-      },
-      {
-        "given": "Abram",
-        "family": "Connelly"
-      },
-      {
-        "given": "Alexander",
-        "family": "Dilthey"
-      },
-      {
-        "given": "Jordan",
-        "family": "Eizenga"
-      },
-      {
-        "given": "M. A. Saleh",
-        "family": "Elmohamed"
-      },
-      {
-        "given": "Sally",
-        "family": "Guthrie"
-      },
-      {
-        "given": "André",
-        "family": "Kahles"
-      },
-      {
-        "given": "Stephen",
-        "family": "Keenan"
-      },
-      {
-        "given": "Jerome",
-        "family": "Kelleher"
-      },
-      {
-        "given": "Deniz",
-        "family": "Kural"
-      },
-      {
-        "given": "Heng",
-        "family": "Li"
-      },
-      {
-        "given": "Michael F.",
-        "family": "Lin"
-      },
-      {
-        "given": "Karen",
-        "family": "Miga"
-      },
-      {
-        "given": "Nancy",
-        "family": "Ouyang"
-      },
-      {
-        "given": "Goran",
-        "family": "Rakocevic"
-      },
-      {
-        "given": "Maciek",
-        "family": "Smuga-Otto"
-      },
-      {
-        "given": "Alexander Wait",
-        "family": "Zaranek"
-      },
-      {
-        "given": "Richard",
-        "family": "Durbin"
-      },
-      {
-        "given": "Gil",
-        "family": "McVean"
-      },
-      {
-        "given": "David",
-        "family": "Haussler"
+        "given": "Adam M",
+        "family": "Novak"
       },
       {
         "given": "Benedict",
         "family": "Paten"
+      },
+      {
+        "given": "Richard",
+        "family": "Durbin"
       }
     ],
-    "issued": {
-      "date-parts": [
-        [
-          2017,
-          1,
-          18
-        ]
-      ]
-    },
-    "URL": "https://doi.org/gdcc74",
-    "id": "DuODeStx"
-  },
-  {
-    "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>The incomplete identification of structural variants (SVs) from whole-genome sequencing data limits studies of human genetic diversity and disease association. Here, we apply a suite of long-read, short-read, and strand-specific sequencing technologies, optical mapping, and variant discovery algorithms to comprehensively analyze three human parent–child trios to define the full spectrum of human genetic variation in a haplotype-resolved manner. We identify 818,054 indel variants (&lt;50 bp) and 27,622 SVs (≥50 bp) per human genome. We also discover 156 inversions per genome—most of which previously escaped detection. Fifty-eight of the inversions we discovered intersect with the critical regions of recurrent microdeletion and microduplication syndromes. Taken together, our SV callsets represent a sevenfold increase in SV detection compared to most standard high-throughput sequencing studies, including those from the 1000 Genomes Project. The method and the dataset serve as a gold standard for the scientific community and we make specific recommendations for maximizing structural variation sensitivity for future large-scale genome sequencing studies.</jats:p>",
-    "DOI": "10.1101/193144",
-    "type": "manuscript",
-    "source": "Crossref",
-    "title": "Multi-platform discovery of haplotype-resolved structural variation in human genomes",
-    "author": [
-      {
-        "given": "Mark J.P.",
-        "family": "Chaisson"
-      },
-      {
-        "given": "Ashley D.",
-        "family": "Sanders"
-      },
-      {
-        "given": "Xuefang",
-        "family": "Zhao"
-      },
-      {
-        "given": "Ankit",
-        "family": "Malhotra"
-      },
-      {
-        "given": "David",
-        "family": "Porubsky"
-      },
-      {
-        "given": "Tobias",
-        "family": "Rausch"
-      },
-      {
-        "given": "Eugene J.",
-        "family": "Gardner"
-      },
-      {
-        "given": "Oscar",
-        "family": "Rodriguez"
-      },
-      {
-        "given": "Li",
-        "family": "Guo"
-      },
-      {
-        "given": "Ryan L.",
-        "family": "Collins"
-      },
-      {
-        "given": "Xian",
-        "family": "Fan"
-      },
-      {
-        "given": "Jia",
-        "family": "Wen"
-      },
-      {
-        "given": "Robert E.",
-        "family": "Handsaker"
-      },
-      {
-        "given": "Susan",
-        "family": "Fairley"
-      },
-      {
-        "given": "Zev N.",
-        "family": "Kronenberg"
-      },
-      {
-        "given": "Xiangmeng",
-        "family": "Kong"
-      },
-      {
-        "given": "Fereydoun",
-        "family": "Hormozdiari"
-      },
-      {
-        "given": "Dillon",
-        "family": "Lee"
-      },
-      {
-        "given": "Aaron M.",
-        "family": "Wenger"
-      },
-      {
-        "given": "Alex",
-        "family": "Hastie"
-      },
-      {
-        "given": "Danny",
-        "family": "Antaki"
-      },
-      {
-        "given": "Peter",
-        "family": "Audano"
-      },
-      {
-        "given": "Harrison",
-        "family": "Brand"
-      },
-      {
-        "given": "Stuart",
-        "family": "Cantsilieris"
-      },
-      {
-        "given": "Han",
-        "family": "Cao"
-      },
-      {
-        "given": "Eliza",
-        "family": "Cerveira"
-      },
-      {
-        "given": "Chong",
-        "family": "Chen"
-      },
-      {
-        "given": "Xintong",
-        "family": "Chen"
-      },
-      {
-        "given": "Chen-Shan",
-        "family": "Chin"
-      },
-      {
-        "given": "Zechen",
-        "family": "Chong"
-      },
-      {
-        "given": "Nelson T.",
-        "family": "Chuang"
-      },
-      {
-        "given": "Christine C.",
-        "family": "Lambert"
-      },
-      {
-        "given": "Deanna M.",
-        "family": "Church"
-      },
-      {
-        "given": "Laura",
-        "family": "Clarke"
-      },
-      {
-        "given": "Andrew",
-        "family": "Farrell"
-      },
-      {
-        "given": "Joey",
-        "family": "Flores"
-      },
-      {
-        "given": "Timur",
-        "family": "Galeev"
-      },
-      {
-        "given": "David",
-        "family": "Gorkin"
-      },
-      {
-        "given": "Madhusudan",
-        "family": "Gujral"
-      },
-      {
-        "given": "Victor",
-        "family": "Guryev"
-      },
-      {
-        "given": "William Haynes",
-        "family": "Heaton"
-      },
-      {
-        "given": "Jonas",
-        "family": "Korlach"
-      },
-      {
-        "given": "Sushant",
-        "family": "Kumar"
-      },
-      {
-        "given": "Jee Young",
-        "family": "Kwon"
-      },
-      {
-        "given": "Jong Eun",
-        "family": "Lee"
-      },
-      {
-        "given": "Joyce",
-        "family": "Lee"
-      },
-      {
-        "given": "Wan-Ping",
-        "family": "Lee"
-      },
-      {
-        "given": "Sau Peng",
-        "family": "Lee"
-      },
-      {
-        "given": "Shantao",
-        "family": "Li"
-      },
-      {
-        "given": "Patrick",
-        "family": "Marks"
-      },
-      {
-        "given": "Karine",
-        "family": "Viaud-Martinez"
-      },
-      {
-        "given": "Sascha",
-        "family": "Meiers"
-      },
-      {
-        "given": "Katherine M.",
-        "family": "Munson"
-      },
-      {
-        "given": "Fabio",
-        "family": "Navarro"
-      },
-      {
-        "given": "Bradley J.",
-        "family": "Nelson"
-      },
-      {
-        "given": "Conor",
-        "family": "Nodzak"
-      },
-      {
-        "given": "Amina",
-        "family": "Noor"
-      },
-      {
-        "given": "Sofia",
-        "family": "Kyriazopoulou-Panagiotopoulou"
-      },
-      {
-        "given": "Andy",
-        "family": "Pang"
-      },
-      {
-        "given": "Yunjiang",
-        "family": "Qiu"
-      },
-      {
-        "given": "Gabriel",
-        "family": "Rosanio"
-      },
-      {
-        "given": "Mallory",
-        "family": "Ryan"
-      },
-      {
-        "given": "Adrian",
-        "family": "Stütz"
-      },
-      {
-        "given": "Diana C.J.",
-        "family": "Spierings"
-      },
-      {
-        "given": "Alistair",
-        "family": "Ward"
-      },
-      {
-        "given": "AnneMarie E.",
-        "family": "Welch"
-      },
-      {
-        "given": "Ming",
-        "family": "Xiao"
-      },
-      {
-        "given": "Wei",
-        "family": "Xu"
-      },
-      {
-        "given": "Chengsheng",
-        "family": "Zhang"
-      },
-      {
-        "given": "Qihui",
-        "family": "Zhu"
-      },
-      {
-        "given": "Xiangqun",
-        "family": "Zheng-Bradley"
-      },
-      {
-        "given": "Ernesto",
-        "family": "Lowy"
-      },
-      {
-        "given": "Sergei",
-        "family": "Yakneen"
-      },
-      {
-        "given": "Steven",
-        "family": "McCarroll"
-      },
-      {
-        "given": "Goo",
-        "family": "Jun"
-      },
-      {
-        "given": "Li",
-        "family": "Ding"
-      },
-      {
-        "given": "Chong Lek",
-        "family": "Koh"
-      },
-      {
-        "given": "Bing",
-        "family": "Ren"
-      },
-      {
-        "given": "Paul",
-        "family": "Flicek"
-      },
-      {
-        "given": "Ken",
-        "family": "Chen"
-      },
-      {
-        "given": "Mark B.",
-        "family": "Gerstein"
-      },
-      {
-        "given": "Pui-Yan",
-        "family": "Kwok"
-      },
-      {
-        "given": "Peter M.",
-        "family": "Lansdorp"
-      },
-      {
-        "given": "Gabor",
-        "family": "Marth"
-      },
-      {
-        "given": "Jonathan",
-        "family": "Sebat"
-      },
-      {
-        "given": "Xinghua",
-        "family": "Shi"
-      },
-      {
-        "given": "Ali",
-        "family": "Bashir"
-      },
-      {
-        "given": "Kai",
-        "family": "Ye"
-      },
-      {
-        "given": "Scott E.",
-        "family": "Devine"
-      },
-      {
-        "given": "Michael",
-        "family": "Talkowski"
-      },
-      {
-        "given": "Ryan E.",
-        "family": "Mills"
-      },
-      {
-        "given": "Tobias",
-        "family": "Marschall"
-      },
-      {
-        "given": "Jan O.",
-        "family": "Korbel"
-      },
-      {
-        "given": "Evan E.",
-        "family": "Eichler"
-      },
-      {
-        "given": "Charles",
-        "family": "Lee"
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          2017,
-          9,
-          23
-        ]
-      ]
-    },
-    "URL": "https://doi.org/gftxhc",
-    "id": "vQTymKCj"
-  },
-  {
-    "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>Abstract</jats:title><jats:p>Benchmark small variant calls from the Genome in a Bottle Consortium (GIAB) for the CEPH/HapMap genome NA12878 (HG001) have been used extensively for developing, optimizing, and demonstrating performance of sequencing and bioinformatics methods. Here, we develop a reproducible, cloud-based pipeline to integrate multiple sequencing datasets and form benchmark calls, enabling application to arbitrary human genomes. We use these reproducible methods to form high-confidence calls with respect to GRCh37 and GRCh38 for HG001 and 4 additional broadly-consented genomes from the Personal Genome Project that are available as NIST Reference Materials. These new genomes’ broad, open consent with few restrictions on availability of samples and data is enabling a uniquely diverse array of applications. Our new methods produce 17% more high-confidence SNPs, 176% more indels, and 12% larger regions than our previously published calls. To demonstrate that these calls can be used for accurate benchmarking, we compare other high-quality callsets to ours (e.g., Illumina Platinum Genomes), and we demonstrate that the majority of discordant calls are errors in the other callsets, We also highlight challenges in interpreting performance metrics when benchmarking against imperfect high-confidence calls. We show that benchmarking tools from the Global Alliance for Genomics and Health can be used with our calls to stratify performance metrics by variant type and genome context and elucidate strengths and weaknesses of a method.</jats:p>",
-    "DOI": "10.1101/281006",
-    "type": "manuscript",
-    "source": "Crossref",
-    "title": "Reproducible integration of multiple sequencing datasets to form high-confidence SNP, indel, and reference calls for five human genome reference materials",
-    "author": [
-      {
-        "given": "Justin M.",
-        "family": "Zook"
-      },
-      {
-        "given": "Jennifer",
-        "family": "McDaniel"
-      },
-      {
-        "given": "Hemang",
-        "family": "Parikh"
-      },
-      {
-        "given": "Haynes",
-        "family": "Heaton"
-      },
-      {
-        "given": "Sean A.",
-        "family": "Irvine"
-      },
-      {
-        "given": "Len",
-        "family": "Trigg"
-      },
-      {
-        "given": "Rebecca",
-        "family": "Truty"
-      },
-      {
-        "given": "Cory Y.",
-        "family": "McLean"
-      },
-      {
-        "given": "Francisco M.",
-        "family": "De La Vega"
-      },
-      {
-        "given": "Chunlin",
-        "family": "Xiao"
-      },
-      {
-        "given": "Stephen",
-        "family": "Sherry"
-      },
-      {
-        "given": "Marc",
-        "family": "Salit"
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          2018,
-          3,
-          13
-        ]
-      ]
-    },
-    "URL": "https://doi.org/gfwsmj",
-    "id": "16GvGhO20"
-  },
-  {
-    "publisher": "Cold Spring Harbor Laboratory",
-    "abstract": "<jats:title>Abstract</jats:title><jats:p>Accurate detection and genotyping of structural variations (SVs) from short-read data is a long-standing area of development in genomics research and clinical sequencing pipelines. We introduce Paragraph, an accurate genotyper that models SVs using sequence graphs and SV annotations. We demonstrate the accuracy of Paragraph on whole-genome sequence data from three samples using long read SV calls as the truth set, and then apply Paragraph at scale to a cohort of 100 short-read sequenced samples of diverse ancestry. Our analysis shows that Paragraph has better accuracy than other existing genotypers and can be applied to population-scale studies.</jats:p>",
-    "DOI": "10.1101/635011",
-    "type": "manuscript",
-    "source": "Crossref",
-    "title": "Paragraph: A graph-based structural variant genotyper for short-read sequence data",
-    "author": [
-      {
-        "given": "Sai",
-        "family": "Chen"
-      },
-      {
-        "given": "Peter",
-        "family": "Krusche"
-      },
-      {
-        "given": "Egor",
-        "family": "Dolzhenko"
-      },
-      {
-        "given": "Rachel M.",
-        "family": "Sherman"
-      },
-      {
-        "given": "Roman",
-        "family": "Petrovski"
-      },
-      {
-        "given": "Felix",
-        "family": "Schlesinger"
-      },
-      {
-        "given": "Melanie",
-        "family": "Kirsche"
-      },
-      {
-        "given": "David R.",
-        "family": "Bentley"
-      },
-      {
-        "given": "Michael C.",
-        "family": "Schatz"
-      },
-      {
-        "given": "Fritz J.",
-        "family": "Sedlazeck"
-      },
-      {
-        "given": "Michael A.",
-        "family": "Eberle"
+    "container-title": "Bioinformatics",
+    "language": "en",
+    "editor": [
+      {
+        "given": "Alfonso",
+        "family": "Valencia"
       }
     ],
     "issued": {
       "date-parts": [
         [
           2019,
-          5,
-          10
+          7,
+          26
         ]
       ]
     },
-    "URL": "https://doi.org/gf9sdp",
-    "id": "zjxFCnET"
+    "URL": "https://doi.org/ggbmgv",
+    "PMID": "31406990",
+    "id": "u0k2J0Gx"
   },
   {
-    "publisher": "Cold Spring Harbor Laboratory",
+    "publisher": "bioRxiv",
     "abstract": "<jats:title>Abstract</jats:title><jats:p>New technologies and analysis methods are enabling genomic structural variants (SVs) to be detected with ever-increasing accuracy, resolution, and comprehensiveness. Translating these methods to routine research and clinical practice requires robust benchmark sets. We developed the first benchmark set for identification of both false negative and false positive germline SVs, which complements recent efforts emphasizing increasingly comprehensive characterization of SVs. To create this benchmark for a broadly consented son in a Personal Genome Project trio with broadly available cells and DNA, the Genome in a Bottle (GIAB) Consortium integrated 19 sequence-resolved variant calling methods, both alignment- and <jats:italic>de novo</jats:italic> assembly-based, from short-, linked-, and long-read sequencing, as well as optical and electronic mapping. The final benchmark set contains 12745 isolated, sequence-resolved insertion and deletion calls ≥50 base pairs (bp) discovered by at least 2 technologies or 5 callsets, genotyped as heterozygous or homozygous variants by long reads. The Tier 1 benchmark regions, for which any extra calls are putative false positives, cover 2.66 Gbp and 9641 SVs supported by at least one diploid assembly. Support for SVs was assessed using <jats:italic>svviz</jats:italic> with short-, linked-, and long-read sequence data. In general, there was strong support from multiple technologies for the benchmark SVs, with 90 % of the Tier 1 SVs having support in reads from more than one technology. The Mendelian genotype error rate was 0.3 %, and genotype concordance with manual curation was &gt;98.7 %. We demonstrate the utility of the benchmark set by showing it reliably identifies both false negatives and false positives in high-quality SV callsets from short-, linked-, and long-read sequencing and optical mapping.</jats:p>",
     "DOI": "10.1101/664623",
     "type": "manuscript",
@@ -3490,7 +3695,9 @@
         "given": "Marc",
         "family": "Salit"
       },
-      {}
+      {
+        "given": "the Genome in a Bottle Consortium"
+      }
     ],
     "issued": {
       "date-parts": [
@@ -3760,7 +3967,6 @@
         "given": "Siyang",
         "family": "Liu"
       },
-      {},
       {
         "given": "Shujia",
         "family": "Huang"
@@ -3772,6 +3978,9 @@
       {
         "given": "Weijian",
         "family": "Ye"
+      },
+      {
+        "given": "The Genome Denmark Consortium"
       },
       {
         "given": "Anders",
@@ -3797,51 +4006,6 @@
     "PMCID": "PMC4690232",
     "PMID": "26705468",
     "id": "oVaXIwl5"
-  },
-  {
-    "type": "article-journal",
-    "id": "jj4JJlsg",
-    "categories": [
-      "Computer Science",
-      "000 Computer science, knowledge, general works"
-    ],
-    "language": "en",
-    "author": [
-      {
-        "family": "Sirén",
-        "given": "Jouni"
-      },
-      {
-        "family": "Garrison",
-        "given": "Erik"
-      },
-      {
-        "family": "Novak",
-        "given": "Adam M."
-      },
-      {
-        "family": "Paten",
-        "given": "Benedict"
-      },
-      {
-        "family": "Durbin",
-        "given": "Richard"
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          2018
-        ]
-      ]
-    },
-    "abstract": "The variation graph toolkit (VG) represents genetic variation as a graph. Each path in the graph is a potential haplotype, though most paths are unlikely recombinations of true haplotypes. We augment the VG model with haplotype information to identify which paths are more likely to be correct. For this purpose, we develop a scalable implementation of the graph extension of the positional Burrows-Wheeler transform. We demonstrate the scalability of the new implementation by indexing the 1000 Genomes Project haplotypes. We also develop an algorithm for simplifying variation graphs for k-mer indexing without losing any k-mers in the haplotypes.",
-    "container-title": "Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany",
-    "DOI": "10.4230/lipics.wabi.2018.4",
-    "publisher": "Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik GmbH, Wadern/Saarbruecken, Germany",
-    "title": "Haplotype-aware graph indexes",
-    "URL": "https://doi.org/gf2jss",
-    "version": "1.0"
   },
   {
     "type": "article",
@@ -3877,6 +4041,47 @@
     "version": "v1"
   },
   {
+    "title": "Accurate genotyping across variant classes and lengths using variant graphs.",
+    "volume": "50",
+    "issue": "7",
+    "page": "1054-1059",
+    "container-title": "Nature genetics",
+    "container-title-short": "Nat. Genet.",
+    "ISSN": "1546-1718",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          6,
+          18
+        ]
+      ]
+    },
+    "author": [
+      {
+        "given": "Jonas Andreas",
+        "family": "Sibbesen"
+      },
+      {
+        "given": "Lasse",
+        "family": "Maretty"
+      },
+      {
+        "given": "The Danish Pan-Genome Consortium"
+      },
+      {
+        "given": "Anders",
+        "family": "Krogh"
+      }
+    ],
+    "PMID": "29915429",
+    "DOI": "10.1038/s41588-018-0145-5",
+    "abstract": "Genotype estimates from short-read sequencing data are typically based on the alignment of reads to a linear reference, but reads originating from more complex variants (for example, structural variants) often align poorly, resulting in biased genotype estimates. This bias can be mitigated by first collecting a set of candidate variants across discovery methods, individuals and databases, and then realigning the reads to the variants and reference simultaneously. However, this realignment problem has proved computationally difficult. Here, we present a new method (BayesTyper) that uses exact alignment of read k-mers to a graph representation of the reference and variants to efficiently perform unbiased, probabilistic genotyping across the variation spectrum. We demonstrate that BayesTyper generally provides superior variant sensitivity and genotyping accuracy relative to existing methods when used to integrate variants across discovery approaches and individuals. Finally, we demonstrate that including a 'variation-prior' database containing already known variants significantly improves sensitivity.",
+    "URL": "https://www.ncbi.nlm.nih.gov/pubmed/29915429",
+    "type": "article-journal",
+    "id": "15m1WPb3t"
+  },
+  {
     "type": "article-journal",
     "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
     "container-title": "Cladistics",
@@ -3908,6 +4113,211 @@
     "URL": "https://dcc.icgc.org/pcawg",
     "title": "The Pancancer Analysis of Whole Genomes (PCAWG). ",
     "id": "10Jid8Wql"
+  },
+  {
+    "id": "OVPsA1aR",
+    "type": "article-journal",
+    "title": "Genome Graphs",
+    "container-title": "bioRxiv",
+    "page": "101378",
+    "source": "www.biorxiv.org",
+    "abstract": "<h3>Abstract</h3> <p>There is increasing recognition that a single, monoploid reference genome is a poor universal reference structure for human genetics, because it represents only a tiny fraction of human variation. Adding this missing variation results in a structure that can be described as a mathematical graph: a genome graph. We demonstrate that, in comparison to the existing reference genome (GRCh38), genome graphs can substantially improve the fractions of reads that map uniquely and perfectly. Furthermore, we show that this fundamental simplification of read mapping transforms the variant calling problem from one in which many non-reference variants must be discovered de-novo to one in which the vast majority of variants are simply re-identified within the graph. Using standard benchmarks as well as a novel reference-free evaluation, we show that a simplistic variant calling procedure on a genome graph can already call variants at least as well as, and in many cases better than, a state-of-the-art method on the linear human reference genome. We anticipate that graph-based references will supplant linear references in humans and in other applications where cohorts of sequenced individuals are available.</p>",
+    "URL": "https://www.biorxiv.org/content/10.1101/101378v1",
+    "DOI": "10.1101/101378",
+    "language": "en",
+    "author": [
+      {
+        "family": "Novak",
+        "given": "Adam M."
+      },
+      {
+        "family": "Hickey",
+        "given": "Glenn"
+      },
+      {
+        "family": "Garrison",
+        "given": "Erik"
+      },
+      {
+        "family": "Blum",
+        "given": "Sean"
+      },
+      {
+        "family": "Connelly",
+        "given": "Abram"
+      },
+      {
+        "family": "Dilthey",
+        "given": "Alexander"
+      },
+      {
+        "family": "Eizenga",
+        "given": "Jordan"
+      },
+      {
+        "family": "Elmohamed",
+        "given": "M. A. Saleh"
+      },
+      {
+        "family": "Guthrie",
+        "given": "Sally"
+      },
+      {
+        "family": "Kahles",
+        "given": "André"
+      },
+      {
+        "family": "Keenan",
+        "given": "Stephen"
+      },
+      {
+        "family": "Kelleher",
+        "given": "Jerome"
+      },
+      {
+        "family": "Kural",
+        "given": "Deniz"
+      },
+      {
+        "family": "Li",
+        "given": "Heng"
+      },
+      {
+        "family": "Lin",
+        "given": "Michael F."
+      },
+      {
+        "family": "Miga",
+        "given": "Karen"
+      },
+      {
+        "family": "Ouyang",
+        "given": "Nancy"
+      },
+      {
+        "family": "Rakocevic",
+        "given": "Goran"
+      },
+      {
+        "family": "Smuga-Otto",
+        "given": "Maciek"
+      },
+      {
+        "family": "Zaranek",
+        "given": "Alexander Wait"
+      },
+      {
+        "family": "Durbin",
+        "given": "Richard"
+      },
+      {
+        "family": "McVean",
+        "given": "Gil"
+      },
+      {
+        "family": "Haussler",
+        "given": "David"
+      },
+      {
+        "family": "Paten",
+        "given": "Benedict"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2017",
+          1,
+          18
+        ]
+      ]
+    },
+    "accessed": {
+      "date-parts": [
+        [
+          "2019",
+          10,
+          23
+        ]
+      ]
+    }
+  },
+  {
+    "id": "84n2DSbI",
+    "type": "article-journal",
+    "title": "Paragraph: A graph-based structural variant genotyper for short-read sequence data",
+    "container-title": "bioRxiv",
+    "page": "635011",
+    "source": "www.biorxiv.org",
+    "abstract": "<p>Accurate detection and genotyping of structural variations (SVs) from short-read data is a long-standing area of development in genomics research and clinical sequencing pipelines. We introduce Paragraph, an accurate genotyper that models SVs using sequence graphs and SV annotations. We demonstrate the accuracy of Paragraph on whole-genome sequence data from three samples using long read SV calls as the truth set, and then apply Paragraph at scale to a cohort of 100 short-read sequenced samples of diverse ancestry. Our analysis shows that Paragraph has better accuracy than other existing genotypers and can be applied to population-scale studies.</p>",
+    "URL": "https://www.biorxiv.org/content/10.1101/635011v2",
+    "DOI": "10.1101/635011",
+    "shortTitle": "Paragraph",
+    "language": "en",
+    "author": [
+      {
+        "family": "Chen",
+        "given": "Sai"
+      },
+      {
+        "family": "Krusche",
+        "given": "Peter"
+      },
+      {
+        "family": "Dolzhenko",
+        "given": "Egor"
+      },
+      {
+        "family": "Sherman",
+        "given": "Rachel M."
+      },
+      {
+        "family": "Petrovski",
+        "given": "Roman"
+      },
+      {
+        "family": "Schlesinger",
+        "given": "Felix"
+      },
+      {
+        "family": "Kirsche",
+        "given": "Melanie"
+      },
+      {
+        "family": "Bentley",
+        "given": "David R."
+      },
+      {
+        "family": "Schatz",
+        "given": "Michael C."
+      },
+      {
+        "family": "Sedlazeck",
+        "given": "Fritz J."
+      },
+      {
+        "family": "Eberle",
+        "given": "Michael A."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2019",
+          9,
+          24
+        ]
+      ]
+    },
+    "accessed": {
+      "date-parts": [
+        [
+          "2019",
+          10,
+          23
+        ]
+      ]
+    }
   },
   {
     "type": "webpage",
