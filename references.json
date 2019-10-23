@@ -4009,15 +4009,15 @@
   },
   {
     "type": "article",
-    "id": "rXSPQWTb",
+    "id": "uTfynuCD",
     "author": [
-      {
-        "family": "Monlong",
-        "given": "Jean"
-      },
       {
         "family": "Hickey",
         "given": "Glenn"
+      },
+      {
+        "family": "Monlong",
+        "given": "Jean"
       },
       {
         "family": "Heller",
@@ -4028,17 +4028,16 @@
       "date-parts": [
         [
           2019,
-          5,
-          29
+          10,
+          23
         ]
       ]
     },
-    "abstract": "This repository contains the commands and scripts used for Genotyping structural variants in pangenome graphs using the vg toolkit, 2019 (manuscript repo).",
-    "DOI": "10.5281/zenodo.3234891",
+    "abstract": "This repository contains the commands and scripts used for the revised version of our manuscript Genotyping structural variants in pangenome graphs using the vg toolkit, 2019.",
+    "DOI": "10.5281/ZENODO.3517248",
     "publisher": "Zenodo",
-    "title": "vgteam/sv-genotyping-paper: Code repository for \"Genotyping structural variants in pangenome graphs using the vg toolkit\"",
-    "URL": "https://doi.org/gf29bv",
-    "version": "v1"
+    "title": "vgteam/sv-genotyping-paper: Revised code repository for \"Genotyping structural variants in pangenome graphs using the vg toolkit\"",
+    "URL": "https://doi.org/ggbnmb"
   },
   {
     "title": "Accurate genotyping across variant classes and lengths using variant graphs.",
