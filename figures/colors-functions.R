@@ -90,11 +90,11 @@ zoomgp <- function(curve.df, labels.df, zoom.xy=.9, zoom.br=.02,
     scale_x_continuous(breaks=seq(0,1,.2), limits=c(0,1)) + 
     scale_y_continuous(breaks=seq(0,1,.2), limits=c(0,1)) +
     scale_linetype_manual(values=c(3,1)) + 
-    scale_colour_manual(values=pal.tools) +
-    guides(colour=FALSE, linetype=FALSE, shape=FALSE)
+    scale_colour_manual(values=pal.tools)
   if(zout.only){
-    return(zout)
+    return(zout + guides(color=guide_legend(ncol=4)))
   }
+  zout = zout + guides(colour=FALSE, linetype=FALSE, shape=FALSE)
   ## Zoomed in graph
   zin = ggplot(curve.df, aes(x=recall, y=precision, colour=method))
   if(annot){
