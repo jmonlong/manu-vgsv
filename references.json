@@ -4235,8 +4235,8 @@
       "date-parts": [
         [
           "2019",
-          10,
-          23
+          11,
+          5
         ]
       ]
     }
@@ -4248,7 +4248,7 @@
     "container-title": "bioRxiv",
     "page": "635011",
     "source": "www.biorxiv.org",
-    "abstract": "<p>Accurate detection and genotyping of structural variations (SVs) from short-read data is a long-standing area of development in genomics research and clinical sequencing pipelines. We introduce Paragraph, an accurate genotyper that models SVs using sequence graphs and SV annotations. We demonstrate the accuracy of Paragraph on whole-genome sequence data from three samples using long read SV calls as the truth set, and then apply Paragraph at scale to a cohort of 100 short-read sequenced samples of diverse ancestry. Our analysis shows that Paragraph has better accuracy than other existing genotypers and can be applied to population-scale studies.</p>",
+    "abstract": "<h3>Abstract</h3> <p>Accurate detection and genotyping of structural variations (SVs) from short-read data is a long-standing area of development in genomics research and clinical sequencing pipelines. We introduce Paragraph, an accurate genotyper that models SVs using sequence graphs and SV annotations. We demonstrate the accuracy of Paragraph on whole-genome sequence data from three samples using long read SV calls as the truth set, and then apply Paragraph at scale to a cohort of 100 short-read sequenced samples of diverse ancestry. Our analysis shows that Paragraph has better accuracy than other existing genotypers and can be applied to population-scale studies.</p>",
     "URL": "https://www.biorxiv.org/content/10.1101/635011v2",
     "DOI": "10.1101/635011",
     "shortTitle": "Paragraph",
@@ -4312,8 +4312,8 @@
       "date-parts": [
         [
           "2019",
-          10,
-          23
+          11,
+          5
         ]
       ]
     }
