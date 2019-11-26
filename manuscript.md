@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/29aed080ba9c4d1ab22ea4620bac1839baa1a4c8/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/db39a2d313bdfc537bda2bf407a2003a64f2d655/))
 was automatically generated
-from [jmonlong/manu-vgsv@29aed08](https://github.com/jmonlong/manu-vgsv/tree/29aed080ba9c4d1ab22ea4620bac1839baa1a4c8)
+from [jmonlong/manu-vgsv@db39a2d](https://github.com/jmonlong/manu-vgsv/tree/db39a2d313bdfc537bda2bf407a2003a64f2d655)
 on November 26, 2019.
 </em></small>
 
@@ -57,6 +57,7 @@ Erik Garrison<sup>1[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid
 [![Twitter icon](images/twitter.svg){.inline_icon}](https://twitter.com/erikgarrison)
 </sup>,
 Adam M. Novak<sup>1[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-5828-047X)
+[![Twitter icon](images/twitter.svg){.inline_icon}](https://twitter.com/amnovak)
 </sup>,
 Benedict Paten<sup>1,†[![ORCID icon](images/orcid.svg){.inline_icon}](https://orcid.org/0000-0001-8863-3539)
 [![Twitter icon](images/twitter.svg){.inline_icon}](https://twitter.com/BenedictPaten)
