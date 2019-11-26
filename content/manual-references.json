@@ -1283,5 +1283,64 @@
         "URL": "https://www.ncbi.nlm.nih.gov/pubmed/29915429",
         "type": "article-journal",
         "id": "doghzQBj"
-    }
+    },
+      {
+    "type": "article",
+    "standard_citation": "raw:repo",
+    "id": "uTfynuCD",
+    "author": [
+      {
+        "family": "Hickey",
+        "given": "Glenn"
+      },
+      {
+        "family": "Monlong",
+        "given": "Jean"
+      },
+      {
+        "family": "Heller",
+        "given": "David"
+      },
+      {
+        "family": "Sibbesen",
+        "given": "Jonas A."
+      },
+      {
+        "family": "Sirén",
+        "given": "Jouni"
+      },
+      {
+        "family": "Eizenga",
+        "given": "Jordan"
+      },
+      {
+        "family": "Dawson",
+        "given": "Eric T."
+      },
+      {
+        "family": "Garrison",
+        "given": "Erik"
+      },
+      {
+        "family": "Novak",
+        "given": "Adam M."
+      },
+      {
+        "family": "Paten",
+        "given": "Benedict"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "abstract": "This repository contains the commands and scripts used for the revised version of our manuscript Genotyping structural variants in pangenome graphs using the vg toolkit, 2019.",
+    "DOI": "10.5281/ZENODO.3517248",
+    "publisher": "Github",
+    "title": "vgteam/sv-genotyping-paper",
+    "URL": "https://doi.org/ggbnmb"
+  }
 ]

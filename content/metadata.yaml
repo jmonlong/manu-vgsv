@@ -29,6 +29,7 @@ author_info:
     initials: JM
     orcid: 0000-0002-9737-5516
     email: jmonlong@ucsc.edu
+    twitter: JMonlong
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
     funders: Grant XXXXXXXX
@@ -45,6 +46,7 @@ author_info:
     initials: JS
     orcid: 0000-0001-5828-4139
     email: jltsiren@gmail.com
+    twitter: jltsiren
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
@@ -59,6 +61,7 @@ author_info:
     initials: ETD
     orcid: 0000-0001-5448-1653
     email: eric.t.dawson@gmail.com
+    twitter: erictdawson
     affiliations:
       - Department of Genetics, University of Cambridge, Cambridge, UK
       - Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA
@@ -67,6 +70,7 @@ author_info:
     initials: EG
     orcid: 0000-0003-3821-631X
     email: ergarris@ucsc.edu
+    twitter: erikgarrison
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
   -
@@ -81,6 +85,7 @@ author_info:
     initials: BP
     orcid: 0000-0001-8863-3539
     email: bpaten@ucsc.edu
+    twitter: BenedictPaten
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
     symbol_str: "†"
