@@ -27,9 +27,9 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/08036a40462b4f5e46fe49c4df0e050952693028/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/29aed080ba9c4d1ab22ea4620bac1839baa1a4c8/))
 was automatically generated
-from [jmonlong/manu-vgsv@08036a4](https://github.com/jmonlong/manu-vgsv/tree/08036a40462b4f5e46fe49c4df0e050952693028)
+from [jmonlong/manu-vgsv@29aed08](https://github.com/jmonlong/manu-vgsv/tree/29aed080ba9c4d1ab22ea4620bac1839baa1a4c8)
 on November 26, 2019.
 </em></small>
 
@@ -926,6 +926,29 @@ For insertions, the insertion location and sequence contained errors.
 In all cases, the errors affected 1-10 bp.
 {#tbl:simerror-bkpt tag="S6"}
 
+| Tool                                 | Wall Time (m) | Cores | Nodes         | Max Memory (G) |
+| ---                                  | ---           | ---   | ---           | ---            |
+| **vg**                               |               |       |               |                |
+| \ \ \ \ \ \ vg construction          | 49            | 8     | 1 i3.8xlarge  | 0.4            |
+| \ \ \ \ \ \ xg index                 | 13            | 8     | 1 i3.8xlarge  | 48             |
+| \ \ \ \ \ \ snarls index             | 23            | 1     | 50 i3.8xlarge | 17             |
+| \ \ \ \ \ \ gcsa2 index              | 792           | 16    | 1 i3.8xlarge  | 45             |
+| \ \ \ \ \ \ mapping                  | 177           | 32    | 50 r3.8xlarge | 32             |
+| \ \ \ \ \ \ genotyping (pack + call) | 56            | 10    | 1 i3.4xlarge  | 63             |
+| **BayesTyper**                       | 90            | 24    | 1 i3.8xlarge  | 36             |
+| **bwa mem**                          | 240           | 32    | 1 i3.8xlarge  | 14             |
+| \ \ \ \ \ \ **Delly Genotyper**      | 69            | 1     | 1 i3.8xlarge  | 69             |
+| \ \ \ \ \ \ **SVTyper**              | 477           | 1     | 1 i3.8xlarge  | 0.7            |
+| \ \ \ \ \ \ **Paragraph**            | 76            | 32    | 1 i3.8xlarge  | 5.9            |
+
+Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset.
+elly Genotyper, SVTyper and Paragraph start from a set of aligned reads, hence we also show the running time for read alignment with `bwa mem`[@gmH6YDca].
+For BayesTyper, the numbers include both khmer counting with kmc and genotyping.
+We note that BayesTyper integrated variant calls from GATK haplotypecaller[@NCr4QkOg] and Platypus[@1DYmkalz4], derived from reads mapped with bwa mem[@gmH6YDca].
+The numbers shown for BayesTyper does not include this variant discovery pipeline.
+More information in the [supplementary information](#running-time-comparison-between-different-tools-for-hg00514-as-genotyped-on-the-hgsvc-dataset) below.
+{#tbl:timing tag="S7"}
+
 ### Supplementary Figures {.page_break_before}
 
 ![**Genotyping evaluation on the HGSVC dataset using simulated reads.**
@@ -1056,24 +1079,6 @@ Interestingly, our measurements for the *five strains set* showed only small dif
 Only the number of alignments with perfect identity is substantially lower for the strains that were not included in the creation of the graphs (Fig. {@fig:panel3}a).
 
 #### Running time comparison between different tools for HG00514 as genotyped on the HGSVC dataset
-
-| Tool                                 | Wall Time (m) | Cores | Nodes         | Max Memory (G) |
-| ---                                  | ---           | ---   | ---           | ---            |
-| **vg**                               |               |       |               |                |
-| \ \ \ \ \ \ vg construction          | 49            | 8     | 1 i3.8xlarge  | 0.4            |
-| \ \ \ \ \ \ xg index                 | 13            | 8     | 1 i3.8xlarge  | 48             |
-| \ \ \ \ \ \ snarls index             | 23            | 1     | 50 i3.8xlarge | 17             |
-| \ \ \ \ \ \ gcsa2 index              | 792           | 16    | 1 i3.8xlarge  | 45             |
-| \ \ \ \ \ \ mapping                  | 177           | 32    | 50 r3.8xlarge | 32             |
-| \ \ \ \ \ \ genotyping (pack + call) | 56            | 10    | 1 i3.4xlarge  | 63             |
-| **BayesTyper**                       | 90            | 24    | 1 i3.8xlarge  | 36             |
-| **bwa mem**                          | 240           | 32    | 1 i3.8xlarge  | 14             |
-| \ \ \ \ \ \ **Delly Genotyper**      | 69            | 1     | 1 i3.8xlarge  | 69             |
-| \ \ \ \ \ \ **SVTyper**              | 477           | 1     | 1 i3.8xlarge  | 0.7            |
-| \ \ \ \ \ \ **Paragraph**            | 76            | 32    | 1 i3.8xlarge  | 5.9            |
-
-Table: Compute resources required for analysis of sample HG00514 on the HGSVC dataset.
-{#tbl:timing tag="S7"}
 
 SMRT-SV v2 Genotyper required roughly 36 hours and 30G ram on 30 cores to genotype the three HGSVC samples on the "SVPOP" VCF.
 These numbers are not directly comparable to the above table because 1) they apply to the "SVPOP" rather than "HGSVC" dataset (upon which we were unable to run SMRT-SV v2 Genotyper) and 2) we were unable to install SMRT-SV v2 Genotyper on AWS nodes and ran it on an older, shared server at UCSC instead.
