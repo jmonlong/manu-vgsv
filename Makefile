@@ -9,7 +9,7 @@ builddocx: content/00.front-matter.md content/02.introduction.md content/04.disc
 
 # Separate supplementary material
 buildsupp:
-	cp -r content/metadata.yaml content/00.front-matter.md content/06.suppmaterial.md content/90.back-matter.md content/citation-tags.tsv content/images content/manual-references.json suppcontent/
+	cp -r content/00.front-matter.md content/06.suppmaterial.md content/90.back-matter.md content/citation-tags.tsv content/images content/manual-references.json suppcontent/
 	sh build/suppbuild.sh
 
 # Update supp tables and figures tags to ensure correct order

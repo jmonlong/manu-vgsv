@@ -14,8 +14,8 @@ manubot process \
   --log-level=INFO
 
 # pandoc settings
-# CSL_PATH=build/assets/vancouver.csl
-CSL_PATH=build/assets/style.csl
+CSL_PATH=build/assets/vancouver.csl
+# CSL_PATH=build/assets/style.csl
 BIBLIOGRAPHY_PATH=output/references.json
 INPUT_PATH=output/manuscript.md
 

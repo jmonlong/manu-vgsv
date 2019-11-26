@@ -32,7 +32,7 @@ author_info:
     twitter: JMonlong
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
-      - "Twitter: [jmonlong](https://twitter.com/jmonlong)"
+      # - "Twitter: [jmonlong](https://twitter.com/jmonlong)"
     funders: Grant XXXXXXXX
     symbol_str: "☯"
   -
@@ -50,7 +50,7 @@ author_info:
     twitter: jltsiren
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
-      - "Twitter: [jltsiren](https://twitter.com/jltsiren)"
+      # - "Twitter: [jltsiren](https://twitter.com/jltsiren)"
   -
     name: Jordan Eizenga
     initials: JE
@@ -67,7 +67,7 @@ author_info:
     affiliations:
       - Department of Genetics, University of Cambridge, Cambridge, UK
       - Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA
-      - "Twitter: [erictdawson](https://twitter.com/erictdawson)"
+      # - "Twitter: [erictdawson](https://twitter.com/erictdawson)"
   -
     name: Erik Garrison
     initials: EG
@@ -76,7 +76,7 @@ author_info:
     twitter: erikgarrison
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
-      - "Twitter: [erikgarrison](https://twitter.com/erikgarrison)"
+      # - "Twitter: [erikgarrison](https://twitter.com/erikgarrison)"
   -
     name: Adam M. Novak
     initials: AMN
@@ -92,5 +92,5 @@ author_info:
     twitter: BenedictPaten
     affiliations:
       - UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA
-      - "Twitter: [benedictpaten](https://twitter.com/benedictpaten)"
+      # - "Twitter: [benedictpaten](https://twitter.com/benedictpaten)"
     symbol_str: "†"

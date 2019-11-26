@@ -17,7 +17,7 @@ manubot process \
 CSL_PATH=build/assets/vancouver.csl
 # CSL_PATH=build/assets/style.csl
 BIBLIOGRAPHY_PATH=output/references.json
-INPUT_PATH=output/suppmat.md
+INPUT_PATH=output/manuscript.md
 
 # Make output directory
 mkdir -p output
@@ -50,6 +50,10 @@ pandoc --verbose \
   --include-after-body=build/plugins/analytics.html \
   --output=output/suppmat.html \
   $INPUT_PATH
+
+# Fig. instead of Figure
+sed 's/Figure S/Fig. S/g' output/suppmat.html > temp.html
+mv temp.html output/suppmat.html
 
 # Return null if docker command is missing, otherwise return path to docker
 DOCKER_EXISTS=`command -v docker`
