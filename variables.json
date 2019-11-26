@@ -1,5 +1,5 @@
 {
-  "date": "November 5, 2019",
+  "date": "November 26, 2019",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -35,6 +35,7 @@
       "initials": "JM",
       "orcid": "0000-0002-9737-5516",
       "email": "jmonlong@ucsc.edu",
+      "twitter": "JMonlong",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
@@ -61,6 +62,7 @@
       "initials": "JS",
       "orcid": "0000-0001-5828-4139",
       "email": "jltsiren@gmail.com",
+      "twitter": "jltsiren",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
@@ -85,6 +87,7 @@
       "initials": "ETD",
       "orcid": "0000-0001-5448-1653",
       "email": "eric.t.dawson@gmail.com",
+      "twitter": "erictdawson",
       "affiliations": [
         "Department of Genetics, University of Cambridge, Cambridge, UK",
         "Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, Maryland, USA"
@@ -99,6 +102,7 @@
       "initials": "EG",
       "orcid": "0000-0003-3821-631X",
       "email": "ergarris@ucsc.edu",
+      "twitter": "erikgarrison",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
@@ -123,6 +127,7 @@
       "initials": "BP",
       "orcid": "0000-0001-8863-3539",
       "email": "bpaten@ucsc.edu",
+      "twitter": "BenedictPaten",
       "affiliations": [
         "UC Santa Cruz Genomics Institute, University of California, Santa Cruz, California, USA"
       ],
@@ -154,16 +159,16 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "497a99c6c4aa38b0868cb4198894b83fc574c99e"
+    "commit": "08036a40462b4f5e46fe49c4df0e050952693028"
   },
   "manuscript_stats": {
     "reference_counts": {
       "arxiv": 1,
-      "doi": 36,
-      "raw": 2,
+      "doi": 35,
+      "raw": 3,
       "url": 7,
       "total": 46
     },
-    "word_count": 13358
+    "word_count": 13527
   }
 }
