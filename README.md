@@ -8,6 +8,7 @@
 This is the repo for the manuscript on SV genotyping using [vg](https://github.com/vgteam/vg).
 The code to reproduce the analysis is available at [https://github.com/vgteam/sv-genotyping-paper](https://github.com/vgteam/sv-genotyping-paper).
 Preprint versions are available on [bioRxiv](https://www.biorxiv.org/content/10.1101/654566v1).
+It was published in [Genome Biology on Feb 12 2020](https://doi.org/10.1186/s13059-020-1941-7).
 
 Quick "how to use":
 
