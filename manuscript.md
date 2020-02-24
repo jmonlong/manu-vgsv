@@ -10,7 +10,7 @@ author-meta:
 - Erik Garrison
 - Adam M. Novak
 - Benedict Paten
-date-meta: '2019-11-26'
+date-meta: '2020-02-24'
 keywords:
 - structural variation
 - pangenome
@@ -27,10 +27,10 @@ title: Genotyping structural variants in pangenome graphs using the vg toolkit
 
 <small><em>
 This manuscript
-([permalink](https://jmonlong.github.io/manu-vgsv/v/db39a2d313bdfc537bda2bf407a2003a64f2d655/))
+([permalink](https://jmonlong.github.io/manu-vgsv/v/19e73e867a39c487580c236af29021aeea7ccbf6/))
 was automatically generated
-from [jmonlong/manu-vgsv@db39a2d](https://github.com/jmonlong/manu-vgsv/tree/db39a2d313bdfc537bda2bf407a2003a64f2d655)
-on November 26, 2019.
+from [jmonlong/manu-vgsv@19e73e8](https://github.com/jmonlong/manu-vgsv/tree/19e73e867a39c487580c236af29021aeea7ccbf6)
+on February 24, 2020.
 </em></small>
 
 ## Authors
@@ -711,7 +711,7 @@ The simulated reference sequence and reads were deposited at
 
 The sequencing data for HG00514, HG00733, and NA19240 was downloaded from SRA: 
 [ERR903030](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR903030), 
-[ERR894724](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR894724), 
+[ERR895347](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR895347), 
 [ERR894724](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR894724).
 
 The haplotype-resolved SVs from the Human Genome Structural Variation Consortium[@BFiZbuad] were deposited on the GitHub repository[@WmkDWJTb]: 

@@ -1,5 +1,5 @@
 {
-  "date": "November 26, 2019",
+  "date": "February 24, 2020",
   "authors": [
     {
       "name": "Glenn Hickey",
@@ -160,7 +160,7 @@
     "repo_slug": "jmonlong/manu-vgsv",
     "repo_owner": "jmonlong",
     "repo_name": "manu-vgsv",
-    "commit": "db39a2d313bdfc537bda2bf407a2003a64f2d655"
+    "commit": "19e73e867a39c487580c236af29021aeea7ccbf6"
   },
   "manuscript_stats": {
     "reference_counts": {
