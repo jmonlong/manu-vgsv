@@ -1,0 +1,23 @@
+	Command being timed: "sh bwa.sh"
+	User time (seconds): 440861.64
+	System time (seconds): 945.98
+	Percent of CPU this job got: 3055%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:00:58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 14714108
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 17
+	Minor (reclaiming a frame) page faults: 87855223
+	Voluntary context switches: 58184118
+	Involuntary context switches: 45181249
+	Swaps: 0
+	File system inputs: 1216
+	File system outputs: 122804088
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

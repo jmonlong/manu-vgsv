@@ -1,0 +1,1346 @@
+[
+    {
+        "type": "webpage",
+        "standard_citation": "url:https://github.com/manubot/rootstock",
+        "URL": "https://github.com/manubot/rootstock",
+        "title": "manubot/rootstock GitHub repository",
+        "container-title": "GitHub",
+        "issued": {
+            "date-parts": [
+                [
+                    2019
+                ]
+            ]
+        },
+        "author": [
+            {
+                "given": "Daniel",
+                "family": "Himmelstein"
+            }
+        ]
+    },
+    {
+        "standard_citation": "doi:10.1186/s13742-015-0103-4",
+        "publisher": "Oxford University Press (OUP)",
+        "issue": "1",
+        "DOI": "10.1186/s13742-015-0103-4",
+        "type": "article-journal",
+        "source": "Crossref",
+        "title": "Discovery, genotyping and characterization of structural variation and novel sequence at single nucleotide resolution from de novo genome assemblies on a population scale",
+        "volume": "4",
+        "author": [
+            {
+                "given": "Siyang",
+                "family": "Liu"
+            },
+            {
+                "given": "Shujia",
+                "family": "Huang"
+            },
+            {
+                "given": "Junhua",
+                "family": "Rao"
+            },
+            {
+                "given": "Weijian",
+                "family": "Ye"
+            },
+            {
+                "given": "The Genome Denmark Consortium"
+            },
+            {
+                "given": "Anders",
+                "family": "Krogh"
+            },
+            {
+                "given": "Jun",
+                "family": "Wang"
+            }
+        ],
+        "container-title": "GigaScience",
+        "language": "en",
+        "issued": {
+            "date-parts": [
+                [
+                    2015,
+                    12
+                ]
+            ]
+        },
+        "URL": "https://doi.org/f75r4n",
+        "container-title-short": "GigaSci",
+        "PMCID": "PMC4690232",
+        "PMID": "26705468",
+        "id": "oVaXIwl5"
+    },
+    {
+        "standard_citation": "doi:10.1101/664623",
+        "publisher": "bioRxiv",
+        "abstract": "<jats:title>Abstract</jats:title><jats:p>New technologies and analysis methods are enabling genomic structural variants (SVs) to be detected with ever-increasing accuracy, resolution, and comprehensiveness. Translating these methods to routine research and clinical practice requires robust benchmark sets. We developed the first benchmark set for identification of both false negative and false positive germline SVs, which complements recent efforts emphasizing increasingly comprehensive characterization of SVs. To create this benchmark for a broadly consented son in a Personal Genome Project trio with broadly available cells and DNA, the Genome in a Bottle (GIAB) Consortium integrated 19 sequence-resolved variant calling methods, both alignment- and <jats:italic>de novo</jats:italic> assembly-based, from short-, linked-, and long-read sequencing, as well as optical and electronic mapping. The final benchmark set contains 12745 isolated, sequence-resolved insertion and deletion calls ≥50 base pairs (bp) discovered by at least 2 technologies or 5 callsets, genotyped as heterozygous or homozygous variants by long reads. The Tier 1 benchmark regions, for which any extra calls are putative false positives, cover 2.66 Gbp and 9641 SVs supported by at least one diploid assembly. Support for SVs was assessed using <jats:italic>svviz</jats:italic> with short-, linked-, and long-read sequence data. In general, there was strong support from multiple technologies for the benchmark SVs, with 90 % of the Tier 1 SVs having support in reads from more than one technology. The Mendelian genotype error rate was 0.3 %, and genotype concordance with manual curation was &gt;98.7 %. We demonstrate the utility of the benchmark set by showing it reliably identifies both false negatives and false positives in high-quality SV callsets from short-, linked-, and long-read sequencing and optical mapping.</jats:p>",
+        "DOI": "10.1101/664623",
+        "type": "manuscript",
+        "source": "Crossref",
+        "title": "A robust benchmark for germline structural variant detection",
+        "author": [
+            {
+                "given": "Justin M.",
+                "family": "Zook"
+            },
+            {
+                "given": "Nancy F.",
+                "family": "Hansen"
+            },
+            {
+                "given": "Nathan D.",
+                "family": "Olson"
+            },
+            {
+                "given": "Lesley M.",
+                "family": "Chapman"
+            },
+            {
+                "given": "James C.",
+                "family": "Mullikin"
+            },
+            {
+                "given": "Chunlin",
+                "family": "Xiao"
+            },
+            {
+                "given": "Stephen",
+                "family": "Sherry"
+            },
+            {
+                "given": "Sergey",
+                "family": "Koren"
+            },
+            {
+                "given": "Adam M.",
+                "family": "Phillippy"
+            },
+            {
+                "given": "Paul C.",
+                "family": "Boutros"
+            },
+            {
+                "given": "Sayed Mohammad E.",
+                "family": "Sahraeian"
+            },
+            {
+                "given": "Vincent",
+                "family": "Huang"
+            },
+            {
+                "given": "Alexandre",
+                "family": "Rouette"
+            },
+            {
+                "given": "Noah",
+                "family": "Alexander"
+            },
+            {
+                "given": "Christopher E.",
+                "family": "Mason"
+            },
+            {
+                "given": "Iman",
+                "family": "Hajirasouliha"
+            },
+            {
+                "given": "Camir",
+                "family": "Ricketts"
+            },
+            {
+                "given": "Joyce",
+                "family": "Lee"
+            },
+            {
+                "given": "Rick",
+                "family": "Tearle"
+            },
+            {
+                "given": "Ian T.",
+                "family": "Fiddes"
+            },
+            {
+                "given": "Alvaro Martinez",
+                "family": "Barrio"
+            },
+            {
+                "given": "Jeremiah",
+                "family": "Wala"
+            },
+            {
+                "given": "Andrew",
+                "family": "Carroll"
+            },
+            {
+                "given": "Noushin",
+                "family": "Ghaffari"
+            },
+            {
+                "given": "Oscar L.",
+                "family": "Rodriguez"
+            },
+            {
+                "given": "Ali",
+                "family": "Bashir"
+            },
+            {
+                "given": "Shaun",
+                "family": "Jackman"
+            },
+            {
+                "given": "John J",
+                "family": "Farrell"
+            },
+            {
+                "given": "Aaron M",
+                "family": "Wenger"
+            },
+            {
+                "given": "Can",
+                "family": "Alkan"
+            },
+            {
+                "given": "Arda",
+                "family": "Soylev"
+            },
+            {
+                "given": "Michael C.",
+                "family": "Schatz"
+            },
+            {
+                "given": "Shilpa",
+                "family": "Garg"
+            },
+            {
+                "given": "George",
+                "family": "Church"
+            },
+            {
+                "given": "Tobias",
+                "family": "Marschall"
+            },
+            {
+                "given": "Ken",
+                "family": "Chen"
+            },
+            {
+                "given": "Xian",
+                "family": "Fan"
+            },
+            {
+                "given": "Adam C.",
+                "family": "English"
+            },
+            {
+                "given": "Jeffrey A.",
+                "family": "Rosenfeld"
+            },
+            {
+                "given": "Weichen",
+                "family": "Zhou"
+            },
+            {
+                "given": "Ryan E.",
+                "family": "Mills"
+            },
+            {
+                "given": "Jay M.",
+                "family": "Sage"
+            },
+            {
+                "given": "Jennifer R.",
+                "family": "Davis"
+            },
+            {
+                "given": "Michael D.",
+                "family": "Kaiser"
+            },
+            {
+                "given": "John S.",
+                "family": "Oliver"
+            },
+            {
+                "given": "Anthony P.",
+                "family": "Catalano"
+            },
+            {
+                "given": "Mark JP",
+                "family": "Chaisson"
+            },
+            {
+                "given": "Noah",
+                "family": "Spies"
+            },
+            {
+                "given": "Fritz J.",
+                "family": "Sedlazeck"
+            },
+            {
+                "given": "Marc",
+                "family": "Salit"
+            },
+            {
+                "given": "the Genome in a Bottle Consortium"
+            }
+        ],
+        "issued": {
+            "date-parts": [
+                [
+                    2019,
+                    6,
+                    9
+                ]
+            ]
+        },
+        "URL": "https://doi.org/gf3tpt",
+        "id": "RCzDkVqI"
+    },
+    {
+        "standard_citation": "doi:10.1038/ng.3834",
+        "publisher": "Springer Nature",
+        "issue": "5",
+        "DOI": "10.1038/ng.3834",
+        "type": "article-journal",
+        "page": "692-699",
+        "source": "Crossref",
+        "title": "The impact of structural variation on human gene expression",
+        "volume": "49",
+        "author": [
+            {
+                "given": "Colby",
+                "family": "Chiang"
+            },
+            {
+                "given": "Alexandra J",
+                "family": "Scott"
+            },
+            {
+                "given": "Joe R",
+                "family": "Davis"
+            },
+            {
+                "given": "Emily K",
+                "family": "Tsang"
+            },
+            {
+                "given": "Xin",
+                "family": "Li"
+            },
+            {
+                "given": "Yungil",
+                "family": "Kim"
+            },
+            {
+                "given": "Tarik",
+                "family": "Hadzic"
+            },
+            {
+                "given": "Farhan N",
+                "family": "Damani"
+            },
+            {
+                "given": "Liron",
+                "family": "Ganel"
+            },
+            {
+                "given": " GTEx Consortium"
+            },
+            {
+                "given": "Stephen B",
+                "family": "Montgomery"
+            },
+            {
+                "given": "Alexis",
+                "family": "Battle"
+            },
+            {
+                "given": "Donald F",
+                "family": "Conrad"
+            },
+            {
+                "given": "Ira M",
+                "family": "Hall"
+            }
+        ],
+        "container-title": "Nature Genetics",
+        "language": "en",
+        "issued": {
+            "date-parts": [
+                [
+                    2017,
+                    4,
+                    3
+                ]
+            ]
+        },
+        "URL": "https://doi.org/f9xvr6",
+        "container-title-short": "Nat Genet",
+        "PMCID": "PMC5406250",
+        "PMID": "28369037",
+        "id": "2gpKwL67"
+    },
+    {
+        "standard_citation": "doi:10.1038/ng.3036",
+        "publisher": "Springer Nature",
+        "issue": "8",
+        "DOI": "10.1038/ng.3036",
+        "type": "article-journal",
+        "page": "912-918",
+        "source": "Crossref",
+        "title": "Integrating mapping-, assembly- and haplotype-based approaches for calling variants in clinical sequencing applications",
+        "volume": "46",
+        "author": [
+            {
+                "given": "Andy",
+                "family": "Rimmer"
+            },
+            {},
+            {
+                "given": "Hang",
+                "family": "Phan"
+            },
+            {
+                "given": "Iain",
+                "family": "Mathieson"
+            },
+            {
+                "given": "Zamin",
+                "family": "Iqbal"
+            },
+            {
+                "given": "Stephen R F",
+                "family": "Twigg"
+            },
+            {
+                "given": "WGS500 Consortium"
+            },
+            {
+                "given": "Andrew O M",
+                "family": "Wilkie"
+            },
+            {
+                "given": "Gil",
+                "family": "McVean"
+            },
+            {
+                "given": "Gerton",
+                "family": "Lunter"
+            }
+        ],
+        "container-title": "Nature Genetics",
+        "language": "en",
+        "issued": {
+            "date-parts": [
+                [
+                    2014,
+                    7,
+                    13
+                ]
+            ]
+        },
+        "URL": "https://doi.org/f6b6dk",
+        "container-title-short": "Nat Genet",
+        "PMCID": "PMC4753679",
+        "PMID": "25017105",
+        "id": "1DYmkalz4"
+    },
+    {
+        "standard_citation": "doi:10.1038/ng.3021",
+        "publisher": "Springer Nature",
+        "issue": "8",
+        "DOI": "10.1038/ng.3021",
+        "type": "article-journal",
+        "page": "818-825",
+        "source": "Crossref",
+        "title": "Whole-genome sequence variation, population structure and demographic history of the Dutch population",
+        "volume": "46",
+        "author": [
+            {
+                "given": "Laurent C",
+                "family": "Francioli"
+            },
+            {
+                "given": "Androniki",
+                "family": "Menelaou"
+            },
+            {
+                "given": "Sara L",
+                "family": "Pulit"
+            },
+            {
+                "given": "Freerk",
+                "family": "van Dijk"
+            },
+            {
+                "given": "Pier Francesco",
+                "family": "Palamara"
+            },
+            {
+                "given": "Clara C",
+                "family": "Elbers"
+            },
+            {
+                "given": "Pieter B T",
+                "family": "Neerincx"
+            },
+            {
+                "given": "Kai",
+                "family": "Ye"
+            },
+            {
+                "given": "Victor",
+                "family": "Guryev"
+            },
+            {
+                "given": "Wigard P",
+                "family": "Kloosterman"
+            },
+            {
+                "given": "Patrick",
+                "family": "Deelen"
+            },
+            {
+                "given": "Abdel",
+                "family": "Abdellaoui"
+            },
+            {
+                "given": "Elisabeth M",
+                "family": "van Leeuwen"
+            },
+            {
+                "given": "Mannis",
+                "family": "van Oven"
+            },
+            {
+                "given": "Martijn",
+                "family": "Vermaat"
+            },
+            {
+                "given": "Mingkun",
+                "family": "Li"
+            },
+            {
+                "given": "Jeroen F J",
+                "family": "Laros"
+            },
+            {
+                "given": "Lennart C",
+                "family": "Karssen"
+            },
+            {
+                "given": "Alexandros",
+                "family": "Kanterakis"
+            },
+            {
+                "given": "Najaf",
+                "family": "Amin"
+            },
+            {
+                "given": "Jouke Jan",
+                "family": "Hottenga"
+            },
+            {
+                "given": "Eric-Wubbo",
+                "family": "Lameijer"
+            },
+            {
+                "given": "Mathijs",
+                "family": "Kattenberg"
+            },
+            {
+                "given": "Martijn",
+                "family": "Dijkstra"
+            },
+            {
+                "given": "Heorhiy",
+                "family": "Byelas"
+            },
+            {
+                "given": "Jessica",
+                "family": "van Setten"
+            },
+            {
+                "given": "Barbera D C",
+                "family": "van Schaik"
+            },
+            {
+                "given": "Jan",
+                "family": "Bot"
+            },
+            {
+                "given": "Isaäc J",
+                "family": "Nijman"
+            },
+            {
+                "given": "Ivo",
+                "family": "Renkens"
+            },
+            {
+                "given": "Tobias",
+                "family": "Marschall"
+            },
+            {
+                "given": "Alexander",
+                "family": "Schönhuth"
+            },
+            {
+                "given": "Jayne Y",
+                "family": "Hehir-Kwa"
+            },
+            {
+                "given": "Robert E",
+                "family": "Handsaker"
+            },
+            {
+                "given": "Paz",
+                "family": "Polak"
+            },
+            {
+                "given": "Mashaal",
+                "family": "Sohail"
+            },
+            {
+                "given": "Dana",
+                "family": "Vuzman"
+            },
+            {
+                "given": "Fereydoun",
+                "family": "Hormozdiari"
+            },
+            {
+                "given": "David",
+                "family": "van Enckevort"
+            },
+            {
+                "given": "Hailiang",
+                "family": "Mei"
+            },
+            {
+                "given": "Vyacheslav",
+                "family": "Koval"
+            },
+            {
+                "given": "Matthijs H",
+                "family": "Moed"
+            },
+            {
+                "given": "K Joeri",
+                "family": "van der Velde"
+            },
+            {
+                "given": "Fernando",
+                "family": "Rivadeneira"
+            },
+            {
+                "given": "Karol",
+                "family": "Estrada"
+            },
+            {
+                "given": "Carolina",
+                "family": "Medina-Gomez"
+            },
+            {
+                "given": "Aaron",
+                "family": "Isaacs"
+            },
+            {
+                "given": "Steven A",
+                "family": "McCarroll"
+            },
+            {
+                "given": "Marian",
+                "family": "Beekman"
+            },
+            {
+                "given": "Anton J M",
+                "family": "de Craen"
+            },
+            {
+                "given": "H Eka D",
+                "family": "Suchiman"
+            },
+            {
+                "given": "Albert",
+                "family": "Hofman"
+            },
+            {
+                "given": "Ben",
+                "family": "Oostra"
+            },
+            {
+                "given": "André G",
+                "family": "Uitterlinden"
+            },
+            {
+                "given": "Gonneke",
+                "family": "Willemsen"
+            },
+            {
+                "given": "LifeLines Cohort",
+                "family": "Study"
+            },
+            {
+                "given": "Mathieu",
+                "family": "Platteel"
+            },
+            {
+                "given": "Jan H",
+                "family": "Veldink"
+            },
+            {
+                "given": "Leonard H",
+                "family": "van den Berg"
+            },
+            {
+                "given": "Steven J",
+                "family": "Pitts"
+            },
+            {
+                "given": "Shobha",
+                "family": "Potluri"
+            },
+            {
+                "given": "Purnima",
+                "family": "Sundar"
+            },
+            {
+                "given": "David R",
+                "family": "Cox"
+            },
+            {
+                "given": "Shamil R",
+                "family": "Sunyaev"
+            },
+            {
+                "given": "Johan T den",
+                "family": "Dunnen"
+            },
+            {
+                "given": "Mark",
+                "family": "Stoneking"
+            },
+            {
+                "given": "Peter",
+                "family": "de Knijff"
+            },
+            {
+                "given": "Manfred",
+                "family": "Kayser"
+            },
+            {
+                "given": "Qibin",
+                "family": "Li"
+            },
+            {
+                "given": "Yingrui",
+                "family": "Li"
+            },
+            {
+                "given": "Yuanping",
+                "family": "Du"
+            },
+            {
+                "given": "Ruoyan",
+                "family": "Chen"
+            },
+            {
+                "given": "Hongzhi",
+                "family": "Cao"
+            },
+            {
+                "given": "Ning",
+                "family": "Li"
+            },
+            {
+                "given": "Sujie",
+                "family": "Cao"
+            },
+            {
+                "given": "Jun",
+                "family": "Wang"
+            },
+            {
+                "given": "Jasper A",
+                "family": "Bovenberg"
+            },
+            {
+                "given": "Itsik",
+                "family": "Pe'er"
+            },
+            {
+                "given": "P Eline",
+                "family": "Slagboom"
+            },
+            {
+                "given": "Cornelia M",
+                "family": "van Duijn"
+            },
+            {
+                "given": "Dorret I",
+                "family": "Boomsma"
+            },
+            {
+                "given": "Gert-Jan B",
+                "family": "van Ommen"
+            },
+            {
+                "given": "Paul I W",
+                "family": "de Bakker"
+            },
+            {
+                "given": "Morris A",
+                "family": "Swertz"
+            },
+            {
+                "given": "Cisca",
+                "family": "Wijmenga"
+            },
+            {
+                "given": "The Genome of the Netherlands Consortium"
+            }
+        ],
+        "container-title": "Nature Genetics",
+        "language": "en",
+        "issued": {
+            "date-parts": [
+                [
+                    2014,
+                    6,
+                    29
+                ]
+            ]
+        },
+        "URL": "https://doi.org/f6bxm8",
+        "container-title-short": "Nat Genet",
+        "PMID": "24974849",
+        "id": "py6BC5kj"
+    },
+    {
+        "standard_citation": "doi:10.1038/nature15394",
+        "publisher": "Springer Nature",
+        "issue": "7571",
+        "DOI": "10.1038/nature15394",
+        "type": "article-journal",
+        "page": "75-81",
+        "source": "Crossref",
+        "title": "An integrated map of structural variation in 2,504 human genomes",
+        "volume": "526",
+        "author": [
+            {
+                "given": "Peter H.",
+                "family": "Sudmant"
+            },
+            {
+                "given": "Tobias",
+                "family": "Rausch"
+            },
+            {
+                "given": "Eugene J.",
+                "family": "Gardner"
+            },
+            {
+                "given": "Robert E.",
+                "family": "Handsaker"
+            },
+            {
+                "given": "Alexej",
+                "family": "Abyzov"
+            },
+            {
+                "given": "John",
+                "family": "Huddleston"
+            },
+            {
+                "given": "Yan",
+                "family": "Zhang"
+            },
+            {
+                "given": "Kai",
+                "family": "Ye"
+            },
+            {
+                "given": "Goo",
+                "family": "Jun"
+            },
+            {
+                "given": "Markus",
+                "family": "Hsi-Yang Fritz"
+            },
+            {
+                "given": "Miriam K.",
+                "family": "Konkel"
+            },
+            {
+                "given": "Ankit",
+                "family": "Malhotra"
+            },
+            {
+                "given": "Adrian M.",
+                "family": "Stütz"
+            },
+            {
+                "given": "Xinghua",
+                "family": "Shi"
+            },
+            {
+                "given": "Francesco",
+                "family": "Paolo Casale"
+            },
+            {
+                "given": "Jieming",
+                "family": "Chen"
+            },
+            {
+                "given": "Fereydoun",
+                "family": "Hormozdiari"
+            },
+            {
+                "given": "Gargi",
+                "family": "Dayama"
+            },
+            {
+                "given": "Ken",
+                "family": "Chen"
+            },
+            {
+                "given": "Maika",
+                "family": "Malig"
+            },
+            {
+                "given": "Mark J. P.",
+                "family": "Chaisson"
+            },
+            {
+                "given": "Klaudia",
+                "family": "Walter"
+            },
+            {
+                "given": "Sascha",
+                "family": "Meiers"
+            },
+            {
+                "given": "Seva",
+                "family": "Kashin"
+            },
+            {
+                "given": "Erik",
+                "family": "Garrison"
+            },
+            {
+                "given": "Adam",
+                "family": "Auton"
+            },
+            {
+                "given": "Hugo Y. K.",
+                "family": "Lam"
+            },
+            {
+                "given": "Xinmeng",
+                "family": "Jasmine Mu"
+            },
+            {
+                "given": "Can",
+                "family": "Alkan"
+            },
+            {
+                "given": "Danny",
+                "family": "Antaki"
+            },
+            {
+                "given": "Taejeong",
+                "family": "Bae"
+            },
+            {
+                "given": "Eliza",
+                "family": "Cerveira"
+            },
+            {
+                "given": "Peter",
+                "family": "Chines"
+            },
+            {
+                "given": "Zechen",
+                "family": "Chong"
+            },
+            {
+                "given": "Laura",
+                "family": "Clarke"
+            },
+            {
+                "given": "Elif",
+                "family": "Dal"
+            },
+            {
+                "given": "Li",
+                "family": "Ding"
+            },
+            {
+                "given": "Sarah",
+                "family": "Emery"
+            },
+            {
+                "given": "Xian",
+                "family": "Fan"
+            },
+            {
+                "given": "Madhusudan",
+                "family": "Gujral"
+            },
+            {
+                "given": "Fatma",
+                "family": "Kahveci"
+            },
+            {
+                "given": "Jeffrey M.",
+                "family": "Kidd"
+            },
+            {
+                "given": "Yu",
+                "family": "Kong"
+            },
+            {
+                "given": "Eric-Wubbo",
+                "family": "Lameijer"
+            },
+            {
+                "given": "Shane",
+                "family": "McCarthy"
+            },
+            {
+                "given": "Paul",
+                "family": "Flicek"
+            },
+            {
+                "given": "Richard A.",
+                "family": "Gibbs"
+            },
+            {
+                "given": "Gabor",
+                "family": "Marth"
+            },
+            {
+                "given": "Christopher E.",
+                "family": "Mason"
+            },
+            {
+                "given": "Androniki",
+                "family": "Menelaou"
+            },
+            {
+                "given": "Donna M.",
+                "family": "Muzny"
+            },
+            {
+                "given": "Bradley J.",
+                "family": "Nelson"
+            },
+            {
+                "given": "Amina",
+                "family": "Noor"
+            },
+            {
+                "given": "Nicholas F.",
+                "family": "Parrish"
+            },
+            {
+                "given": "Matthew",
+                "family": "Pendleton"
+            },
+            {
+                "given": "Andrew",
+                "family": "Quitadamo"
+            },
+            {
+                "given": "Benjamin",
+                "family": "Raeder"
+            },
+            {
+                "given": "Eric E.",
+                "family": "Schadt"
+            },
+            {
+                "given": "Mallory",
+                "family": "Romanovitch"
+            },
+            {
+                "given": "Andreas",
+                "family": "Schlattl"
+            },
+            {
+                "given": "Robert",
+                "family": "Sebra"
+            },
+            {
+                "given": "Andrey A.",
+                "family": "Shabalin"
+            },
+            {
+                "given": "Andreas",
+                "family": "Untergasser"
+            },
+            {
+                "given": "Jerilyn A.",
+                "family": "Walker"
+            },
+            {
+                "given": "Min",
+                "family": "Wang"
+            },
+            {
+                "given": "Fuli",
+                "family": "Yu"
+            },
+            {
+                "given": "Chengsheng",
+                "family": "Zhang"
+            },
+            {
+                "given": "Jing",
+                "family": "Zhang"
+            },
+            {
+                "given": "Xiangqun",
+                "family": "Zheng-Bradley"
+            },
+            {
+                "given": "Wanding",
+                "family": "Zhou"
+            },
+            {
+                "given": "Thomas",
+                "family": "Zichner"
+            },
+            {
+                "given": "Jonathan",
+                "family": "Sebat"
+            },
+            {
+                "given": "Mark A.",
+                "family": "Batzer"
+            },
+            {
+                "given": "Steven A.",
+                "family": "McCarroll"
+            },
+            {
+                "given": "The 1000 Genomes Project Consortium"
+            },
+            {
+                "given": "Ryan E.",
+                "family": "Mills"
+            },
+            {
+                "given": "Mark B.",
+                "family": "Gerstein"
+            },
+            {
+                "given": "Ali",
+                "family": "Bashir"
+            },
+            {
+                "given": "Oliver",
+                "family": "Stegle"
+            },
+            {
+                "given": "Scott E.",
+                "family": "Devine"
+            },
+            {
+                "given": "Charles",
+                "family": "Lee"
+            },
+            {
+                "given": "Evan E.",
+                "family": "Eichler"
+            },
+            {
+                "given": "Jan O.",
+                "family": "Korbel"
+            }
+        ],
+        "container-title": "Nature",
+        "language": "en",
+        "issued": {
+            "date-parts": [
+                [
+                    2015,
+                    10
+                ]
+            ]
+        },
+        "URL": "https://doi.org/73c",
+        "container-title-short": "Nature",
+        "PMCID": "PMC4617611",
+        "PMID": "26432246",
+        "id": "qA6dWFP"
+    },
+    {
+        "type": "webpage",
+        "standard_citation": "url:rmsk",
+        "URL": "http://www.repeatmasker.org",
+        "author": [
+            {
+                "given": "AFA",
+                "family": "Smit"
+            },
+            {
+                "given": "R",
+                "family": "Hubley"
+            },
+            {
+                "given": "P",
+                "family": "Green"
+            }
+        ],
+        "title": "RepeatMasker Open-4.0."
+    },
+    {
+        "type": "webpage",
+        "standard_citation": "url:bcftools",
+        "URL": "https://samtools.github.io/bcftools/",
+        "title": "Bcftools 1.9"
+    },
+    {
+        "type": "webpage",
+        "standard_citation": "url:https://www.genomicsengland.co.uk",
+        "URL": "https://www.genomicsengland.co.uk",
+        "title": "Genomics England 100,000 Genomes Project. "
+    }, 
+    {
+        "type": "webpage",
+        "standard_citation": "url:https://www.nhlbiwgs.org/",
+        "URL": "https://www.nhlbiwgs.org/",
+        "title": "Whole Genome Sequencing in the NHLBI Trans-Omics for Precision Medicine (TOPMed). "
+    }, 
+    {
+        "type": "webpage",
+        "standard_citation": "url:https://dcc.icgc.org/pcawg",
+        "URL": "https://dcc.icgc.org/pcawg",
+        "title": "The Pancancer Analysis of Whole Genomes (PCAWG). "
+    }, 
+    {
+        "type": "article-journal",
+        "standard_citation": "raw:phylip",
+        "title": " PHYLIP - Phylogeny Inference Package (Version 3.2). ",
+        "container-title": "Cladistics",
+        "page": "164-166",
+        "volume": "5",
+        "author": [
+            {
+                "family": "Felsenstein",
+                "given": "Joel"
+            }
+        ],
+        "issued": {
+            "date-parts": [
+                [
+                    1989
+                ]
+            ]
+        }
+    },
+    {
+        "standard_citation": "raw:bayestyper",
+        "title": "Accurate genotyping across variant classes and lengths using variant graphs.",
+        "volume": "50",
+        "issue": "7",
+        "page": "1054-1059",
+        "container-title": "Nature genetics",
+        "container-title-short": "Nat. Genet.",
+        "ISSN": "1546-1718",
+        "issued": {
+            "date-parts": [
+                [
+                    2018,
+                    6,
+                    18
+                ]
+            ]
+        },
+        "author": [
+            {
+                "given": "Jonas Andreas",
+                "family": "Sibbesen"
+            },
+            {
+                "given": "Lasse",
+                "family": "Maretty"
+            },
+            {
+                "given": "The Danish Pan-Genome Consortium"
+            },
+            {
+                "given": "Anders",
+                "family": "Krogh"
+            }
+        ],
+        "PMID": "29915429",
+        "DOI": "10.1038/s41588-018-0145-5",
+        "abstract": "Genotype estimates from short-read sequencing data are typically based on the alignment of reads to a linear reference, but reads originating from more complex variants (for example, structural variants) often align poorly, resulting in biased genotype estimates. This bias can be mitigated by first collecting a set of candidate variants across discovery methods, individuals and databases, and then realigning the reads to the variants and reference simultaneously. However, this realignment problem has proved computationally difficult. Here, we present a new method (BayesTyper) that uses exact alignment of read k-mers to a graph representation of the reference and variants to efficiently perform unbiased, probabilistic genotyping across the variation spectrum. We demonstrate that BayesTyper generally provides superior variant sensitivity and genotyping accuracy relative to existing methods when used to integrate variants across discovery approaches and individuals. Finally, we demonstrate that including a 'variation-prior' database containing already known variants significantly improves sensitivity.",
+        "URL": "https://www.ncbi.nlm.nih.gov/pubmed/29915429",
+        "type": "article-journal",
+        "id": "doghzQBj"
+    },
+      {
+    "type": "article",
+    "standard_citation": "raw:repo",
+    "id": "uTfynuCD",
+    "author": [
+      {
+        "family": "Hickey",
+        "given": "Glenn"
+      },
+      {
+        "family": "Monlong",
+        "given": "Jean"
+      },
+      {
+        "family": "Heller",
+        "given": "David"
+      },
+      {
+        "family": "Sibbesen",
+        "given": "Jonas A."
+      },
+      {
+        "family": "Sirén",
+        "given": "Jouni"
+      },
+      {
+        "family": "Eizenga",
+        "given": "Jordan"
+      },
+      {
+        "family": "Dawson",
+        "given": "Eric T."
+      },
+      {
+        "family": "Garrison",
+        "given": "Erik"
+      },
+      {
+        "family": "Novak",
+        "given": "Adam M."
+      },
+      {
+        "family": "Paten",
+        "given": "Benedict"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "abstract": "This repository contains the commands and scripts used for the revised version of our manuscript Genotyping structural variants in pangenome graphs using the vg toolkit, 2019.",
+    "DOI": "10.5281/ZENODO.3517248",
+    "publisher": "Github",
+    "title": "vgteam/sv-genotyping-paper",
+    "URL": "https://doi.org/ggbnmb"
+  }
+]
